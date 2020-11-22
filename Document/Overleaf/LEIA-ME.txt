@@ -1,0 +1,14 @@
+Classe Latex com a formatação ABNT (ABNTEX) para TCCs e projetos integradores do IFSC/Gaspar.
+
+Versão: 0.2 (experimental)
+
+Arquivos que devem ser alterados:
+
+- tcc.tex : local para inclusão do texto.
+- referencias.bib : local para inclusão das referências.
+- simb-siglas : local para inclusão das siglas, símbolos e abreviaturas.
+
+Demais arquivos referem-se à classe, ambientes e macros de formatação, não sendo
+recomendável a edição.
+
+Recomenda-se a utilização no Sharelatex ou Overleaf, por questões de codificação de caractéres
