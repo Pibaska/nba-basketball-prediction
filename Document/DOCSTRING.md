@@ -1,44 +1,44 @@
-# Padr�o Docstring
+# Padrao Docstring
 Uma docstring é uma string literal presente na primeira linha da definição de um módulo, classe ou função. O docstring de qualquer objeto pode ser acessado através de um atributo especial chamado `__doc__` .
 
 ![Alt Text](https://media.giphy.com/media/PiQejEf31116URju4V/source.gif)
 
 ## Sumario
 - Classes
-- Funç�es
+- Funçoes
 
-###Classes
+### Classes
 ```
 class qualquerClasse():
 """
-    Descricao da classe(Resumo de qual sua funç�o, seus atributos, seus met�dos)   
+    Descricao da classe(Resumo de qual sua funçao, seus atributos, seus metodos)   
 """
 
 def __init__(self, algo: int): # Construtor
 """
-    Descriç�o do construtor
+    Descriçao do construtor
 
     Input:
-    > algo: descriç�o do atributo
+    > algo: descriçao do atributo
 
     Output:
-    > self.algo: descriç�o do atributo
+    > self.algo: descriçao do atributo
 """
     self.algo = algo
 
 
 def metodo(self, algo):
 """
-    Descriç�o do met�do
+    Descriçao do metado
 
     Input:
-    > algo: descriç�o do atributo e seu tipo
+    > algo: descriçao do atributo e seu tipo
     --------
     ex:
     algo: um numero qualquer -> int
 
     Output:
-    > soma: descriç�o do atributo e seu tipo
+    > soma: descriçao do atributo e seu tipo
     -------
     ex:
     soma: a soma de <algo> com <algo> -> int
@@ -51,23 +51,23 @@ def metodo(self, algo):
 
 ```
 
-### Funç�es
+### Funçoes
 ```
 def funcao(self, algo):
 """
-    Descriç�o do met�do
+    Descriçao do metodo
 
     Input:
-    > algo: descriç�o do atributo e seu tipo
+    > algo: descriçao do atributo e seu tipo
     --------
     ex:
     algo: um numero qualquer -> int
 
     Output:
-    > sub: descriç�o do atributo e seu tipo
+    > sub: descriçao do atributo e seu tipo
     -------
     ex:
-    sub: a substraç�o de <algo> com <algo> -> int
+    sub: a substraçao de <algo> com <algo> -> int
 
     OBS: colocar '< >' caso mencionar uma variavel no docstring
 """
