@@ -1,0 +1,9 @@
+  Algoritmo_Genetico
+* Data_Mining
+  Dev
+  Dev_Algoritmo_Genetico
+  Dev_GUI
+  Dev_Web-Scraping
+  GUI
+  Web_Scrapping
+  master
