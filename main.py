@@ -1,4 +1,4 @@
-from Packages.AlgoritmoGenetico.Base import AlgoritmoGenetico
+from Packages.AlgoritmoGenetico.AGenetico import AlgoritmoGenetico
 
 a = AlgoritmoGenetico(input('Digite um modelo: '))
 
