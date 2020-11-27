@@ -8,7 +8,8 @@ class AlgoritmoGenetico:
         self.population_size = 100
         self.generations = 10000
 
-    def weighted_choice(self, items):
+    @staticmethod
+    def weighted_choice(items):
         total_weight = sum((item[1] for item in items))
         element = random.uniform(0, total_weight)
         for item, weight in items:
@@ -16,6 +17,10 @@ class AlgoritmoGenetico:
                 return item
             element = element - weight
         return item
+
+    @staticmethod
+    def random_character():
+        return chr(int(random.randrange(32, 255, 1)))
 
     def random_population(self):
         population = []
@@ -41,10 +46,6 @@ class AlgoritmoGenetico:
             else:
                 chromosome_outside += chromosome[i]
         return chromosome_outside
-
-    @staticmethod
-    def random_character():
-        return chr(int(random.randrange(32, 255, 1)))
 
     def crossover(self, chromosome1, chromosome2):
         position = int(random.random() * self.chromosome_size)
