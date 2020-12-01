@@ -1,12 +1,12 @@
 import random
 
 
-class AlgoritmoGenetico:
+class GeneticAlgorithm:
     def __init__(self, model):
         self.model = model
         self.chromosome_size = len(model)
         self.population_size = 100
-        self.generations = 10000
+        self.max_generations = 10000
 
     @staticmethod
     def weighted_choice(items):
@@ -20,18 +20,20 @@ class AlgoritmoGenetico:
 
     @staticmethod
     def random_character():
+        # * Essa função não vai ser necessária quando os times forem passados
         return chr(int(random.randrange(32, 255, 1)))
 
     def random_population(self):
         population = []
-        for i in range(self.population_size):
+        for _ in range(self.population_size):
             chromosome = ""
-            for j in range(self.chromosome_size):
+            for _ in range(self.chromosome_size):
                 chromosome += self.random_character()
             population.append(chromosome)
         return population
 
     def fitness(self, chromosome):
+        # TODO essa função tem que ser editada para funcionar com os times
         fitness = 0
         for i in range(self.chromosome_size):
             fitness += abs(ord(chromosome[i]) - ord(self.model[i]))
@@ -51,3 +53,18 @@ class AlgoritmoGenetico:
         position = int(random.random() * self.chromosome_size)
         return (chromosome1[:position] + chromosome2[position:],
                 chromosome2[:position] + chromosome1[position:])
+
+    def evaluate_population(self, population):
+        """Recebe uma população e diz se ela é boa ou não"""
+        # TODO pensar num jeito bom de avaliar a população
+        # TODO fazer com que a avaliação leve em consideração
+        # gerações anteriores
+
+        good_individuals = 0
+        for individual in population:
+            good_individuals += 1 if individual == self.model else 0
+
+        is_population_good = good_individuals >= int(len(population)/10)
+        if is_population_good:
+            print("a")
+        return is_population_good
