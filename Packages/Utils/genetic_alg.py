@@ -1,12 +1,12 @@
 import random
 
 
-class AlgoritmoGenetico:
+class GeneticAlgorithm:
     def __init__(self, model):
         self.model = model
         self.chromosome_size = len(model)
         self.population_size = 100
-        self.generations = 10000
+        self.max_generations = 10000
 
     @staticmethod
     def weighted_choice(items):
@@ -24,9 +24,9 @@ class AlgoritmoGenetico:
 
     def random_population(self):
         population = []
-        for i in range(self.population_size):
+        for _ in range(self.population_size):
             chromosome = ""
-            for j in range(self.chromosome_size):
+            for _ in range(self.chromosome_size):
                 chromosome += self.random_character()
             population.append(chromosome)
         return population

@@ -1,14 +1,16 @@
 # Packages Import
-from Packages.Utils.AGenetico import AlgoritmoGenetico
+from Packages.Utils.genetic_alg import GeneticAlgorithm
 
-GeneticUtils = AlgoritmoGenetico(input('Digite um modelo: '))
+GeneticUtils = GeneticAlgorithm(input('Digite um modelo: '))
 
 population = GeneticUtils.random_population()
 
-for generation in range(GeneticUtils.generations):
+for generation in range(GeneticUtils.max_generations):
     print(f"Geração {generation} | População: '{population[0]}'")
-    weight_population = []
+    ranked_population = []
 
+    # TODO substituir por uma função que leva em
+    # consideração a geração inteira
     if population[0] == GeneticUtils.model:
         break
 
@@ -18,13 +20,14 @@ for generation in range(GeneticUtils.generations):
             pair = (individual, 1.0)
         else:
             pair = (individual, 1.0 / fitness_value)
-        weight_population.append(pair)
+        ranked_population.append(pair)
     population = []
 
     for i in range(int(GeneticUtils.population_size)):
-        individual1 = GeneticUtils.weighted_choice(weight_population)
-        individual2 = GeneticUtils.weighted_choice(weight_population)
-        individual1, individual2 = GeneticUtils.crossover(individual1, individual2)
+        individual1 = GeneticUtils.weighted_choice(ranked_population)
+        individual2 = GeneticUtils.weighted_choice(ranked_population)
+        individual1, individual2 = GeneticUtils.crossover(
+            individual1, individual2)
         population.append(GeneticUtils.mutation(individual1))
         population.append(GeneticUtils.mutation(individual2))
 
