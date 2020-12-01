@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32478f47-eda7-43a1-8d30-65c9a7fe07b6" name="Default Changelist" comment="" />
+    <list default="true" id="32478f47-eda7-43a1-8d30-65c9a7fe07b6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -286,14 +288,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="195" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598027836364">
+    <state x="740" y="282" key="FileChooserDialogImpl" timestamp="1606821775138">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="414" y="195" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1598027836364" />
-    <state x="740" y="282" key="FileChooserDialogImpl" timestamp="1606303104261">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="740" y="282" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1606303104261" />
+    <state x="740" y="282" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1606821775138" />
     <state width="613" height="500" key="GridCell.Tab.0.bottom" timestamp="1598642292579">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -310,34 +308,6 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="613" height="500" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1598642292579" />
-    <state width="764" height="473" key="GridCell.Tab.1.bottom" timestamp="1598045977568">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="764" height="473" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1598045977568" />
-    <state width="764" height="473" key="GridCell.Tab.1.center" timestamp="1598045977568">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="764" height="473" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1598045977568" />
-    <state width="764" height="473" key="GridCell.Tab.1.left" timestamp="1598045977568">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="764" height="473" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1598045977568" />
-    <state width="764" height="473" key="GridCell.Tab.1.right" timestamp="1598045977568">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="764" height="473" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1598045977568" />
-    <state x="769" y="159" key="SettingsEditor" timestamp="1598042419479">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="769" y="159" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598042419479" />
-    <state x="777" y="454" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598026802318">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="777" y="454" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598026802318" />
-    <state x="1041" y="388" width="621" height="531" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1598026776038">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="1041" y="388" width="621" height="531" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1598026776038" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1598640038962">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
