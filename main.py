@@ -9,9 +9,7 @@ for generation in range(GeneticUtils.max_generations):
     print(f"Geração {generation} | População: '{population[0]}'")
     ranked_population = []
 
-    # TODO substituir por uma função que leva em
-    # consideração a geração inteira
-    if population[0] == GeneticUtils.model:
+    if GeneticUtils.evaluate_population(population):
         break
 
     for individual in population:
