@@ -1,5 +1,6 @@
 # NBA Basketball Prediction
 
+
 O software NBA Basketball visa reunir dados a respeito dos times selecionados e tentar prever o resultado do primeiro quarto do jogo.
 
 ## Explicação da estrututa do projeto
