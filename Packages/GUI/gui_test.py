@@ -2,6 +2,11 @@
 Interface Simples de um tutorial que eu vi por aí
 link: https://realpython.com/python-pyqt-gui-calculator/
 
+Instruções pra rodar isso aqui:
+1. Cria um ambiente virtual digitando "python -m venv venv" no terminal
+2. Instala o PyQt5 com "pip install -r requirements.txt"
+3. Só
+
 ~Bernardo
 """
 
