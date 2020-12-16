@@ -2,11 +2,20 @@ import random
 
 
 class GeneticAlgorithm:
-    def __init__(self, model):
+    def __init__(self, model, good_generations):
+        """
+        INPUT
+        model: A string que o algoritmo vai tentar replicar
+        good_generations: Define quantas gerações seguidas têm
+        que ser boas para fazer o algoritmo parar
+        """
+
         self.model = model
         self.chromosome_size = len(model)
         self.population_size = 100
         self.max_generations = 10000
+        self.consecutive_good_generations = 0
+        self.target_good_generations = good_generations
 
     @staticmethod
     def weighted_choice(items):
@@ -65,6 +74,10 @@ class GeneticAlgorithm:
             good_individuals += 1 if individual == self.model else 0
 
         is_population_good = good_individuals >= int(len(population)/10)
-        if is_population_good:
-            print("a")
+
+        if(is_population_good):
+            self.consecutive_good_generations += 1
+        else:
+            self.consecutive_good_generations = 0
+
         return is_population_good
