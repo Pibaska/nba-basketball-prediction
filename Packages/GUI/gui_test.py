@@ -1,6 +1,6 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QLineEdit, QMainWindow
+from PyQt5.QtWidgets import QApplication, QGridLayout, QLineEdit, QMainWindow
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QWidget
@@ -27,6 +27,9 @@ class BasketballPredictionView(QMainWindow):
         """ Faz as configurações necessárias do layout manager"""
         core_layout = QVBoxLayout()
         core_layout.addWidget(self.setup_title_label())
+        core_layout.addWidget(self.setup_combobox_sublayout())
+        core_layout.addWidget(self.setup_prediction_button())
+        core_layout.addWidget(self.setup_results_text())
 
         return core_layout
 
@@ -35,6 +38,23 @@ class BasketballPredictionView(QMainWindow):
         title_label.setAlignment(QtCore.Qt.AlignCenter)
 
         return title_label
+
+    def setup_combobox_sublayout(self):
+        layout_widget = QWidget()
+        layout = QGridLayout()
+        layout.addWidget(QLabel("A"))
+        layout.addWidget(QLabel("B"))
+        layout.addWidget(QLabel("C"))
+
+        layout_widget.setLayout(layout)
+
+        return layout_widget
+
+    def setup_prediction_button(self):
+        return QPushButton("Prever!")
+
+    def setup_results_text(self):
+        return QLineEdit("Resultados:")
 
 
 def main():
@@ -48,19 +68,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-# app = QApplication(sys.argv)
-# window = QWidget()
-
-
-# main_layout = QVBoxLayout()
-
-# main_layout.addWidget(QLabel("BASKETBALL PREDICTION"))
-# main_layout.addWidget(QLabel('Layout dos combobox'))
-# main_layout.addWidget(QPushButton('Prever'))
-# main_layout.addWidget(QLineEdit("Resultado:"))
-
-# window.setLayout(main_layout)
-# window.show()
-# sys.exit(app.exec_())
