@@ -1,5 +1,8 @@
 import sys
 
+# Esse import vai ter que ser mudado quando esse script for ligado no main
+import gui_fake_data as fake_data
+
 from PyQt5.QtWidgets import QApplication, QComboBox, QGridLayout, QLineEdit, QMainWindow
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QVBoxLayout
@@ -52,17 +55,15 @@ class BasketballPredictionView(QMainWindow):
         label_predict_match.setAlignment(QtCore.Qt.AlignCenter)
 
         combobox_team1 = QComboBox()
-        combobox_team1.addItem("Não")
-        combobox_team1.addItem("Conheço")
-        combobox_team1.addItem("Basquete")
+        for team in fake_data.fake_teams:
+            combobox_team1.addItem(team)
 
         label_vs = QLabel("VS.")
         label_vs.setAlignment(QtCore.Qt.AlignCenter)
 
         combobox_team2 = QComboBox()
-        combobox_team2.addItem("Bola")
-        combobox_team2.addItem("Pulo")
-        combobox_team2.addItem("Sla")
+        for team in fake_data.fake_teams:
+            combobox_team2.addItem(team)
 
         layout.addWidget(label_predict_match, 0, 1)
         layout.addWidget(combobox_team1, 1, 0)
@@ -81,7 +82,9 @@ class BasketballPredictionView(QMainWindow):
     def _setup_results_text(self):
         """Configura o campo no qual vai aparecer o resultado da previsão"""
 
-        return QLineEdit("Resultados:")
+        lineedit_results = QLineEdit("Resultados:")
+        lineedit_results.setReadOnly(True)
+        return lineedit_results
 
 
 def main():
