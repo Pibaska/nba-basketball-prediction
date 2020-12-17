@@ -86,6 +86,9 @@ class BasketballPredictionView(QMainWindow):
         lineedit_results.setReadOnly(True)
         return lineedit_results
 
+    def get_comboboxes_teams_content(self):
+        return ["Time da Caixa 1", "Time da Caixa 2"]
+
 
 def main():
     basketballGUI = QApplication(sys.argv)
