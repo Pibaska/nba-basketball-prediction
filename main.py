@@ -1,7 +1,8 @@
+
 # Packages Import
 from Packages.Utils.genetic_alg import GeneticAlgorithm
 
-GeneticUtils = GeneticAlgorithm(input('Digite um modelo: '))
+GeneticUtils = GeneticAlgorithm(input('Digite um modelo: '), 3)
 
 population = GeneticUtils.random_population()
 
@@ -34,6 +35,7 @@ minimum_fitness = GeneticUtils.fitness(population[0])
 
 for individual in population:
     fit_individual = GeneticUtils.fitness(individual)
+    print(f"{individual}, {fit_individual}")
     if fit_individual <= minimum_fitness:
         fit_string = individual
         minimum_fitness = fit_individual
