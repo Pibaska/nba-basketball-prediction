@@ -1,0 +1,3042 @@
+{
+    "status_por_jogo_2000": [
+        {
+            "time": "Sacramento Kings*",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Dallas Mavericks",
+            "jogos": 82,
+            "cestas_de_3": 6.3
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 7.1
+        },
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "Orlando Magic",
+            "jogos": 82,
+            "cestas_de_3": 3.6
+        },
+        {
+            "time": "Houston Rockets",
+            "jogos": 82,
+            "cestas_de_3": 7.1
+        },
+        {
+            "time": "Boston Celtics",
+            "jogos": 82,
+            "cestas_de_3": 5.1
+        },
+        {
+            "time": "Seattle SuperSonics*",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Denver Nuggets",
+            "jogos": 82,
+            "cestas_de_3": 5.7
+        },
+        {
+            "time": "Phoenix Suns*",
+            "jogos": 82,
+            "cestas_de_3": 5.6
+        },
+        {
+            "time": "Minnesota Timberwolves*",
+            "jogos": 82,
+            "cestas_de_3": 3
+        },
+        {
+            "time": "Charlotte Hornets*",
+            "jogos": 82,
+            "cestas_de_3": 4.1
+        },
+        {
+            "time": "New Jersey Nets",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 5
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 4.1
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 82,
+            "cestas_de_3": 2.5
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Atlanta Hawks",
+            "jogos": 82,
+            "cestas_de_3": 3.1
+        },
+        {
+            "time": "Vancouver Grizzlies",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "New York Knicks*",
+            "jogos": 82,
+            "cestas_de_3": 4.3
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Chicago Bulls",
+            "jogos": 82,
+            "cestas_de_3": 4.1
+        },
+        {
+            "time": "League Average",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        }
+    ],
+    "status_por_jogo_2001": [
+        {
+            "time": "Sacramento Kings*",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 6.9
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 6.3
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Orlando Magic*",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Minnesota Timberwolves*",
+            "jogos": 82,
+            "cestas_de_3": 3.9
+        },
+        {
+            "time": "Seattle SuperSonics",
+            "jogos": 82,
+            "cestas_de_3": 5.7
+        },
+        {
+            "time": "Houston Rockets",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "Denver Nuggets",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Detroit Pistons",
+            "jogos": 82,
+            "cestas_de_3": 4.7
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 4.5
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 82,
+            "cestas_de_3": 3.2
+        },
+        {
+            "time": "Boston Celtics",
+            "jogos": 82,
+            "cestas_de_3": 7.2
+        },
+        {
+            "time": "Phoenix Suns*",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 3.4
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 3.4
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 4.4
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 82,
+            "cestas_de_3": 2.7
+        },
+        {
+            "time": "New Jersey Nets",
+            "jogos": 82,
+            "cestas_de_3": 4.4
+        },
+        {
+            "time": "Charlotte Hornets*",
+            "jogos": 82,
+            "cestas_de_3": 4.1
+        },
+        {
+            "time": "Vancouver Grizzlies",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "Atlanta Hawks",
+            "jogos": 82,
+            "cestas_de_3": 4.1
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "New York Knicks*",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "Chicago Bulls",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "League Average",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        }
+    ],
+    "status_por_jogo_2002": [
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 7.6
+        },
+        {
+            "time": "Sacramento Kings*",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Orlando Magic*",
+            "jogos": 82,
+            "cestas_de_3": 7.6
+        },
+        {
+            "time": "Minnesota Timberwolves*",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "Seattle SuperSonics*",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 3.9
+        },
+        {
+            "time": "Milwaukee Bucks",
+            "jogos": 82,
+            "cestas_de_3": 7.2
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 4.9
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 5.3
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 5.7
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 8.5
+        },
+        {
+            "time": "New Jersey Nets*",
+            "jogos": 82,
+            "cestas_de_3": 4.9
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 3.4
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 5
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 82,
+            "cestas_de_3": 4.7
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 4.4
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 6.9
+        },
+        {
+            "time": "Atlanta Hawks",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Charlotte Hornets*",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 3.7
+        },
+        {
+            "time": "Houston Rockets",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Denver Nuggets",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 4.7
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 82,
+            "cestas_de_3": 2.6
+        },
+        {
+            "time": "Memphis Grizzlies",
+            "jogos": 82,
+            "cestas_de_3": 4.1
+        },
+        {
+            "time": "Chicago Bulls",
+            "jogos": 82,
+            "cestas_de_3": 3.7
+        },
+        {
+            "time": "Miami Heat",
+            "jogos": 82,
+            "cestas_de_3": 3.8
+        },
+        {
+            "time": "League Average",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        }
+    ],
+    "status_por_jogo_2003": [
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 7.8
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Sacramento Kings*",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 7.1
+        },
+        {
+            "time": "Orlando Magic*",
+            "jogos": 82,
+            "cestas_de_3": 6.9
+        },
+        {
+            "time": "Minnesota Timberwolves*",
+            "jogos": 82,
+            "cestas_de_3": 3.6
+        },
+        {
+            "time": "Memphis Grizzlies",
+            "jogos": 82,
+            "cestas_de_3": 5.7
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 82,
+            "cestas_de_3": 3
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 4.6
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 7.4
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "Phoenix Suns*",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "New Jersey Nets*",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 4.6
+        },
+        {
+            "time": "Chicago Bulls",
+            "jogos": 82,
+            "cestas_de_3": 4.3
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 2.7
+        },
+        {
+            "time": "Atlanta Hawks",
+            "jogos": 82,
+            "cestas_de_3": 4.9
+        },
+        {
+            "time": "New Orleans Hornets*",
+            "jogos": 82,
+            "cestas_de_3": 4.9
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "Houston Rockets",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 8.8
+        },
+        {
+            "time": "Seattle SuperSonics",
+            "jogos": 82,
+            "cestas_de_3": 5.6
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 3.1
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 82,
+            "cestas_de_3": 3.6
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Toronto Raptors",
+            "jogos": 82,
+            "cestas_de_3": 5
+        },
+        {
+            "time": "Miami Heat",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "Denver Nuggets",
+            "jogos": 82,
+            "cestas_de_3": 2.8
+        },
+        {
+            "time": "League Average",
+            "jogos": 82,
+            "cestas_de_3": 5.1
+        }
+    ],
+    "status_por_jogo_2004": [
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Sacramento Kings*",
+            "jogos": 82,
+            "cestas_de_3": 7.3
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 4.5
+        },
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 4.9
+        },
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "Seattle SuperSonics",
+            "jogos": 82,
+            "cestas_de_3": 8.8
+        },
+        {
+            "time": "Memphis Grizzlies*",
+            "jogos": 82,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "Minnesota Timberwolves*",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 5.1
+        },
+        {
+            "time": "Orlando Magic",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 82,
+            "cestas_de_3": 3
+        },
+        {
+            "time": "Atlanta Hawks",
+            "jogos": 82,
+            "cestas_de_3": 5.1
+        },
+        {
+            "time": "New York Knicks*",
+            "jogos": 82,
+            "cestas_de_3": 5
+        },
+        {
+            "time": "New Orleans Hornets*",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 5.3
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 5
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "Portland Trail Blazers",
+            "jogos": 82,
+            "cestas_de_3": 4.6
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "New Jersey Nets*",
+            "jogos": 82,
+            "cestas_de_3": 4.6
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 4.1
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 6.3
+        },
+        {
+            "time": "Chicago Bulls",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Utah Jazz",
+            "jogos": 82,
+            "cestas_de_3": 3.1
+        },
+        {
+            "time": "Philadelphia 76ers",
+            "jogos": 82,
+            "cestas_de_3": 4.1
+        },
+        {
+            "time": "Toronto Raptors",
+            "jogos": 82,
+            "cestas_de_3": 5.6
+        },
+        {
+            "time": "League Average",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        }
+    ],
+    "status_por_jogo_2005": [
+        {
+            "time": "Phoenix Suns*",
+            "jogos": 82,
+            "cestas_de_3": 9.7
+        },
+        {
+            "time": "Sacramento Kings*",
+            "jogos": 82,
+            "cestas_de_3": 6.4
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 5.6
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 5.3
+        },
+        {
+            "time": "Washington Wizards*",
+            "jogos": 82,
+            "cestas_de_3": 6.3
+        },
+        {
+            "time": "Toronto Raptors",
+            "jogos": 82,
+            "cestas_de_3": 7.9
+        },
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 82,
+            "cestas_de_3": 3.9
+        },
+        {
+            "time": "Orlando Magic",
+            "jogos": 82,
+            "cestas_de_3": 3.9
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Seattle SuperSonics*",
+            "jogos": 82,
+            "cestas_de_3": 8.1
+        },
+        {
+            "time": "Los Angeles Lakers",
+            "jogos": 82,
+            "cestas_de_3": 7.9
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 7.6
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Milwaukee Bucks",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 82,
+            "cestas_de_3": 3.7
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 2.8
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Charlotte Bobcats",
+            "jogos": 82,
+            "cestas_de_3": 3.9
+        },
+        {
+            "time": "Memphis Grizzlies*",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 4.4
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "Utah Jazz",
+            "jogos": 82,
+            "cestas_de_3": 3
+        },
+        {
+            "time": "Portland Trail Blazers",
+            "jogos": 82,
+            "cestas_de_3": 5.1
+        },
+        {
+            "time": "Atlanta Hawks",
+            "jogos": 82,
+            "cestas_de_3": 3.7
+        },
+        {
+            "time": "New Jersey Nets*",
+            "jogos": 82,
+            "cestas_de_3": 5.3
+        },
+        {
+            "time": "New Orleans Hornets",
+            "jogos": 82,
+            "cestas_de_3": 5.1
+        }
+    ],
+    "status_por_jogo_2006": [
+        {
+            "time": "Phoenix Suns*",
+            "jogos": 82,
+            "cestas_de_3": 10.2
+        },
+        {
+            "time": "Seattle SuperSonics",
+            "jogos": 82,
+            "cestas_de_3": 7.4
+        },
+        {
+            "time": "Washington Wizards*",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Toronto Raptors",
+            "jogos": 82,
+            "cestas_de_3": 7.4
+        },
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 82,
+            "cestas_de_3": 4.3
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Philadelphia 76ers",
+            "jogos": 82,
+            "cestas_de_3": 4.6
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 5.1
+        },
+        {
+            "time": "Sacramento Kings*",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 7.6
+        },
+        {
+            "time": "Boston Celtics",
+            "jogos": 82,
+            "cestas_de_3": 5.7
+        },
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 82,
+            "cestas_de_3": 6.8
+        },
+        {
+            "time": "Cleveland Cavaliers*",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Atlanta Hawks",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Los Angeles Clippers*",
+            "jogos": 82,
+            "cestas_de_3": 3.5
+        },
+        {
+            "time": "Charlotte Bobcats",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 6.8
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 3.9
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 6.4
+        },
+        {
+            "time": "Orlando Magic",
+            "jogos": 82,
+            "cestas_de_3": 3.6
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "New Jersey Nets*",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "New Orleans/Oklahoma City Hornets",
+            "jogos": 82,
+            "cestas_de_3": 3.7
+        },
+        {
+            "time": "Utah Jazz",
+            "jogos": 82,
+            "cestas_de_3": 3.8
+        },
+        {
+            "time": "Memphis Grizzlies*",
+            "jogos": 82,
+            "cestas_de_3": 7.2
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 3.8
+        },
+        {
+            "time": "Houston Rockets",
+            "jogos": 82,
+            "cestas_de_3": 5.7
+        },
+        {
+            "time": "Portland Trail Blazers",
+            "jogos": 82,
+            "cestas_de_3": 4.4
+        }
+    ],
+    "status_por_jogo_2007": [
+        {
+            "time": "Phoenix Suns*",
+            "jogos": 82,
+            "cestas_de_3": 9.6
+        },
+        {
+            "time": "Golden State Warriors*",
+            "jogos": 82,
+            "cestas_de_3": 8.5
+        },
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "Washington Wizards*",
+            "jogos": 82,
+            "cestas_de_3": 6.8
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 7.4
+        },
+        {
+            "time": "Memphis Grizzlies",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 4.3
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Milwaukee Bucks",
+            "jogos": 82,
+            "cestas_de_3": 6.4
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Seattle SuperSonics",
+            "jogos": 82,
+            "cestas_de_3": 6.4
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 7.3
+        },
+        {
+            "time": "New Jersey Nets*",
+            "jogos": 82,
+            "cestas_de_3": 7.4
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 8.6
+        },
+        {
+            "time": "Charlotte Bobcats",
+            "jogos": 82,
+            "cestas_de_3": 5.6
+        },
+        {
+            "time": "Cleveland Cavaliers*",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 4.7
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "Boston Celtics",
+            "jogos": 82,
+            "cestas_de_3": 5.7
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 3.8
+        },
+        {
+            "time": "Indiana Pacers",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "New Orleans/Oklahoma City Hornets",
+            "jogos": 82,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "Philadelphia 76ers",
+            "jogos": 82,
+            "cestas_de_3": 3.5
+        },
+        {
+            "time": "Orlando Magic*",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 6.4
+        },
+        {
+            "time": "Portland Trail Blazers",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Atlanta Hawks",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        }
+    ],
+    "status_por_jogo_2008": [
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 9.3
+        },
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 82,
+            "cestas_de_3": 6.9
+        },
+        {
+            "time": "Phoenix Suns*",
+            "jogos": 82,
+            "cestas_de_3": 8.5
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 8.1
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 5
+        },
+        {
+            "time": "Orlando Magic*",
+            "jogos": 82,
+            "cestas_de_3": 9.8
+        },
+        {
+            "time": "Indiana Pacers",
+            "jogos": 82,
+            "cestas_de_3": 9.2
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "New Orleans Hornets*",
+            "jogos": 82,
+            "cestas_de_3": 7.7
+        },
+        {
+            "time": "Memphis Grizzlies",
+            "jogos": 82,
+            "cestas_de_3": 7.6
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 7.3
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 7
+        },
+        {
+            "time": "Washington Wizards*",
+            "jogos": 82,
+            "cestas_de_3": 7
+        },
+        {
+            "time": "Atlanta Hawks*",
+            "jogos": 82,
+            "cestas_de_3": 4.7
+        },
+        {
+            "time": "Seattle SuperSonics",
+            "jogos": 82,
+            "cestas_de_3": 3.8
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "Chicago Bulls",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "Charlotte Bobcats",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Milwaukee Bucks",
+            "jogos": 82,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 7.1
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 82,
+            "cestas_de_3": 3.7
+        },
+        {
+            "time": "Cleveland Cavaliers*",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "New Jersey Nets",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Portland Trail Blazers",
+            "jogos": 82,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 7.2
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 4.3
+        },
+        {
+            "time": "Miami Heat",
+            "jogos": 82,
+            "cestas_de_3": 6
+        }
+    ],
+    "status_por_jogo_2009": [
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 10
+        },
+        {
+            "time": "Indiana Pacers",
+            "jogos": 82,
+            "cestas_de_3": 8
+        },
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 7
+        },
+        {
+            "time": "Orlando Magic*",
+            "jogos": 82,
+            "cestas_de_3": 10
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 7.1
+        },
+        {
+            "time": "Cleveland Cavaliers*",
+            "jogos": 82,
+            "cestas_de_3": 8
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 7.3
+        },
+        {
+            "time": "Milwaukee Bucks",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Toronto Raptors",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 7.6
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 7.1
+        },
+        {
+            "time": "Atlanta Hawks*",
+            "jogos": 82,
+            "cestas_de_3": 7.3
+        },
+        {
+            "time": "New Jersey Nets",
+            "jogos": 82,
+            "cestas_de_3": 8
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 7.6
+        },
+        {
+            "time": "Oklahoma City Thunder",
+            "jogos": 82,
+            "cestas_de_3": 4
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "New Orleans Hornets*",
+            "jogos": 82,
+            "cestas_de_3": 6.8
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 4.6
+        },
+        {
+            "time": "Memphis Grizzlies",
+            "jogos": 82,
+            "cestas_de_3": 4.9
+        },
+        {
+            "time": "Charlotte Bobcats",
+            "jogos": 82,
+            "cestas_de_3": 6
+        }
+    ],
+    "status_por_jogo_2010": [
+        {
+            "time": "Phoenix Suns*",
+            "jogos": 82,
+            "cestas_de_3": 8.9
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 7.7
+        },
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 82,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Toronto Raptors",
+            "jogos": 82,
+            "cestas_de_3": 6.3
+        },
+        {
+            "time": "Orlando Magic*",
+            "jogos": 82,
+            "cestas_de_3": 10.3
+        },
+        {
+            "time": "Memphis Grizzlies",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "Houston Rockets",
+            "jogos": 82,
+            "cestas_de_3": 7.9
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 9.1
+        },
+        {
+            "time": "Cleveland Cavaliers*",
+            "jogos": 82,
+            "cestas_de_3": 7.3
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 6.8
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Atlanta Hawks*",
+            "jogos": 82,
+            "cestas_de_3": 6.4
+        },
+        {
+            "time": "Oklahoma City Thunder*",
+            "jogos": 82,
+            "cestas_de_3": 5.1
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 6.8
+        },
+        {
+            "time": "Indiana Pacers",
+            "jogos": 82,
+            "cestas_de_3": 8
+        },
+        {
+            "time": "New Orleans Hornets",
+            "jogos": 82,
+            "cestas_de_3": 7
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 4.9
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Philadelphia 76ers",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 7.9
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 82,
+            "cestas_de_3": 4.3
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 5.3
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "Charlotte Bobcats*",
+            "jogos": 82,
+            "cestas_de_3": 5.6
+        },
+        {
+            "time": "Detroit Pistons",
+            "jogos": 82,
+            "cestas_de_3": 4.6
+        },
+        {
+            "time": "New Jersey Nets",
+            "jogos": 82,
+            "cestas_de_3": 4.6
+        }
+    ],
+    "status_por_jogo_2011": [
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 82,
+            "cestas_de_3": 8.1
+        },
+        {
+            "time": "New York Knicks*",
+            "jogos": 82,
+            "cestas_de_3": 9.3
+        },
+        {
+            "time": "Houston Rockets",
+            "jogos": 82,
+            "cestas_de_3": 8.3
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 8.5
+        },
+        {
+            "time": "Oklahoma City Thunder*",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 8.4
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 82,
+            "cestas_de_3": 8.4
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 6.4
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 7.2
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 7.9
+        },
+        {
+            "time": "Memphis Grizzlies*",
+            "jogos": 82,
+            "cestas_de_3": 3.8
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 7.1
+        },
+        {
+            "time": "Utah Jazz",
+            "jogos": 82,
+            "cestas_de_3": 5.3
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Orlando Magic*",
+            "jogos": 82,
+            "cestas_de_3": 9.4
+        },
+        {
+            "time": "Toronto Raptors",
+            "jogos": 82,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 6.3
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "Detroit Pistons",
+            "jogos": 82,
+            "cestas_de_3": 5.8
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 5
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 6.3
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Atlanta Hawks*",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "New Orleans Hornets*",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "New Jersey Nets",
+            "jogos": 82,
+            "cestas_de_3": 5.6
+        },
+        {
+            "time": "Charlotte Bobcats",
+            "jogos": 82,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "Milwaukee Bucks",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        }
+    ],
+    "status_por_jogo_2012": [
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 66,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 66,
+            "cestas_de_3": 8.4
+        },
+        {
+            "time": "Oklahoma City Thunder*",
+            "jogos": 66,
+            "cestas_de_3": 7.2
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 66,
+            "cestas_de_3": 4.1
+        },
+        {
+            "time": "Milwaukee Bucks",
+            "jogos": 66,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 66,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 66,
+            "cestas_de_3": 5.6
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 66,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Houston Rockets",
+            "jogos": 66,
+            "cestas_de_3": 7.2
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 66,
+            "cestas_de_3": 7.2
+        },
+        {
+            "time": "New York Knicks*",
+            "jogos": 66,
+            "cestas_de_3": 7.8
+        },
+        {
+            "time": "Golden State Warriors",
+            "jogos": 66,
+            "cestas_de_3": 7.9
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 66,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "Los Angeles Clippers*",
+            "jogos": 66,
+            "cestas_de_3": 7.8
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 66,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "Portland Trail Blazers",
+            "jogos": 66,
+            "cestas_de_3": 7.2
+        },
+        {
+            "time": "Atlanta Hawks*",
+            "jogos": 66,
+            "cestas_de_3": 7.5
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 66,
+            "cestas_de_3": 6.3
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 66,
+            "cestas_de_3": 7.5
+        },
+        {
+            "time": "Memphis Grizzlies*",
+            "jogos": 66,
+            "cestas_de_3": 4.2
+        },
+        {
+            "time": "Orlando Magic*",
+            "jogos": 66,
+            "cestas_de_3": 10.2
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 66,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 66,
+            "cestas_de_3": 5.3
+        },
+        {
+            "time": "New Jersey Nets",
+            "jogos": 66,
+            "cestas_de_3": 7.7
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 66,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 66,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "Detroit Pistons",
+            "jogos": 66,
+            "cestas_de_3": 4.8
+        },
+        {
+            "time": "Toronto Raptors",
+            "jogos": 66,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "New Orleans Hornets",
+            "jogos": 66,
+            "cestas_de_3": 3.9
+        },
+        {
+            "time": "Charlotte Bobcats",
+            "jogos": 66,
+            "cestas_de_3": 4
+        }
+    ],
+    "status_por_jogo_2013": [
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 82,
+            "cestas_de_3": 6.4
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 10.6
+        },
+        {
+            "time": "Oklahoma City Thunder*",
+            "jogos": 82,
+            "cestas_de_3": 7.3
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 8.1
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 8.7
+        },
+        {
+            "time": "Los Angeles Lakers*",
+            "jogos": 82,
+            "cestas_de_3": 8.7
+        },
+        {
+            "time": "Golden State Warriors*",
+            "jogos": 82,
+            "cestas_de_3": 8
+        },
+        {
+            "time": "Dallas Mavericks",
+            "jogos": 82,
+            "cestas_de_3": 7.4
+        },
+        {
+            "time": "Los Angeles Clippers*",
+            "jogos": 82,
+            "cestas_de_3": 7.6
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 7.4
+        },
+        {
+            "time": "New York Knicks*",
+            "jogos": 82,
+            "cestas_de_3": 10.9
+        },
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 7.3
+        },
+        {
+            "time": "Utah Jazz",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Atlanta Hawks*",
+            "jogos": 82,
+            "cestas_de_3": 8.6
+        },
+        {
+            "time": "Portland Trail Blazers",
+            "jogos": 82,
+            "cestas_de_3": 8.2
+        },
+        {
+            "time": "Toronto Raptors",
+            "jogos": 82,
+            "cestas_de_3": 7
+        },
+        {
+            "time": "Brooklyn Nets*",
+            "jogos": 82,
+            "cestas_de_3": 7.7
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 81,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "Detroit Pistons",
+            "jogos": 82,
+            "cestas_de_3": 6.3
+        },
+        {
+            "time": "Orlando Magic",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "New Orleans Hornets",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 81,
+            "cestas_de_3": 6.9
+        },
+        {
+            "time": "Charlotte Bobcats",
+            "jogos": 82,
+            "cestas_de_3": 5.7
+        },
+        {
+            "time": "Memphis Grizzlies*",
+            "jogos": 82,
+            "cestas_de_3": 4.7
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Philadelphia 76ers",
+            "jogos": 82,
+            "cestas_de_3": 6.3
+        }
+    ],
+    "status_por_jogo_2014": [
+        {
+            "time": "Los Angeles Clippers*",
+            "jogos": 82,
+            "cestas_de_3": 8.5
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 9.5
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 7.3
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 9.4
+        },
+        {
+            "time": "Oklahoma City Thunder*",
+            "jogos": 82,
+            "cestas_de_3": 8.1
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 8.5
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 9.3
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 8.8
+        },
+        {
+            "time": "Denver Nuggets",
+            "jogos": 82,
+            "cestas_de_3": 8.6
+        },
+        {
+            "time": "Golden State Warriors*",
+            "jogos": 82,
+            "cestas_de_3": 9.4
+        },
+        {
+            "time": "Los Angeles Lakers",
+            "jogos": 82,
+            "cestas_de_3": 9.4
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 8.1
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 8.7
+        },
+        {
+            "time": "Detroit Pistons",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        },
+        {
+            "time": "Atlanta Hawks*",
+            "jogos": 82,
+            "cestas_de_3": 9.4
+        },
+        {
+            "time": "Washington Wizards*",
+            "jogos": 82,
+            "cestas_de_3": 7.9
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 6
+        },
+        {
+            "time": "New Orleans Pelicans",
+            "jogos": 82,
+            "cestas_de_3": 5.9
+        },
+        {
+            "time": "Philadelphia 76ers",
+            "jogos": 82,
+            "cestas_de_3": 7
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 9.3
+        },
+        {
+            "time": "Brooklyn Nets*",
+            "jogos": 82,
+            "cestas_de_3": 8.6
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 82,
+            "cestas_de_3": 7.1
+        },
+        {
+            "time": "Charlotte Bobcats*",
+            "jogos": 82,
+            "cestas_de_3": 6.3
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Orlando Magic",
+            "jogos": 82,
+            "cestas_de_3": 6.9
+        },
+        {
+            "time": "Boston Celtics",
+            "jogos": 82,
+            "cestas_de_3": 7
+        },
+        {
+            "time": "Memphis Grizzlies*",
+            "jogos": 82,
+            "cestas_de_3": 4.9
+        },
+        {
+            "time": "Milwaukee Bucks",
+            "jogos": 82,
+            "cestas_de_3": 6.7
+        },
+        {
+            "time": "Utah Jazz",
+            "jogos": 82,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 82,
+            "cestas_de_3": 6.2
+        }
+    ],
+    "status_por_jogo_2015": [
+        {
+            "time": "Golden State Warriors*",
+            "jogos": 82,
+            "cestas_de_3": 10.8
+        },
+        {
+            "time": "Los Angeles Clippers*",
+            "jogos": 82,
+            "cestas_de_3": 10.1
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 8.9
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 8.9
+        },
+        {
+            "time": "Oklahoma City Thunder",
+            "jogos": 82,
+            "cestas_de_3": 7.7
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 11.4
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 8.3
+        },
+        {
+            "time": "Cleveland Cavaliers*",
+            "jogos": 82,
+            "cestas_de_3": 10.1
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 9.8
+        },
+        {
+            "time": "Atlanta Hawks*",
+            "jogos": 82,
+            "cestas_de_3": 10
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 8.5
+        },
+        {
+            "time": "Denver Nuggets",
+            "jogos": 82,
+            "cestas_de_3": 8
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 8
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 5.6
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 82,
+            "cestas_de_3": 7.9
+        },
+        {
+            "time": "New Orleans Pelicans*",
+            "jogos": 82,
+            "cestas_de_3": 7.1
+        },
+        {
+            "time": "Washington Wizards*",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Detroit Pistons",
+            "jogos": 82,
+            "cestas_de_3": 8.6
+        },
+        {
+            "time": "Los Angeles Lakers",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "Memphis Grizzlies*",
+            "jogos": 82,
+            "cestas_de_3": 5.2
+        },
+        {
+            "time": "Brooklyn Nets*",
+            "jogos": 82,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 6.6
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 5
+        },
+        {
+            "time": "Indiana Pacers",
+            "jogos": 82,
+            "cestas_de_3": 7.5
+        },
+        {
+            "time": "Orlando Magic",
+            "jogos": 82,
+            "cestas_de_3": 6.8
+        },
+        {
+            "time": "Utah Jazz",
+            "jogos": 82,
+            "cestas_de_3": 7.4
+        },
+        {
+            "time": "Miami Heat",
+            "jogos": 82,
+            "cestas_de_3": 6.8
+        },
+        {
+            "time": "Charlotte Hornets",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Philadelphia 76ers",
+            "jogos": 82,
+            "cestas_de_3": 8.4
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 6.8
+        }
+    ],
+    "status_por_jogo_2016": [
+        {
+            "time": "Golden State Warriors*",
+            "jogos": 82,
+            "cestas_de_3": 13.1
+        },
+        {
+            "time": "Oklahoma City Thunder*",
+            "jogos": 82,
+            "cestas_de_3": 8.3
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 8
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 10.7
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 8.7
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 10.5
+        },
+        {
+            "time": "Los Angeles Clippers*",
+            "jogos": 82,
+            "cestas_de_3": 9.7
+        },
+        {
+            "time": "Cleveland Cavaliers*",
+            "jogos": 82,
+            "cestas_de_3": 10.7
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 8.6
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 7
+        },
+        {
+            "time": "Charlotte Hornets*",
+            "jogos": 82,
+            "cestas_de_3": 10.6
+        },
+        {
+            "time": "Atlanta Hawks*",
+            "jogos": 82,
+            "cestas_de_3": 9.9
+        },
+        {
+            "time": "New Orleans Pelicans",
+            "jogos": 82,
+            "cestas_de_3": 8.6
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 8.6
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 5.5
+        },
+        {
+            "time": "Dallas Mavericks*",
+            "jogos": 82,
+            "cestas_de_3": 9.8
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 8.1
+        },
+        {
+            "time": "Orlando Magic",
+            "jogos": 82,
+            "cestas_de_3": 7.8
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 9
+        },
+        {
+            "time": "Denver Nuggets",
+            "jogos": 82,
+            "cestas_de_3": 8
+        },
+        {
+            "time": "Chicago Bulls",
+            "jogos": 82,
+            "cestas_de_3": 7.9
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 9
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Memphis Grizzlies*",
+            "jogos": 82,
+            "cestas_de_3": 6.1
+        },
+        {
+            "time": "Milwaukee Bucks",
+            "jogos": 82,
+            "cestas_de_3": 5.4
+        },
+        {
+            "time": "Brooklyn Nets",
+            "jogos": 82,
+            "cestas_de_3": 6.5
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 7.4
+        },
+        {
+            "time": "Utah Jazz",
+            "jogos": 82,
+            "cestas_de_3": 8.5
+        },
+        {
+            "time": "Philadelphia 76ers",
+            "jogos": 82,
+            "cestas_de_3": 9.3
+        },
+        {
+            "time": "Los Angeles Lakers",
+            "jogos": 82,
+            "cestas_de_3": 7.8
+        }
+    ],
+    "status_por_jogo_2017": [
+        {
+            "time": "Golden State Warriors*",
+            "jogos": 82,
+            "cestas_de_3": 12
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 14.4
+        },
+        {
+            "time": "Denver Nuggets",
+            "jogos": 82,
+            "cestas_de_3": 10.6
+        },
+        {
+            "time": "Cleveland Cavaliers*",
+            "jogos": 82,
+            "cestas_de_3": 13
+        },
+        {
+            "time": "Washington Wizards*",
+            "jogos": 82,
+            "cestas_de_3": 9.2
+        },
+        {
+            "time": "Los Angeles Clippers*",
+            "jogos": 82,
+            "cestas_de_3": 10.3
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 12
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 10.4
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 7.5
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 8.8
+        },
+        {
+            "time": "Oklahoma City Thunder*",
+            "jogos": 82,
+            "cestas_de_3": 8.4
+        },
+        {
+            "time": "Brooklyn Nets",
+            "jogos": 82,
+            "cestas_de_3": 10.7
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 7.3
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 9.2
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 8.6
+        },
+        {
+            "time": "Charlotte Hornets",
+            "jogos": 82,
+            "cestas_de_3": 10
+        },
+        {
+            "time": "Los Angeles Lakers",
+            "jogos": 82,
+            "cestas_de_3": 8.9
+        },
+        {
+            "time": "New Orleans Pelicans",
+            "jogos": 82,
+            "cestas_de_3": 9.4
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 8.6
+        },
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 8.8
+        },
+        {
+            "time": "Miami Heat",
+            "jogos": 82,
+            "cestas_de_3": 9.9
+        },
+        {
+            "time": "Atlanta Hawks*",
+            "jogos": 82,
+            "cestas_de_3": 8.9
+        },
+        {
+            "time": "Chicago Bulls*",
+            "jogos": 82,
+            "cestas_de_3": 7.6
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 9
+        },
+        {
+            "time": "Philadelphia 76ers",
+            "jogos": 82,
+            "cestas_de_3": 10.1
+        },
+        {
+            "time": "Detroit Pistons",
+            "jogos": 82,
+            "cestas_de_3": 7.7
+        },
+        {
+            "time": "Orlando Magic",
+            "jogos": 82,
+            "cestas_de_3": 8.5
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 9.6
+        },
+        {
+            "time": "Memphis Grizzlies*",
+            "jogos": 82,
+            "cestas_de_3": 9.4
+        },
+        {
+            "time": "Dallas Mavericks",
+            "jogos": 82,
+            "cestas_de_3": 10.7
+        }
+    ],
+    "status_por_jogo_2018": [
+        {
+            "time": "Golden State Warriors*",
+            "jogos": 82,
+            "cestas_de_3": 11.3
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 15.3
+        },
+        {
+            "time": "New Orleans Pelicans*",
+            "jogos": 82,
+            "cestas_de_3": 10.2
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 11.8
+        },
+        {
+            "time": "Cleveland Cavaliers*",
+            "jogos": 82,
+            "cestas_de_3": 12
+        },
+        {
+            "time": "Denver Nuggets",
+            "jogos": 82,
+            "cestas_de_3": 11.5
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 82,
+            "cestas_de_3": 11
+        },
+        {
+            "time": "Minnesota Timberwolves*",
+            "jogos": 82,
+            "cestas_de_3": 8
+        },
+        {
+            "time": "Los Angeles Clippers",
+            "jogos": 82,
+            "cestas_de_3": 9.5
+        },
+        {
+            "time": "Charlotte Hornets",
+            "jogos": 82,
+            "cestas_de_3": 10
+        },
+        {
+            "time": "Los Angeles Lakers",
+            "jogos": 82,
+            "cestas_de_3": 10
+        },
+        {
+            "time": "Oklahoma City Thunder*",
+            "jogos": 82,
+            "cestas_de_3": 10.7
+        },
+        {
+            "time": "Washington Wizards*",
+            "jogos": 82,
+            "cestas_de_3": 9.9
+        },
+        {
+            "time": "Brooklyn Nets",
+            "jogos": 82,
+            "cestas_de_3": 12.7
+        },
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 8.8
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 10.3
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 9
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 8.2
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 10.8
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 11.5
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 9.3
+        },
+        {
+            "time": "Detroit Pistons",
+            "jogos": 82,
+            "cestas_de_3": 10.8
+        },
+        {
+            "time": "Miami Heat*",
+            "jogos": 82,
+            "cestas_de_3": 11
+        },
+        {
+            "time": "Orlando Magic",
+            "jogos": 82,
+            "cestas_de_3": 10.3
+        },
+        {
+            "time": "Atlanta Hawks",
+            "jogos": 82,
+            "cestas_de_3": 11.2
+        },
+        {
+            "time": "Chicago Bulls",
+            "jogos": 82,
+            "cestas_de_3": 11
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 8.5
+        },
+        {
+            "time": "Dallas Mavericks",
+            "jogos": 82,
+            "cestas_de_3": 11.8
+        },
+        {
+            "time": "Memphis Grizzlies",
+            "jogos": 82,
+            "cestas_de_3": 9.2
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 9
+        }
+    ],
+    "status_por_jogo_2019": [
+        {
+            "time": "Milwaukee Bucks*",
+            "jogos": 82,
+            "cestas_de_3": 13.5
+        },
+        {
+            "time": "Golden State Warriors*",
+            "jogos": 82,
+            "cestas_de_3": 13.3
+        },
+        {
+            "time": "New Orleans Pelicans",
+            "jogos": 82,
+            "cestas_de_3": 10.3
+        },
+        {
+            "time": "Philadelphia 76ers*",
+            "jogos": 82,
+            "cestas_de_3": 10.8
+        },
+        {
+            "time": "Los Angeles Clippers*",
+            "jogos": 82,
+            "cestas_de_3": 10
+        },
+        {
+            "time": "Portland Trail Blazers*",
+            "jogos": 82,
+            "cestas_de_3": 11
+        },
+        {
+            "time": "Oklahoma City Thunder*",
+            "jogos": 82,
+            "cestas_de_3": 11.4
+        },
+        {
+            "time": "Toronto Raptors*",
+            "jogos": 82,
+            "cestas_de_3": 12.4
+        },
+        {
+            "time": "Sacramento Kings",
+            "jogos": 82,
+            "cestas_de_3": 11.3
+        },
+        {
+            "time": "Washington Wizards",
+            "jogos": 82,
+            "cestas_de_3": 11.3
+        },
+        {
+            "time": "Houston Rockets*",
+            "jogos": 82,
+            "cestas_de_3": 16.1
+        },
+        {
+            "time": "Atlanta Hawks",
+            "jogos": 82,
+            "cestas_de_3": 13
+        },
+        {
+            "time": "Minnesota Timberwolves",
+            "jogos": 82,
+            "cestas_de_3": 10.1
+        },
+        {
+            "time": "Boston Celtics*",
+            "jogos": 82,
+            "cestas_de_3": 12.6
+        },
+        {
+            "time": "Brooklyn Nets*",
+            "jogos": 82,
+            "cestas_de_3": 12.8
+        },
+        {
+            "time": "Los Angeles Lakers",
+            "jogos": 82,
+            "cestas_de_3": 10.3
+        },
+        {
+            "time": "Utah Jazz*",
+            "jogos": 82,
+            "cestas_de_3": 12.1
+        },
+        {
+            "time": "San Antonio Spurs*",
+            "jogos": 82,
+            "cestas_de_3": 9.9
+        },
+        {
+            "time": "Charlotte Hornets",
+            "jogos": 82,
+            "cestas_de_3": 11.9
+        },
+        {
+            "time": "Denver Nuggets*",
+            "jogos": 82,
+            "cestas_de_3": 11
+        },
+        {
+            "time": "Dallas Mavericks",
+            "jogos": 82,
+            "cestas_de_3": 12.5
+        },
+        {
+            "time": "Indiana Pacers*",
+            "jogos": 82,
+            "cestas_de_3": 9.5
+        },
+        {
+            "time": "Phoenix Suns",
+            "jogos": 82,
+            "cestas_de_3": 9.6
+        },
+        {
+            "time": "Orlando Magic*",
+            "jogos": 82,
+            "cestas_de_3": 11.4
+        },
+        {
+            "time": "Detroit Pistons*",
+            "jogos": 82,
+            "cestas_de_3": 12.1
+        },
+        {
+            "time": "Miami Heat",
+            "jogos": 82,
+            "cestas_de_3": 11.3
+        },
+        {
+            "time": "Chicago Bulls",
+            "jogos": 82,
+            "cestas_de_3": 9.1
+        },
+        {
+            "time": "New York Knicks",
+            "jogos": 82,
+            "cestas_de_3": 10
+        },
+        {
+            "time": "Cleveland Cavaliers",
+            "jogos": 82,
+            "cestas_de_3": 10.3
+        },
+        {
+            "time": "Memphis Grizzlies",
+            "jogos": 82,
+            "cestas_de_3": 9.9
+        }
+    ]
+}
