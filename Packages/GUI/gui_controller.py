@@ -9,4 +9,4 @@ class BasketballPredictionController:
     def _connect_signals(self):
         """Conecta os sinais da view para seus respectivos slots"""
 
-        pass
+        self._view.button_predict.clicked.connect(lambda: print("Prever!"))
