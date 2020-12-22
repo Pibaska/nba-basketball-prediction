@@ -55,21 +55,21 @@ class BasketballPredictionView(QMainWindow):
         label_predict_match = QLabel("PREVER DISPUTA")
         label_predict_match.setAlignment(QtCore.Qt.AlignCenter)
 
-        combobox_team1 = QComboBox()
+        self.combobox_team1 = QComboBox()
         for team in fake_data.fake_teams:
-            combobox_team1.addItem(team)
+            self.combobox_team1.addItem(team)
 
         label_vs = QLabel("VS.")
         label_vs.setAlignment(QtCore.Qt.AlignCenter)
 
-        combobox_team2 = QComboBox()
+        self.combobox_team2 = QComboBox()
         for team in fake_data.fake_teams:
-            combobox_team2.addItem(team)
+            self.combobox_team2.addItem(team)
 
         layout.addWidget(label_predict_match, 0, 1)
-        layout.addWidget(combobox_team1, 1, 0)
+        layout.addWidget(self.combobox_team1, 1, 0)
         layout.addWidget(label_vs, 1, 1)
-        layout.addWidget(combobox_team2, 1, 2)
+        layout.addWidget(self.combobox_team2, 1, 2)
 
         layout_widget.setLayout(layout)
 

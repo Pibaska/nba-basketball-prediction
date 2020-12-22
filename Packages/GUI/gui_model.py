@@ -5,4 +5,8 @@ ERROR_MSG = "Error!"
 
 
 def predict_score():
-    print("a")
+    print("Partida prevista!")
+
+
+def activate_combobox(combobox_text):
+    print(f"combobox ativada: {combobox_text}")
