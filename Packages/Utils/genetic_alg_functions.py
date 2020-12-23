@@ -1,14 +1,8 @@
 import random
 
 
-class GeneticAlgorithm:
+class GeneticAlgorithmFunctions:
     def __init__(self, model, good_generations):
-        """
-        INPUT
-        model: A string que o algoritmo vai tentar replicar
-        good_generations: Define quantas gerações seguidas têm
-        que ser boas para fazer o algoritmo parar
-        """
 
         self.model = model
         self.chromosome_size = len(model)
@@ -29,7 +23,7 @@ class GeneticAlgorithm:
 
     @staticmethod
     def random_character():
-        # * Essa função não vai ser necessária quando os times forem passados
+        """Essa função não vai ser necessária quando os times forem passados"""
         return chr(int(random.randrange(32, 255, 1)))
 
     def random_population(self):
@@ -65,9 +59,7 @@ class GeneticAlgorithm:
 
     def evaluate_population(self, population):
         """Recebe uma população e diz se ela é boa ou não"""
-        # TODO pensar num jeito bom de avaliar a população
-        # TODO fazer com que a avaliação leve em consideração
-        # gerações anteriores
+        # TODO pensar num jeito melhor de avaliar a população
 
         good_individuals = 0
         for individual in population:
