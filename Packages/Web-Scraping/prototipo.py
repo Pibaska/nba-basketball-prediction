@@ -6,7 +6,7 @@ from selenium.webdriver.firefox.options import Options
 import json
 
 from selenium import webdriver
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary 
 
 binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
 
@@ -32,7 +32,7 @@ nomeDicionario = "times_dict"
 
 
 # puxa a url
-driver.get(url)
+driver.get(url)    
 
 time.sleep(6)
 # clicka no /div/button    (é pra aceitar os termos)

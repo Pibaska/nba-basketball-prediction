@@ -14,11 +14,11 @@ option.headless = True
 driver = webdriver.Firefox(firefox_binary=binary,executable_path=r'C:\\geckodriver.exe')
 
 
-xPathTabela = "//*[@id='content']/div[3]/div[1]"
+xPathTabela = "//*[@id='content']/div[3]/div[1]"    
 """
 //*[@id="content"]/div[2]/h2 # coletar o texto, dividilo e pegar o numero
 
-numero = (conteudo.split(' '))[0]
+numero = (conteudo.split(' '))[0] 
 
 
 //*[@id="content"]/div[3]/div[1] #partida do dia (vai ter q calcular quantas teve no dia eu acho)
@@ -50,10 +50,13 @@ url = "https://www.basketball-reference.com/boxscores/?month=5&day=3&year=2019"
 driver.get(url)
 
 qtdPartidas = contadorDePartidas()
-print('No dia escolhido ocorreram: ' + qtdPartidas + ' partidas')
 
+qtd = qtdPartidas.split(' ')[0]
+print('No dia escolhido ocorreram: ' + qtd + ' partidas')
 
+driver.find_element_by_xpath("//*[@id='content']/div[3]/div[1]/p/a[1]").click()
 #Coletar 
+
 element = driver.find_element_by_xpath("/html/body/div[2]/div[3]/div[2]")
 html_content = element.get_attribute('outerHTML')
 soup = BeautifulSoup(html_content, 'html.parser')
