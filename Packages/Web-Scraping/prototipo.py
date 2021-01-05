@@ -28,7 +28,7 @@ renomearColunas = ['Time', '%_vitória', 'pontos', '%_cestas de campo', '%_lance
 nomeArquivo =  "Times_bask" 
 nomeDicionario = "times_dict"
 
-# greg 4
+# Rafael 1
 
 
 # puxa a url
