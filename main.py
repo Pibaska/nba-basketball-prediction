@@ -1,1 +1,4 @@
-'''meter uns comentários aqui pra dar uma olhada sobre o que o main vai fazer'''
+from Packages.Utils.genetic_alg_functions import GeneticAlgorithm
+
+genetic_algorithm = GeneticAlgorithm(input("Digite um modelo"))
+genetic_algorithm.genetic_alg_loop()
