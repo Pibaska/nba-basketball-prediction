@@ -16,13 +16,6 @@ import json
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
-def SetupDriver(mostra):
-    binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
-    option = Options()
-    option.headless = mostra
-    driver = webdriver.Firefox(firefox_binary=binary,executable_path=r'C:\\geckodriver.exe', options=option)
-    return driver
-
 url = "https://www.basketball-reference.com/boxscores/?month=5&day=4&year=2020" #url da tela de partidas
 xPathTabela = ""    
 nomeArquivo =  "partidas" #arquivo .json
@@ -30,6 +23,14 @@ nomeDicionarioAno = "partidas_x" #nome que vai se alterar por dia
 nomeDicionarioDia = "partidas_x/x/x" #nome que vai se alterar por dia  
 dicionario = {}
 diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+
+def SetupDriver(mostra):
+    binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
+    option = Options()
+    option.headless = mostra
+    driver = webdriver.Firefox(firefox_binary=binary,executable_path=r'C:\\geckodriver.exe', options=option)
+    return driver
 
 
 #Retorna quantas partidas o site tem do dia escolhido
@@ -47,7 +48,6 @@ def FazAsCoisas(dia, mes, ano):
     #aqui é onde ce vai fazer os processo pesado. (no fim é onde tu vai chamar um monte de função)
     dia += 1
     mes += 1
-    ano += 2000
     # cria e chama a url
     url = f"https://www.basketball-reference.com/boxscores/?month={mes}&day={dia}&year={ano}"
     driver.get(url)
@@ -55,14 +55,13 @@ def FazAsCoisas(dia, mes, ano):
     print(f'{dia}/{mes}/{ano }')
 
     print(f'Partidas: {ContadorDePartidas()}')
-
-
     
 
 
 #------------------------------------------------------------------------------ as coisa
 
-driver = SetupDriver(True) #escolhe False mostra o firefox sendo aberto. True faz escondido
+#escolhe False mostra o firefox sendo aberto. True faz escondido
+driver = SetupDriver(False) # se deixar escondido lembre de checar pelo gerenciador de tarefas
 
 for ano in range(20):
     # calcula se é ano bissexto
@@ -74,16 +73,15 @@ for ano in range(20):
         rangeDias += bissexto if (rangeDias == 28) else 0
 
         for dia in range (rangeDias):
-            FazAsCoisas(dia, mes, ano)
+            FazAsCoisas(dia, mes, trueAno)
             
 
+#teste de bissexto
+# for ano in range(2000):
+#     # calcula se é ano bissexto
+#     trueAno =  ano
+#     if (trueAno % 4 == 0 and (trueAno % 400 == 0 or trueAno % 100 != 0)):
+#         print(trueAno)
 
 
-#driver.get(url)
-
-#qtdPartidas = ContadorDePartidas()
-
-#print('No dia escolhido ocorreram: ' + str(qtdPartidas) + ' partidas')
-
-
-#driver.quit()
+driver.quit()
