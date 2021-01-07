@@ -16,11 +16,11 @@ import json
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
-def SetupDriver():
+def SetupDriver(mostra):
     binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
     option = Options()
-    option.headless = True
-    driver = webdriver.Firefox(firefox_binary=binary,executable_path=r'C:\\geckodriver.exe')
+    option.headless = mostra
+    driver = webdriver.Firefox(firefox_binary=binary,executable_path=r'C:\\geckodriver.exe', options=option)
     return driver
 
 url = "https://www.basketball-reference.com/boxscores/?month=5&day=4&year=2020" #url da tela de partidas
@@ -33,7 +33,7 @@ diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 
 #Retorna quantas partidas o site tem do dia escolhido
-def NeoContadorDePartidas():
+def ContadorDePartidas():
     element = driver.find_element_by_xpath('//*[@id="content"]/div[3]') # puxa a div que tem os jogos
     html_content = element.get_attribute('outerHTML') # pega seu HTML
     soup = BeautifulSoup(html_content, 'html.parser') # Transforma em algo facil de mexer
@@ -49,12 +49,20 @@ def FazAsCoisas(dia, mes, ano):
     mes += 1
     ano += 2000
     # cria e chama a url
-    url = f"https://www.basketball-reference.com/boxscores/?month={mes}&day={dia}&year=2020"
-
+    url = f"https://www.basketball-reference.com/boxscores/?month={mes}&day={dia}&year={ano}"
+    driver.get(url)
+    print(20*'-')
     print(f'{dia}/{mes}/{ano }')
+
+    print(f'Partidas: {ContadorDePartidas()}')
+
+
+    
 
 
 #------------------------------------------------------------------------------ as coisa
+
+driver = SetupDriver(True) #escolhe False mostra o firefox sendo aberto. True faz escondido
 
 for ano in range(20):
     # calcula se é ano bissexto
@@ -69,11 +77,11 @@ for ano in range(20):
             FazAsCoisas(dia, mes, ano)
             
 
-#driver = SetupDriver()
+
 
 #driver.get(url)
 
-#qtdPartidas = NeoContadorDePartidas()
+#qtdPartidas = ContadorDePartidas()
 
 #print('No dia escolhido ocorreram: ' + str(qtdPartidas) + ' partidas')
 
