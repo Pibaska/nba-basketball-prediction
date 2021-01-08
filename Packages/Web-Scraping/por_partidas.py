@@ -44,6 +44,15 @@ def ContadorDePartidas():
 
     return qtd
 
+    
+def TestaBissexto():
+    for ano in range(2000):
+        # calcula se é ano bissexto
+        trueAno =  ano
+        if (trueAno % 4 == 0 and (trueAno % 400 == 0 or trueAno % 100 != 0)):
+            print(trueAno)
+
+
 def FazAsCoisas(dia, mes, ano):
     #aqui é onde ce vai fazer os processo pesado. (no fim é onde tu vai chamar um monte de função)
     dia += 1
@@ -54,8 +63,15 @@ def FazAsCoisas(dia, mes, ano):
     print(20*'-')
     print(f'{dia}/{mes}/{ano }')
 
-    print(f'Partidas: {ContadorDePartidas()}')
-    
+    qtdJogos = ContadorDePartidas()
+    print(f'Partidas: {qtdJogos}')
+
+    for i in range(qtdJogos): #//*[@id="content"]/div[3]/div[2]/p/a[1] - muda a segunda div
+        driver.get(url)
+
+        driver.find_element_by_xpath(f'//*[@id="content"]/div[3]/div[{i+1}]/p/a[1]').click()
+
+
 
 
 #------------------------------------------------------------------------------ as coisa
@@ -76,12 +92,7 @@ for ano in range(20):
             FazAsCoisas(dia, mes, trueAno)
             
 
-#teste de bissexto
-# for ano in range(2000):
-#     # calcula se é ano bissexto
-#     trueAno =  ano
-#     if (trueAno % 4 == 0 and (trueAno % 400 == 0 or trueAno % 100 != 0)):
-#         print(trueAno)
+
 
 
 driver.quit()
