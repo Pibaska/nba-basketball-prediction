@@ -13,7 +13,7 @@ option = Options()
 option.headless = True
 driver = webdriver.Firefox(firefox_binary=binary,executable_path=r'C:\\geckodriver.exe')
 
-xPathTabela = "//*[@id='team-stats-per_game']"
+xPathTabela = "//*[@id='team-stats-per_game']" 
 colunasColetadas = ['Team','G','3P']
 renomearColunas = ['time','jogos','cestas_de_3']
 nomeArquivo =  "status_por_jogo" 

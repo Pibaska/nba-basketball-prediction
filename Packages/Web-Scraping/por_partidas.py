@@ -16,11 +16,10 @@ import json
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
-url = "https://www.basketball-reference.com/boxscores/?month=5&day=4&year=2020" #url da tela de partidas
-xPathTabela = ""    
-nomeArquivo =  "partidas" #arquivo .json
-nomeDicionarioAno = "partidas_x" #nome que vai se alterar por dia  
-nomeDicionarioDia = "partidas_x/x/x" #nome que vai se alterar por dia  
+# url = "https://www.basketball-reference.com/boxscores/?month=5&day=4&year=2020" #url da tela de partidas
+# nomeArquivo =  "partidas" #arquivo .json
+# nomeDicionarioAno = "partidas_x" #nome que vai se alterar por dia  
+# nomeDicionarioDia = "partidas_x/x/x" #nome que vai se alterar por dia  
 dicionario = {}
 diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -52,6 +51,25 @@ def TestaBissexto():
         if (trueAno % 4 == 0 and (trueAno % 400 == 0 or trueAno % 100 != 0)):
             print(trueAno)
 
+def PegaComponente(tabela, coletavel, local):
+    componente = tabela.find_all("td", {"data-stat": coletavel})[0]
+    valor = componente.get_text()
+    print(f'{local}: {valor}')
+
+
+def FazColeta():
+# pela class [0] [2] class="sortable stats_table now_sortable"
+    tudo = '//*[@id="content"]' 
+    element = driver.find_element_by_xpath(tudo)
+    html_content = element.get_attribute('outerHTML')
+    soup = BeautifulSoup(html_content, 'html.parser')
+    tabela = soup.find_all("table", {"class": "sortable stats_table now_sortable"})
+
+    coletar = ['pts']
+    for i in range(len(coletar)):
+        PegaComponente(tabela[0], coletar[0], 'casa') # casa
+        PegaComponente(tabela[2], coletar[i], 'fora') # fora
+
 
 def FazAsCoisas(dia, mes, ano):
     #aqui é onde ce vai fazer os processo pesado. (no fim é onde tu vai chamar um monte de função)
@@ -66,10 +84,15 @@ def FazAsCoisas(dia, mes, ano):
     qtdJogos = ContadorDePartidas()
     print(f'Partidas: {qtdJogos}')
 
-    for i in range(qtdJogos): #//*[@id="content"]/div[3]/div[2]/p/a[1] - muda a segunda div
-        driver.get(url)
+    for i in range(qtdJogos): #entra nos jogos para ver mais detalher
+        driver.get(url) if i>0 else 0
+        driver.find_element_by_xpath(f'//*[@id="content"]/div[3]/div[{i+1}]/p/a[1]').click() # entra no box-score do jogo 
+        driver.find_element_by_xpath(f'//*[@id="content"]/div[6]/div[2]/a').click() # Para apresentar apenas 1°quarto
 
-        driver.find_element_by_xpath(f'//*[@id="content"]/div[3]/div[{i+1}]/p/a[1]').click()
+        FazColeta()
+        # coletar da tabela
+        # mandar pra um dicionário de dicionarios provavelmente
+
 
 
 
