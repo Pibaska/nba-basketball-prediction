@@ -46,11 +46,6 @@ class GeneticAlgorithm:
 
         return population
 
-    @ staticmethod
-    def generate_random_character():
-        """Essa função não vai ser necessária quando os times forem passados"""
-        return chr(int(random.randrange(32, 255, 1)))
-
     def check_for_break(self, population: list):
         return self.evaluate_population(population)
 
