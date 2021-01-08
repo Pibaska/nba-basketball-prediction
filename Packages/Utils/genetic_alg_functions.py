@@ -6,14 +6,12 @@ class GeneticAlgorithm:
 
         self.model = model
         self.chromosome_size = len(model)
-        self.population_size = 10
+        self.population_size = 100
         self.max_generations = 10000
         self.consecutive_good_generations = 0
         self.target_good_generations = good_generations
 
         print("Genetic Alg set up!")
-
-    # fazer o weight choice apenas na população rankeada
 
     def genetic_alg_loop(self):
         self.population = self.random_population()
@@ -33,11 +31,15 @@ class GeneticAlgorithm:
 
     def random_population(self):
         population = []
+
         for _ in range(self.population_size):
             chromosome = ""
+
             for _ in range(self.chromosome_size):
                 chromosome += self.generate_random_character()
+
             population.append(chromosome)
+
         return population
 
     @ staticmethod
@@ -56,16 +58,15 @@ class GeneticAlgorithm:
             fitness_value = self.calculate_fitness(individual)
 
             if fitness_value == 0:
-                pair = (individual, 1.0)
+                scored_individual = (individual, 1.0)
             else:
-                pair = (individual, 1.0/fitness_value)
+                scored_individual = (individual, 1.0/fitness_value)
 
-            ranked_population.append(pair)
+            ranked_population.append(scored_individual)
 
         return ranked_population
 
-    def calculate_fitness(self, chromosome):
-        # TODO: essa função tem que ser editada para funcionar com os times
+    def calculate_fitness(self, chromosome: list):
         fitness = 0
         for i in range(self.chromosome_size):
             fitness += abs(ord(chromosome[i]) - ord(self.model[i]))
@@ -84,7 +85,6 @@ class GeneticAlgorithm:
             reproduced_population.append(self.mutation(child1))
             reproduced_population.append(self.mutation(child2))
 
-        # ver qual cara recebe esse, que teria que ser a nova população
         return reproduced_population
 
     @ staticmethod
@@ -108,9 +108,9 @@ class GeneticAlgorithm:
         return chromosome_outside
 
     def crossover(self, chromosome1, chromosome2):
-        position = int(random.random() * self.chromosome_size)
-        return (chromosome1[:position] + chromosome2[position:],
-                chromosome2[:position] + chromosome1[position:])
+        split_point = int(random.random() * self.chromosome_size)
+        return (chromosome1[:split_point] + chromosome2[split_point:],
+                chromosome2[:split_point] + chromosome1[split_point:])
 
     def evaluate_population(self, population):
         """Recebe uma população e diz se ela é boa ou não"""
