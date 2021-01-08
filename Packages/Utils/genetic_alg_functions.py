@@ -21,8 +21,8 @@ class GeneticAlgorithm:
         for generation in range(self.max_generations):
             print(f"Geração {generation} | População: '{self.population[0]}'")
 
-            if(self.check_for_break(self.population)):
-                break
+            # if(self.check_for_break(self.population)):
+            #     break
 
             ranked_population = self.apply_fitness(self.population)
 
@@ -46,10 +46,15 @@ class GeneticAlgorithm:
 
         return population
 
+    '''
     def check_for_break(self, population: list):
+        """Essa função parece meio inútil mas permite que a gente procure por
+        gerações boas consecutivas antes de parar o algoritmo
+        """
+
         return self.evaluate_population(population)
 
-    def evaluate_population(self, population):
+    def evaluate_population(self, population: list):
         """Recebe uma população e diz se ela é boa ou não"""
         # TODO pensar num jeito melhor de avaliar a população
 
@@ -65,6 +70,7 @@ class GeneticAlgorithm:
             self.consecutive_good_generations = 0
 
         return is_population_good
+    '''
 
     def apply_fitness(self, population: list):
 
