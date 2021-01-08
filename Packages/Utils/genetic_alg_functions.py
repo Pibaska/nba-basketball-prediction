@@ -5,11 +5,13 @@ class GeneticAlgorithm:
     def __init__(self, model="", good_generations=3):
 
         self.model = model
+        self.target_good_generations = good_generations
+
         self.chromosome_size = 7  # len(model)
+        self.weight_magnitude = (-10, 10)
         self.population_size = 100
         self.max_generations = 10000
         self.consecutive_good_generations = 0
-        self.target_good_generations = good_generations
 
         print("Genetic Alg set up!")
 
@@ -37,7 +39,8 @@ class GeneticAlgorithm:
 
             for _ in range(self.chromosome_size):
                 # random.uniform é tipo um randrange mas que retorna floats
-                chromosome.append(random.uniform(-10, 10))
+                chromosome.append(random.uniform(
+                    self.weight_magnitude[0], self.weight_magnitude[1]))
 
             population.append(chromosome)
 
