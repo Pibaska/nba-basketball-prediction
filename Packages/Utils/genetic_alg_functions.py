@@ -2,10 +2,10 @@ import random
 
 
 class GeneticAlgorithm:
-    def __init__(self, model, good_generations=3):
+    def __init__(self, model="", good_generations=3):
 
         self.model = model
-        self.chromosome_size = len(model)
+        self.chromosome_size = 7  # len(model)
         self.population_size = 100
         self.max_generations = 10000
         self.consecutive_good_generations = 0
@@ -33,10 +33,11 @@ class GeneticAlgorithm:
         population = []
 
         for _ in range(self.population_size):
-            chromosome = ""
+            chromosome = []
 
             for _ in range(self.chromosome_size):
-                chromosome += self.generate_random_character()
+                # random.uniform é tipo um randrange mas que retorna floats
+                chromosome.append(random.uniform(-10, 10))
 
             population.append(chromosome)
 
@@ -49,6 +50,23 @@ class GeneticAlgorithm:
 
     def check_for_break(self, population: list):
         return self.evaluate_population(population)
+
+    def evaluate_population(self, population):
+        """Recebe uma população e diz se ela é boa ou não"""
+        # TODO pensar num jeito melhor de avaliar a população
+
+        good_individuals = 0
+        for individual in population:
+            good_individuals += 1 if individual == self.model else 0
+
+        is_population_good = good_individuals >= int(len(population)/10)
+
+        if(is_population_good):
+            self.consecutive_good_generations += 1
+        else:
+            self.consecutive_good_generations = 0
+
+        return is_population_good
 
     def apply_fitness(self, population: list):
 
@@ -112,23 +130,6 @@ class GeneticAlgorithm:
         return (chromosome1[:split_point] + chromosome2[split_point:],
                 chromosome2[:split_point] + chromosome1[split_point:])
 
-    def evaluate_population(self, population):
-        """Recebe uma população e diz se ela é boa ou não"""
-        # TODO pensar num jeito melhor de avaliar a população
-
-        good_individuals = 0
-        for individual in population:
-            good_individuals += 1 if individual == self.model else 0
-
-        is_population_good = good_individuals >= int(len(population)/10)
-
-        if(is_population_good):
-            self.consecutive_good_generations += 1
-        else:
-            self.consecutive_good_generations = 0
-
-        return is_population_good
-
     def print_results(self, population: list):
         fit_string = population[0]
         minimum_fitness = self.calculate_fitness(population[0])
@@ -141,3 +142,8 @@ class GeneticAlgorithm:
                 minimum_fitness = fit_individual
 
         print(f"População Final: {fit_string}")
+
+
+if __name__ == "__main__":
+    gen_alg = GeneticAlgorithm()
+    print(gen_alg.random_population())
