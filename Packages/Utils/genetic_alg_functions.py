@@ -92,13 +92,14 @@ class GeneticAlgorithm:
 
     def calculate_fitness(self, chromosome: list, match_data: dict):
         """Calcula o valor de fitness de um cromossomo.
+        Obs.: Por enquanto tá extremamente mal otimizado
 
         Args:
-            chromosome (list): O cromossomo a ser avaliado
-            match_data (dict): Os dados verdadeiros dos jogos para comparar com o cromossomo
+            chromosome (list): O cromossomo a ser avaliado;
+            match_data (dict): Os dados verdadeiros dos jogos para comparar com o cromossomo;
 
         Returns:
-            fitness (int): O fitness do cromossomo. Quanto maior o valor, melhor
+            fitness (int): O fitness do cromossomo. Quanto maior o valor, melhor;
         """
 
         fitness = 0
