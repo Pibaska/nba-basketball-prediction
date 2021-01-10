@@ -4,13 +4,12 @@ import genetic_alg_fake_data
 
 
 class GeneticAlgorithm:
-    def __init__(self, match_data: dict, model="", good_generations=3):
+    def __init__(self, model: dict, good_generations=3):
 
         self.model = model
         self.target_good_generations = good_generations
-        self.match_data = match_data
 
-        self.chromosome_size = 7  # len(model)
+        self.chromosome_size = 7
         self.weight_magnitude = (-10, 10)
         self.population_size = 100
         self.max_generations = 10000
@@ -24,8 +23,8 @@ class GeneticAlgorithm:
         for generation in range(self.max_generations):
             print(f"Geração {generation} | População: '{self.population[0]}'")
 
-            # if(self.check_for_break(self.population)):
-            #     break
+            if(self.check_for_break(self.population)):
+                break
 
             ranked_population = self.apply_fitness(self.population)
 
@@ -49,7 +48,6 @@ class GeneticAlgorithm:
 
         return population
 
-    '''
     def check_for_break(self, population: list):
         """Essa função parece meio inútil mas permite que a gente procure por
         gerações boas consecutivas antes de parar o algoritmo
@@ -73,14 +71,13 @@ class GeneticAlgorithm:
             self.consecutive_good_generations = 0
 
         return is_population_good
-    '''
 
     def apply_fitness(self, population: list):
 
         ranked_population = []
 
         for individual in population:
-            fitness_value = self.calculate_fitness(individual)
+            fitness_value = self.calculate_fitness(individual, self.model)
 
             if fitness_value == 0:
                 scored_individual = (individual, 1.0)
@@ -163,6 +160,7 @@ class GeneticAlgorithm:
         mutation_chance = 100
         for i in range(self.chromosome_size):
             if int(random.random() * mutation_chance) == 1:
+                # TODO: substituir isso por algo que funcione
                 chromosome_outside += self.generate_random_character()
             else:
                 chromosome_outside += chromosome[i]
@@ -175,10 +173,12 @@ class GeneticAlgorithm:
 
     def print_results(self, population: list):
         fit_string = population[0]
-        minimum_fitness = self.calculate_fitness(population[0])
+        minimum_fitness = self.calculate_fitness(
+            population[0], self.model)
 
         for individual in population:
-            fit_individual = self.calculate_fitness(individual)
+            fit_individual = self.calculate_fitness(
+                individual, self.model)
             print(f"{individual}, {fit_individual}")
             if fit_individual <= minimum_fitness:
                 fit_string = individual
@@ -190,4 +190,5 @@ class GeneticAlgorithm:
 if __name__ == "__main__":
     gen_alg = GeneticAlgorithm(genetic_alg_fake_data.match_database)
     chromosome = [1, 1, 1, 1, 1, 1, 1]
-    gen_alg.calculate_fitness(chromosome, genetic_alg_fake_data.match_database)
+    print(gen_alg.calculate_fitness(chromosome,
+                                    genetic_alg_fake_data.match_database))
