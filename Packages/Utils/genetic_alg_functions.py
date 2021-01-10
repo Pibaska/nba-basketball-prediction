@@ -1,4 +1,5 @@
 import random
+# Esse import precisa mudar se esse código for chamado pelo main
 import genetic_alg_fake_data
 
 
@@ -99,7 +100,7 @@ class GeneticAlgorithm:
             match_data (dict): Os dados verdadeiros dos jogos para comparar com o cromossomo;
 
         Returns:
-            fitness (int): O fitness do cromossomo. Quanto maior o valor, melhor;
+            fitness (int): O fitness do cromossomo. Quanto menor o valor, melhor;
         """
 
         fitness = 0
@@ -128,7 +129,7 @@ class GeneticAlgorithm:
             predicted_1q_winner = "home" if home_team_score > away_team_score else "away" if home_team_score < away_team_score else "tie"
 
             # 1 se for True, 0 se for False
-            fitness += int(real_1q_winner == predicted_1q_winner)
+            fitness += int(real_1q_winner != predicted_1q_winner)
 
         return fitness
 
