@@ -1,11 +1,13 @@
 import random
+import genetic_alg_fake_data
 
 
 class GeneticAlgorithm:
-    def __init__(self, model="", good_generations=3):
+    def __init__(self, match_data: dict, model="", good_generations=3):
 
         self.model = model
         self.target_good_generations = good_generations
+        self.match_data = match_data
 
         self.chromosome_size = 7  # len(model)
         self.weight_magnitude = (-10, 10)
@@ -88,10 +90,30 @@ class GeneticAlgorithm:
 
         return ranked_population
 
-    def calculate_fitness(self, chromosome: list):
+    def calculate_fitness(self, chromosome: list, match_data: dict):
         fitness = 0
-        for i in range(self.chromosome_size):
-            fitness += abs(ord(chromosome[i]) - ord(self.model[i]))
+        for current_match in match_data:
+            home_team_stats = match_data[current_match]["home_team_stats"]
+            home_team_parsed_stats = [
+                home_team_stats["average_1q_score"] * chromosome[0],
+                home_team_stats["1q_home_ratio"] * chromosome[1],
+                home_team_stats["1q_home_spread"] * chromosome[2],
+                home_team_stats["1q_last10games_ratio"] * chromosome[5],
+                home_team_stats["1q_last10games_spread"] * chromosome[6]
+            ]
+
+            away_team_stats = match_data[current_match]["away_team_stats"]
+            away_team_parsed_stats = [
+                away_team_stats["average_1q_score"] * chromosome[0],
+                away_team_stats["1q_away_ratio"] * chromosome[3],
+                away_team_stats["1q_away_spread"] * chromosome[4],
+                away_team_stats["1q_last10games_ratio"] * chromosome[5],
+                away_team_stats["1q_last10games_spread"] * chromosome[6]
+            ]
+
+            real_1q_winner = match_data[current_match]["1q_winner"]
+
+            print(home_team_parsed_stats, away_team_parsed_stats, real_1q_winner)
         return fitness
 
     def reproduce_population(self, ranked_population: list, population_size: int):
@@ -149,5 +171,6 @@ class GeneticAlgorithm:
 
 
 if __name__ == "__main__":
-    gen_alg = GeneticAlgorithm()
-    print(gen_alg.random_population())
+    gen_alg = GeneticAlgorithm(genetic_alg_fake_data.match_database)
+    chromosome = [1, 1, 1, 1, 1, 1, 1]
+    gen_alg.calculate_fitness(chromosome, genetic_alg_fake_data.match_database)

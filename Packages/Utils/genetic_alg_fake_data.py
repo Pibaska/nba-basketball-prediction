@@ -24,6 +24,7 @@ match_database = {
             "1q_last10games_ratio": 2,
             "1q_last10games_spread": 1.7
         },
+        # Sugestão usar um enumerator abaixo:
         "1q_winner": "home"  # valores possíveis: home, away, tie
     }
 }
