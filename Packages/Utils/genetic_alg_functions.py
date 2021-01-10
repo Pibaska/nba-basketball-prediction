@@ -9,8 +9,10 @@ class GeneticAlgorithm:
         self.model = model
         self.target_good_generations = good_generations
 
-        self.chromosome_size = 7
+        # Define o quanto os pesos vão influenciar nos atributos
         self.weight_magnitude = (-10, 10)
+
+        self.chromosome_size = 7
         self.population_size = 100
         self.max_generations = 10000
         self.consecutive_good_generations = 0
@@ -18,6 +20,10 @@ class GeneticAlgorithm:
         print("Genetic Alg set up!")
 
     def genetic_alg_loop(self):
+        """Função principal que chama todas as outras funções pra 
+        rodar o algoritmo genético propriamente dito.
+        """
+
         self.population = self.random_population()
 
         for generation in range(self.max_generations):
@@ -49,14 +55,28 @@ class GeneticAlgorithm:
         return population
 
     def check_for_break(self, population: list):
-        """Essa função parece meio inútil mas permite que a gente procure por
-        gerações boas consecutivas antes de parar o algoritmo
+        """Parece meio inútil porque só chama outra função mas o propósito dela é
+        ser extendida caso quisermos fazer com que o algoritmo pare com condições mais elaboradas.
+
+        Args:
+            population (list): A população a ser avaliada
+
+        Returns:
+            bool: True se o algoritmo genético estiver pronto para ser parado
         """
 
         return self.evaluate_population(population)
 
     def evaluate_population(self, population: list):
-        """Recebe uma população e diz se ela é boa ou não"""
+        """Julga se uma lista de indivíduos é boa ou não segundo os critérios
+        definidos dentro dela.
+
+        Args:
+            population (list): A lista a ser avaliada;
+
+        Returns:
+            bool: True se a população for boa segundo os critérios;
+        """
         # TODO pensar num jeito melhor de avaliar a população
 
         good_individuals = 0
@@ -145,7 +165,7 @@ class GeneticAlgorithm:
 
         return reproduced_population
 
-    @ staticmethod
+    @staticmethod
     def weighted_choice(items):
         total_weight = sum((item[1] for item in items))
         element = random.uniform(0, total_weight)
