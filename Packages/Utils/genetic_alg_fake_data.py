@@ -24,6 +24,6 @@ match_database = {
             "1q_last10games_ratio": 2,
             "1q_last10games_spread": 1.7
         },
-        "home_team_won_1q": True
+        "1q_winner": "home"  # valores possíveis: home, away, tie
     }
 }
