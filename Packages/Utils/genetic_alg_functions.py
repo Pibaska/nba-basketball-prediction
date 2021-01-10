@@ -91,6 +91,16 @@ class GeneticAlgorithm:
         return ranked_population
 
     def calculate_fitness(self, chromosome: list, match_data: dict):
+        """Calcula o valor de fitness de um cromossomo.
+
+        Args:
+            chromosome (list): O cromossomo a ser avaliado
+            match_data (dict): Os dados verdadeiros dos jogos para comparar com o cromossomo
+
+        Returns:
+            fitness (int): O fitness do cromossomo. Quanto maior o valor, melhor
+        """
+
         fitness = 0
         for current_match in match_data:
             home_team_stats = match_data[current_match]["home_team_stats"]
@@ -101,7 +111,6 @@ class GeneticAlgorithm:
                 home_team_stats["1q_last10games_ratio"] * chromosome[5],
                 home_team_stats["1q_last10games_spread"] * chromosome[6]
             ]
-
             away_team_stats = match_data[current_match]["away_team_stats"]
             away_team_parsed_stats = [
                 away_team_stats["average_1q_score"] * chromosome[0],
@@ -111,9 +120,15 @@ class GeneticAlgorithm:
                 away_team_stats["1q_last10games_spread"] * chromosome[6]
             ]
 
-            real_1q_winner = match_data[current_match]["1q_winner"]
+            home_team_score = sum(home_team_parsed_stats)
+            away_team_score = sum(away_team_parsed_stats)
 
-            print(home_team_parsed_stats, away_team_parsed_stats, real_1q_winner)
+            real_1q_winner = match_data[current_match]["1q_winner"]
+            predicted_1q_winner = "home" if home_team_score > away_team_score else "away" if home_team_score < away_team_score else "tie"
+
+            # 1 se for True, 0 se for False
+            fitness += int(real_1q_winner == predicted_1q_winner)
+
         return fitness
 
     def reproduce_population(self, ranked_population: list, population_size: int):
