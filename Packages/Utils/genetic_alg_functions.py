@@ -13,7 +13,7 @@ class GeneticAlgorithm:
         self.weight_magnitude = (-10, 10)
 
         self.chromosome_size = 7
-        self.population_size = 100
+        self.population_size = 50  # 50 na primeira geração, nas outras 100
         self.max_generations = 10000
         self.consecutive_good_generations = 0
 
@@ -165,7 +165,6 @@ class GeneticAlgorithm:
 
             reproduced_population.append(self.mutation(child1))
             reproduced_population.append(self.mutation(child2))
-
         return reproduced_population
 
     @staticmethod
@@ -178,7 +177,12 @@ class GeneticAlgorithm:
             element = element - weight
         return item
 
-    def mutation(self, chromosome):
+    def crossover(self, parent1: list, parent2: list):
+        split_point = int(random.random() * self.chromosome_size)
+        return (parent1[:split_point] + parent2[split_point:],
+                parent2[:split_point] + parent1[split_point:])
+
+    def mutation(self, chromosome: list):
         chromosome_outside = ""
         mutation_chance = 100
         for i in range(self.chromosome_size):
@@ -188,11 +192,6 @@ class GeneticAlgorithm:
             else:
                 chromosome_outside += chromosome[i]
         return chromosome_outside
-
-    def crossover(self, chromosome1, chromosome2):
-        split_point = int(random.random() * self.chromosome_size)
-        return (chromosome1[:split_point] + chromosome2[split_point:],
-                chromosome2[:split_point] + chromosome1[split_point:])
 
     def print_results(self, population: list):
         fit_string = population[0]
