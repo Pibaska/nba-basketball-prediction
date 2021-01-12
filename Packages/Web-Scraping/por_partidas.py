@@ -71,8 +71,11 @@ def FazColeta():
     caixaTimesNomes = sopaDeTudo.find("div", {"class": "scorebox"})
     nomes = caixaTimesNomes.find_all("a", {"itemprop": "name"})
 
-    itensParaColetar = ['pts','fg']
-    nomeItensParaColetar = ['Pontos', 'Cestas de 2']
+    itensParaColetar = ['pts','fg', 'fg3']
+    nomeItensParaColetar = ['Pontos', 
+                            'De 2  ', 
+                            'De 3  ']
+    print('-partida-')
     for x in range(2):
         local = 'casa' if x else 'fora'
         nome = nomes[x].get_text()
