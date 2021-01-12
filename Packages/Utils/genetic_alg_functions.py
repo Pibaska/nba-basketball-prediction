@@ -179,7 +179,19 @@ class GeneticAlgorithm:
         return item
 
     def crossover(self, parent1: list, parent2: list):
+        """Recebe os genes de dois pais, realiza o crossing-over e
+        retorna dois filhos
+
+        Args:
+            parent1 (list): Um dos indivíduos cujos genes serão repassados
+            parent2 (list): O outro indivíduo cujos genes serão repassados
+
+        Returns:
+            ([list],[list]): Os dois filhos gerados a partir dos pais
+        """
+
         split_point = int(random.random() * self.chromosome_size)
+
         return (parent1[:split_point] + parent2[split_point:],
                 parent2[:split_point] + parent1[split_point:])
 
