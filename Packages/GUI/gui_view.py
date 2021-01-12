@@ -45,6 +45,7 @@ class BasketballPredictionView(QMainWindow):
         """Configura a label que diz BASKETBALL PREDICTION bem grande"""
         title_label = QLabel("BASKETBALL PREDICTION")
         title_label.setAlignment(QtCore.Qt.AlignCenter)
+        title_label.setObjectName("titleLabel")
 
         return title_label
 
@@ -53,6 +54,7 @@ class BasketballPredictionView(QMainWindow):
         Configura a caixinha que vai ter as comboboxes com os times e a label de PREVER DISPUTA
         """
         layout_widget = QWidget()
+        layout_widget.setObjectName("comboboxSublayout")
 
         layout = QGridLayout()
 
