@@ -75,16 +75,17 @@ def FazColeta():
     nomeItensParaColetar = ['Pontos', 
                             'De 2  ', 
                             'De 3  ']
-    print('-partida-')
+    print('--partida--')
     for x in range(2):
         local = 'casa' if x else 'fora'
         nome = nomes[x].get_text()
         
-        print('-')
         print(f'{local} - {nome}')
 
         for i in range(len(itensParaColetar)):
             PegaComponente( tabelasDosTimes[x],  itensParaColetar[i], nomeItensParaColetar[i]) # casa
+
+        print('-')
 
 
 def PuxaJogosDoDia(dia, mes, ano):
@@ -94,7 +95,7 @@ def PuxaJogosDoDia(dia, mes, ano):
     # cria e chama a url
     url = f"https://www.basketball-reference.com/boxscores/?month={mes}&day={dia}&year={ano}"
     driver.get(url)
-    print(20*'-')
+    print('---------D-I-A---------')
     print(f'{dia}/{mes}/{ano }')
 
     qtdJogos = ContadorDePartidas()
