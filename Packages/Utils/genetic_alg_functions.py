@@ -13,9 +13,10 @@ class GeneticAlgorithm:
         self.weight_magnitude = (-10, 10)
 
         self.chromosome_size = 7
-        self.population_size = 100
+        self.population_size = 50  # 50 na primeira geração, nas outras 100
         self.max_generations = 10000
         self.consecutive_good_generations = 0
+        self.mutation_chance = 100
 
         print("Genetic Alg set up!")
 
@@ -154,6 +155,16 @@ class GeneticAlgorithm:
         return fitness
 
     def reproduce_population(self, ranked_population: list, population_size: int):
+        """Função responsável por delegar a reprodução de uma geração a outras
+        funções mais específicas
+
+        Args:
+            ranked_population (list): Uma lista de indivíduos com seus pesos
+            population_size (int): O tamanho desejado para a população.
+
+        Returns:
+            [list]: Uma lista com novos indivíduos após a reprodução ter acontecido.
+        """
 
         reproduced_population = []
 
@@ -165,34 +176,67 @@ class GeneticAlgorithm:
 
             reproduced_population.append(self.mutation(child1))
             reproduced_population.append(self.mutation(child2))
-
         return reproduced_population
 
     @staticmethod
-    def weighted_choice(items):
-        total_weight = sum((item[1] for item in items))
+    def weighted_choice(weighted_items):
+        """Escolhe um item dentro de uma lista com os itens e seus pesos,
+        dando prioridade para itens com peso maior
+
+        Args:
+            weighted_items ([list]): Uma lista contendo itens no formato (item, peso)
+
+        Returns:
+            item: O item escolhido a partir do peso
+        """
+
+        total_weight = sum((item[1] for item in weighted_items))
         element = random.uniform(0, total_weight)
-        for item, weight in items:
+        for item, weight in weighted_items:
             if element < weight:
                 return item
             element = element - weight
         return item
 
-    def mutation(self, chromosome):
-        chromosome_outside = ""
-        mutation_chance = 100
-        for i in range(self.chromosome_size):
-            if int(random.random() * mutation_chance) == 1:
-                # TODO: substituir isso por algo que funcione
-                chromosome_outside += self.generate_random_character()
-            else:
-                chromosome_outside += chromosome[i]
-        return chromosome_outside
+    def crossover(self, parent1: list, parent2: list):
+        """Recebe os genes de dois pais, realiza o crossing-over e
+        retorna dois filhos
 
-    def crossover(self, chromosome1, chromosome2):
+        Args:
+            parent1 (list): Um dos indivíduos cujos genes serão repassados
+            parent2 (list): O outro indivíduo cujos genes serão repassados
+
+        Returns:
+            ([list],[list]): Os dois filhos gerados a partir dos pais
+        """
+
         split_point = int(random.random() * self.chromosome_size)
-        return (chromosome1[:split_point] + chromosome2[split_point:],
-                chromosome2[:split_point] + chromosome1[split_point:])
+
+        return (parent1[:split_point] + parent2[split_point:],
+                parent2[:split_point] + parent1[split_point:])
+
+    def mutation(self, chromosome: list):
+        """Percorre por todos os genes de um cromossomo recebido, e,
+        dada uma chance definida por GeneticAlgorithm.mutation_chance,
+        pode substituir os genes originais por novos genes criados aleatoriamente.
+
+        Args:
+            chromosome (list): O cromossomo a ser percorrido
+
+        Returns:
+            [list]: O cromossomo após ter passado pelo processo de mutação
+        """
+
+        mutated_chromosome = []
+        for i in range(self.chromosome_size):
+
+            if int(random.random() * self.mutation_chance) == 1:
+                mutated_chromosome.append(random.uniform(
+                    self.weight_magnitude[0], self.weight_magnitude[1]))
+            else:
+                mutated_chromosome.append(chromosome[i])
+
+        return mutated_chromosome
 
     def print_results(self, population: list):
         fit_string = population[0]
