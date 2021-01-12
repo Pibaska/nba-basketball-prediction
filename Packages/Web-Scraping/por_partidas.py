@@ -51,27 +51,40 @@ def TestaBissexto():
         if (trueAno % 4 == 0 and (trueAno % 400 == 0 or trueAno % 100 != 0)):
             print(trueAno)
 
-def PegaComponente(tabela, coletavel, local):
+
+def PegaComponente(tabela,  coletavel, nomeColetavel):
     componente = tabela.find_all("td", {"data-stat": coletavel})[0]
-    valor = componente.get_text()
-    print(f'{local}: {valor}')
+    valorColetado = componente.get_text()
+    print(f'{nomeColetavel}: {valorColetado}')
 
 
 def FazColeta():
 # pela class [0] [2] class="sortable stats_table now_sortable"
     tudo = '//*[@id="content"]' 
-    element = driver.find_element_by_xpath(tudo)
-    html_content = element.get_attribute('outerHTML')
-    soup = BeautifulSoup(html_content, 'html.parser')
-    tabela = soup.find_all("table", {"class": "sortable stats_table now_sortable"})
+    elementDeTudo = driver.find_element_by_xpath(tudo)
+    html_contentDeTudo = elementDeTudo.get_attribute('outerHTML')
+    sopaDeTudo = BeautifulSoup(html_contentDeTudo, 'html.parser')
 
-    coletar = ['pts']
-    for i in range(len(coletar)):
-        PegaComponente(tabela[0], coletar[0], 'casa') # casa
-        PegaComponente(tabela[2], coletar[i], 'fora') # fora
+    tabelasTodas = sopaDeTudo.find_all("table", {"class": "sortable stats_table now_sortable"}) 
+    tabelasDosTimes = [tabelasTodas[0], tabelasTodas[2]] 
+
+    caixaTimesNomes = sopaDeTudo.find("div", {"class": "scorebox"})
+    nomes = caixaTimesNomes.find_all("a", {"itemprop": "name"})
+
+    itensParaColetar = ['pts','fg']
+    nomeItensParaColetar = ['Pontos', 'Cestas de 2']
+    for x in range(2):
+        local = 'casa' if x else 'fora'
+        nome = nomes[x].get_text()
+        
+        print('-')
+        print(f'{local} - {nome}')
+
+        for i in range(len(itensParaColetar)):
+            PegaComponente( tabelasDosTimes[x],  itensParaColetar[i], nomeItensParaColetar[i]) # casa
 
 
-def FazAsCoisas(dia, mes, ano):
+def PuxaJogosDoDia(dia, mes, ano):
     #aqui é onde ce vai fazer os processo pesado. (no fim é onde tu vai chamar um monte de função)
     dia += 1
     mes += 1
@@ -96,7 +109,6 @@ def FazAsCoisas(dia, mes, ano):
 
 
 
-
 #------------------------------------------------------------------------------ as coisa
 
 #escolhe False mostra o firefox sendo aberto. True faz escondido
@@ -112,7 +124,7 @@ for ano in range(20):
         rangeDias += bissexto if (rangeDias == 28) else 0
 
         for dia in range (rangeDias):
-            FazAsCoisas(dia, mes, trueAno)
+            PuxaJogosDoDia(dia, mes, trueAno)
             
 
 
