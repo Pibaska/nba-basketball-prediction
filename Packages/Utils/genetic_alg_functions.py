@@ -184,14 +184,27 @@ class GeneticAlgorithm:
                 parent2[:split_point] + parent1[split_point:])
 
     def mutation(self, chromosome: list):
-        chromosome_outside = []
+        """Percorre por todos os genes de um cromossomo recebido, e,
+        dada uma chance definida por GeneticAlgorithm.mutation_chance,
+        pode substituir os genes originais por novos genes criados aleatoriamente.
+
+        Args:
+            chromosome (list): O cromossomo a ser percorrido
+
+        Returns:
+            [list]: O cromossomo após ter passado pelo processo de mutação
+        """
+
+        mutated_chromosome = []
         for i in range(self.chromosome_size):
+
             if int(random.random() * self.mutation_chance) == 1:
-                chromosome_outside.append(random.uniform(
+                mutated_chromosome.append(random.uniform(
                     self.weight_magnitude[0], self.weight_magnitude[1]))
             else:
-                chromosome_outside.append(chromosome[i])
-        return chromosome_outside
+                mutated_chromosome.append(chromosome[i])
+
+        return mutated_chromosome
 
     def print_results(self, population: list):
         fit_string = population[0]
