@@ -20,34 +20,8 @@ class BasketballPredictionView(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.stylesheet = """
-            QMainWindow {
-                background-color: #383738;
-            }
-
-            QPushButton {
-                background-color: #9dced4;
-                color: #2E2E2E;
-                border: 2px solid #9dced4;
-            }
-
-            QTextEdit {
-                background-color: #cdd3d7;
-                color: #8e8e8e;
-                padding: 6px 2px;
-                border: 2px solid #9dced4;
-            }
-
-            QLabel{
-                border: 3px solid #9dced4;
-                background-color: #4e4e4e;
-            }
-
-            /*
-            Pra aplicar num objeto específico é tipo:
-            QLabel#labelObjectName {}
-            */
-        """
+        with open(__file__ + "/../basketballview.css", "r") as reader:
+            self.stylesheet = reader.read()
 
         self.setWindowTitle('Basketball Prediction - Protótipo')
 

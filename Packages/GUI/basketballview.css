@@ -1,0 +1,26 @@
+QMainWindow {
+  background-color: #383738;
+}
+
+QPushButton {
+  background-color: #9dced4;
+  color: #2e2e2e;
+  border: 2px solid #9dced4;
+}
+
+QTextEdit {
+  background-color: #cdd3d7;
+  color: #8e8e8e;
+  padding: 6px 2px;
+  border: 2px solid #9dced4;
+}
+
+QLabel {
+  border: 3px solid #9dced4;
+  background-color: #4e4e4e;
+}
+
+/*
+Pra aplicar num objeto específico é tipo:
+QLabel#labelObjectName {}
+*/
