@@ -155,6 +155,16 @@ class GeneticAlgorithm:
         return fitness
 
     def reproduce_population(self, ranked_population: list, population_size: int):
+        """Função responsável por delegar a reprodução de uma geração a outras
+        funções mais específicas
+
+        Args:
+            ranked_population (list): Uma lista de indivíduos com seus pesos
+            population_size (int): O tamanho desejado para a população.
+
+        Returns:
+            [list]: Uma lista com novos indivíduos após a reprodução ter acontecido.
+        """
 
         reproduced_population = []
 
@@ -169,10 +179,20 @@ class GeneticAlgorithm:
         return reproduced_population
 
     @staticmethod
-    def weighted_choice(items):
-        total_weight = sum((item[1] for item in items))
+    def weighted_choice(weighted_items):
+        """Escolhe um item dentro de uma lista com os itens e seus pesos,
+        dando prioridade para itens com peso maior
+
+        Args:
+            weighted_items ([list]): Uma lista contendo itens no formato (item, peso)
+
+        Returns:
+            item: O item escolhido a partir do peso
+        """
+
+        total_weight = sum((item[1] for item in weighted_items))
         element = random.uniform(0, total_weight)
-        for item, weight in items:
+        for item, weight in weighted_items:
             if element < weight:
                 return item
             element = element - weight
