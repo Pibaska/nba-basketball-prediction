@@ -29,10 +29,10 @@ class GeneticAlgorithm:
         for generation in range(self.max_generations):
             print(f"Geração {generation} | População: '{self.population[0]}'")
 
-            if(self.check_for_break(self.population)):
-                break
-
             ranked_population = self.apply_fitness(self.population)
+
+            if(self.check_for_break(ranked_population)):
+                break
 
             self.population = self.reproduce_population(
                 ranked_population, self.population_size)
@@ -69,7 +69,9 @@ class GeneticAlgorithm:
 
     def evaluate_population(self, population: list):
         """Julga se uma lista de indivíduos é boa ou não segundo os critérios
-        definidos dentro dela.
+        definidos dentro dela. Por enquanto o critério é 1/10 da população ter
+        uma pontuação de 0, ou seja, 10 conjuntos de pesos acertarem todas as
+        partidas (talvez seja meio exigente).
 
         Args:
             population (list): A lista a ser avaliada;
@@ -77,11 +79,12 @@ class GeneticAlgorithm:
         Returns:
             bool: True se a população for boa segundo os critérios;
         """
+
         # TODO pensar num jeito melhor de avaliar a população
 
         good_individuals = 0
         for individual in population:
-            good_individuals += 1 if individual == self.model else 0
+            good_individuals += individual[1] == 0
 
         is_population_good = good_individuals >= int(len(population)/10)
 
@@ -209,6 +212,4 @@ class GeneticAlgorithm:
 
 if __name__ == "__main__":
     gen_alg = GeneticAlgorithm(genetic_alg_fake_data.match_database)
-    chromosome = [1, 1, 1, 1, 1, 1, 1]
-    print(gen_alg.calculate_fitness(chromosome,
-                                    genetic_alg_fake_data.match_database))
+    gen_alg.genetic_alg_loop()
