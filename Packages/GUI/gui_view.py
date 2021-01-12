@@ -1,4 +1,5 @@
 import sys
+import os
 
 # Esse import vai ter que ser mudado quando esse script for ligado no main
 import gui_fake_data as fake_data
@@ -20,7 +21,7 @@ class BasketballPredictionView(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        with open(__file__ + "/../basketballview.css", "r") as reader:
+        with open(os.path.join(__file__, "..", "basketballview.css"), "r") as reader:
             self.stylesheet = reader.read()
 
         self.setWindowTitle('Basketball Prediction - Protótipo')
