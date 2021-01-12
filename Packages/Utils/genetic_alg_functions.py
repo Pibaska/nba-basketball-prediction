@@ -16,6 +16,7 @@ class GeneticAlgorithm:
         self.population_size = 50  # 50 na primeira geração, nas outras 100
         self.max_generations = 10000
         self.consecutive_good_generations = 0
+        self.mutation_chance = 100
 
         print("Genetic Alg set up!")
 
@@ -183,14 +184,13 @@ class GeneticAlgorithm:
                 parent2[:split_point] + parent1[split_point:])
 
     def mutation(self, chromosome: list):
-        chromosome_outside = ""
-        mutation_chance = 100
+        chromosome_outside = []
         for i in range(self.chromosome_size):
-            if int(random.random() * mutation_chance) == 1:
-                # TODO: substituir isso por algo que funcione
-                chromosome_outside += self.generate_random_character()
+            if int(random.random() * self.mutation_chance) == 1:
+                chromosome_outside.append(random.uniform(
+                    self.weight_magnitude[0], self.weight_magnitude[1]))
             else:
-                chromosome_outside += chromosome[i]
+                chromosome_outside.append(chromosome[i])
         return chromosome_outside
 
     def print_results(self, population: list):
