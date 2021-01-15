@@ -115,6 +115,8 @@ class GeneticAlgorithm:
     def calculate_fitness(self, chromosome: list, match_data: dict):
         """Calcula o valor de fitness de um cromossomo.
         Obs.: Por enquanto tá extremamente mal otimizado
+        Sugestão: Registrar um erro do vetor de pesos apenas se tiver
+        uma diferença considerável entre as pontuações dos 2 times
 
         Args:
             chromosome (list): O cromossomo a ser avaliado;
