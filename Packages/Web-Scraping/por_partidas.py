@@ -30,8 +30,8 @@ def SetupDriver(mostra):
     option = Options()
     option.headless = mostra
     driver = webdriver.Firefox(
-        firefox_binary=binary, executable_path=r'C:\\Geckodriver\\geckodriver.exe', options=option) #taca teu gekodrive no ce
-    return driver
+        firefox_binary=binary, executable_path=r'C:\\Geckodriver\\geckodriver.exe', options=option) #https://github.com/mozilla/geckodriver/releases <- baixe de acordo
+    return driver                                                                                                                                    # com seu sistema
 
 
 # Retorna quantas partidas o site tem do dia escolhido
