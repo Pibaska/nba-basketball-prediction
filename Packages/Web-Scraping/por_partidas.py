@@ -1,10 +1,8 @@
 
-# esse codigo deve: -------------------------------------------------------
-# função que repete tudo a baixo por todos os dias de uma temporada
-# entra na tela de Jogos de um dia expecífico
-# ve quantos jogos tem
-# entra no "Box Score" do primeiro jogo pega as coisas, volta, e entra no proximo
-# salva em json
+# Para rodar esse script: -------------------------------------------------------
+# baixe geckodriver e o coloque em " C:\\Geckodriver\\geckodriver.exe "
+#        https://github.com/mozilla/geckodriver/releases  
+# baixe o firefox
 # -------------------------------------------------------------------------
 # berb esteve aqui
 
