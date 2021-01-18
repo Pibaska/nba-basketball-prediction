@@ -5,7 +5,7 @@ import os
 import gui_fake_data as fake_data
 import gui_controller as controller
 
-from PyQt5.QtWidgets import QApplication, QComboBox, QGridLayout, QLineEdit, QMainWindow
+from PyQt5.QtWidgets import QApplication, QComboBox, QGridLayout, QLineEdit, QMainWindow, QFrame
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QWidget
@@ -53,7 +53,7 @@ class BasketballPredictionView(QMainWindow):
         """
         Configura a caixinha que vai ter as comboboxes com os times e a label de PREVER DISPUTA
         """
-        layout_widget = QWidget()
+        layout_widget = QFrame()
         layout_widget.setObjectName("comboboxSublayout")
 
         layout = QGridLayout()
@@ -67,6 +67,7 @@ class BasketballPredictionView(QMainWindow):
 
         label_vs = QLabel("VS.")
         label_vs.setAlignment(QtCore.Qt.AlignCenter)
+        label_vs.setObjectName("labelVs")
 
         self.combobox_team2 = QComboBox()
         for team in fake_data.fake_teams:

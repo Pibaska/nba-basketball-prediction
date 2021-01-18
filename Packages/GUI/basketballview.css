@@ -25,8 +25,12 @@ QLabel#titleLabel {
   font-weight: bolder;
 }
 
-QWidget#comboboxSubLayout {
-  color: #625050;
+QLabel#labelVs {
+  color: #f5802e;
+}
+
+QFrame#comboboxSublayout {
+  background-color: #625050;
 }
 
 /*
