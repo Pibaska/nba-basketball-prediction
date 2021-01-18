@@ -9,4 +9,5 @@ def predict_score():
 
 
 def activate_combobox(combobox_text):
+    # TODO: transformar essa função numa coisa melhor que preste
     print(f"combobox ativada: {combobox_text}")
