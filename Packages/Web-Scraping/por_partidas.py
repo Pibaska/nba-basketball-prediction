@@ -46,7 +46,7 @@ def TodoDia(driver):
             rangeDias += bissexto if (rangeDias == 28) else 0
 
             for dia in range(rangeDias):
-                listaDaData = [dia, mes, trueAno]
+                listaDaData = [dia+1, mes+1, trueAno]
                 listaDasDatas.append(listaDaData)
 
     return listaDasDatas      
@@ -54,17 +54,15 @@ def TodoDia(driver):
 #recebendo os dias, navega pelo site e entra nos jogos
 def PuxaJogosDoDia(driver, listaDaData):
     # aqui é onde ce vai fazer os processo pesado. (no fim é onde tu vai chamar um monte de função)
-    dia = listaDaData[0] + 1
-    mes = listaDaData[1] + 1
+    dia = listaDaData[0]
+    mes = listaDaData[1]
     ano = listaDaData[2]
     # cria e chama a url
     url = f"https://www.basketball-reference.com/boxscores/?month={mes}&day={dia}&year={ano}"   
-    driver.get(url)
-    print('---------D-I-A---------')
-    print(f'{dia}/{mes}/{ano}')
 
-    qtdJogos = ContadorDePartidas(driver)
-    print(f'Partidas: {qtdJogos}')
+    return(url)
+
+def FazColetaPorJogo(driver, url, qtdJogos): 
 
     for i in range(qtdJogos):  # entra nos jogos para ver mais detalher
         driver.get(url) if i > 0 else 0
@@ -77,8 +75,7 @@ def PuxaJogosDoDia(driver, listaDaData):
             f'//*[@id="content"]/div[6]/div[2]/a').click()
 
         FazColeta(driver)
-        # coletar da tabela
-        # mandar pra um dicionário de dicionarios provavelmente
+
 
 # Retorna quantas partidas o site tem do dia escolhido
 def ContadorDePartidas(driver):
