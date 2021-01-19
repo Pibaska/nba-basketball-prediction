@@ -62,19 +62,18 @@ def PuxaJogosDoDia(driver, listaDaData):
 
     return(url)
 
-def FazColetaPorJogo(driver, url, qtdJogos): 
+# entra no box score e filtra pelo primeiro quarto
+def EntraNoBoxScore(driver, url, i):  
 
-    for i in range(qtdJogos):  # entra nos jogos para ver mais detalher
-        driver.get(url) if i > 0 else 0
-        # entra no box-score do jogo
-        driver.find_element_by_xpath(
-            f'//*[@id="content"]/div[3]/div[{i+1}]/p/a[1]').click()
+    driver.get(url) if i > 0 else 0
+    # entra no box-score do jogo
+    driver.find_element_by_xpath(
+        f'//*[@id="content"]/div[3]/div[{i+1}]/p/a[1]').click()
 
-        # Para apresentar apenas 1°quarto
-        driver.find_element_by_xpath(
-            f'//*[@id="content"]/div[6]/div[2]/a').click()
+    # Para apresentar apenas 1°quarto
+    driver.find_element_by_xpath(
+        f'//*[@id="content"]/div[6]/div[2]/a').click()
 
-        FazColeta(driver)
 
 
 # Retorna quantas partidas o site tem do dia escolhido

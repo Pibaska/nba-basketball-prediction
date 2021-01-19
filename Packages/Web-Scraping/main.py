@@ -17,7 +17,9 @@ for listaDaData in listaDasDatas:
     qtdJogos = funcoes.ContadorDePartidas(driver)
     print(f'Partidas: {qtdJogos}')
 
-    funcoes.FazColetaPorJogo(driver, url, qtdJogos)
+    for i in range(qtdJogos): 
+        funcoes.EntraNoBoxScore(driver, url, i) 
+        funcoes.FazColeta(driver)
 
 
 driver.quit()
