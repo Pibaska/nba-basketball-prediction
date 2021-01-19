@@ -19,7 +19,27 @@ for listaDaData in listaDasDatas:
 
     for i in range(qtdJogos): 
         funcoes.EntraNoBoxScore(driver, url, i) 
-        funcoes.FazColeta(driver)
+        nomes, tabelasDosTimes = funcoes.FazColeta(driver)
+
+
+        itensParaColetar = ['pts', 'fg', 'fg3']
+        nomeItensParaColetar = ['Pontos',
+                                'De 2  ',
+                                'De 3  ']
+        print('--partida--')
+        for x in range(2):
+            local = 'casa' if not x else 'fora'
+            nome = nomes[x].get_text()
+
+            print(f'{local} - {nome}')
+
+            for i in range(len(itensParaColetar)):
+                funcoes.PegaComponente(
+                    tabelasDosTimes[x],  itensParaColetar[i], nomeItensParaColetar[i])  # casa
+
+            print('-')
+
+
 
 
 driver.quit()

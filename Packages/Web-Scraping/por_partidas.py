@@ -104,22 +104,7 @@ def FazColeta(driver):
     caixaTimesNomes = sopaDeTudo.find("div", {"class": "scorebox"})
     nomes = caixaTimesNomes.find_all("a", {"itemprop": "name"})
 
-    itensParaColetar = ['pts', 'fg', 'fg3']
-    nomeItensParaColetar = ['Pontos',
-                            'De 2  ',
-                            'De 3  ']
-    print('--partida--')
-    for x in range(2):
-        local = 'casa' if not x else 'fora'
-        nome = nomes[x].get_text()
-
-        print(f'{local} - {nome}')
-
-        for i in range(len(itensParaColetar)):
-            PegaComponente(
-                tabelasDosTimes[x],  itensParaColetar[i], nomeItensParaColetar[i])  # casa
-
-        print('-')
+    return nomes, tabelasDosTimes
 
 #pega os valores das tabelas
 def PegaComponente(tabela,  coletavel, nomeColetavel):
