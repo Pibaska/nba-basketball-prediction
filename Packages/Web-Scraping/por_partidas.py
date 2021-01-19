@@ -20,7 +20,8 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 # nomeArquivo =  "partidas" #arquivo .json
 # nomeDicionarioAno = "partidas_x" #nome que vai se alterar por dia
 # nomeDicionarioDia = "partidas_x/x/x" #nome que vai se alterar por dia
-
+dicionario = {}
+diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 
 def SetupDriver(mostra):
@@ -119,6 +120,20 @@ def PuxaJogosDoDia(driver, dia, mes, ano):
         # coletar da tabela
         # mandar pra um dicionário de dicionarios provavelmente
 
+def TodoDia(driver):
+    for ano in range(20):
+        # calcula se é ano bissexto
+        trueAno = 2000 + ano
+        bissexto = 1 if (trueAno % 4 == 0 and (trueAno %
+                                            400 == 0 or trueAno % 100 != 0)) else 0  # opeador ternário
+
+        for mes in range(12):
+            rangeDias = diasNosMeses[mes]
+
+            rangeDias += bissexto if (rangeDias == 28) else 0
+
+            for dia in range(rangeDias):
+                PuxaJogosDoDia(driver, dia, mes, trueAno)
 
 # ------------------------------------------------------------------------------ as coisa
 # escolhe False mostra o firefox sendo aberto. True faz escondido
