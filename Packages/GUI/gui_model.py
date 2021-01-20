@@ -4,8 +4,19 @@
 ERROR_MSG = "Error!"
 
 
-def predict_score():
+def predict_score(view):
     print("Partida prevista!")
+    print(view.selected_home_team, view.selected_away_team)
+
+
+def activate_home_team_combobox(selected_team, view):
+    print(f"combobox home ativada: {selected_team}")
+    view.selected_home_team = selected_team
+
+
+def activate_away_team_combobox(selected_team, view):
+    print(f"combobox away ativada: {selected_team}")
+    view.selected_away_team = selected_team
 
 
 def activate_combobox(combobox_text):
