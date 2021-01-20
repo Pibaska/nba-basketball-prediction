@@ -25,6 +25,7 @@ class BasketballPredictionView(QMainWindow):
             self.stylesheet = reader.read()
 
         self.setWindowTitle('Basketball Prediction - Protótipo')
+        self.setMinimumSize(600, 400)
 
         self._centralWidget = QWidget(self)
         self.setCentralWidget(self._centralWidget)
