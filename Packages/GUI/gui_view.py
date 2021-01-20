@@ -2,8 +2,8 @@ import sys
 import os
 
 # Esse import vai ter que ser mudado quando esse script for ligado no main
-import gui_fake_data as fake_data
-import gui_controller as controller
+import Packages.GUI.gui_fake_data as fake_data
+import Packages.GUI.gui_controller as controller
 
 from PyQt5.QtWidgets import QApplication, QComboBox, QGridLayout, QLineEdit, QMainWindow, QFrame
 from PyQt5.QtWidgets import QPushButton
