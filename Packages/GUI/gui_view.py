@@ -2,8 +2,8 @@ import sys
 import os
 
 # Esse import vai ter que ser mudado quando esse script for ligado no main
-import gui_fake_data as fake_data
-import gui_controller as controller
+import Packages.GUI.gui_fake_data as fake_data
+import Packages.GUI.gui_controller as controller
 
 from PyQt5.QtWidgets import QApplication, QComboBox, QGridLayout, QLineEdit, QMainWindow, QFrame
 from PyQt5.QtWidgets import QPushButton
@@ -62,24 +62,24 @@ class BasketballPredictionView(QMainWindow):
         # label_predict_match = QLabel("PREVER DISPUTA")
         # label_predict_match.setAlignment(QtCore.Qt.AlignCenter)
 
-        self.combobox_team1 = QComboBox()
+        self.combobox_home = QComboBox()
         for team in fake_data.fake_teams:
-            self.combobox_team1.addItem(team)
+            self.combobox_home.addItem(team)
+        self.selected_home_team = fake_data.fake_teams[0]
 
         label_vs = QLabel("VS.")
         label_vs.setAlignment(QtCore.Qt.AlignCenter)
         label_vs.setObjectName("labelVs")
 
-        
-
-        self.combobox_team2 = QComboBox()
+        self.combobox_away = QComboBox()
         for team in fake_data.fake_teams:
-            self.combobox_team2.addItem(team)
+            self.combobox_away.addItem(team)
+        self.selected_away_team = fake_data.fake_teams[0]
 
-        # layout.addWidget(label_predict_match, 0, 1)
-        layout.addWidget(self.combobox_team1, 1, 0)
+        layout.addWidget(label_predict_match, 0, 1)
+        layout.addWidget(self.combobox_home, 1, 0)
         layout.addWidget(label_vs, 1, 1)
-        layout.addWidget(self.combobox_team2, 1, 2)
+        layout.addWidget(self.combobox_away, 1, 2)
 
         layout_widget.setLayout(layout)
 
