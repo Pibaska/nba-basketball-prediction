@@ -93,10 +93,10 @@ class BasketballPredictionView(QMainWindow):
     def _setup_results_text(self):
         """Configura o campo no qual vai aparecer o resultado da previsão"""
 
-        lineedit_results = QLineEdit("Resultados:")
-        lineedit_results.setReadOnly(True)
-        lineedit_results.setAlignment(QtCore.Qt.AlignTop)
-        return lineedit_results
+        self.lineedit_results = QLineEdit("Resultados:")
+        self.lineedit_results.setReadOnly(True)
+        self.lineedit_results.setAlignment(QtCore.Qt.AlignTop)
+        return self.lineedit_results
 
     def get_comboboxes_teams_content(self):
         return ["Time da Caixa 1", "Time da Caixa 2"]
