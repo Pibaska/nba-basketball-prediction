@@ -76,7 +76,6 @@ class BasketballPredictionView(QMainWindow):
             self.combobox_away.addItem(team)
         self.selected_away_team = fake_data.fake_teams[0]
 
-        layout.addWidget(label_predict_match, 0, 1)
         layout.addWidget(self.combobox_home, 1, 0)
         layout.addWidget(label_vs, 1, 1)
         layout.addWidget(self.combobox_away, 1, 2)
