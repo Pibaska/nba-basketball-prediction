@@ -59,8 +59,8 @@ class BasketballPredictionView(QMainWindow):
 
         layout = QGridLayout()
 
-        label_predict_match = QLabel("PREVER DISPUTA")
-        label_predict_match.setAlignment(QtCore.Qt.AlignCenter)
+        # label_predict_match = QLabel("PREVER DISPUTA")
+        # label_predict_match.setAlignment(QtCore.Qt.AlignCenter)
 
         self.combobox_team1 = QComboBox()
         for team in fake_data.fake_teams:
@@ -70,11 +70,13 @@ class BasketballPredictionView(QMainWindow):
         label_vs.setAlignment(QtCore.Qt.AlignCenter)
         label_vs.setObjectName("labelVs")
 
+        
+
         self.combobox_team2 = QComboBox()
         for team in fake_data.fake_teams:
             self.combobox_team2.addItem(team)
 
-        layout.addWidget(label_predict_match, 0, 1)
+        # layout.addWidget(label_predict_match, 0, 1)
         layout.addWidget(self.combobox_team1, 1, 0)
         layout.addWidget(label_vs, 1, 1)
         layout.addWidget(self.combobox_team2, 1, 2)
@@ -85,7 +87,7 @@ class BasketballPredictionView(QMainWindow):
 
     def _setup_prediction_button(self):
         """Configura o botão de 'Prever!'"""
-        self.button_predict = QPushButton("Prever!")
+        self.button_predict = QPushButton("Prever!")        
 
         return self.button_predict
 
@@ -94,6 +96,7 @@ class BasketballPredictionView(QMainWindow):
 
         lineedit_results = QLineEdit("Resultados:")
         lineedit_results.setReadOnly(True)
+        lineedit_results.setAlignment(QtCore.Qt.AlignTop)
         return lineedit_results
 
     def get_comboboxes_teams_content(self):

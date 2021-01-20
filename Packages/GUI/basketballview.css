@@ -2,42 +2,85 @@ QMainWindow {
   background-color: #2e2626;
 }
 
-QPushButton {
-  background-color: #a2a2a2;
-  color: #2e2e2e;
-  border-style: solid;
-  border-color: #a2a2a2;
-  border-width: 5px;
-  border-radius: 10px;
-}
-
-QLineEdit {
-  background-color: #665c56;
-  color: #432916;
-  border: none;
-}
-
-QComboBox {
-  background-color: #ff8027;
-  border-color: #c3601b;
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 6px;
-}
-
 QLabel#titleLabel {
   color: #a3a3a3;
   font-size: 30px;
   font-weight: bolder;
 }
 
-QLabel#labelVs {
-  color: #f5802e;
-}
 
 QFrame#comboboxSublayout {
   background-color: #625050;
+  padding: 10px;
+  
+
 }
+
+
+
+QComboBox {
+  background-color: #ff8027;
+  border-color: #c3601b;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 2px;
+  font-size: 15px;
+
+  /* text-align: center;
+  vertical-align: middle; */
+
+  width: 200;
+  max-width: 300;
+  height: 20;
+  padding:4px;
+
+}
+
+
+QLabel#labelVs {
+  color: #2e2626;
+  font-size: 20px;
+
+}
+
+
+
+QPushButton {
+  background-color: #242424;
+  color: #ff8027;
+
+  border-style: solid;
+  border-color: #ff8027;
+  border-width: 1px;
+  border-radius: 10px;
+
+  font-size: 15px;
+
+  max-width: 800px;
+
+  margin-right: 100;
+  margin-left: 100;
+  padding: 10px;
+}
+
+QLineEdit {
+  background-color: #574646;
+  border: none;
+  color: #a2a2a2;
+
+  font-size: 13px;
+
+  height: 40;
+  margin-left: 20;
+  margin-right: 20;
+
+}
+
+
+
+
+
+
 
 /*
 Pra aplicar num objeto específico é tipo:
