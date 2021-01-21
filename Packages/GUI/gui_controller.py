@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QComboBox
-import gui_model as model
+import Packages.GUI.gui_model as model
 
 
 class BasketballPredictionController:
@@ -13,8 +13,9 @@ class BasketballPredictionController:
     def _connect_signals(self):
         """Conecta os sinais da view para seus respectivos slots"""
 
-        self._view.button_predict.clicked.connect(model.predict_score)
-        self._view.combobox_team1.activated.connect(
-            lambda: model.activate_combobox(self._view.combobox_team1.currentText()))
-        self._view.combobox_team2.activated.connect(
-            lambda: model.activate_combobox(self._view.combobox_team2.currentText()))
+        self._view.button_predict.clicked.connect(
+            lambda: model.predict_score(self._view))
+        self._view.combobox_home.activated.connect(
+            lambda: model.activate_home_team_combobox(self._view.combobox_home.currentText(), self._view))
+        self._view.combobox_away.activated.connect(
+            lambda: model.activate_away_team_combobox(self._view.combobox_away.currentText(), self._view))
