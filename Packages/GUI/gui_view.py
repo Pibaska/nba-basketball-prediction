@@ -88,6 +88,7 @@ class BasketballPredictionView(QMainWindow):
     def _setup_prediction_button(self):
         """Configura o botão de 'Prever!'"""
         self.button_predict = QPushButton("Prever!")
+        self.button_predict.setObjectName("predictButton")
 
         return self.button_predict
 
