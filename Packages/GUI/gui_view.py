@@ -119,7 +119,7 @@ class BasketballPredictionView(QMainWindow):
         return ["Time da Caixa 1", "Time da Caixa 2"]
 
 
-def main():
+if __name__ == "__main__":
     basketballGUI = QApplication(sys.argv)
 
     view = BasketballPredictionView()
@@ -128,7 +128,3 @@ def main():
     controller.BasketballPredictionController(view)
     basketballGUI.setStyleSheet(view.stylesheet)
     sys.exit(basketballGUI.exec())
-
-
-if __name__ == "__main__":
-    main()
