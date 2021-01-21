@@ -4,6 +4,7 @@
 
 from Packages.Utils.genetic_alg_functions import GeneticAlgorithm
 from Packages.Utils.genetic_alg_fake_data import match_database
+from Packages.WebScraping.mainWS import activate_web_scraping
 
 
 def predict_score(view):
@@ -22,6 +23,9 @@ def activate_away_team_combobox(selected_team, view):
 
 
 def run_gen_alg():
-    genetic_algorithm = GeneticAlgorithm(
-        model=match_database)
+    genetic_algorithm = GeneticAlgorithm(model=match_database)
     genetic_algorithm.genetic_alg_loop()
+
+
+def run_web_scraping():
+    activate_web_scraping()

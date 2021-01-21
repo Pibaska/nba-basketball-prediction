@@ -18,7 +18,7 @@ class BasketballPredictionController:
 
         self._view.button_gen_alg.clicked.connect(lambda: model.run_gen_alg())
 
-        self._view.button_web_scraping.clicked.connect(lambda: print("ws"))
+        self._view.button_web_scraping.clicked.connect(lambda: model.run_web_scraping())
 
         self._view.combobox_home.activated.connect(
             lambda: model.activate_home_team_combobox(self._view.combobox_home.currentText(), self._view))
