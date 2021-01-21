@@ -39,6 +39,7 @@ class BasketballPredictionView(QMainWindow):
         core_layout.addWidget(self._setup_combobox_sublayout())
         core_layout.addWidget(self._setup_prediction_button())
         core_layout.addWidget(self._setup_results_text())
+        core_layout.addWidget(self._setup_temporary_buttons())
 
         return core_layout
 
@@ -86,7 +87,7 @@ class BasketballPredictionView(QMainWindow):
 
     def _setup_prediction_button(self):
         """Configura o botão de 'Prever!'"""
-        self.button_predict = QPushButton("Prever!")        
+        self.button_predict = QPushButton("Prever!")
 
         return self.button_predict
 
@@ -97,6 +98,21 @@ class BasketballPredictionView(QMainWindow):
         self.lineedit_results.setReadOnly(True)
         self.lineedit_results.setAlignment(QtCore.Qt.AlignTop)
         return self.lineedit_results
+
+    def _setup_temporary_buttons(self):
+        frame_buttons = QFrame(self)
+        frame_layout = QGridLayout()
+
+        self.button_gen_alg = QPushButton("Algoritmo Genético")
+
+        self.button_web_scraping = QPushButton("Web Scraping")
+
+        frame_layout.addWidget(self.button_gen_alg, 0, 0)
+        frame_layout.addWidget(self.button_web_scraping, 0, 1)
+
+        frame_buttons.setLayout(frame_layout)
+
+        return frame_buttons
 
     def get_comboboxes_teams_content(self):
         return ["Time da Caixa 1", "Time da Caixa 2"]
