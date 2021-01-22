@@ -105,13 +105,17 @@ class BasketballPredictionView(QMainWindow):
         frame_layout = QGridLayout()
 
         self.button_gen_alg = QPushButton("Algoritmo Genético")
+        self.button_gen_alg.setObjectName("bottomButtons")
 
         self.button_web_scraping = QPushButton("Web Scraping")
+        self.button_web_scraping.setObjectName("bottomButtons")
+
 
         frame_layout.addWidget(self.button_gen_alg, 0, 0)
         frame_layout.addWidget(self.button_web_scraping, 0, 1)
 
         frame_buttons.setLayout(frame_layout)
+        
 
         return frame_buttons
 
