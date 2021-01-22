@@ -37,8 +37,8 @@ class BasketballPredictionView(QMainWindow):
         core_layout = QVBoxLayout()
         core_layout.addWidget(self._setup_title_label())
         core_layout.addWidget(self._setup_combobox_sublayout())
-        core_layout.addWidget(self._setup_prediction_button())
-        core_layout.addWidget(self._setup_results_text())
+        # core_layout.addWidget(self._setup_prediction_button())
+        # core_layout.addWidget(self._setup_results_text())
         core_layout.addWidget(self._setup_temporary_buttons())
 
         return core_layout
@@ -81,6 +81,12 @@ class BasketballPredictionView(QMainWindow):
         layout.addWidget(label_vs, 1, 1)
         layout.addWidget(self.combobox_away, 1, 2)
 
+        layout.addWidget(self._setup_prediction_button(), 2,0, 3,3)
+        layout.addWidget(self._setup_results_text(), 6,0,3,3)
+
+        # layout.addWidget(self._setup_prediction_button(), 0,0, 3,3)
+
+
         layout_widget.setLayout(layout)
 
         return layout_widget
@@ -89,6 +95,7 @@ class BasketballPredictionView(QMainWindow):
         """Configura o botão de 'Prever!'"""
         self.button_predict = QPushButton("Prever!")
         self.button_predict.setObjectName("predictButton")
+        
 
         return self.button_predict
 

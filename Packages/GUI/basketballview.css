@@ -8,7 +8,6 @@ QLabel#titleLabel {
   font-weight: bolder;
 
   max-height: 100px;
-  transition: 3s;
 }
 
 QLabel#titleLabel:hover {
@@ -50,7 +49,9 @@ QComboBox {
   width: 200;
   max-width: 300;
   height: 20;
+
   padding: 4px;
+  /* margin-top: 20px; */
 }
 
 QComboBox:hover {
@@ -87,20 +88,23 @@ QPushButton:hover {
 QPushButton#predictButton {
   max-width: 800px;
 
+
   margin-right: 100;
   margin-left: 100;
+  /* margin-top: 20;  */
   padding: 10px;
 }
 
 QLineEdit {
-  background-color: #131313;
+  background-color: #1f1f1f;
   color: #793e14;
 
-  border: none;
-  /* border-style: solid;
-  border-color: #643310;*/
+  border-style: solid;
+  border-color: #643310;
   border-width: 1px;
   border-radius: 5px;
+  border: none;
+
 
   font-size: 13px;
   font-weight: 400;
@@ -109,6 +113,8 @@ QLineEdit {
   margin-left: 20;
   margin-right: 20;
   margin-bottom: 0;
+  margin-top: 10;
+
 }
 
 QPushButton#bottomButtons {
