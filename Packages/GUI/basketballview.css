@@ -8,19 +8,28 @@ QLabel#titleLabel {
   font-weight: bolder;
 
   max-height: 100px;
-  transition:  3s;
 }
 
 QLabel#titleLabel:hover {
   color: #5e300f;
   font-size: 50px;
-
 }
+
+QFrame{
+  padding: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 
 QFrame#comboboxSublayout {
   background-color: #131313;
   padding: 10px;
   border-radius: 5;
+  
 }
 
 QComboBox {
@@ -40,13 +49,13 @@ QComboBox {
   width: 200;
   max-width: 300;
   height: 20;
-  padding:4px;
 
+  padding: 4px;
+  /* margin-top: 20px; */
 }
 
 QComboBox:hover {
   background-color: #ff6a00;
-
 }
 
 QLabel#labelVs {
@@ -61,18 +70,11 @@ QPushButton {
   border-color: #ff8027;
   border-width: 1px;
   border-radius: 10px;
+  
 
   font-size: 15px;
   color: #ff8027;
-
-
-  max-width: 800px;
-
-  margin-right: 100;
-  margin-left: 100;
-  padding: 10px;
 }
-
 
 QPushButton:hover {
   background-color: #000000;
@@ -80,18 +82,29 @@ QPushButton:hover {
   border-color: #ff6a00;
 
   color: #ff6a00;
-  font-weight: 800;
+  /* font-weight: 800; */
+}
+
+QPushButton#predictButton {
+  max-width: 800px;
+
+
+  margin-right: 100;
+  margin-left: 100;
+  /* margin-top: 20;  */
+  padding: 10px;
 }
 
 QLineEdit {
-  background-color: #131313;
+  background-color: #1f1f1f;
   color: #793e14;
 
-  border: none;
-  /* border-style: solid;
-  border-color: #643310;*/
+  border-style: solid;
+  border-color: #643310;
   border-width: 1px;
-  border-radius: 5px; 
+  border-radius: 5px;
+  border: none;
+
 
   font-size: 13px;
   font-weight: 400;
@@ -99,7 +112,32 @@ QLineEdit {
   height: 40;
   margin-left: 20;
   margin-right: 20;
+  margin-bottom: 0;
+  margin-top: 10;
 
+}
+
+QPushButton#bottomButtons {
+
+  border-style: solid;
+  border-color: #884515;
+  border-width: 1px;
+  border-radius: 0;
+
+  /* border: none; */
+
+  font-size: 12px;
+
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding: 5px;
+  max-height: 20px;
+  min-height: 20px;
+  /* max-width: 150px;
+  min-width: 150px; */
+  
 }
 
 
