@@ -4,7 +4,7 @@
 
 from Packages.Utils.genetic_alg_functions import GeneticAlgorithm
 from Packages.Utils.genetic_alg_fake_data import match_database
-from Packages.WebScraping.mainWS import activate_web_scraping
+from Packages.WebScraping.web_scraping_main import activate_web_scraping
 
 
 def predict_score(view):

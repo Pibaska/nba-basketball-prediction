@@ -1,27 +1,27 @@
-import Packages.WebScraping.por_partidas as funcoes
+import Packages.WebScraping.web_scraping_functions as ws_functions
 
 
 def activate_web_scraping():
     # prepara o driver
-    driver = funcoes.SetupDriver(False)
+    driver = ws_functions.setup_firefox_driver(False)
 
     # cria uma lista de listas de datas ex: [[dia,mes,ano],[dia,mes,ano],[dia,mes,ano],...]]
-    listaDasDatas = funcoes.TodoDia(driver)
+    listaDasDatas = ws_functions.generate_date_list()
 
     # para cada dia da lista de datas, busca as informações dos jogos que tiveram
     for listaDaData in listaDasDatas:
-        url = funcoes.PuxaJogosDoDia(driver, listaDaData)
+        url = ws_functions.access_day_matches(driver, listaDaData)
 
         driver.get(url)
         print('---------D-I-A---------')
         print(f'{listaDaData[0]}/{listaDaData[1]}/{listaDaData[2]}')
 
-        qtdJogos = funcoes.ContadorDePartidas(driver)
+        qtdJogos = ws_functions.get_match_amount(driver)
         print(f'Partidas: {qtdJogos}')
 
         for i in range(qtdJogos):
-            funcoes.EntraNoBoxScore(driver, url, i)
-            nomes, tabelasDosTimes = funcoes.FazColeta(driver)
+            ws_functions.access_box_score(driver, url, i)
+            nomes, tabelasDosTimes = ws_functions.get_team_table_names(driver)
 
             itensParaColetar = ['pts', 'fg', 'fg3']
             nomeItensParaColetar = ['Pontos',
@@ -35,7 +35,7 @@ def activate_web_scraping():
                 print(f'{local} - {nome}')
 
                 for i in range(len(itensParaColetar)):
-                    funcoes.PegaComponente(
+                    ws_functions.get_table_values(
                         tabelasDosTimes[x],  itensParaColetar[i], nomeItensParaColetar[i])  # casa
 
                 print('-')

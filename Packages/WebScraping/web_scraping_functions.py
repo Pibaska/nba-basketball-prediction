@@ -24,16 +24,16 @@ dicionario = {}
 diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 
-def SetupDriver(mostra):
+def setup_firefox_driver(show_scraping_window: bool):
     binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
     option = Options()
-    option.headless = mostra
+    option.headless = show_scraping_window
     driver = webdriver.Firefox(
         firefox_binary=binary, executable_path=r'C:\\Geckodriver\\geckodriver.exe', options=option)  # https://github.com/mozilla/geckodriver/releases <- baixe de acordo
     return driver
 
 
-def TodoDia(driver):
+def generate_date_list():
     listaDaData = []
     listaDasDatas = []
     for ano in range(20):
@@ -56,7 +56,7 @@ def TodoDia(driver):
 # recebendo os dias, navega pelo site e entra nos jogos
 
 
-def PuxaJogosDoDia(driver, listaDaData):
+def access_day_matches(listaDaData):
     # aqui é onde ce vai fazer os processo pesado. (no fim é onde tu vai chamar um monte de função)
     dia = listaDaData[0]
     mes = listaDaData[1]
@@ -69,7 +69,7 @@ def PuxaJogosDoDia(driver, listaDaData):
 # entra no box score e filtra pelo primeiro quarto
 
 
-def EntraNoBoxScore(driver, url, i):
+def access_box_score(driver, url, i):
 
     driver.get(url) if i > 0 else 0
     # entra no box-score do jogo
@@ -82,7 +82,7 @@ def EntraNoBoxScore(driver, url, i):
 
 
 # Retorna quantas partidas o site tem do dia escolhido
-def ContadorDePartidas(driver):
+def get_match_amount(driver):
     element = driver.find_element_by_xpath(
         '//*[@id="content"]/div[3]')  # puxa a div que tem os jogos
     html_content = element.get_attribute('outerHTML')  # pega seu HTML
@@ -98,7 +98,7 @@ def ContadorDePartidas(driver):
 # coleta nome dos times e pega as trabelas
 
 
-def FazColeta(driver):
+def get_team_table_names(driver):
     tudo = '//*[@id="content"]'
     elementDeTudo = driver.find_element_by_xpath(tudo)
     html_contentDeTudo = elementDeTudo.get_attribute('outerHTML')
@@ -116,14 +116,14 @@ def FazColeta(driver):
 # pega os valores das tabelas
 
 
-def PegaComponente(tabela,  coletavel, nomeColetavel):
+def get_table_values(tabela,  coletavel, nomeColetavel):
     componente = tabela.find_all("td", {"data-stat": coletavel})[0]
     valorColetado = componente.get_text()
     print(f'{nomeColetavel}: {valorColetado}')
 
 
 # função de teste
-def TestaBissexto():
+def leap_year_test():
     for ano in range(2000):
         # calcula se é ano bissexto
         trueAno = ano
