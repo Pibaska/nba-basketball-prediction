@@ -6,37 +6,38 @@ def activate_web_scraping():
     driver = ws_functions.setup_firefox_driver(False)
 
     # cria uma lista de listas de datas ex: [[dia,mes,ano],[dia,mes,ano],[dia,mes,ano],...]]
-    listaDasDatas = ws_functions.generate_date_list()
+    date_list = ws_functions.generate_date_list()
 
     # para cada dia da lista de datas, busca as informações dos jogos que tiveram
-    for listaDaData in listaDasDatas:
-        url = ws_functions.generate_day_url(driver, listaDaData)
+    for date in date_list:
+        date_url = ws_functions.generate_day_url(driver, date)
 
-        driver.get(url)
+        driver.get(date_url)
         print('---------D-I-A---------')
-        print(f'{listaDaData[0]}/{listaDaData[1]}/{listaDaData[2]}')
+        print(f'{date[0]}/{date[1]}/{date[2]}')
 
-        qtdJogos = ws_functions.get_match_amount(driver)
-        print(f'Partidas: {qtdJogos}')
+        match_amount = ws_functions.get_match_amount(driver)
+        print(f'Partidas: {match_amount}')
 
-        for i in range(qtdJogos):
-            ws_functions.access_1q_in_box_score(driver, url, i)
-            nomes, tabelasDosTimes = ws_functions.get_team_table_names(driver)
+        for item in range(match_amount):
+            ws_functions.access_1q_in_box_score(driver, date_url, item)
+            team_names, team_tables = ws_functions.get_team_table_names(driver)
 
-            itensParaColetar = ['pts', 'fg', 'fg3']
-            nomeItensParaColetar = ['Pontos',
-                                    'De 2  ',
-                                    'De 3  ']
+            id_items_to_collect = ['pts', 'fg', 'fg3']
+            names_items_to_collect = ['Pontos',
+                                      'De 2  ',
+                                      'De 3  ']
             print('--partida--')
-            for x in range(2):
-                local = 'casa' if not x else 'fora'
-                nome = nomes[x].get_text()
 
-                print(f'{local} - {nome}')
+            for i in range(2):
+                team_location = 'casa' if not i else 'fora'
+                team_name = team_names[i].get_text()
 
-                for i in range(len(itensParaColetar)):
+                print(f'{team_location} - {team_name}')
+
+                for item in range(len(id_items_to_collect)):
                     ws_functions.get_table_values(
-                        tabelasDosTimes[x],  itensParaColetar[i], nomeItensParaColetar[i])  # casa
+                        team_tables[i],  id_items_to_collect[item], names_items_to_collect[item])  # casa
 
                 print('-')
 
