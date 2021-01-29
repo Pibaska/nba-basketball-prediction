@@ -34,24 +34,28 @@ def setup_firefox_driver(show_scraping_window: bool):
 
 
 def generate_date_list():
-    listaDaData = []
-    listaDasDatas = []
-    for ano in range(20):
-        # calcula se é ano bissexto
-        trueAno = 2000 + ano
-        bissexto = 1 if (trueAno % 4 == 0 and (trueAno %
-                                               400 == 0 or trueAno % 100 != 0)) else 0  # opeador ternário
+    formatted_date = []
+    formatted_date_list = []
+    for year_increment in range(20):
+        year = 2000 + year_increment
+        is_leap_year = check_for_leap_year(year)
 
-        for mes in range(12):
-            rangeDias = diasNosMeses[mes]
+        for month in range(12):
+            day_range = diasNosMeses[month]
 
-            rangeDias += bissexto if (rangeDias == 28) else 0
+            day_range += is_leap_year if (day_range == 28) else 0
 
-            for dia in range(rangeDias):
-                listaDaData = [dia+1, mes+1, trueAno]
-                listaDasDatas.append(listaDaData)
+            for day in range(day_range):
+                formatted_date = [day+1, month+1, year]
+                formatted_date_list.append(formatted_date)
 
-    return listaDasDatas
+    return formatted_date_list
+
+
+def check_for_leap_year(year):
+    is_leap_year = 1 if (year % 4 == 0 and (
+        year % 400 == 0 or year % 100 != 0)) else 0
+    return is_leap_year
 
 # recebendo os dias, navega pelo site e entra nos jogos
 
@@ -120,15 +124,6 @@ def get_table_values(tabela,  coletavel, nomeColetavel):
     componente = tabela.find_all("td", {"data-stat": coletavel})[0]
     valorColetado = componente.get_text()
     print(f'{nomeColetavel}: {valorColetado}')
-
-
-# função de teste
-def leap_year_test():
-    for ano in range(2000):
-        # calcula se é ano bissexto
-        trueAno = ano
-        if (trueAno % 4 == 0 and (trueAno % 400 == 0 or trueAno % 100 != 0)):
-            print(trueAno)
 
 
 if __name__ == "__main__":
