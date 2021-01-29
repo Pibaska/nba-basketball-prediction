@@ -10,7 +10,7 @@ def activate_web_scraping():
 
     # para cada dia da lista de datas, busca as informações dos jogos que tiveram
     for listaDaData in listaDasDatas:
-        url = ws_functions.access_matches(driver, listaDaData)
+        url = ws_functions.generate_day_url(driver, listaDaData)
 
         driver.get(url)
         print('---------D-I-A---------')

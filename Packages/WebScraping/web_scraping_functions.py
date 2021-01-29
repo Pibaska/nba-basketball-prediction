@@ -4,7 +4,6 @@
 #        https://github.com/mozilla/geckodriver/releases
 # baixe o firefox
 # -------------------------------------------------------------------------
-# berb esteve aqui
 
 import time
 import pandas as pd
@@ -15,16 +14,19 @@ import json
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
-
-# url = "https://www.basketball-reference.com/boxscores/?month=5&day=4&year=2020" #url da tela de partidas
-# nomeArquivo =  "partidas" #arquivo .json
-# nomeDicionarioAno = "partidas_x" #nome que vai se alterar por dia
-# nomeDicionarioDia = "partidas_x/x/x" #nome que vai se alterar por dia
-dicionario = {}
 diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 
 def setup_firefox_driver(show_scraping_window: bool):
+    """Faz a configuração inicial do webdriver do firefox. Rodar essa função primeiro.
+
+    Args:
+        show_scraping_window (bool): Define se a janela vai ser mostrada durante o web scraping ou não
+
+    Returns:
+        webdriver: O driver do firefox configurado e pronto para procurar elementos em sites
+    """
+
     binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
     option = Options()
     option.headless = show_scraping_window
@@ -34,6 +36,11 @@ def setup_firefox_driver(show_scraping_window: bool):
 
 
 def generate_date_list():
+    """Gera uma lista de datas no formato [dia, mês, ano]
+
+    Returns:
+        list: A lista de datas formatadas como listas
+    """
     formatted_date = []
     formatted_date_list = []
     for year_increment in range(20):
@@ -53,23 +60,46 @@ def generate_date_list():
 
 
 def check_for_leap_year(year):
+    """Recebe um ano e diz se ele é bissexto
+
+    Args:
+        year (int): O ano a ser checado
+
+    Returns:
+        bool: True se o ano do input for bissexto
+    """
+
     is_leap_year = 1 if (year % 4 == 0 and (
         year % 400 == 0 or year % 100 != 0)) else 0
     return is_leap_year
 
 
-def access_matches(formatted_date):
+def generate_day_url(formatted_date):
+    """Gera o URL para pegar os dados de partidas de determinado dia
+
+    Args:
+        formatted_date (list): A data desejada no formato de lista [dia, mês, ano]
+
+    Returns:
+        str: A URL gerada a partir da data do input
+    """
+
     day = formatted_date[0]
     month = formatted_date[1]
     year = formatted_date[2]
     url = f"https://www.basketball-reference.com/boxscores/?month={month}&day={day}&year={year}"
 
-    return(url)
-
-# entra no box score e filtra pelo primeiro quarto
+    return url
 
 
 def access_1q_in_box_score(driver, url, i):
+    """Entra no box score e filtra pelo primeiro quarto
+
+    Args:
+        driver (webdriver): Driver que vai acessar as URLs
+        url (str): Endereço da página a ser acessada
+        i (int): ???
+    """
 
     driver.get(url) if i > 0 else 0
     # entra no box-score do jogo
@@ -81,8 +111,16 @@ def access_1q_in_box_score(driver, url, i):
         f'//*[@id="content"]/div[6]/div[2]/a').click()
 
 
-# Retorna quantas partidas o site tem do dia escolhido
 def get_match_amount(driver):
+    """Retorna quantas partidas o site tem do dia escolhido
+
+    Args:
+        driver (webdriver): Driver que vai encontrar os elemtnos da página
+
+    Returns:
+        int: Quantidade de jogos disponíveis no dia escolhido
+    """
+
     element = driver.find_element_by_xpath(
         '//*[@id="content"]/div[3]')  # puxa a div que tem os jogos
 
@@ -98,10 +136,19 @@ def get_match_amount(driver):
 
     return match_amount
 
-# coleta nome dos times e pega as tabelas
+#
 
 
 def get_team_table_names(driver):
+    """Coleta nome dos times e pega as tabelas
+
+    Args:
+        driver (webdriver): Driver que vai achar as tabelas
+
+    Returns:
+        list, list: Os nomes dos times e os nomes das tabelas correspondentes
+    """
+
     page_content = '//*[@id="content"]'
     content_element = driver.find_element_by_xpath(page_content)
     content_html = content_element.get_attribute('outerHTML')
@@ -116,10 +163,16 @@ def get_team_table_names(driver):
 
     return team_names, team_tables
 
-# pega os valores das tabelas
-
 
 def get_table_values(table,  collectable_value, value_name):
+    """Pega os valores das tabelas
+
+    Args:
+        table (?): Tabela da qual os valores vão ser extraídos
+        collectable_value (str): Como o valor a ser coletado é chamado dentro da tabela
+        value_name (str): Nome pro valor depois que ele for coletado
+    """
+
     table_component = table.find_all("td", {"data-stat": collectable_value})[0]
     collected_value = table_component.get_text()
     print(f'{value_name}: {collected_value}')
