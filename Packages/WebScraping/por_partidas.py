@@ -1,7 +1,7 @@
 
 # Para rodar esse script: -------------------------------------------------------
 # baixe geckodriver e o coloque em " C:\\Geckodriver\\geckodriver.exe "
-#        https://github.com/mozilla/geckodriver/releases  
+#        https://github.com/mozilla/geckodriver/releases
 # baixe o firefox
 # -------------------------------------------------------------------------
 # berb esteve aqui
@@ -23,13 +23,15 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 dicionario = {}
 diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
+
 def SetupDriver(mostra):
     binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
     option = Options()
     option.headless = mostra
     driver = webdriver.Firefox(
-        firefox_binary=binary, executable_path=r'C:\\Geckodriver\\geckodriver.exe', options=option) #https://github.com/mozilla/geckodriver/releases <- baixe de acordo
-    return driver    
+        firefox_binary=binary, executable_path=r'C:\\Geckodriver\\geckodriver.exe', options=option)  # https://github.com/mozilla/geckodriver/releases <- baixe de acordo
+    return driver
+
 
 def TodoDia(driver):
     listaDaData = []
@@ -38,7 +40,7 @@ def TodoDia(driver):
         # calcula se é ano bissexto
         trueAno = 2000 + ano
         bissexto = 1 if (trueAno % 4 == 0 and (trueAno %
-                                            400 == 0 or trueAno % 100 != 0)) else 0  # opeador ternário
+                                               400 == 0 or trueAno % 100 != 0)) else 0  # opeador ternário
 
         for mes in range(12):
             rangeDias = diasNosMeses[mes]
@@ -49,21 +51,25 @@ def TodoDia(driver):
                 listaDaData = [dia+1, mes+1, trueAno]
                 listaDasDatas.append(listaDaData)
 
-    return listaDasDatas      
+    return listaDasDatas
 
-#recebendo os dias, navega pelo site e entra nos jogos
+# recebendo os dias, navega pelo site e entra nos jogos
+
+
 def PuxaJogosDoDia(driver, listaDaData):
     # aqui é onde ce vai fazer os processo pesado. (no fim é onde tu vai chamar um monte de função)
     dia = listaDaData[0]
     mes = listaDaData[1]
     ano = listaDaData[2]
     # cria e chama a url
-    url = f"https://www.basketball-reference.com/boxscores/?month={mes}&day={dia}&year={ano}"   
+    url = f"https://www.basketball-reference.com/boxscores/?month={mes}&day={dia}&year={ano}"
 
     return(url)
 
 # entra no box score e filtra pelo primeiro quarto
-def EntraNoBoxScore(driver, url, i):  
+
+
+def EntraNoBoxScore(driver, url, i):
 
     driver.get(url) if i > 0 else 0
     # entra no box-score do jogo
@@ -73,7 +79,6 @@ def EntraNoBoxScore(driver, url, i):
     # Para apresentar apenas 1°quarto
     driver.find_element_by_xpath(
         f'//*[@id="content"]/div[6]/div[2]/a').click()
-
 
 
 # Retorna quantas partidas o site tem do dia escolhido
@@ -90,7 +95,9 @@ def ContadorDePartidas(driver):
 
     return qtd
 
-#coleta nome dos times e pega as trabelas
+# coleta nome dos times e pega as trabelas
+
+
 def FazColeta(driver):
     tudo = '//*[@id="content"]'
     elementDeTudo = driver.find_element_by_xpath(tudo)
@@ -98,7 +105,7 @@ def FazColeta(driver):
     sopaDeTudo = BeautifulSoup(html_contentDeTudo, 'html.parser')
 
     tabelasTodas = sopaDeTudo.find_all(
-        "table", {"class": "sortable stats_table now_sortable"}) 
+        "table", {"class": "sortable stats_table now_sortable"})
     tabelasDosTimes = [tabelasTodas[0], tabelasTodas[2]]
 
     caixaTimesNomes = sopaDeTudo.find("div", {"class": "scorebox"})
@@ -106,16 +113,16 @@ def FazColeta(driver):
 
     return nomes, tabelasDosTimes
 
-#pega os valores das tabelas
+# pega os valores das tabelas
+
+
 def PegaComponente(tabela,  coletavel, nomeColetavel):
     componente = tabela.find_all("td", {"data-stat": coletavel})[0]
     valorColetado = componente.get_text()
     print(f'{nomeColetavel}: {valorColetado}')
 
 
-
-
-#função de teste
+# função de teste
 def TestaBissexto():
     for ano in range(2000):
         # calcula se é ano bissexto
@@ -124,11 +131,9 @@ def TestaBissexto():
             print(trueAno)
 
 
-
-print(20*'~~')
-print(20*'~~')
-print("Talvez modulo errado, de play no 'main.py'")
-print(20*'~~')
-print(20*'~~')
-
-
+if __name__ == "__main__":
+    print(20*'~~')
+    print(20*'~~')
+    print("Talvez modulo errado, de play no 'mainWS.py'")
+    print(20*'~~')
+    print(20*'~~')
