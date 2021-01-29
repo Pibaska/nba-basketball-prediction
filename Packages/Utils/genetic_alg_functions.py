@@ -1,5 +1,4 @@
 import random
-# Esse import precisa mudar se esse código for chamado pelo main
 import Packages.Utils.genetic_alg_fake_data
 
 
