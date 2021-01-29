@@ -10,7 +10,7 @@ def activate_web_scraping():
 
     # para cada dia da lista de datas, busca as informações dos jogos que tiveram
     for listaDaData in listaDasDatas:
-        url = ws_functions.access_day_matches(driver, listaDaData)
+        url = ws_functions.access_matches(driver, listaDaData)
 
         driver.get(url)
         print('---------D-I-A---------')
@@ -20,7 +20,7 @@ def activate_web_scraping():
         print(f'Partidas: {qtdJogos}')
 
         for i in range(qtdJogos):
-            ws_functions.access_box_score(driver, url, i)
+            ws_functions.access_1q_in_box_score(driver, url, i)
             nomes, tabelasDosTimes = ws_functions.get_team_table_names(driver)
 
             itensParaColetar = ['pts', 'fg', 'fg3']

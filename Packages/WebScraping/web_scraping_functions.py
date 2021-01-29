@@ -57,23 +57,19 @@ def check_for_leap_year(year):
         year % 400 == 0 or year % 100 != 0)) else 0
     return is_leap_year
 
-# recebendo os dias, navega pelo site e entra nos jogos
 
-
-def access_day_matches(listaDaData):
-    # aqui é onde ce vai fazer os processo pesado. (no fim é onde tu vai chamar um monte de função)
-    dia = listaDaData[0]
-    mes = listaDaData[1]
-    ano = listaDaData[2]
-    # cria e chama a url
-    url = f"https://www.basketball-reference.com/boxscores/?month={mes}&day={dia}&year={ano}"
+def access_matches(formatted_date):
+    day = formatted_date[0]
+    month = formatted_date[1]
+    year = formatted_date[2]
+    url = f"https://www.basketball-reference.com/boxscores/?month={month}&day={day}&year={year}"
 
     return(url)
 
 # entra no box score e filtra pelo primeiro quarto
 
 
-def access_box_score(driver, url, i):
+def access_1q_in_box_score(driver, url, i):
 
     driver.get(url) if i > 0 else 0
     # entra no box-score do jogo
@@ -89,46 +85,49 @@ def access_box_score(driver, url, i):
 def get_match_amount(driver):
     element = driver.find_element_by_xpath(
         '//*[@id="content"]/div[3]')  # puxa a div que tem os jogos
+
     html_content = element.get_attribute('outerHTML')  # pega seu HTML
+
     # Transforma em algo facil de mexer
-    soup = BeautifulSoup(html_content, 'html.parser')
+    parsed_div = BeautifulSoup(html_content, 'html.parser')
 
     # pega só divs que tenham tal classe
-    Partidas = soup.find_all("div", {"class": "game_summary expanded nohover"})
-    qtd = len(Partidas)  # Vê quantas achou
+    match_list = parsed_div.find_all(
+        "div", {"class": "game_summary expanded nohover"})
+    match_amount = len(match_list)  # Vê quantas achou
 
-    return qtd
+    return match_amount
 
-# coleta nome dos times e pega as trabelas
+# coleta nome dos times e pega as tabelas
 
 
 def get_team_table_names(driver):
-    tudo = '//*[@id="content"]'
-    elementDeTudo = driver.find_element_by_xpath(tudo)
-    html_contentDeTudo = elementDeTudo.get_attribute('outerHTML')
-    sopaDeTudo = BeautifulSoup(html_contentDeTudo, 'html.parser')
+    page_content = '//*[@id="content"]'
+    content_element = driver.find_element_by_xpath(page_content)
+    content_html = content_element.get_attribute('outerHTML')
+    parsed_content = BeautifulSoup(content_html, 'html.parser')
 
-    tabelasTodas = sopaDeTudo.find_all(
+    content_tables = parsed_content.find_all(
         "table", {"class": "sortable stats_table now_sortable"})
-    tabelasDosTimes = [tabelasTodas[0], tabelasTodas[2]]
+    team_tables = [content_tables[0], content_tables[2]]
 
-    caixaTimesNomes = sopaDeTudo.find("div", {"class": "scorebox"})
-    nomes = caixaTimesNomes.find_all("a", {"itemprop": "name"})
+    team_name_scorebox = parsed_content.find("div", {"class": "scorebox"})
+    team_names = team_name_scorebox.find_all("a", {"itemprop": "name"})
 
-    return nomes, tabelasDosTimes
+    return team_names, team_tables
 
 # pega os valores das tabelas
 
 
-def get_table_values(tabela,  coletavel, nomeColetavel):
-    componente = tabela.find_all("td", {"data-stat": coletavel})[0]
-    valorColetado = componente.get_text()
-    print(f'{nomeColetavel}: {valorColetado}')
+def get_table_values(table,  collectable_value, value_name):
+    table_component = table.find_all("td", {"data-stat": collectable_value})[0]
+    collected_value = table_component.get_text()
+    print(f'{value_name}: {collected_value}')
 
 
 if __name__ == "__main__":
     print(20*'~~')
     print(20*'~~')
-    print("Talvez modulo errado, de play no 'mainWS.py'")
+    print("Talvez modulo errado, de play no 'web_scraping_main.py'")
     print(20*'~~')
     print(20*'~~')
