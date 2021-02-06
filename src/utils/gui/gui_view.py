@@ -1,9 +1,13 @@
 import sys
 import os
+from pathlib import Path
+from os.path import join
+
+
 
 # Esse import vai ter que ser mudado quando esse script for ligado no main
-import Packages.GUI.gui_fake_data as fake_data
-import Packages.GUI.gui_controller as controller
+import utils.gui.gui_fake_data as fake_data
+import utils.gui.gui_controller as controller
 
 from PyQt5.QtWidgets import QApplication, QComboBox, QGridLayout, QLineEdit, QMainWindow, QFrame
 from PyQt5.QtWidgets import QPushButton
@@ -21,7 +25,7 @@ class BasketballPredictionView(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        with open(os.path.join(__file__, "..", "basketballview.css"), "r") as reader:
+        with open(join(Path(__file__).resolve().parent, "basketballview.css"), "r") as reader:
             self.stylesheet = reader.read()
 
         self.setWindowTitle('Basketball Prediction - Protótipo')

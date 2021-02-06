@@ -1,5 +1,5 @@
 import random
-import Packages.Utils.genetic_alg_fake_data
+import core.genetic_alg_fake_data
 
 
 class GeneticAlgorithm:

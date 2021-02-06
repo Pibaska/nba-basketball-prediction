@@ -2,9 +2,9 @@
 # esse arquivo existe pra garantir a flexibilidade da interface
 # edit: talvez a gente tenha que manter hein
 
-from Packages.Utils.genetic_alg_functions import GeneticAlgorithm
-from Packages.Utils.genetic_alg_fake_data import match_database
-from Packages.WebScraping.web_scraping_main import activate_web_scraping
+from core.genetic_alg_functions import GeneticAlgorithm
+from core.genetic_alg_fake_data import match_database
+from web.web_scraping_main import activate_web_scraping
 
 
 def predict_score(view):

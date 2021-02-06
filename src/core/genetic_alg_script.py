@@ -3,7 +3,7 @@ Esse arquivo não vai mais ser útil porque a funcionalidade dele foi refatorada
 para a classe GeneticAlgorithm dentro da genetic_alg_functions.py
 """
 
-from Packages.Utils.genetic_alg_functions import GeneticAlgorithm
+from core.genetic_alg_functions import GeneticAlgorithm
 
 GeneticUtils = GeneticAlgorithm(input('Digite um modelo: '), 3)
 
