@@ -6,8 +6,8 @@ from os.path import join
 
 
 # Esse import vai ter que ser mudado quando esse script for ligado no main
-import utils.gui.gui_fake_data as fake_data
-import utils.gui.gui_controller as controller
+import gui.gui_fake_data as fake_data
+import gui.gui_controller as controller
 
 from PyQt5.QtWidgets import QApplication, QComboBox, QGridLayout, QLineEdit, QMainWindow, QFrame
 from PyQt5.QtWidgets import QPushButton
