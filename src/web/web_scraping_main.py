@@ -1,4 +1,4 @@
-import Packages.WebScraping.web_scraping_functions as ws_functions
+import web.web_scraping_functions as ws_functions
 
 
 def activate_web_scraping():
