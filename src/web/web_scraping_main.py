@@ -34,8 +34,10 @@ def activate_web_scraping():
                 print(f'{team_location} - {team_name}')
 
                 for item in range(len(id_items_to_collect)):
-                    ws_functions.get_table_values(
-                        team_tables[i],  id_items_to_collect[item], names_items_to_collect[item])  # casa
+                    collected_value = ws_functions.get_table_values(
+                        team_tables[i],  id_items_to_collect[item])  # casa
+
+                    print(f'{names_items_to_collect[item]}: {collected_value}')
 
                 print('-')
 

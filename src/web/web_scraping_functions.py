@@ -164,7 +164,7 @@ def get_team_table_names(driver):
     return team_names, team_tables
 
 
-def get_table_values(table,  collectable_value, value_name):
+def get_table_values(table,  collectable_value):
     """Pega os valores das tabelas
 
     Args:
@@ -175,7 +175,7 @@ def get_table_values(table,  collectable_value, value_name):
 
     table_component = table.find_all("td", {"data-stat": collectable_value})[0]
     collected_value = table_component.get_text()
-    print(f'{value_name}: {collected_value}')
+    return collected_value
 
 
 if __name__ == "__main__":
