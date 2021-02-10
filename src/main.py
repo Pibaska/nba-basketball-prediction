@@ -2,8 +2,8 @@ import sys
 
 from PyQt5.QtWidgets import QApplication
 
-from utils.gui.gui_controller import BasketballPredictionController
-from utils.gui.gui_view import BasketballPredictionView
+from gui.gui_controller import BasketballPredictionController
+from gui.gui_view import BasketballPredictionView
 
 
 
