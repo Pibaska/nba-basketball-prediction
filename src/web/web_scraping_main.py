@@ -9,7 +9,8 @@ else:
 
 id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg_pct', 'ft', 'fta', 'ft_pct', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 'tov', 'pf', 'pts']
 names_items_to_collect = ['minutes_played',	'field_goals',	'field_goal_attempts',	'field_goal_percentage',	'3point_field_goals',	'3point_field_goal_attempts',	'3point_field_goals_percentage',	'free_throws',	'free_throw_attempts',	'free_throw_percentage',	'offensive_rebounds',	'defensive_rebounds',	'total_rebounds',	'assists',	'steals',	'blocks',	'turnover', 'personal_faults',	'points'	]
-
+lista = []
+data_game = []
 
 def activate_web_scraping():
     # prepara o driver
@@ -23,6 +24,7 @@ def activate_web_scraping():
         date_url = ws_functions.generate_day_url( date)
 
         driver.get(date_url)
+
         print('---------D-I-A---------')
         print(f'{date[0]}/{date[1]}/{date[2]}')
 
@@ -45,15 +47,24 @@ def activate_web_scraping():
                     collected_value = ws_functions.get_table_values(
                         team_tables[i],  id_items_to_collect[item])  # casa
 
-                    print(f'{names_items_to_collect[item]}: {collected_value}')
+                    #print(f'{names_items_to_collect[item]}: {collected_value}')   
 
-                '''
-                INSERT INTO filmes (' + names_items_to_collect[item] + ')
-                VALUES 
-                ('+collected_value+');
-                '''
+                    # vai adicionando os itens numa lista
+                    lista.append(collected_value)
+                            
+                # add na lista os: team_name e team_location 
+                lista.append(team_location)
+                lista.append(team_name)
 
+                # coloca a lista no "data" 
+                data_game.append(lista)
+                lista.clear()
+
+                print(data_game)
                 print('-')
+
+                        
+            # manda esse data pro banco (esse é uma linha completa da tabela) 
 
     driver.quit()
 
