@@ -6,7 +6,6 @@ from gui.gui_controller import BasketballPredictionController
 from gui.gui_view import BasketballPredictionView
 
 
-
 basketballGUI = QApplication(sys.argv)
 
 view = BasketballPredictionView()

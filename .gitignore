@@ -138,8 +138,5 @@ dmypy.json
 # Pycharm
 .idea
 
-<<<<<<< HEAD
 # Vscode
-=======
->>>>>>> GUI
 .vscode/
