@@ -1,4 +1,14 @@
-import web.web_scraping_functions as ws_functions
+
+if __name__ == "__main__": 
+    import web_scraping_functions as ws_functions
+else:
+    import web.web_scraping_functions as ws_functions
+
+
+
+
+id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg_pct', 'ft', 'fta', 'ft_pct', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 'tov', 'pf', 'pts']
+names_items_to_collect = ['minutes_played',	'field_goals',	'field_goal_attempts',	'field_goal_percentage',	'3point_field_goals',	'3point_field_goal_attempts',	'3point_field_goals_percentage',	'free_throws',	'free_throw_attempts',	'free_throw_percentage',	'offensive_rebounds',	'defensive_rebounds',	'total_rebounds',	'assists',	'steals',	'blocks',	'turnover', 'personal_faults',	'points'	]
 
 
 def activate_web_scraping():
@@ -23,8 +33,6 @@ def activate_web_scraping():
             ws_functions.access_1q_in_box_score(driver, date_url, item)
             team_names, team_tables = ws_functions.get_team_table_names(driver)
 
-            id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg_pct', 'ft', 'fta', 'ft_pct', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 'tov', 'pf', 'pts']
-            names_items_to_collect = ['minutes_played',	'field_goals',	'field_goal_attempts',	'field_goal_percentage',	'3point_field_goals',	'3point_field_goal_attempts',	'3point_field_goals_percentage',	'free_throws',	'free_throw_attempts',	'free_throw_percentage',	'offensive_rebounds',	'defensive_rebounds',	'total_rebounds',	'assists',	'steals',	'blocks',	'turnover', 'personal_faults',	'points'	]
             print('--partida--')
 
             for i in range(2):
@@ -39,6 +47,16 @@ def activate_web_scraping():
 
                     print(f'{names_items_to_collect[item]}: {collected_value}')
 
+                '''
+                INSERT INTO filmes (' + names_items_to_collect[item] + ')
+                VALUES 
+                ('+collected_value+');
+                '''
+
                 print('-')
 
     driver.quit()
+
+
+if __name__ == "__main__": 
+    activate_web_scraping()
