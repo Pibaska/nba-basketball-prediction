@@ -1,17 +1,19 @@
 import sqlite3
 
+
 def insert_team_participation_data(cursor, data):
-    cursor.executemany("INSERT INTO banana VALUES (?, ?)", data)    
+    cursor.executemany("INSERT INTO banana VALUES (?, ?)", data)
 
-def retrieve_team_participation_data(cursor, data_to_retrieve):
-    cursor.execute("SELECT :columns FROM banana", {"columns": data_to_retrieve})
 
-    row = cursor.fetchall()
-    for roww in row:
-        print(roww)
+def retrieve_team_participation_data(cursor):
+    cursor.execute("""SELECT * FROM banana""")
+
+    rows = cursor.fetchall()
+    return rows
+
 
 if __name__ == "__main__":
-    
+
     db = sqlite3.connect('data/database.sqlite3')
     cursor = db.cursor()
 
@@ -24,11 +26,10 @@ if __name__ == "__main__":
         );""")
 
         insert_team_participation_data(cursor, fake_team_data)
-        retrieve_team_participation_data(cursor, "numero, string")
+        print(retrieve_team_participation_data(cursor))
     except Exception as e:
         print(e)
         raise e
     finally:
         cursor.execute("DROP TABLE banana")
         db.close()
-
