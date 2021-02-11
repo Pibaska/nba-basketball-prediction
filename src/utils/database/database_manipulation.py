@@ -6,10 +6,13 @@ def insert_team_participation_data(cursor, data):
 
 
 def retrieve_team_participation_data(cursor):
-    cursor.execute("""SELECT * FROM banana""")
+    cursor.execute("""SELECT * FROM team_participation""")
 
     rows = cursor.fetchall()
     return rows
+
+def retrieve_match_data(cursor):
+    cursor.execute("""SELECT * FROM match""")
 
 
 if __name__ == "__main__":
@@ -27,6 +30,7 @@ if __name__ == "__main__":
 
         insert_team_participation_data(cursor, fake_team_data)
         print(retrieve_team_participation_data(cursor))
+        pass
     except Exception as e:
         print(e)
         raise e

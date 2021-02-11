@@ -1,5 +1,6 @@
 import sqlite3
 
+
 def create_database(cursor):
     '''
 Criar tabelas no banco de dados
@@ -51,8 +52,8 @@ Output:
 
 
 if __name__ == "__main__":
-    
+
     db = sqlite3.connect('data/database.sqlite3')
     cursor = db.cursor()
-    
+
     create_database(cursor)
