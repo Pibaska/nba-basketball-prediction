@@ -35,7 +35,8 @@ Output:
         personal_faults INTEGER,
         points INTEGER,
         mat_count_by_team INTEGER,
-        won BIT
+        won BIT,
+        team_is_home BIT
     );              
     CREATE TABLE match(
         mat_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
