@@ -28,7 +28,24 @@ def insert_team_participation_data(cursor, team_data):
         mat_count_by_team,
         won,
         team_is_home,
-        fk_match) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", team_data)
+        fk_match
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", team_data)
+
+
+def insert_match_data(cursor, match_data):
+    try:
+        cursor.executemany("""
+            INSERT INTO match_data (
+                fk_team_home,
+                fk_team_away,
+                date,
+                count
+            ) VALUES (?, ?, ?, ?);
+        """, match_data)
+        print("Match data inserted successfully!")
+    except Exception as exception:
+        print(exception)
+        raise exception
 
 
 def retrieve_team_participation_data(cursor, fk_match, team_is_home):
@@ -54,9 +71,10 @@ if __name__ == "__main__":
 
     fake_team_data = [('Magic', 'Orlando 2', '39:56', 7, 20, 0.350, 0,
                        0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 0, 1, 1)]
+    fake_match_data = [(2, 1, '31-12-2018', 1)]
 
     try:
-        insert_team_participation_data(cursor, fake_team_data)
+        insert_match_data(cursor, fake_match_data)
         check_tables(cursor)
     except Exception as e:
         print(e)
