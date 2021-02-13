@@ -49,12 +49,14 @@ def insert_match_data(cursor, match_data):
 
 
 def retrieve_team_participation_data(cursor, fk_match, team_is_home):
-    return cursor.execute(
+    cursor.execute(
         """SELECT * FROM team_participation WHERE fk_match = ? AND team_is_home = ?""", (fk_match, team_is_home))
+    return(cursor.fetchall())
 
 
 def retrieve_match_data(cursor, match_id):
-    return cursor.execute("""SELECT * FROM match WHERE id = ?""", match_id)
+    cursor.execute("""SELECT * FROM match_data WHERE id = ?""", match_id)
+    return(cursor.fetchall())
 
 
 def check_tables(cursor):
@@ -74,8 +76,7 @@ if __name__ == "__main__":
     fake_match_data = [(2, 1, '31-12-2018', 1)]
 
     try:
-        insert_team_participation_data(cursor, fake_team_data)
-        check_tables(cursor)
+        print(retrieve_match_data(cursor, (1,)))
         db_connection.commit()
     except Exception as e:
         print(e)
