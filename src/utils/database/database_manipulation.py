@@ -66,18 +66,19 @@ def check_tables(cursor):
 
 if __name__ == "__main__":
 
-    db = sqlite3.connect('data/database.sqlite3')
-    cursor = db.cursor()
+    db_connection = sqlite3.connect('data/database.sqlite3')
+    cursor = db_connection.cursor()
 
     fake_team_data = [('Magic', 'Orlando 2', '39:56', 7, 20, 0.350, 0,
-                       0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 0, 1, 1)]
+                       0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 1, 0, 1)]
     fake_match_data = [(2, 1, '31-12-2018', 1)]
 
     try:
-        insert_match_data(cursor, fake_match_data)
+        insert_team_participation_data(cursor, fake_team_data)
         check_tables(cursor)
+        db_connection.commit()
     except Exception as e:
         print(e)
         raise e
     finally:
-        db.close()
+        db_connection.close()

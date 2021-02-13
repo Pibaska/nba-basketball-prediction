@@ -63,13 +63,14 @@ def drop_tables(cursor):
 
 if __name__ == "__main__":
 
-    db = sqlite3.connect('data/database.sqlite3')
-    cursor = db.cursor()
+    db_connection = sqlite3.connect('data/database.sqlite3')
+    cursor = db_connection.cursor()
 
     try:
         create_database(cursor)
+        db_connection.commit()
     except Exception as exception:
         print(exception)
         raise(exception)
     finally:
-        db.close()
+        db_connection.close()
