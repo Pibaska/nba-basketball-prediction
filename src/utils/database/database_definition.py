@@ -16,7 +16,7 @@ Output:
     CREATE TABLE IF NOT EXISTS team_participation (
         id INTEGER NOT NULL PRIMARY KEY,
         team_name VARCHAR(50),
-        team_location VARCHAR(50),
+        team_is_home BIT NOT NULL,
         minutes_played VARCHAR(10) NOT NULL,
         field_goals INTEGER NOT NULL,
         field_goals_attempts INTEGER NOT NULL,
@@ -38,7 +38,6 @@ Output:
         points INTEGER NOT NULL,
         mat_count_by_team INTEGER NOT NULL,
         won BIT NOT NULL,
-        team_is_home BIT NOT NULL,
         fk_match INTEGER NOT NULL,
         FOREIGN KEY (fk_match) REFERENCES match_data (id)
     );
@@ -63,10 +62,12 @@ def drop_tables(cursor):
 
 if __name__ == "__main__":
 
+
     db_connection = sqlite3.connect('data/database.sqlite3')
     cursor = db_connection.cursor()
 
     try:
+        drop_tables(cursor)
         create_database(cursor)
         db_connection.commit()
     except Exception as exception:

@@ -1,11 +1,22 @@
 import sqlite3
 
 
+def open_db():
+
+    db_connection = sqlite3.connect('data/database.sqlite3')
+    cursor = db_connection.cursor()
+
+    return db_connection, cursor
+
+def close_db(db_connection):
+    db_connection.close()
+
 def insert_team_participation_data(cursor, team_data):
+
     cursor.executemany("""
     INSERT INTO team_participation (
         team_name,
-        team_location,
+        team_is_home,
         minutes_played,
         field_goals,
         field_goals_attempts,
@@ -27,9 +38,8 @@ def insert_team_participation_data(cursor, team_data):
         points,
         mat_count_by_team,
         won,
-        team_is_home,
         fk_match
-    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", team_data)
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", team_data)
 
 
 def insert_match_data(cursor, match_data):
@@ -76,7 +86,8 @@ if __name__ == "__main__":
     fake_match_data = [(2, 1, '31-12-2018', 1)]
 
     try:
-        print(retrieve_match_data(cursor, (1,)))
+        check_tables(cursor)
+        
         db_connection.commit()
     except Exception as e:
         print(e)
