@@ -52,7 +52,7 @@ def activate_web_scraping():
                     collected_value = ws_functions.get_table_values(
                         team_tables[i],  id_items_to_collect[item])  # casa
 
-                    #print(f'{names_items_to_collect[item]}: {collected_value}')
+                    # print(f'{names_items_to_collect[item]}: {collected_value}')
 
                     # vai adicionando os itens numa lista
                     lista.append(collected_value)
@@ -75,37 +75,33 @@ def activate_web_scraping():
 
 
 def formatting_data(game_data):
-    i = 0
+    is_team_home = False
     # função que passa em todos de todos
-    for game_index in range(len(game_data)):
-        i += 1
+    for team_part_index in range(len(game_data)):
+        is_team_home = not is_team_home
 
         # alguns valores não precisam passar para VARCHAR porque já vêm como string
         decimal_indexes = [5, 8, 11]
         integer_indexes = [1, 3, 4, 6, 7, 9, 10,
                            12, 13, 14, 15, 16, 17, 18, 19, 20]
 
-        for i in decimal_indexes:
-            game_data[game_index][i] = float(game_data[game_index][i])
-        for i in integer_indexes:
-            game_data[game_index][i] = int(float(game_data[game_index][i]))
+        for is_team_home in decimal_indexes:
+            game_data[team_part_index][is_team_home] = float(
+                game_data[team_part_index][is_team_home])
+        for is_team_home in integer_indexes:
+            game_data[team_part_index][is_team_home] = int(
+                float(game_data[team_part_index][is_team_home]))
 
-            game_data[game_index].append(42)  # mat_count_by_team INTEGER
+        game_data[team_part_index].append(42)  # mat_count_by_team INTEGER
 
-        # Verifica qual time ganhou
-        if i == 1:
-            # Verifica quem ganhou quando o time atual é o de casa
-            game_data[game_index].append(int(int(game_data[game_index][20]) > int(
-                game_data[game_index+1][20])))
-        else:
-            # Verifica quem ganhou quando o time atual é o de fora
-            game_data[game_index].append(
-                int(int(game_data[game_index][20]) > int(game_data[game_index-1][20])))
+        other_team_index = team_part_index+1 if is_team_home else team_part_index - 1
 
-        if i == 2:
-            i = 0
+        is_current_team_winner = int(game_data[team_part_index][20]) > int(
+            game_data[other_team_index][20])
 
-        game_data[game_index].append(1)  # fk_match INTEGER
+        game_data[team_part_index].append(int(is_current_team_winner))
+
+        game_data[team_part_index].append(1)  # fk_match INTEGER
 
     print(game_data)
 
