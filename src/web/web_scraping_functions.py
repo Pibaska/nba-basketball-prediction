@@ -110,7 +110,6 @@ def access_1q_in_box_score(driver, url, i):
     driver.find_element_by_xpath(
         f'//*[@id="content"]/div[6]/div[2]/a').click()
 
-
 def get_match_amount(driver):
     """Retorna quantas partidas o site tem do dia escolhido
 
@@ -154,12 +153,21 @@ def get_team_table_names(driver):
     content_html = content_element.get_attribute('outerHTML')
     parsed_content = BeautifulSoup(content_html, 'html.parser')
 
-    content_tables = parsed_content.find_all(
-        "table", {"class": "sortable stats_table now_sortable"})
-    team_tables = [content_tables[0], content_tables[2]]
 
     team_name_scorebox = parsed_content.find("div", {"class": "scorebox"})
     team_names = team_name_scorebox.find_all("a", {"itemprop": "name"})
+
+    team_tables = ['1', '2']
+    for i in range(2):
+        table_content_xpath = '//*[@id="box-' + abbreviations[team_names[i].get_text()] + '-q1-basic"]' 
+        table_content_element = driver.find_element_by_xpath(table_content_xpath)
+        table_content_html = table_content_element.get_attribute('outerHTML')
+        table_parsed_content = BeautifulSoup(table_content_html, 'html.parser')
+
+        content_table = table_parsed_content
+
+        team_tables[i] = content_table
+
 
     return team_names, team_tables
 
@@ -172,9 +180,10 @@ def get_table_values(table,  collectable_value):
         collectable_value (str): Como o valor a ser coletado é chamado dentro da tabela
         value_name (str): Nome pro valor depois que ele for coletado
     """
-
-    table_component = table.find_all("td", {"data-stat": collectable_value})[0]
-    collected_value = table_component.get_text()
+#//*[@id="box-ORL-q1-basic"]/tfoot/tr
+    foot_component = table.find("tfoot")
+    td_component = foot_component.find_all("td", {"data-stat": collectable_value})[0]
+    collected_value = td_component.get_text()
     return collected_value
 
 
@@ -184,3 +193,38 @@ if __name__ == "__main__":
     print("Talvez modulo errado, de play no 'web_scraping_main.py'")
     print(20*'~~')
     print(20*'~~')
+
+
+
+abbreviations = {
+'Atlanta Hawks': 'ATL',
+'Brooklyn Nets': 'BKN',
+'Boston Celtics': 'BOS',
+'Charlotte Hornets': 'CHA',
+'Chicago Bulls': 'CHI',
+'Cleveland Cavaliers': 'CLE',
+'Dallas Mavericks': 'DAL',
+'Denver Nuggets': 'DEN',
+'Detroit Pistons': 'DET',
+'Golden State Warriors': 'GSW',
+'Houston Rockets': 'HOU',
+'Indiana Pacers': 'IND',
+'Los Angeles Clippers': 'LAC',
+'Los Angeles Lakers': 'LAL',
+'Memphis Grizzlies': 'MEM',
+'Miami Heat': 'MIA',
+'Milwaukee Bucks': 'MIL',
+'Minnesota Timberwolves': 'MIN',
+'New Orleans Pelicans': 'NOP',
+'New York Knicks': 'NYK',
+'Oklahoma City Thunder': 'OKC',
+'Orlando Magic': 'ORL',
+'Philadelphia 76ers': 'PHI',
+'Phoenix Suns': 'PHX',
+'Portland Trail Blazers': 'POR',
+'Sacramento Kings': 'SAC',
+'San Antonio Spurs': 'SAS',
+'Toronto Raptors': 'TOR',
+'Utah Jazz': 'UTA',
+'Washington Wizards': 'WAS'
+}
