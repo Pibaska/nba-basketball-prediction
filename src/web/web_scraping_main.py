@@ -94,15 +94,9 @@ def formatting_data(game_data):
 
     print(game_data)
 
-    db_connection, cursor = db.open_db()
-
-    db.insert_team_participation_data(cursor, game_data)
+    db.insert_team_participation_data(game_data)
 
     game_data.clear()
-
-    db_connection.commit()
-
-    db.close_db(db_connection)
 
 
 if __name__ == "__main__":
