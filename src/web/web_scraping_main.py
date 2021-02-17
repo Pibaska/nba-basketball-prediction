@@ -12,7 +12,7 @@ id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg_pct', 'ft
 names_items_to_collect = ['minutes_played',	'field_goals',	'field_goal_attempts',	'field_goal_percentage',	'3point_field_goals',	'3point_field_goal_attempts',	'3point_field_goals_percentage',
                           'free_throws',	'free_throw_attempts',	'free_throw_percentage',	'offensive_rebounds',	'defensive_rebounds',	'total_rebounds',	'assists',	'steals',	'blocks',	'turnover', 'personal_faults',	'points']
 lista = []
-data_game = []
+game_data = []
 
 
 def activate_web_scraping():
@@ -60,14 +60,14 @@ def activate_web_scraping():
                 # add na lista os: team_name e team_location
 
                 # coloca a lista no "data"
-                data_game.append(lista.copy())
+                game_data.append(lista.copy())
                 lista.clear()
 
-                # print(data_game)
+                # print(game_data)
                 # print('-')
-                formatting_data(data_game)
+                formatting_data(game_data)
 
-        formatting_data(data_game)
+        formatting_data(game_data)
 
         # manda esse data pra formatação e da formatação para o banco
 
@@ -75,10 +75,12 @@ def activate_web_scraping():
 
 
 def formatting_data(game_data):
-
+    i = 0
     # função que passa em todos de todos
     for game_index in range(len(game_data)):
-        # valores não precisam passar para VARCHAR porque já vêm como string
+        i += 1
+
+        # alguns valores não precisam passar para VARCHAR porque já vêm como string
         decimal_indexes = [5, 8, 11]
         integer_indexes = [1, 3, 4, 6, 7, 9, 10,
                            12, 13, 14, 15, 16, 17, 18, 19, 20]
@@ -88,8 +90,21 @@ def formatting_data(game_data):
         for i in integer_indexes:
             game_data[game_index][i] = int(float(game_data[game_index][i]))
 
-        game_data[game_index].append(42)  # mat_count_by_team INTEGER
-        game_data[game_index].append(1)  # won BIT
+            game_data[game_index].append(42)  # mat_count_by_team INTEGER
+
+        # Verifica qual time ganhou
+        if i == 1:
+            # Verifica quem ganhou quando o time atual é o de casa
+            game_data[game_index].append(int(int(game_data[game_index][20]) > int(
+                game_data[game_index+1][20])))
+        else:
+            # Verifica quem ganhou quando o time atual é o de fora
+            game_data[game_index].append(
+                int(int(game_data[game_index][20]) > int(game_data[game_index-1][20])))
+
+        if i == 2:
+            i = 0
+
         game_data[game_index].append(1)  # fk_match INTEGER
 
     print(game_data)
