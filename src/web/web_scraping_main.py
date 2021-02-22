@@ -41,13 +41,13 @@ def activate_web_scraping():
             print('--partida--')
 
             for i in range(2):
-                team_location = 'casa' if not i else 'fora'
+                team_is_home = not i
                 team_name = team_names[i].get_text()
 
-                print(f'{team_location} - {team_name}')
+                print(f'{team_is_home} - {team_name}')
 
                 lista.append(team_name)
-                lista.append(team_location)
+                lista.append(team_is_home)
                 for item in range(len(id_items_to_collect)):
                     collected_value = ws_functions.get_table_values(
                         team_tables[i],  id_items_to_collect[item])  # casa
@@ -65,7 +65,6 @@ def activate_web_scraping():
 
                 # print(game_data)
                 # print('-')
-                formatting_data(game_data)
 
         formatting_data(game_data)
 
@@ -85,12 +84,12 @@ def formatting_data(game_data):
         integer_indexes = [1, 3, 4, 6, 7, 9, 10,
                            12, 13, 14, 15, 16, 17, 18, 19, 20]
 
-        for is_team_home in decimal_indexes:
-            game_data[team_part_index][is_team_home] = float(
-                game_data[team_part_index][is_team_home])
-        for is_team_home in integer_indexes:
-            game_data[team_part_index][is_team_home] = int(
-                float(game_data[team_part_index][is_team_home]))
+        for i in decimal_indexes:
+            game_data[team_part_index][i] = float(
+                game_data[team_part_index][i])
+        for i in integer_indexes:
+            game_data[team_part_index][i] = int(
+                float(game_data[team_part_index][i]))
 
         game_data[team_part_index].append(42)  # mat_count_by_team INTEGER
 
