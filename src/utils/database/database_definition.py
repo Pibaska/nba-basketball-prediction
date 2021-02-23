@@ -72,7 +72,7 @@ def drop_tables():
             DROP TABLE team_participation;
         """)
 
-        print("Tabelas deletadas com sucesso")
+        print("Tabelas deletadas com sucesso.")
     except Exception as exception:
         print(exception)
         raise(exception)
