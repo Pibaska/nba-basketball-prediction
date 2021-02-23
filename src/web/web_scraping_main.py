@@ -85,11 +85,22 @@ def formatting_data(game_data):
                            12, 13, 14, 15, 16, 17, 18, 19, 20]
 
         for i in decimal_indexes:
-            game_data[team_part_index][i] = float(
-                game_data[team_part_index][i])
+            try:
+                game_data[team_part_index][i] = float(
+                    game_data[team_part_index][i])
+            except ValueError:
+                game_data[team_part_index][i] = 0
+                print(
+                    f"Convertendo valor de {game_data[team_part_index][i]} para 0.")
+
         for i in integer_indexes:
-            game_data[team_part_index][i] = int(
-                float(game_data[team_part_index][i]))
+            try:
+                game_data[team_part_index][i] = int(
+                    float(game_data[team_part_index][i]))
+            except ValueError:
+                game_data[team_part_index][i] = 0
+                print(
+                    f"Convertendo valor de {game_data[team_part_index][i]} para 0.")
 
         game_data[team_part_index].append(42)  # mat_count_by_team INTEGER
 
