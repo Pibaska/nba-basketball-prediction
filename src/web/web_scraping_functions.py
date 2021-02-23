@@ -154,17 +154,26 @@ def get_team_table_names(driver):
     content_html = content_element.get_attribute('outerHTML')
     parsed_content = BeautifulSoup(content_html, 'html.parser')
 
-    content_tables = parsed_content.find_all(
-        "table", {"class": "sortable stats_table now_sortable"})
-    team_tables = [content_tables[0], content_tables[2]]
-
     team_name_scorebox = parsed_content.find("div", {"class": "scorebox"})
     team_names = team_name_scorebox.find_all("a", {"itemprop": "name"})
+
+    team_tables = ['1', '2']
+    for i in range(2):
+        table_content_xpath = '//*[@id="box-' + \
+            abbreviations[team_names[i].get_text()] + '-q1-basic"]'
+        table_content_element = driver.find_element_by_xpath(
+            table_content_xpath)
+        table_content_html = table_content_element.get_attribute('outerHTML')
+        table_parsed_content = BeautifulSoup(table_content_html, 'html.parser')
+
+        content_table = table_parsed_content
+
+        team_tables[i] = content_table
 
     return team_names, team_tables
 
 
-def get_table_values(table,  collectable_value, value_name):
+def get_table_values(table,  collectable_value):
     """Pega os valores das tabelas
 
     Args:
@@ -172,10 +181,12 @@ def get_table_values(table,  collectable_value, value_name):
         collectable_value (str): Como o valor a ser coletado é chamado dentro da tabela
         value_name (str): Nome pro valor depois que ele for coletado
     """
-
-    table_component = table.find_all("td", {"data-stat": collectable_value})[0]
-    collected_value = table_component.get_text()
-    print(f'{value_name}: {collected_value}')
+# //*[@id="box-ORL-q1-basic"]/tfoot/tr
+    foot_component = table.find("tfoot")
+    td_component = foot_component.find_all(
+        "td", {"data-stat": collectable_value})[0]
+    collected_value = td_component.get_text()
+    return collected_value
 
 
 if __name__ == "__main__":
@@ -184,3 +195,83 @@ if __name__ == "__main__":
     print("Talvez modulo errado, de play no 'web_scraping_main.py'")
     print(20*'~~')
     print(20*'~~')
+
+
+abbreviations = {
+    'Anderson Duffey Packers': 'AND',
+    'Anderson Packers': 'AND',
+    'Atlanta Hawks': 'ATL',
+    'Baltimore Bullets': 'BAL',
+    'Brooklyn Nets': 'BKN',
+    'Boston Celtics': 'BOS',
+    'Buffalo Braves': 'BUF',
+    'Capital Bullets': 'CAP',
+    'Charlotte Hornets': 'CHH',
+    'Charlotte Bobcats': 'CHN',
+    'Chicago Bulls': 'CHI',
+    'Chicago Packers': 'CHP',
+    'Chicago Zephyrs': 'CHP',
+    'Chicago Stags': 'CHS',
+    'Cincinnati Royals': 'CIN',
+    'Cleveland Cavaliers': 'CLE',
+    'Dallas Mavericks': 'DAL',
+    'Dallas Chaparrals': 'DLC',
+    'Denver Nuggets': 'DEN',
+    'Denver Rockets': 'DEN',
+    'Detroit Pistons': 'DET',
+    'Fort Wayne Zollner Pistons': 'FTW',
+    'Fort Wayne Pistons': 'FTW',
+    'Golden State Warriors': 'GSW',
+    'Houston Rockets': 'HOU',
+    'Indiana Pacers': 'IND',
+    'Indianapolis Olympians': 'INO',
+    'Kansas City Kings': 'KCK',
+    'Kansas City-Omaha Kings': 'KCO',
+    'Los Angeles Clippers': 'LAC',
+    'Los Angeles Lakers': 'LAL',
+    'Memphis Grizzlies': 'MEM',
+    'Miami Heat': 'MIA',
+    'Milwaukee Bucks': 'MIL',
+    'Milwaukee Hawks': 'MLH',
+    'Minneapolis Lakers': 'MPL',
+    'Minnesota Muskies': 'MNM',
+    'Minnesota Timberwolves': 'MIN',
+    'New Jersey Nets': 'NJN',
+    'New Orleans Hornets': 'NOK',
+    'New Orleans Jazz': 'NOR',
+    'New Orleans Pelicans': 'NOP',
+    'New York Knicks': 'NYK',
+    'New York Knickerbockers': 'NYK',
+    'New York Nets': 'NYN',
+    'Oklahoma City Hornets': 'NOK',
+    'Oklahoma City Thunder': 'OKC',
+    'Orlando Magic': 'ORL',
+    'Philadelphia 76ers': 'PHI',
+    'Philadelphia Warriors': 'PHW',
+    'Phoenix Suns': 'PHX',
+    'Portland Trail Blazers': 'POR',
+    'Portland Trailblazers': 'POR',
+    'Rochester Royals': 'ROC',
+    'Sacramento Kings': 'SAC',
+    'San Antonio Spurs': 'SAS',
+    'San Diego Clippers': 'SDC',
+    'San Diego Rockets': 'SDR',
+    'San Francisco Warriors': 'SFW',
+    'Seattle SuperSonics': 'SEA',
+    'Seattle Supersonics': 'SEA',
+    'Sheboygan Redskins': 'SHE',
+    'Saint Louis Bombers': 'SLB',
+    'St. Louis Bombers': 'SLB',
+    'Saint Louis Hawks': 'STL',
+    'St. Louis Hawks': 'STL',
+    'Syracuse Nationals': 'SYR',
+    'Toronto Raptors': 'TOR',
+    'Tri-Cities Blackhawks': 'TRI',
+    'Tri-City Blackhawks': 'TRI',
+    'Utah Jazz': 'UTA',
+    'Vancouver Grizzlies': 'VAN',
+    'Washington Bullets': 'WAS',
+    'Washington Capitals': 'WSC',
+    'Washington Wizards': 'WAS',
+    'Waterloo Hawks': 'WAT'
+}
