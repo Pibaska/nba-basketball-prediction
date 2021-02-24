@@ -1,4 +1,3 @@
-
 if __name__ == "__main__":
     import web_scraping_functions as ws_functions
     from utils.database import database_manipulation as db
@@ -40,6 +39,7 @@ def activate_web_scraping():
 
             print('--partida--')
 
+            # Aqui em algum lugar vai ter que ter a função de inserir o match
             for i in range(2):
                 team_is_home = not i
                 team_name = team_names[i].get_text()
@@ -52,28 +52,17 @@ def activate_web_scraping():
                     collected_value = ws_functions.get_table_values(
                         team_tables[i],  id_items_to_collect[item])  # casa
 
-                    # print(f'{names_items_to_collect[item]}: {collected_value}')
-
-                    # vai adicionando os itens numa lista
                     lista.append(collected_value)
 
-                # add na lista os: team_name e team_location
-
-                # coloca a lista no "data"
                 game_data.append(lista.copy())
                 lista.clear()
 
-                # print(game_data)
-                # print('-')
-
-        formatting_data(game_data)
-
-        # manda esse data pra formatação e da formatação para o banco
+        format_and_insert_team_data(game_data)
 
     driver.quit()
 
 
-def formatting_data(game_data):
+def format_and_insert_team_data(game_data):
     is_team_home = False
     # função que passa em todos de todos
     for team_part_index in range(len(game_data)):
