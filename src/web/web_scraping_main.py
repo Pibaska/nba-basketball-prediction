@@ -46,8 +46,8 @@ def activate_web_scraping():
 
                 print(f'{team_is_home} - {team_name}')
 
-                team_id = db.create_id()
-                lista.append(team_id if team_id else 0)
+
+                lista.append(0)
                 lista.append(team_name)
                 lista.append(team_is_home)
                 for item in range(len(id_items_to_collect)):
@@ -104,23 +104,28 @@ def format_and_insert_team_data(game_data, date):
 
         game_data[team_part_index].append(1)  # fk_match INTEGER
 
-        match_list = []    
-        if not is_team_home:
-
-            print(game_data)
-
-            db.insert_team_participation_data([game_data[team_part_index -1]])
-            db.insert_team_participation_data([game_data[team_part_index]])
+        match_list = []  
 
             
 
-            match_list.append(date) # fk_team_home INTEGER NOT NULL, criar função para criar os ids
-            match_list.append(date) # fk_team_away INTEGER NOT NULL, criar função para criar os ids
-            match_list.append(date) # date DATE NOT NULL,  date  
+        if not is_team_home:
+
+            print([game_data[team_part_index -1]])
+            print([game_data[team_part_index   ]])
+
+            game_data[team_part_index -1][0] = (db.create_id())
+            db.insert_team_participation_data([game_data[team_part_index -1]])
+            game_data[team_part_index   ][0] = (db.create_id())
+            db.insert_team_participation_data([game_data[team_part_index   ]])
+
+            
+            match_list.append(game_data[team_part_index -1][0]) # fk_team_home INTEGER NOT NULL, criar função para criar os ids
+            match_list.append(game_data[team_part_index   ][0]) # fk_team_away INTEGER NOT NULL, criar função para criar os ids
+            match_list.append(db.get_datetime(date)) # date DATE NOT NULL,  date  
 
             db.insert_match_data([match_list])
 
-            game_data.clear()
+    game_data.clear()
   
 
 

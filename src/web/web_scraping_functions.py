@@ -179,7 +179,6 @@ def get_table_values(table,  collectable_value):
     Args:
         table (?): Tabela da qual os valores vão ser extraídos
         collectable_value (str): Como o valor a ser coletado é chamado dentro da tabela
-        value_name (str): Nome pro valor depois que ele for coletado
     """
 # //*[@id="box-ORL-q1-basic"]/tfoot/tr
     foot_component = table.find("tfoot")
@@ -248,7 +247,7 @@ abbreviations = {
     'Orlando Magic': 'ORL',
     'Philadelphia 76ers': 'PHI',
     'Philadelphia Warriors': 'PHW',
-    'Phoenix Suns': 'PHX',
+    'Phoenix Suns': 'PHO',
     'Portland Trail Blazers': 'POR',
     'Portland Trailblazers': 'POR',
     'Rochester Royals': 'ROC',

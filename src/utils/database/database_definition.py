@@ -53,7 +53,9 @@ Output:
             date DATE NOT NULL,                          
             FOREIGN KEY (fk_team_home) references team_participation (id),
             FOREIGN KEY (fk_team_away) references team_participation (id)
-        );""")
+        );
+        
+        """)
         print('Tabelas criadas com sucesso.')
     except Exception as exception:
         print(exception)

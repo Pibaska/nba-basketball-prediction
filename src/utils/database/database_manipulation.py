@@ -1,5 +1,5 @@
 import sqlite3
-from datetime import datetime, date
+import datetime
 
 
 def insert_team_participation_data(team_data):
@@ -34,7 +34,7 @@ def insert_team_participation_data(team_data):
             mat_count_by_team,
             won,
             fk_match
-        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", team_data)
+        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", team_data)
 
         db_connection.commit()
         print("Team participation data inserted successfully")
@@ -46,6 +46,9 @@ def insert_team_participation_data(team_data):
 
 
 def insert_match_data(match_data):
+
+
+
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
@@ -121,7 +124,8 @@ def create_id():
 
         try:
             team_id = lista[0][0]
-            return team_id
+            return team_id + 1
+
         except Exception as e:
             return 0
 
@@ -132,6 +136,9 @@ def create_id():
     finally:
         db_connection.close()
 
+def get_datetime(date):
+    return datetime.date(date[2], date[1], date[0]) 
+
 
 
 if __name__ == "__main__":
@@ -141,5 +148,6 @@ if __name__ == "__main__":
     # fake_match_data = [(2, 1, '31-12-2018', 1)]
 
     # check_tables()
+    # SELECT * FROM match_data as md INNER JOIN team_participation as tp ON md.fk_team_home = tp.team_id;
     
     print(create_id())
