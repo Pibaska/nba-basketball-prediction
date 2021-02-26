@@ -6,7 +6,7 @@ else:
     import utils.database.database_manipulation as db
 
 
-id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg_pct', 'ft',
+id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg3_pct', 'ft',
                        'fta', 'ft_pct', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 'tov', 'pf', 'pts']
 names_items_to_collect = ['minutes_played',	'field_goals',	'field_goal_attempts',	'field_goal_percentage',	'3point_field_goals',	'3point_field_goal_attempts',	'3point_field_goals_percentage',
                           'free_throws',	'free_throw_attempts',	'free_throw_percentage',	'offensive_rebounds',	'defensive_rebounds',	'total_rebounds',	'assists',	'steals',	'blocks',	'turnover', 'personal_faults',	'points']
@@ -46,6 +46,8 @@ def activate_web_scraping():
 
                 print(f'{team_is_home} - {team_name}')
 
+                team_id = db.create_id()
+                lista.append(team_id if team_id else 0)
                 lista.append(team_name)
                 lista.append(team_is_home)
                 for item in range(len(id_items_to_collect)):
@@ -57,21 +59,21 @@ def activate_web_scraping():
                 game_data.append(lista.copy())
                 lista.clear()
 
-        format_and_insert_team_data(game_data)
+        format_and_insert_team_data(game_data, date)
 
     driver.quit()
 
 
-def format_and_insert_team_data(game_data):
+def format_and_insert_team_data(game_data, date):
     is_team_home = False
     # função que passa em todos de todos
     for team_part_index in range(len(game_data)):
         is_team_home = not is_team_home
 
         # alguns valores não precisam passar para VARCHAR porque já vêm como string
-        decimal_indexes = [5, 8, 11]
-        integer_indexes = [1, 3, 4, 6, 7, 9, 10,
-                           12, 13, 14, 15, 16, 17, 18, 19, 20]
+        decimal_indexes = [6, 9, 12]
+        integer_indexes = [2, 4, 5, 7, 8, 10, 11,
+                           13, 14, 15, 16, 17, 18, 19, 20, 21]
 
         for i in decimal_indexes:
             try:
@@ -102,11 +104,24 @@ def format_and_insert_team_data(game_data):
 
         game_data[team_part_index].append(1)  # fk_match INTEGER
 
-    print(game_data)
+        match_list = []    
+        if not is_team_home:
 
-    db.insert_team_participation_data(game_data)
+            print(game_data)
 
-    game_data.clear()
+            db.insert_team_participation_data([game_data[team_part_index -1]])
+            db.insert_team_participation_data([game_data[team_part_index]])
+
+            
+
+            match_list.append(date) # fk_team_home INTEGER NOT NULL, criar função para criar os ids
+            match_list.append(date) # fk_team_away INTEGER NOT NULL, criar função para criar os ids
+            match_list.append(date) # date DATE NOT NULL,  date  
+
+            db.insert_match_data([match_list])
+
+            game_data.clear()
+  
 
 
 if __name__ == "__main__":

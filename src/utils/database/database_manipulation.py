@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime, date
 
 
 def insert_team_participation_data(team_data):
@@ -8,6 +9,7 @@ def insert_team_participation_data(team_data):
 
         cursor.executemany("""
         INSERT INTO team_participation (
+            team_id,
             team_name,
             team_is_home,
             minutes_played,
@@ -52,9 +54,8 @@ def insert_match_data(match_data):
             INSERT INTO match_data (
                 fk_team_home,
                 fk_team_away,
-                date,
-                count
-            ) VALUES (?, ?, ?, ?);
+                date
+            ) VALUES (?, ?, ?);
         """, match_data)
 
         db_connection.commit()
@@ -110,11 +111,35 @@ def check_tables():
     finally:
         db_connection.close()
 
+def create_id():
+    try:
+        db_connection = sqlite3.connect('data/database.sqlite3')
+        cursor = db_connection.cursor()
+
+        cursor.execute(""" SELECT team_id FROM team_participation ORDER BY team_id DESC  ;""")
+        lista = cursor.fetchall()
+
+        try:
+            team_id = lista[0][0]
+            return team_id
+        except Exception as e:
+            return 0
+
+
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        db_connection.close()
+
+
 
 if __name__ == "__main__":
 
-    fake_team_data = [('Magic', 'Orlando 2', '39:56', 7, 20, 0.350, 0,
-                       0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 1, 0, 1)]
-    fake_match_data = [(2, 1, '31-12-2018', 1)]
+    # fake_team_data = [('Magic', 'Orlando 2', '39:56', 7, 20, 0.350, 0,
+    #                    0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 1, 0, 1)]
+    # fake_match_data = [(2, 1, '31-12-2018', 1)]
 
-    check_tables()
+    # check_tables()
+    
+    print(create_id())

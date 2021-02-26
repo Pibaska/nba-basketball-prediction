@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime, date
 
 
 def create_database():
@@ -18,7 +19,7 @@ Output:
 
         cursor.executescript("""
         CREATE TABLE IF NOT EXISTS team_participation (
-            id INTEGER NOT NULL PRIMARY KEY,
+            team_id INTEGER NOT NULL PRIMARY KEY,
             team_name VARCHAR(50),
             team_is_home BIT NOT NULL,
             minutes_played VARCHAR(10) NOT NULL,
@@ -46,11 +47,10 @@ Output:
             FOREIGN KEY (fk_match) REFERENCES match_data (id)
         );
         CREATE TABLE IF NOT EXISTS match_data(
-            id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+            match_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
             fk_team_home INTEGER NOT NULL,
             fk_team_away INTEGER NOT NULL,
-            date DATE NOT NULL,
-            count INTEGER NOT NULL,
+            date DATE NOT NULL,                          
             FOREIGN KEY (fk_team_home) references team_participation (id),
             FOREIGN KEY (fk_team_away) references team_participation (id)
         );""")
