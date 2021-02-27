@@ -102,7 +102,7 @@ def format_and_insert_team_data(game_data, date):
 
         game_data[team_part_index].append(int(is_current_team_winner))
 
-        game_data[team_part_index].append(1)  # fk_match INTEGER
+        game_data[team_part_index].append(1)  # fk_match_id INTEGER
 
         match_list = []  
 
@@ -119,8 +119,8 @@ def format_and_insert_team_data(game_data, date):
             db.insert_participation_data([game_data[team_part_index   ]])
 
             
-            match_list.append(game_data[team_part_index -1][0]) # fk_team_home INTEGER NOT NULL, criar função para criar os ids
-            match_list.append(game_data[team_part_index   ][0]) # fk_team_away INTEGER NOT NULL, criar função para criar os ids
+            match_list.append(game_data[team_part_index -1][0]) # fk_participation_home INTEGER NOT NULL, criar função para criar os ids
+            match_list.append(game_data[team_part_index   ][0]) # fk_participation_away INTEGER NOT NULL, criar função para criar os ids
             match_list.append(db.get_datetime(date)) # date DATE NOT NULL,  date  
 
             db.insert_match_data([match_list])

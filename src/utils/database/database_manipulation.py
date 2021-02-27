@@ -53,7 +53,7 @@ def insert_participation_data(participation_data):
             points,
             mat_count_by_team,
             won,
-            fk_match
+            fk_match_id
         ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", participation_data)
 
         db_connection.commit()
@@ -75,8 +75,8 @@ def insert_match_data(match_data):
 
         cursor.executemany("""
             INSERT INTO match_data (
-                fk_team_home,
-                fk_team_away,
+                fk_participation_home,
+                fk_participation_away,
                 date
             ) VALUES (?, ?, ?);
         """, match_data)
@@ -90,13 +90,13 @@ def insert_match_data(match_data):
         db_connection.close()
 
 
-def retrieve_team_participation_data(match_id, team_is_home):
+def retrieve_participation_data(match_id, team_is_home):
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
 
         cursor.execute(
-            """SELECT * FROM team_participation WHERE fk_match = ? AND team_is_home = ?""", (match_id, team_is_home))
+            """SELECT * FROM participation WHERE fk_match_id = ? AND team_is_home = ?""", (match_id, team_is_home))
         return(cursor.fetchall())
     except Exception as e:
         print(e)
@@ -124,7 +124,7 @@ def check_tables():
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
 
-        cursor.execute(""" SELECT * FROM team_participation;""")
+        cursor.execute(""" SELECT * FROM participation;""")
         print(cursor.fetchall())
         cursor.execute("""SELECT * FROM match_data""")
         print(cursor.fetchall())
@@ -139,7 +139,7 @@ def create_id():
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
 
-        cursor.execute(""" SELECT team_id FROM team_participation ORDER BY team_id DESC  ;""")
+        cursor.execute(""" SELECT fk_team_id FROM participation ORDER BY fk_team_id DESC  ;""")
         lista = cursor.fetchall()
 
         try:
@@ -184,7 +184,7 @@ def get_last_date():
             return formatted_date
 
         except Exception as e:
-            return [1,1,2000]
+            return [2000,1,1]
 
 
     except Exception as e:
@@ -201,7 +201,7 @@ if __name__ == "__main__":
     # fake_match_data = [(2, 1, '31-12-2018', 1)]
 
     # check_tables()
-    # SELECT * FROM match_data as md INNER JOIN team_participation as tp ON md.fk_team_home = tp.team_id;
+    # SELECT * FROM match_data as md INNER JOIN participation as tp ON md.fk_participation_home = tp.team_id;
     
     print(create_id())
     print(get_last_date())
