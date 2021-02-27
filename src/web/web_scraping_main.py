@@ -110,14 +110,15 @@ def format_and_insert_team_data(game_data, date):
 
         if not is_team_home:
 
-            print([game_data[team_part_index -1]])
-            print([game_data[team_part_index   ]])
+
 
             game_data[team_part_index -1][0] = (db.create_id_participation())
             db.insert_participation_data([game_data[team_part_index -1]])
             game_data[team_part_index   ][0] = (db.create_id_participation())
             db.insert_participation_data([game_data[team_part_index   ]])
 
+            print([game_data[team_part_index -1]])
+            print([game_data[team_part_index   ]])
             
             match_list.append(game_data[team_part_index -1][0]) # fk_participation_home INTEGER NOT NULL, criar função para criar os ids
             match_list.append(game_data[team_part_index   ][0]) # fk_participation_away INTEGER NOT NULL, criar função para criar os ids

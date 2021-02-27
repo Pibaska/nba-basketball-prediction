@@ -89,3 +89,7 @@ VALUES
         '2018-12-31',
         1
   );
+
+
+Selects                  
+    SELECT * FROM participation as part INNER JOIN match_data as md ON part.participation_id = md.fk_participation_home order by md.date DESC;
