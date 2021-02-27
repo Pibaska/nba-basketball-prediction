@@ -6,7 +6,7 @@ else:
     import utils.database.database_manipulation as db
 
 
-id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg_pct', 'ft',
+id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg3_pct', 'ft',
                        'fta', 'ft_pct', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 'tov', 'pf', 'pts']
 names_items_to_collect = ['minutes_played',	'field_goals',	'field_goal_attempts',	'field_goal_percentage',	'3point_field_goals',	'3point_field_goal_attempts',	'3point_field_goals_percentage',
                           'free_throws',	'free_throw_attempts',	'free_throw_percentage',	'offensive_rebounds',	'defensive_rebounds',	'total_rebounds',	'assists',	'steals',	'blocks',	'turnover', 'personal_faults',	'points']
@@ -46,6 +46,8 @@ def activate_web_scraping():
 
                 print(f'{team_is_home} - {team_name}')
 
+
+                lista.append(0)
                 lista.append(team_name)
                 lista.append(team_is_home)
                 for item in range(len(id_items_to_collect)):
@@ -57,21 +59,21 @@ def activate_web_scraping():
                 game_data.append(lista.copy())
                 lista.clear()
 
-        format_and_insert_team_data(game_data)
+        format_and_insert_team_data(game_data, date)
 
     driver.quit()
 
 
-def format_and_insert_team_data(game_data):
+def format_and_insert_team_data(game_data, date):
     is_team_home = False
     # função que passa em todos de todos
     for team_part_index in range(len(game_data)):
         is_team_home = not is_team_home
 
         # alguns valores não precisam passar para VARCHAR porque já vêm como string
-        decimal_indexes = [5, 8, 11]
-        integer_indexes = [1, 3, 4, 6, 7, 9, 10,
-                           12, 13, 14, 15, 16, 17, 18, 19, 20]
+        decimal_indexes = [6, 9, 12]
+        integer_indexes = [2, 4, 5, 7, 8, 10, 11,
+                           13, 14, 15, 16, 17, 18, 19, 20, 21]
 
         for i in decimal_indexes:
             try:
@@ -100,13 +102,31 @@ def format_and_insert_team_data(game_data):
 
         game_data[team_part_index].append(int(is_current_team_winner))
 
-        game_data[team_part_index].append(1)  # fk_match INTEGER
+        game_data[team_part_index].append(1)  # fk_match_id INTEGER
 
-    print(game_data)
+        match_list = []  
 
-    db.insert_team_participation_data(game_data)
+            
+
+        if not is_team_home:
+
+            print([game_data[team_part_index -1]])
+            print([game_data[team_part_index   ]])
+
+            game_data[team_part_index -1][0] = (db.create_id())
+            db.insert_participation_data([game_data[team_part_index -1]])
+            game_data[team_part_index   ][0] = (db.create_id())
+            db.insert_participation_data([game_data[team_part_index   ]])
+
+            
+            match_list.append(game_data[team_part_index -1][0]) # fk_participation_home INTEGER NOT NULL, criar função para criar os ids
+            match_list.append(game_data[team_part_index   ][0]) # fk_participation_away INTEGER NOT NULL, criar função para criar os ids
+            match_list.append(db.get_datetime(date)) # date DATE NOT NULL,  date  
+
+            db.insert_match_data([match_list])
 
     game_data.clear()
+  
 
 
 if __name__ == "__main__":

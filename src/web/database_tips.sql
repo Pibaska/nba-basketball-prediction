@@ -1,6 +1,6 @@
 /* Queries para Criação */
 
-CREATE TABLE team_participation
+CREATE TABLE participation
 (
     id INTEGER NOT NULL PRIMARY KEY,
     team_name VARCHAR(50),
@@ -30,20 +30,20 @@ CREATE TABLE team_participation
 );
 CREATE TABLE match_data(
         id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-        fk_team_home INTEGER NOT NULL,
-        fk_team_away INTEGER NOT NULL,
+        fk_participation_home INTEGER NOT NULL,
+        fk_participation_away INTEGER NOT NULL,
         date DATE NOT NULL,
         count INTEGER NOT NULL,
         FOREIGN KEY
-(fk_team_home) references team_participation
+(fk_participation_home) references participation
 (id),
         FOREIGN KEY
-(fk_team_away) references team_participation
+(fk_participation_away) references participation
 (id)
     );
 
-/* Modelo de INSERT no team_participation */
-INSERT INTO team_participation
+/* Modelo de INSERT no participation */
+INSERT INTO participation
     (
     team_name,
     team_location,
@@ -75,8 +75,8 @@ VALUES
 /* Modelo de INSERT para match_data */
 INSERT INTO match_data
     (
-    fk_team_home,
-    fk_team_away,
+    fk_participation_home,
+    fk_participation_away,
     date,
     count
     )

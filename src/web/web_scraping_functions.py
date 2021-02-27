@@ -14,6 +14,13 @@ import json
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
+if __name__ == "__main__":
+    import web_scraping_functions as ws_functions
+    from utils.database import database_manipulation as db
+else:
+    import web.web_scraping_functions as ws_functions
+    import utils.database.database_manipulation as db
+
 diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 
@@ -43,18 +50,29 @@ def generate_date_list():
     """
     formatted_date = []
     formatted_date_list = []
+
+    last_year = db.get_last_date()[0]
+    last_month = db.get_last_date()[1] 
+    last_day = db.get_last_date()[2]
+
+
     for year_increment in range(20):
-        year = 2000 + year_increment
-        is_leap_year = check_for_leap_year(year)
+        last_year += year_increment
+        is_leap_year = check_for_leap_year(last_year)
 
-        for month in range(12):
-            day_range = diasNosMeses[month]
+        for month_increment in range(12):
+            if month_increment +1 >= last_month :
+                last_month = 0
+                
+                day_range = diasNosMeses[month_increment]
+                day_range += is_leap_year if (day_range == 28) else 0
 
-            day_range += is_leap_year if (day_range == 28) else 0
+                for day_increment in range(day_range):
+                    if day_increment >= last_day:
+                        last_day = 0
 
-            for day in range(day_range):
-                formatted_date = [day+1, month+1, year]
-                formatted_date_list.append(formatted_date)
+                        formatted_date = [day_increment+1, month_increment +1, last_year]
+                        formatted_date_list.append(formatted_date)
 
     return formatted_date_list
 
@@ -179,7 +197,6 @@ def get_table_values(table,  collectable_value):
     Args:
         table (?): Tabela da qual os valores vão ser extraídos
         collectable_value (str): Como o valor a ser coletado é chamado dentro da tabela
-        value_name (str): Nome pro valor depois que ele for coletado
     """
 # //*[@id="box-ORL-q1-basic"]/tfoot/tr
     foot_component = table.find("tfoot")
@@ -195,6 +212,8 @@ if __name__ == "__main__":
     print("Talvez modulo errado, de play no 'web_scraping_main.py'")
     print(20*'~~')
     print(20*'~~')
+
+    print(generate_date_list())
 
 
 abbreviations = {
@@ -248,7 +267,7 @@ abbreviations = {
     'Orlando Magic': 'ORL',
     'Philadelphia 76ers': 'PHI',
     'Philadelphia Warriors': 'PHW',
-    'Phoenix Suns': 'PHX',
+    'Phoenix Suns': 'PHO',
     'Portland Trail Blazers': 'POR',
     'Portland Trailblazers': 'POR',
     'Rochester Royals': 'ROC',
@@ -275,3 +294,82 @@ abbreviations = {
     'Washington Wizards': 'WAS',
     'Waterloo Hawks': 'WAT'
 }
+
+'''
+    ('Anderson Duffey Packers', 'AND'),
+    ('Anderson Packers', 'AND'),
+    ('Atlanta Hawks', 'ATL'),
+    ('Baltimore Bullets', 'BAL'),
+    ('Brooklyn Nets', 'BKN'),
+    ('Boston Celtics', 'BOS'),
+    ('Buffalo Braves', 'BUF'),
+    ('Capital Bullets', 'CAP'),
+    ('Charlotte Hornets', 'CHH'),
+    ('Charlotte Bobcats', 'CHN'),
+    ('Chicago Bulls', 'CHI'),
+    ('Chicago Packers', 'CHP'),
+    ('Chicago Zephyrs', 'CHP'),
+    ('Chicago Stags', 'CHS'),
+    ('Cincinnati Royals', 'CIN'),
+    ('Cleveland Cavaliers', 'CLE'),
+    ('Dallas Mavericks', 'DAL'),
+    ('Dallas Chaparrals', 'DLC'),
+    ('Denver Nuggets', 'DEN'),
+    ('Denver Rockets', 'DEN'),
+    ('Detroit Pistons', 'DET'),
+    ('Fort Wayne Zollner Pistons', 'FTW'),
+    ('Fort Wayne Pistons', 'FTW'),
+    ('Golden State Warriors', 'GSW'),
+    ('Houston Rockets', 'HOU'),
+    ('Indiana Pacers', 'IND'),
+    ('Indianapolis Olympians', 'INO'),
+    ('Kansas City Kings', 'KCK'),
+    ('Kansas City-Omaha Kings', 'KCO'),
+    ('Los Angeles Clippers', 'LAC'),
+    ('Los Angeles Lakers', 'LAL'),
+    ('Memphis Grizzlies', 'MEM'),
+    ('Miami Heat', 'MIA'),
+    ('Milwaukee Bucks', 'MIL'),
+    ('Milwaukee Hawks', 'MLH'),
+    ('Minneapolis Lakers', 'MPL'),
+    ('Minnesota Muskies', 'MNM'),
+    ('Minnesota Timberwolves', 'MIN'),
+    ('New Jersey Nets', 'NJN'),
+    ('New Orleans Hornets', 'NOK'),
+    ('New Orleans Jazz', 'NOR'),
+    ('New Orleans Pelicans', 'NOP'),
+    ('New York Knicks', 'NYK'),
+    ('New York Knickerbockers', 'NYK'),
+    ('New York Nets', 'NYN'),
+    ('Oklahoma City Hornets', 'NOK'),
+    ('Oklahoma City Thunder', 'OKC'),
+    ('Orlando Magic', 'ORL'),
+    ('Philadelphia 76ers', 'PHI'),
+    ('Philadelphia Warriors', 'PHW'),
+    ('Phoenix Suns', 'PHO'),
+    ('Portland Trail Blazers', 'POR'),
+    ('Portland Trailblazers', 'POR'),
+    ('Rochester Royals', 'ROC'),
+    ('Sacramento Kings', 'SAC'),
+    ('San Antonio Spurs', 'SAS'),
+    ('San Diego Clippers', 'SDC'),
+    ('San Diego Rockets', 'SDR'),
+    ('San Francisco Warriors', 'SFW'),
+    ('Seattle SuperSonics', 'SEA'),
+    ('Seattle Supersonics', 'SEA'),
+    ('Sheboygan Redskins', 'SHE'),
+    ('Saint Louis Bombers', 'SLB'),
+    ('St. Louis Bombers', 'SLB'),
+    ('Saint Louis Hawks', 'STL'),
+    ('St. Louis Hawks', 'STL'),
+    ('Syracuse Nationals', 'SYR'),
+    ('Toronto Raptors', 'TOR'),
+    ('Tri-Cities Blackhawks', 'TRI'),
+    ('Tri-City Blackhawks', 'TRI'),
+    ('Utah Jazz', 'UTA'),
+    ('Vancouver Grizzlies', 'VAN'),
+    ('Washington Bullets', 'WAS'),
+    ('Washington Capitals', 'WSC'),
+    ('Washington Wizards', 'WAS'),
+    ('Waterloo Hawks', 'WAT')
+'''

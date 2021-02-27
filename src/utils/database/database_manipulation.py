@@ -1,14 +1,36 @@
 import sqlite3
+import datetime
 
 
-def insert_team_participation_data(team_data):
+def insert_teams_data(team_data):
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
 
         cursor.executemany("""
-        INSERT INTO team_participation (
+        INSERT INTO team (
+            team_id,
             team_name,
+            team_abv
+        ) VALUES (?,?,?)""", team_data)
+
+        db_connection.commit()
+        print("Team data inserted successfully")
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        db_connection.close()
+
+def insert_participation_data(participation_data):
+    try:
+        db_connection = sqlite3.connect('data/database.sqlite3')
+        cursor = db_connection.cursor()
+
+        cursor.executemany("""
+        INSERT INTO participation (
+            team_name,
+            fk_team_id,
             team_is_home,
             minutes_played,
             field_goals,
@@ -31,11 +53,11 @@ def insert_team_participation_data(team_data):
             points,
             mat_count_by_team,
             won,
-            fk_match
-        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", team_data)
+            fk_match_id
+        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", participation_data)
 
         db_connection.commit()
-        print("Team participation data inserted successfully")
+        print("Participation data inserted successfully")
     except Exception as e:
         print(e)
         raise e
@@ -44,17 +66,19 @@ def insert_team_participation_data(team_data):
 
 
 def insert_match_data(match_data):
+
+
+
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
 
         cursor.executemany("""
             INSERT INTO match_data (
-                fk_team_home,
-                fk_team_away,
-                date,
-                count
-            ) VALUES (?, ?, ?, ?);
+                fk_participation_home,
+                fk_participation_away,
+                date
+            ) VALUES (?, ?, ?);
         """, match_data)
 
         db_connection.commit()
@@ -66,13 +90,13 @@ def insert_match_data(match_data):
         db_connection.close()
 
 
-def retrieve_team_participation_data(match_id, team_is_home):
+def retrieve_participation_data(match_id, team_is_home):
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
 
         cursor.execute(
-            """SELECT * FROM team_participation WHERE fk_match = ? AND team_is_home = ?""", (match_id, team_is_home))
+            """SELECT * FROM participation WHERE fk_match_id = ? AND team_is_home = ?""", (match_id, team_is_home))
         return(cursor.fetchall())
     except Exception as e:
         print(e)
@@ -100,7 +124,7 @@ def check_tables():
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
 
-        cursor.execute(""" SELECT * FROM team_participation;""")
+        cursor.execute(""" SELECT * FROM participation;""")
         print(cursor.fetchall())
         cursor.execute("""SELECT * FROM match_data""")
         print(cursor.fetchall())
@@ -110,11 +134,74 @@ def check_tables():
     finally:
         db_connection.close()
 
+def create_id():
+    try:
+        db_connection = sqlite3.connect('data/database.sqlite3')
+        cursor = db_connection.cursor()
+
+        cursor.execute(""" SELECT fk_team_id FROM participation ORDER BY fk_team_id DESC  ;""")
+        lista = cursor.fetchall()
+
+        try:
+            team_id = lista[0][0]
+            return team_id + 1
+
+        except Exception as e:
+            return 0
+
+
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        db_connection.close()
+
+def get_datetime(date):
+    return datetime.date(date[2], date[1], date[0]) 
+
+
+def get_last_date():
+    """Gera uma lista de datas no formato [ano,mes,dia] começando pelo ultimo dia+1 que temos dados no banco
+
+    Returns:
+        list: A lista de datas formatadas como listas [ano,mes,dia]
+    """
+    try:
+        db_connection = sqlite3.connect('data/database.sqlite3')
+        cursor = db_connection.cursor()
+
+        cursor.execute("""SELECT date FROM match_data ORDER BY date DESC""")
+        dates = cursor.fetchall()
+
+        try:
+            formatted_date = dates[0][0].split("-")
+            formatted_date[0] = int(formatted_date[0]) #ano
+            formatted_date[1] = int(formatted_date[1]) #mes
+            formatted_date[2] = int(formatted_date[2]) #dia
+
+            formatted_date[2] += 1 #dia aumenta 1 pra começar no dia seguinte
+
+            return formatted_date
+
+        except Exception as e:
+            return [2000,1,1]
+
+
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        db_connection.close()
+
 
 if __name__ == "__main__":
 
-    fake_team_data = [('Magic', 'Orlando 2', '39:56', 7, 20, 0.350, 0,
-                       0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 1, 0, 1)]
-    fake_match_data = [(2, 1, '31-12-2018', 1)]
+    # fake_team_data = [('Magic', 'Orlando 2', '39:56', 7, 20, 0.350, 0,
+    #                    0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 1, 0, 1)]
+    # fake_match_data = [(2, 1, '31-12-2018', 1)]
 
-    check_tables()
+    # check_tables()
+    # SELECT * FROM match_data as md INNER JOIN participation as tp ON md.fk_participation_home = tp.team_id;
+    
+    print(create_id())
+    print(get_last_date())
