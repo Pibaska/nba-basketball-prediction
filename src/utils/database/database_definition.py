@@ -1,7 +1,6 @@
 import sqlite3
 from datetime import datetime, date
 
-
 def create_database():
     '''
 Criar tabelas no banco de dados
@@ -16,11 +15,9 @@ Output:
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
-
         cursor.executescript("""
         CREATE TABLE IF NOT EXISTS participation (
             participation_id        INTEGER NOT NULL PRIMARY KEY,
-            fk_match_id             INTEGER NOT NULL,
             fk_team_id              INTEGER NOT NULL,
             team_name               VARCHAR(50),
             team_is_home            BIT NOT NULL,
@@ -45,7 +42,6 @@ Output:
             points                  INTEGER NOT NULL,
             mat_count_by_team       INTEGER NOT NULL,
             won                     BIT NOT NULL,
-            FOREIGN KEY (fk_match_id) REFERENCES match_data (match_id),
             FOREIGN KEY (fk_team_id) REFERENCES team (team_id)
         );
         CREATE TABLE IF NOT EXISTS match_data(

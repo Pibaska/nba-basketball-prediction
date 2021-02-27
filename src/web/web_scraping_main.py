@@ -47,7 +47,8 @@ def activate_web_scraping():
                 print(f'{team_is_home} - {team_name}')
 
 
-                lista.append(0)
+                lista.append(0) #posteriormente se tornará participation_id
+                lista.append(0) #posteriormente se tornará fk_tem_id
                 lista.append(team_name)
                 lista.append(team_is_home)
                 for item in range(len(id_items_to_collect)):
@@ -71,9 +72,9 @@ def format_and_insert_team_data(game_data, date):
         is_team_home = not is_team_home
 
         # alguns valores não precisam passar para VARCHAR porque já vêm como string
-        decimal_indexes = [6, 9, 12]
-        integer_indexes = [2, 4, 5, 7, 8, 10, 11,
-                           13, 14, 15, 16, 17, 18, 19, 20, 21]
+        decimal_indexes = [7, 10, 13]
+        integer_indexes = [0, 1, 3, 5, 8, 9, 11,
+                           12, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 
         for i in decimal_indexes:
             try:
@@ -102,7 +103,6 @@ def format_and_insert_team_data(game_data, date):
 
         game_data[team_part_index].append(int(is_current_team_winner))
 
-        game_data[team_part_index].append(1)  # fk_match_id INTEGER
 
         match_list = []  
 
@@ -113,9 +113,9 @@ def format_and_insert_team_data(game_data, date):
             print([game_data[team_part_index -1]])
             print([game_data[team_part_index   ]])
 
-            game_data[team_part_index -1][0] = (db.create_id())
+            game_data[team_part_index -1][0] = (db.create_id_participation())
             db.insert_participation_data([game_data[team_part_index -1]])
-            game_data[team_part_index   ][0] = (db.create_id())
+            game_data[team_part_index   ][0] = (db.create_id_participation())
             db.insert_participation_data([game_data[team_part_index   ]])
 
             

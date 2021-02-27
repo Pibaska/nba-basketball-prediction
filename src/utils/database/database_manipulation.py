@@ -29,8 +29,9 @@ def insert_participation_data(participation_data):
 
         cursor.executemany("""
         INSERT INTO participation (
-            team_name,
+            participation_id,
             fk_team_id,
+            team_name,
             team_is_home,
             minutes_played,
             field_goals,
@@ -52,8 +53,7 @@ def insert_participation_data(participation_data):
             personal_faults,
             points,
             mat_count_by_team,
-            won,
-            fk_match_id
+            won
         ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", participation_data)
 
         db_connection.commit()
@@ -134,12 +134,12 @@ def check_tables():
     finally:
         db_connection.close()
 
-def create_id():
+def create_id_participation():
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
 
-        cursor.execute(""" SELECT fk_team_id FROM participation ORDER BY fk_team_id DESC  ;""")
+        cursor.execute(""" SELECT participation_id FROM participation ORDER BY participation_id DESC  ;""")
         lista = cursor.fetchall()
 
         try:
@@ -203,5 +203,5 @@ if __name__ == "__main__":
     # check_tables()
     # SELECT * FROM match_data as md INNER JOIN participation as tp ON md.fk_participation_home = tp.team_id;
     
-    print(create_id())
+    print(create_id_participation())
     print(get_last_date())

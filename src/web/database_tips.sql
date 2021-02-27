@@ -1,46 +1,50 @@
 /* Queries para Criação */
 
-CREATE TABLE participation
-(
-    id INTEGER NOT NULL PRIMARY KEY,
-    team_name VARCHAR(50),
-    team_location VARCHAR(50),
-    minutes_played VARCHAR(10) NOT NULL,
-    field_goals INTEGER NOT NULL,
-    field_goals_attempts INTEGER NOT NULL,
-    field_goals_percentage DECIMAL(4,3) NOT NULL,
+CREATE TABLE IF NOT EXISTS participation (
+    participation_id        INTEGER NOT NULL PRIMARY KEY,
+    fk_match_id             INTEGER NOT NULL,
+    fk_team_id              INTEGER NOT NULL,
+    team_name               VARCHAR(50),
+    team_is_home            BIT NOT NULL,
+    minutes_played          VARCHAR(10) NOT NULL,
+    field_goals             INTEGER NOT NULL,
+    field_goals_attempts    INTEGER NOT NULL,
+    field_goals_percentage  DECIMAL(4,3) NOT NULL,
     three_point_field_goals INTEGER NOT NULL,
     three_point_field_goals_attempts INTEGER NOT NULL,
     three_point_field_goals_percentage DECIMAL(4,3) NOT NULL,
-    free_throws INTEGER NOT NULL,
-    free_throws_attempts INTEGER NOT NULL,
-    free_throws_percentage DECIMAL(4,3) NOT NULL,
-    offensive_rebounds INTEGER NOT NULL,
-    defensive_rebounds INTEGER NOT NULL,
-    total_rebounds INTEGER NOT NULL,
-    assists INTEGER NOT NULL,
-    steals INTEGER NOT NULL,
-    blocks INTEGER NOT NULL,
-    turnover INTEGER NOT NULL,
-    personal_faults INTEGER NOT NULL,
-    points INTEGER NOT NULL,
-    mat_count_by_team INTEGER NOT NULL,
-    won BIT NOT NULL,
-    team_is_home BIT NOT NULL
-);
-CREATE TABLE match_data(
-        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-        fk_participation_home INTEGER NOT NULL,
-        fk_participation_away INTEGER NOT NULL,
-        date DATE NOT NULL,
-        count INTEGER NOT NULL,
-        FOREIGN KEY
-(fk_participation_home) references participation
-(id),
-        FOREIGN KEY
-(fk_participation_away) references participation
-(id)
+    free_throws             INTEGER NOT NULL,
+    free_throws_attempts    INTEGER NOT NULL,
+    free_throws_percentage  DECIMAL(4,3) NOT NULL,
+    offensive_rebounds      INTEGER NOT NULL,
+    defensive_rebounds      INTEGER NOT NULL,
+    total_rebounds          INTEGER NOT NULL,
+    assists                 INTEGER NOT NULL,
+    steals                  INTEGER NOT NULL,
+    blocks                  INTEGER NOT NULL,
+    turnover                INTEGER NOT NULL,
+    personal_faults         INTEGER NOT NULL,
+    points                  INTEGER NOT NULL,
+    mat_count_by_team       INTEGER NOT NULL,
+    won                     BIT NOT NULL,
+    FOREIGN KEY (fk_match_id) REFERENCES match_data (match_id),
+    FOREIGN KEY (fk_team_id) REFERENCES team (team_id)
     );
+    CREATE TABLE IF NOT EXISTS match_data(
+        match_id                    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        fk_participation_home       INTEGER NOT NULL,
+        fk_participation_away       INTEGER NOT NULL,
+        date                        DATE NOT NULL,
+        FOREIGN KEY (fk_participation_home) references participation (participation_id),
+        FOREIGN KEY (fk_participation_away) references participation (participation_id)
+    );
+    CREATE TABLE IF NOT EXISTS team (
+        team_id         INTEGER NOT NULL PRIMARY KEY,
+        team_name       VARCHAR(50),
+        team_abv        VARCHAR(10)
+    );
+    
+
 
 /* Modelo de INSERT no participation */
 INSERT INTO participation
