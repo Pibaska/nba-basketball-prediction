@@ -114,9 +114,9 @@ def format_and_insert_team_data(game_data, date):
             print([game_data[team_part_index   ]])
 
             game_data[team_part_index -1][0] = (db.create_id())
-            db.insert_team_participation_data([game_data[team_part_index -1]])
+            db.insert_participation_data([game_data[team_part_index -1]])
             game_data[team_part_index   ][0] = (db.create_id())
-            db.insert_team_participation_data([game_data[team_part_index   ]])
+            db.insert_participation_data([game_data[team_part_index   ]])
 
             
             match_list.append(game_data[team_part_index -1][0]) # fk_team_home INTEGER NOT NULL, criar função para criar os ids

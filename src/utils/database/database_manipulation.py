@@ -2,15 +2,35 @@ import sqlite3
 import datetime
 
 
-def insert_team_participation_data(team_data):
+def insert_teams_data(team_data):
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
 
         cursor.executemany("""
-        INSERT INTO team_participation (
+        INSERT INTO team (
             team_id,
             team_name,
+            team_abv
+        ) VALUES (?,?,?)""", team_data)
+
+        db_connection.commit()
+        print("Team data inserted successfully")
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        db_connection.close()
+
+def insert_participation_data(participation_data):
+    try:
+        db_connection = sqlite3.connect('data/database.sqlite3')
+        cursor = db_connection.cursor()
+
+        cursor.executemany("""
+        INSERT INTO participation (
+            team_name,
+            fk_team_id,
             team_is_home,
             minutes_played,
             field_goals,
@@ -34,10 +54,10 @@ def insert_team_participation_data(team_data):
             mat_count_by_team,
             won,
             fk_match
-        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", team_data)
+        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", participation_data)
 
         db_connection.commit()
-        print("Team participation data inserted successfully")
+        print("Participation data inserted successfully")
     except Exception as e:
         print(e)
         raise e
@@ -140,6 +160,39 @@ def get_datetime(date):
     return datetime.date(date[2], date[1], date[0]) 
 
 
+def get_last_date():
+    """Gera uma lista de datas no formato [ano,mes,dia] começando pelo ultimo dia+1 que temos dados no banco
+
+    Returns:
+        list: A lista de datas formatadas como listas [ano,mes,dia]
+    """
+    try:
+        db_connection = sqlite3.connect('data/database.sqlite3')
+        cursor = db_connection.cursor()
+
+        cursor.execute("""SELECT date FROM match_data ORDER BY date DESC""")
+        dates = cursor.fetchall()
+
+        try:
+            formatted_date = dates[0][0].split("-")
+            formatted_date[0] = int(formatted_date[0]) #ano
+            formatted_date[1] = int(formatted_date[1]) #mes
+            formatted_date[2] = int(formatted_date[2]) #dia
+
+            formatted_date[2] += 1 #dia aumenta 1 pra começar no dia seguinte
+
+            return formatted_date
+
+        except Exception as e:
+            return [1,1,2000]
+
+
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        db_connection.close()
+
 
 if __name__ == "__main__":
 
@@ -151,3 +204,4 @@ if __name__ == "__main__":
     # SELECT * FROM match_data as md INNER JOIN team_participation as tp ON md.fk_team_home = tp.team_id;
     
     print(create_id())
+    print(get_last_date())
