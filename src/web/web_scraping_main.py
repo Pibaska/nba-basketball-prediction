@@ -1,6 +1,7 @@
 if __name__ == "__main__":
-    import web_scraping_functions as ws_functions
-    from utils.database import database_manipulation as db
+    #import web_scraping_functions as ws_functions
+    #from utils.database import database_manipulation as db
+    pass
 else:
     import web.web_scraping_functions as ws_functions
     import utils.database.database_manipulation as db
@@ -98,8 +99,8 @@ def format_and_insert_team_data(game_data, date):
 
         other_team_index = team_part_index+1 if is_team_home else team_part_index - 1
 
-        is_current_team_winner = int(game_data[team_part_index][20]) > int(
-            game_data[other_team_index][20])
+        is_current_team_winner = int(game_data[team_part_index][22]) > int(
+            game_data[other_team_index][22])
 
         game_data[team_part_index].append(int(is_current_team_winner))
 
@@ -131,4 +132,8 @@ def format_and_insert_team_data(game_data, date):
 
 
 if __name__ == "__main__":
-    activate_web_scraping()
+
+    greg = {'nome': "greg", "idade": 12 }
+    print(greg['nome'])
+
+    #activate_web_scraping()
