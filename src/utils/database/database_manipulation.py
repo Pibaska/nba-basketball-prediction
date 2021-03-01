@@ -125,14 +125,18 @@ def match_data_factory(cursor, row):
         "away_team_stats": {}
     }
 
+    index_offset = 4
+
     # Inserção de dados dos times
-    for value_index, column in enumerate(cursor.description[4:]):
+    for value_index, column in enumerate(cursor.description[index_offset:]):
         # Fiz essa checagem pra esse método poder funcionar num INNER JOIN
         # com 2 linhas da mesma tabela (time de casa e time fora)
         if(column[0] not in match_stats["home_team_stats"]):
-            match_stats["home_team_stats"][column[0]] = row[value_index]
+            match_stats["home_team_stats"][column[0]
+                                           ] = row[value_index + index_offset]
         else:
-            match_stats["away_team_stats"][column[0]] = row[value_index]
+            match_stats["away_team_stats"][column[0]
+                                           ] = row[value_index + index_offset]
 
     entries_to_remove = ['participation_id', 'fk_team_id',
                          'team_name', 'team_is_home', 'minutes_played']
@@ -159,7 +163,7 @@ def retrieve_match_stats():
             ON md.fk_participation_home = home_tp.participation_id
             INNER JOIN participation as away_tp
             ON md.fk_participation_away = away_tp.participation_id;""")
-        results = cursor.fetchone()
+        results = cursor.fetchall()
         return results
     except Exception as e:
         print(e)
@@ -252,5 +256,6 @@ if __name__ == "__main__":
     #                    0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 1, 0, 1)]
     # fake_match_data = [(2, 1, '31-12-2018', 1)]
 
-    print(retrieve_match_stats())
-    # SELECT * FROM match_data as md INNER JOIN participation as tp ON md.fk_participation_home = tp.team_id;
+    for stats in retrieve_match_stats():
+        print(stats)
+        # SELECT * FROM match_data as md INNER JOIN participation as tp ON md.fk_participation_home = tp.team_id;
