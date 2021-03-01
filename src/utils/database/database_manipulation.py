@@ -119,25 +119,30 @@ def retrieve_match_data(match_id):
 
 
 def match_data_factory(cursor, row):
-    new_dict = {
+    #! Essa função foi feita completamente na base da gambiarra. Otimizar depois.
+    match_stats = {
         "home_team_stats": {},
         "away_team_stats": {}
     }
-
-    # Inserção de dados da partida em si
-    for value_index, column in enumerate(cursor.description[:4]):
-        new_dict[column[0]] = row[value_index]
 
     # Inserção de dados dos times
     for value_index, column in enumerate(cursor.description[4:]):
         # Fiz essa checagem pra esse método poder funcionar num INNER JOIN
         # com 2 linhas da mesma tabela (time de casa e time fora)
-        if(column[0] not in new_dict["home_team_stats"]):
-            new_dict["home_team_stats"][column[0]] = row[value_index]
+        if(column[0] not in match_stats["home_team_stats"]):
+            match_stats["home_team_stats"][column[0]] = row[value_index]
         else:
-            new_dict["away_team_stats"][column[0]] = row[value_index]
+            match_stats["away_team_stats"][column[0]] = row[value_index]
 
-    return new_dict
+    entries_to_remove = ['participation_id', 'fk_team_id',
+                         'team_name', 'team_is_home', 'minutes_played']
+
+    # Tirando o lixo que não precisa
+    for entry in entries_to_remove:
+        match_stats["home_team_stats"].pop(entry, None)
+        match_stats["away_team_stats"].pop(entry, None)
+
+    return match_stats
 
 
 def retrieve_match_stats():
