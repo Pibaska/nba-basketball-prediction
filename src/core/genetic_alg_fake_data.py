@@ -1,30 +1,48 @@
 match_database = {
     "match01": {
-        "home_team_stats": {
-            "average_1q_score": 5,
-            "1q_home_ratio": 1.5,
-            "1q_home_spread": 2,
-
-            # talvez esse away não precise estar aqui
-            "1q_away_ratio": 0.8,
-            "1q_away_spread": 4,
-
-            "1q_last10games_ratio": 2,
-            "1q_last10games_spread": 1.7
+        'home_team_stats': {
+            'field_goals': 10,
+            'field_goals_attempts': 28,
+            'field_goals_percentage': 0.357,
+            'three_point_field_goals': 1,
+            'three_point_field_goals_attempts': 3,
+            'three_point_field_goals_percentage': 0.333,
+            'free_throws': 3,
+            'free_throws_attempts': 4,
+            'free_throws_percentage': 0.75,
+            'offensive_rebounds': 5,
+            'defensive_rebounds': 14,
+            'total_rebounds': 19,
+            'assists': 3,
+            'steals': 1,
+            'blocks': 2,
+            'turnover': 2,
+            'personal_faults': 5,
+            'points': 24,
+            'mat_count_by_team': 42,
+            'won': 0,
         },
-        "away_team_stats": {
-            "average_1q_score": 5,
-
-            # Esse home também não precisaria estar aqui
-            "1q_home_ratio": 1.5,
-            "1q_home_spread": 2,
-
-            "1q_away_ratio": 0.8,
-            "1q_away_spread": 4,
-            "1q_last10games_ratio": 2,
-            "1q_last10games_spread": 1.7
+        'away_team_stats': {
+            'field_goals': 7,
+            'field_goals_attempts': 24,
+            'field_goals_percentage': 0.292,
+            'three_point_field_goals': 1,
+            'three_point_field_goals_attempts': 4,
+            'three_point_field_goals_percentage': 0.25,
+            'free_throws': 3,
+            'free_throws_attempts': 3,
+            'free_throws_percentage': 1,
+            'offensive_rebounds': 2,
+            'defensive_rebounds': 10,
+            'total_rebounds': 12,
+            'assists': 5,
+            'steals': 1,
+            'blocks': 2,
+            'turnover': 3,
+            'personal_faults': 4,
+            'points': 18,
+            'mat_count_by_team': 42,
+            'won': 1
         },
-        # Sugestão usar um enumerator abaixo:
-        "1q_winner": "home"  # valores possíveis: home, away, tie
     }
 }

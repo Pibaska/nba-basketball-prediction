@@ -23,7 +23,7 @@ def activate_away_team_combobox(selected_team, view):
 
 
 def run_gen_alg():
-    genetic_algorithm = GeneticAlgorithm(model=match_database)
+    genetic_algorithm = GeneticAlgorithm(match_database)
     genetic_algorithm.genetic_alg_loop()
 
 
