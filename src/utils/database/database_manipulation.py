@@ -119,37 +119,43 @@ def retrieve_match_data(match_id):
 
 
 def match_data_factory(cursor, row):
-    new_dict = {}
+    new_dict = {
+        "home_team_stats": {},
+        "away_team_stats": {}
+    }
 
-    for value_index, column in enumerate(cursor.description):
+    # Inserção de dados da partida em si
+    for value_index, column in enumerate(cursor.description[:4]):
+        new_dict[column[0]] = row[value_index]
+
+    # Inserção de dados dos times
+    for value_index, column in enumerate(cursor.description[4:]):
         # Fiz essa checagem pra esse método poder funcionar num INNER JOIN
         # com 2 linhas da mesma tabela (time de casa e time fora)
-        if(column[0] not in new_dict):
-            new_dict[column[0]] = row[value_index]
+        if(column[0] not in new_dict["home_team_stats"]):
+            new_dict["home_team_stats"][column[0]] = row[value_index]
         else:
-            new_dict["away_" + str(column[0])] = row[value_index]
+            new_dict["away_team_stats"][column[0]] = row[value_index]
 
     return new_dict
 
 
-def retrieve_data_as_dict(table_names: list):
+def retrieve_match_stats():
     try:
         db_connection = sqlite3.connect("data/database.sqlite3")
         db_connection.row_factory = match_data_factory
         cursor = db_connection.cursor()
 
-        query = f"""SELECT * FROM {table_names[0]}"""
-        for joint_table in table_names[1:]:
-            print(joint_table)
-
         cursor.execute(
             """
-            SELECT * FROM match_data as md
+            SELECT * 
+            FROM match_data as md
             INNER JOIN participation as home_tp
             ON md.fk_participation_home = home_tp.participation_id
             INNER JOIN participation as away_tp
             ON md.fk_participation_away = away_tp.participation_id;""")
-        print(cursor.fetchone())
+        results = cursor.fetchone()
+        return results
     except Exception as e:
         print(e)
         raise e
@@ -241,5 +247,5 @@ if __name__ == "__main__":
     #                    0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 1, 0, 1)]
     # fake_match_data = [(2, 1, '31-12-2018', 1)]
 
-    retrieve_data_as_dict(["match_data", "participation", "participation"])
+    print(retrieve_match_stats())
     # SELECT * FROM match_data as md INNER JOIN participation as tp ON md.fk_participation_home = tp.team_id;
