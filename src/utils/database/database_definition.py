@@ -1,6 +1,7 @@
 import sqlite3
 from datetime import datetime, date
 
+
 def create_database():
     '''
 Criar tabelas no banco de dados
@@ -66,6 +67,7 @@ Output:
     finally:
         db_connection.close()
 
+
 def complete_teams():
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
@@ -74,7 +76,6 @@ def complete_teams():
         cursor.executescript("""
             INSERT INTO team (team_name, team_abv) 
                 values
-                    ('Anderson Duffey Packers', 'AND'),
                     ('Anderson Packers', 'AND'),
                     ('Atlanta Hawks', 'ATL'),
                     ('Baltimore Bullets', 'BAL'),
@@ -95,7 +96,6 @@ def complete_teams():
                     ('Denver Nuggets', 'DEN'),
                     ('Denver Rockets', 'DEN'),
                     ('Detroit Pistons', 'DET'),
-                    ('Fort Wayne Zollner Pistons', 'FTW'),
                     ('Fort Wayne Pistons', 'FTW'),
                     ('Golden State Warriors', 'GSW'),
                     ('Houston Rockets', 'HOU'),
@@ -117,7 +117,6 @@ def complete_teams():
                     ('New Orleans Jazz', 'NOR'),
                     ('New Orleans Pelicans', 'NOP'),
                     ('New York Knicks', 'NYK'),
-                    ('New York Knickerbockers', 'NYK'),
                     ('New York Nets', 'NYN'),
                     ('Oklahoma City Hornets', 'NOK'),
                     ('Oklahoma City Thunder', 'OKC'),
@@ -126,7 +125,6 @@ def complete_teams():
                     ('Philadelphia Warriors', 'PHW'),
                     ('Phoenix Suns', 'PHO'),
                     ('Portland Trail Blazers', 'POR'),
-                    ('Portland Trailblazers', 'POR'),
                     ('Rochester Royals', 'ROC'),
                     ('Sacramento Kings', 'SAC'),
                     ('San Antonio Spurs', 'SAS'),
@@ -134,16 +132,12 @@ def complete_teams():
                     ('San Diego Rockets', 'SDR'),
                     ('San Francisco Warriors', 'SFW'),
                     ('Seattle SuperSonics', 'SEA'),
-                    ('Seattle Supersonics', 'SEA'),
                     ('Sheboygan Redskins', 'SHE'),
-                    ('Saint Louis Bombers', 'SLB'),
                     ('St. Louis Bombers', 'SLB'),
-                    ('Saint Louis Hawks', 'STL'),
                     ('St. Louis Hawks', 'STL'),
                     ('Syracuse Nationals', 'SYR'),
                     ('Toronto Raptors', 'TOR'),
                     ('Tri-Cities Blackhawks', 'TRI'),
-                    ('Tri-City Blackhawks', 'TRI'),
                     ('Utah Jazz', 'UTA'),
                     ('Vancouver Grizzlies', 'VAN'),
                     ('Washington Bullets', 'WAS'),
@@ -158,6 +152,7 @@ def complete_teams():
         raise(exception)
     finally:
         db_connection.close()
+
 
 def drop_tables():
     try:
