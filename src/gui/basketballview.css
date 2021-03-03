@@ -15,7 +15,7 @@ QLabel#titleLabel:hover {
   font-size: 50px;
 }
 
-QFrame{
+QFrame {
   padding: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -24,12 +24,10 @@ QFrame{
   margin-bottom: 0px;
 }
 
-
-QFrame#comboboxSublayout {
+QFrame#sublayout {
   background-color: #131313;
-  padding: 10px;
+  padding: 50px;
   border-radius: 5;
-  
 }
 
 QComboBox {
@@ -70,7 +68,6 @@ QPushButton {
   border-color: #ff8027;
   border-width: 1px;
   border-radius: 10px;
-  
 
   font-size: 15px;
   color: #ff8027;
@@ -88,7 +85,6 @@ QPushButton:hover {
 QPushButton#predictButton {
   max-width: 800px;
 
-
   margin-right: 100;
   margin-left: 100;
   /* margin-top: 20;  */
@@ -105,7 +101,6 @@ QLineEdit {
   border-radius: 5px;
   border: none;
 
-
   font-size: 13px;
   font-weight: 400;
 
@@ -114,11 +109,9 @@ QLineEdit {
   margin-right: 20;
   margin-bottom: 0;
   margin-top: 10;
-
 }
 
 QPushButton#bottomButtons {
-
   border-style: solid;
   border-color: #884515;
   border-width: 1px;
@@ -137,9 +130,7 @@ QPushButton#bottomButtons {
   min-height: 20px;
   /* max-width: 150px;
   min-width: 150px; */
-  
 }
-
 
 /*
 Pra aplicar num objeto específico é tipo:

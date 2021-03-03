@@ -10,7 +10,6 @@ basketballGUI = QApplication(sys.argv)
 
 view = BasketballPredictionView()
 view.show()
-basketballGUI.setStyleSheet(view.stylesheet)
 
 BasketballPredictionController(view)
 

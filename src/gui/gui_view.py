@@ -1,11 +1,8 @@
+
 import sys
-import os
 from pathlib import Path
 from os.path import join
 
-
-
-# Esse import vai ter que ser mudado quando esse script for ligado no main
 import gui.gui_fake_data as fake_data
 import gui.gui_controller as controller
 
@@ -28,8 +25,10 @@ class BasketballPredictionView(QMainWindow):
         with open(join(Path(__file__).resolve().parent, "basketballview.css"), "r") as reader:
             self.stylesheet = reader.read()
 
+        self.setStyleSheet(self.stylesheet)
+
         self.setWindowTitle('Basketball Prediction - Protótipo')
-        self.setMinimumSize(600, 400)
+        self.setMinimumSize(600, 1000)
 
         self._centralWidget = QWidget(self)
         self.setCentralWidget(self._centralWidget)
@@ -40,10 +39,9 @@ class BasketballPredictionView(QMainWindow):
         """ Faz as configurações necessárias do layout manager"""
         core_layout = QVBoxLayout()
         core_layout.addWidget(self._setup_title_label())
+        core_layout.addWidget(self._setup_scraping_sublayout())
+        core_layout.addWidget(self._setup_genalg_sublayout())
         core_layout.addWidget(self._setup_combobox_sublayout())
-        # core_layout.addWidget(self._setup_prediction_button())
-        # core_layout.addWidget(self._setup_results_text())
-        core_layout.addWidget(self._setup_temporary_buttons())
 
         return core_layout
 
@@ -60,12 +58,9 @@ class BasketballPredictionView(QMainWindow):
         Configura a caixinha que vai ter as comboboxes com os times e a label de PREVER DISPUTA
         """
         layout_widget = QFrame()
-        layout_widget.setObjectName("comboboxSublayout")
+        layout_widget.setObjectName("sublayout")
 
         layout = QGridLayout()
-
-        # label_predict_match = QLabel("PREVER DISPUTA")
-        # label_predict_match.setAlignment(QtCore.Qt.AlignCenter)
 
         self.combobox_home = QComboBox()
         for team in fake_data.fake_teams:
@@ -85,11 +80,8 @@ class BasketballPredictionView(QMainWindow):
         layout.addWidget(label_vs, 1, 1)
         layout.addWidget(self.combobox_away, 1, 2)
 
-        layout.addWidget(self._setup_prediction_button(), 2,0, 3,3)
-        layout.addWidget(self._setup_results_text(), 6,0,3,3)
-
-        # layout.addWidget(self._setup_prediction_button(), 0,0, 3,3)
-
+        layout.addWidget(self._setup_prediction_button(), 2, 0, 3, 3)
+        layout.addWidget(self._setup_results_text(), 6, 0, 3, 3)
 
         layout_widget.setLayout(layout)
 
@@ -99,7 +91,6 @@ class BasketballPredictionView(QMainWindow):
         """Configura o botão de 'Prever!'"""
         self.button_predict = QPushButton("Prever!")
         self.button_predict.setObjectName("predictButton")
-        
 
         return self.button_predict
 
@@ -111,24 +102,38 @@ class BasketballPredictionView(QMainWindow):
         self.lineedit_results.setAlignment(QtCore.Qt.AlignTop)
         return self.lineedit_results
 
-    def _setup_temporary_buttons(self):
-        frame_buttons = QFrame(self)
-        frame_layout = QGridLayout()
+    def _setup_scraping_sublayout(self):
+        """
+        Configura a caixinha que vai ter as comboboxes com os times e a label de PREVER DISPUTA
+        """
+        layout_widget = QFrame()
+        layout_widget.setObjectName("sublayout")
 
-        self.button_gen_alg = QPushButton("Algoritmo Genético")
-        self.button_gen_alg.setObjectName("bottomButtons")
+        layout = QGridLayout()
 
         self.button_web_scraping = QPushButton("Web Scraping")
         self.button_web_scraping.setObjectName("bottomButtons")
 
+        layout.addWidget(self.button_web_scraping, 0, 0)
 
-        frame_layout.addWidget(self.button_gen_alg, 0, 0)
-        frame_layout.addWidget(self.button_web_scraping, 0, 1)
+        layout_widget.setLayout(layout)
 
-        frame_buttons.setLayout(frame_layout)
-        
+        return layout_widget
 
-        return frame_buttons
+    def _setup_genalg_sublayout(self):
+        layout_widget = QFrame()
+        layout_widget.setObjectName("sublayout")
+
+        layout = QGridLayout()
+
+        self.button_gen_alg = QPushButton("Algoritmo Genético")
+        self.button_gen_alg.setObjectName("bottomButtons")
+
+        layout.addWidget(self.button_gen_alg, 0, 0)
+
+        layout_widget.setLayout(layout)
+
+        return layout_widget
 
     def get_comboboxes_teams_content(self):
         return ["Time da Caixa 1", "Time da Caixa 2"]
