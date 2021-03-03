@@ -7,7 +7,7 @@ import gui.gui_fake_data as fake_data
 import gui.gui_controller as controller
 
 from PyQt5.QtWidgets import QApplication, QComboBox, QGridLayout, QLineEdit, QMainWindow, QFrame
-from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtWidgets import QPushButton, QSizePolicy
 from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QLabel
@@ -53,6 +53,48 @@ class BasketballPredictionView(QMainWindow):
 
         return title_label
 
+    def _setup_scraping_sublayout(self):
+        """
+        Configura a caixinha que vai ter as comboboxes com os times e a label de PREVER DISPUTA
+        """
+        layout_widget = QFrame()
+        layout_widget.setObjectName("sublayout")
+
+        layout = QGridLayout()
+
+        self.text_web_scraping = QLabel("1. Colete os dados...")
+
+        self.button_web_scraping = QPushButton("Web Scraping")
+        self.button_web_scraping.setObjectName("bottomButtons")
+
+        layout.addWidget(self.text_web_scraping, 0, 0,
+                         alignment=QtCore.Qt.AlignTop)
+        layout.addWidget(self.button_web_scraping, 1, 0,
+                         alignment=QtCore.Qt.AlignTop)
+
+        layout_widget.setLayout(layout)
+
+        return layout_widget
+
+    def _setup_genalg_sublayout(self):
+        layout_widget = QFrame()
+        layout_widget.setObjectName("sublayout")
+
+        layout = QGridLayout()
+
+        self.text_gen_alg = QLabel("2. Gerar lista de fatores...")
+
+        self.button_gen_alg = QPushButton("Algoritmo Genético")
+        self.button_gen_alg.setObjectName("bottomButtons")
+
+        layout.addWidget(self.text_gen_alg, 0, 0, alignment=QtCore.Qt.AlignTop)
+        layout.addWidget(self.button_gen_alg, 1, 0,
+                         alignment=QtCore.Qt.AlignTop)
+
+        layout_widget.setLayout(layout)
+
+        return layout_widget
+
     def _setup_combobox_sublayout(self):
         """
         Configura a caixinha que vai ter as comboboxes com os times e a label de PREVER DISPUTA
@@ -61,6 +103,8 @@ class BasketballPredictionView(QMainWindow):
         layout_widget.setObjectName("sublayout")
 
         layout = QGridLayout()
+
+        label_predict = QLabel("3. Prever partida!")
 
         self.combobox_home = QComboBox()
         for team in fake_data.fake_teams:
@@ -75,6 +119,8 @@ class BasketballPredictionView(QMainWindow):
         for team in fake_data.fake_teams:
             self.combobox_away.addItem(team)
         self.selected_away_team = fake_data.fake_teams[0]
+
+        layout.addWidget(label_predict, 0, 0)
 
         layout.addWidget(self.combobox_home, 1, 0)
         layout.addWidget(label_vs, 1, 1)
@@ -101,39 +147,6 @@ class BasketballPredictionView(QMainWindow):
         self.lineedit_results.setReadOnly(True)
         self.lineedit_results.setAlignment(QtCore.Qt.AlignTop)
         return self.lineedit_results
-
-    def _setup_scraping_sublayout(self):
-        """
-        Configura a caixinha que vai ter as comboboxes com os times e a label de PREVER DISPUTA
-        """
-        layout_widget = QFrame()
-        layout_widget.setObjectName("sublayout")
-
-        layout = QGridLayout()
-
-        self.button_web_scraping = QPushButton("Web Scraping")
-        self.button_web_scraping.setObjectName("bottomButtons")
-
-        layout.addWidget(self.button_web_scraping, 0, 0)
-
-        layout_widget.setLayout(layout)
-
-        return layout_widget
-
-    def _setup_genalg_sublayout(self):
-        layout_widget = QFrame()
-        layout_widget.setObjectName("sublayout")
-
-        layout = QGridLayout()
-
-        self.button_gen_alg = QPushButton("Algoritmo Genético")
-        self.button_gen_alg.setObjectName("bottomButtons")
-
-        layout.addWidget(self.button_gen_alg, 0, 0)
-
-        layout_widget.setLayout(layout)
-
-        return layout_widget
 
     def get_comboboxes_teams_content(self):
         return ["Time da Caixa 1", "Time da Caixa 2"]

@@ -2,6 +2,13 @@ QMainWindow {
   background-color: #2e2626;
 }
 
+QLabel {
+  font: 24px;
+  color: #ffffff;
+
+  max-height: 34px;
+}
+
 QLabel#titleLabel {
   color: #000000;
   font-size: 30px;
@@ -15,6 +22,11 @@ QLabel#titleLabel:hover {
   font-size: 50px;
 }
 
+QLabel#labelVs {
+  color: #2e2626;
+  font-size: 20px;
+}
+
 QFrame {
   padding: 0px;
   padding-top: 0px;
@@ -25,8 +37,8 @@ QFrame {
 }
 
 QFrame#sublayout {
-  background-color: #131313;
-  padding: 50px;
+  border: 5px solid #131313;
+  padding: 10px;
   border-radius: 5;
 }
 
@@ -54,11 +66,6 @@ QComboBox {
 
 QComboBox:hover {
   background-color: #ff6a00;
-}
-
-QLabel#labelVs {
-  color: #2e2626;
-  font-size: 20px;
 }
 
 QPushButton {
