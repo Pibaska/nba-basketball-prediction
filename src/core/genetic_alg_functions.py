@@ -11,7 +11,7 @@ class GeneticAlgorithm:
         # Define o quanto os pesos vão influenciar nos atributos
         self.weight_magnitude = (-10, 10)
 
-        self.chromosome_size = 7
+        self.chromosome_size = 20
         self.population_size = 50  # 50 na primeira geração, nas outras 100
         self.max_generations = 10000
         self.consecutive_good_generations = 0
@@ -128,21 +128,16 @@ class GeneticAlgorithm:
         fitness = 0
         for current_match in match_data:
             home_team_stats = match_data[current_match]["home_team_stats"]
-            home_team_parsed_stats = [
-                home_team_stats["average_1q_score"] * chromosome[0],
-                home_team_stats["1q_home_ratio"] * chromosome[1],
-                home_team_stats["1q_home_spread"] * chromosome[2],
-                home_team_stats["1q_last10games_ratio"] * chromosome[5],
-                home_team_stats["1q_last10games_spread"] * chromosome[6]
-            ]
+            home_team_parsed_stats = []
+            for gene_index, stats in enumerate(home_team_stats):
+                home_team_parsed_stats.append(
+                    home_team_stats[stats] * chromosome[gene_index])
+
             away_team_stats = match_data[current_match]["away_team_stats"]
-            away_team_parsed_stats = [
-                away_team_stats["average_1q_score"] * chromosome[0],
-                away_team_stats["1q_away_ratio"] * chromosome[3],
-                away_team_stats["1q_away_spread"] * chromosome[4],
-                away_team_stats["1q_last10games_ratio"] * chromosome[5],
-                away_team_stats["1q_last10games_spread"] * chromosome[6]
-            ]
+            away_team_parsed_stats = []
+            for gene_index, stats in enumerate(away_team_stats):
+                away_team_parsed_stats.append(
+                    home_team_stats[stats] * chromosome[gene_index])
 
             home_team_score = sum(home_team_parsed_stats)
             away_team_score = sum(away_team_parsed_stats)
