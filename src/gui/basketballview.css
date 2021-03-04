@@ -1,25 +1,24 @@
 QMainWindow {
-  background-color: #2e2626;
+  background-color: #bbbbbb;
 }
 
 QLabel {
-  font: 24px;
-  color: #ffffff;
+  font: 16px;
+  color: #131313;
 
   max-height: 34px;
 }
 
 QLabel#titleLabel {
   color: #000000;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bolder;
 
   max-height: 100px;
 }
 
 QLabel#titleLabel:hover {
-  color: #5e300f;
-  font-size: 50px;
+  
 }
 
 QLabel#labelVs {
@@ -37,21 +36,22 @@ QFrame {
 }
 
 QFrame#sublayout {
-  border: 5px solid #131313;
+  border: 2px solid #131313;
   padding: 10px;
   border-radius: 5;
 }
 
 QComboBox {
-  background-color: #ff8027;
+  background-color: #e4e4e4;
 
   border-color: #ff8027;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-radius: 2px;
   /* border: none; */
 
-  font-size: 15px;
+  font-size: 20px;
+  color: #eb6200;
 
   /* text-align: center;
   vertical-align: middle; */
@@ -66,6 +66,7 @@ QComboBox {
 
 QComboBox:hover {
   background-color: #ff6a00;
+  color: #000000;
 }
 
 QPushButton {
@@ -77,19 +78,9 @@ QPushButton {
   border-radius: 10px;
 
   font-size: 15px;
-  color: #ff8027;
-}
+  font-weight: 800; 
+  color: #ff8027; 
 
-QPushButton:hover {
-  background-color: #000000;
-
-  border-color: #ff6a00;
-
-  color: #ff6a00;
-  /* font-weight: 800; */
-}
-
-QPushButton#predictButton {
   max-width: 800px;
 
   margin-right: 100;
@@ -97,6 +88,16 @@ QPushButton#predictButton {
   /* margin-top: 20;  */
   padding: 10px;
 }
+
+QPushButton:hover {
+  background-color: #ff8027;
+
+  border-color: #ff6a00;
+
+  color: #131313;
+  font-weight: 800; 
+}
+
 
 QLineEdit {
   background-color: #1f1f1f;
@@ -119,12 +120,6 @@ QLineEdit {
 }
 
 QPushButton#bottomButtons {
-  border-style: solid;
-  border-color: #884515;
-  border-width: 1px;
-  border-radius: 0;
-
-  /* border: none; */
 
   font-size: 12px;
 
@@ -135,6 +130,8 @@ QPushButton#bottomButtons {
   padding: 5px;
   max-height: 20px;
   min-height: 20px;
+  max-width: 200px;
+  min-width: 100px;
   /* max-width: 150px;
   min-width: 150px; */
 }
