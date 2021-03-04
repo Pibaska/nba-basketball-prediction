@@ -28,7 +28,7 @@ class BasketballPredictionView(QMainWindow):
         self.setStyleSheet(self.stylesheet)
 
         self.setWindowTitle('Basketball Prediction - Protótipo')
-        self.setMinimumSize(600, 700)
+        self.setMinimumSize(600, 300)
 
         self._centralWidget = QWidget(self)
         self.setCentralWidget(self._centralWidget)
@@ -39,7 +39,7 @@ class BasketballPredictionView(QMainWindow):
         """ Faz as configurações necessárias do layout manager"""
         core_layout = QVBoxLayout()
         core_layout.addWidget(self._setup_title_label())
-        core_layout.addWidget(self._setup_scraping_sublayout())
+        #core_layout.addWidget(self._setup_scraping_sublayout())
         core_layout.addWidget(self._setup_genalg_sublayout())
         core_layout.addWidget(self._setup_combobox_sublayout())
 
@@ -48,7 +48,7 @@ class BasketballPredictionView(QMainWindow):
     def _setup_title_label(self):
         """Configura a label que diz BASKETBALL PREDICTION bem grande"""
         title_label = QLabel("BASKETBALL PREDICTION")
-        title_label.setAlignment(QtCore.Qt.AlignLeft)
+        title_label.setAlignment(QtCore.Qt.AlignCenter)
         title_label.setObjectName("titleLabel")
 
         return title_label
@@ -62,13 +62,12 @@ class BasketballPredictionView(QMainWindow):
 
         layout = QGridLayout()
 
-        self.text_web_scraping = QLabel("1. Colete os dados...")
-
-        self.button_web_scraping = QPushButton("Web Scraping")
+        #self.text_web_scraping = QLabel("1. Colete os dados...")
+        self.button_web_scraping = QPushButton("Coletar os dados")
         self.button_web_scraping.setObjectName("bottomButtons")
 
-        layout.addWidget(self.text_web_scraping, 0, 0,
-                         alignment=QtCore.Qt.AlignTop)
+        #layout.addWidget(self.text_web_scraping, 0, 0,
+        #                 alignment=QtCore.Qt.AlignTop)
         layout.addWidget(self.button_web_scraping, 1, 0,
                          alignment=QtCore.Qt.AlignTop)
 
@@ -83,14 +82,22 @@ class BasketballPredictionView(QMainWindow):
 
         layout = QGridLayout()
 
-        self.text_gen_alg = QLabel("2. Gerar lista de fatores...")
+        self.text_gen_alg = QLabel("Preparação...")
 
-        self.button_gen_alg = QPushButton("Algoritmo Genético")
+        self.button_gen_alg = QPushButton("Gerar lista de fatores")
         self.button_gen_alg.setObjectName("bottomButtons")
 
-        layout.addWidget(self.text_gen_alg, 0, 0, alignment=QtCore.Qt.AlignTop)
+        self.button_web_scraping = QPushButton("Coletar os dados")
+        self.button_web_scraping.setObjectName("bottomButtons")
+
+        #layout.addWidget(self.text_web_scraping, 0, 0,
+        #                 alignment=QtCore.Qt.AlignTop)
+        layout.addWidget(self.button_web_scraping, 1, 0,
+                         alignment=QtCore.Qt.AlignLeft)
+        layout.addWidget(self.text_gen_alg, 0, 0, 
+                          alignment=QtCore.Qt.AlignTop)
         layout.addWidget(self.button_gen_alg, 1, 0,
-                         alignment=QtCore.Qt.AlignTop)
+                         alignment=QtCore.Qt.AlignRight)
 
         layout_widget.setLayout(layout)
 
@@ -105,7 +112,7 @@ class BasketballPredictionView(QMainWindow):
 
         layout = QGridLayout()
 
-        label_predict = QLabel("3. Prever partida!")
+        label_predict = QLabel("Prever partida!")
 
         self.combobox_home = QComboBox()
         for team in fake_data.fake_teams:

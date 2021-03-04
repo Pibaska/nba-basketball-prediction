@@ -38,18 +38,18 @@ QFrame {
 }
 
 QFrame#sublayout {
-  border: 1px solid #202020;
+  border: 0px solid #202020;
   padding: 10px;
   border-radius: 5;
   max-height: 150px;
 }
 
 QFrame#predict-sublayout {
-  border: 1px solid #202020;
+  border: 0px solid #202020;
   padding: 10px;
   border-radius: 5;
-  height: 250px;
-  max-height: 500px;
+  /* height: 250px;
+  max-height: 500px; */
 }
 
 QComboBox {
@@ -81,16 +81,16 @@ QComboBox:hover {
 }
 
 QPushButton {
-  background-color: #202020;
+  background-color: #ff8027;
 
   border-style: solid;
-  border-color: #ff8027;
+  border-color: #2e2e2e;
   border-width: 1px;
   border-radius: 10px;
 
   font-size: 15px;
   font-weight: 800; 
-  color: #ff8027; 
+  color: #2e2e2e; 
 
   max-width: 800px;
 
@@ -101,9 +101,9 @@ QPushButton {
 }
 
 QPushButton:hover {
-  background-color: #ff8027;
+  background-color: #dd7124;
 
-  border-color: #ff6a00;
+  border-color: #2e2e2e;
 
   color: #131313;
   font-weight: 800; 
@@ -144,7 +144,7 @@ QPushButton#bottomButtons {
   max-height: 20px;
   min-height: 20px;
   max-width: 200px;
-  min-width: 100px;
+  min-width: 200px;
   /* max-width: 150px;
   min-width: 150px; */
 }
