@@ -4,9 +4,9 @@ QMainWindow {
 
 QLabel {
   font: 16px;
-  color: #131313;
+  color: #202020;
 
-  max-height: 34px;
+  max-height: 44px;
 }
 
 QLabel#titleLabel {
@@ -14,7 +14,9 @@ QLabel#titleLabel {
   font-size: 20px;
   font-weight: bolder;
 
-  max-height: 100px;
+  max-height: 20px;
+
+
 }
 
 QLabel#titleLabel:hover {
@@ -36,13 +38,22 @@ QFrame {
 }
 
 QFrame#sublayout {
-  border: 2px solid #131313;
+  border: 1px solid #202020;
   padding: 10px;
   border-radius: 5;
+  max-height: 150px;
+}
+
+QFrame#predict-sublayout {
+  border: 1px solid #202020;
+  padding: 10px;
+  border-radius: 5;
+  height: 250px;
+  max-height: 500px;
 }
 
 QComboBox {
-  background-color: #e4e4e4;
+  background-color: #202020;
 
   border-color: #ff8027;
   border-style: solid;
@@ -70,7 +81,7 @@ QComboBox:hover {
 }
 
 QPushButton {
-  background-color: #131313;
+  background-color: #202020;
 
   border-style: solid;
   border-color: #ff8027;
@@ -100,7 +111,7 @@ QPushButton:hover {
 
 
 QLineEdit {
-  background-color: #1f1f1f;
+  background-color: rgba(126, 108, 108, 0.158);
   color: #793e14;
 
   border-style: solid;
@@ -112,11 +123,13 @@ QLineEdit {
   font-size: 13px;
   font-weight: 400;
 
-  height: 40;
-  margin-left: 20;
-  margin-right: 20;
-  margin-bottom: 0;
-  margin-top: 10;
+  height: 50;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-top: 20px;
+
+  padding: 5px;
 }
 
 QPushButton#bottomButtons {

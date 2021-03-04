@@ -28,7 +28,7 @@ class BasketballPredictionView(QMainWindow):
         self.setStyleSheet(self.stylesheet)
 
         self.setWindowTitle('Basketball Prediction - Protótipo')
-        self.setMinimumSize(600, 1000)
+        self.setMinimumSize(600, 700)
 
         self._centralWidget = QWidget(self)
         self.setCentralWidget(self._centralWidget)
@@ -48,7 +48,7 @@ class BasketballPredictionView(QMainWindow):
     def _setup_title_label(self):
         """Configura a label que diz BASKETBALL PREDICTION bem grande"""
         title_label = QLabel("BASKETBALL PREDICTION")
-        title_label.setAlignment(QtCore.Qt.AlignCenter)
+        title_label.setAlignment(QtCore.Qt.AlignLeft)
         title_label.setObjectName("titleLabel")
 
         return title_label
@@ -73,6 +73,7 @@ class BasketballPredictionView(QMainWindow):
                          alignment=QtCore.Qt.AlignTop)
 
         layout_widget.setLayout(layout)
+
 
         return layout_widget
 
@@ -100,7 +101,7 @@ class BasketballPredictionView(QMainWindow):
         Configura a caixinha que vai ter as comboboxes com os times e a label de PREVER DISPUTA
         """
         layout_widget = QFrame()
-        layout_widget.setObjectName("sublayout")
+        layout_widget.setObjectName("predict-sublayout")
 
         layout = QGridLayout()
 
