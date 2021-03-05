@@ -1,16 +1,17 @@
 import sqlite3
 from datetime import datetime, date
 
+
 def create_database():
     '''
-Criar tabelas no banco de dados
+    Criar tabelas no banco de dados
 
-Input:
-- cursor: incluir o console do banco de dados
+    Input:
+    - cursor: incluir o console do banco de dados
 
-Output:
-- nada
-    -------
+    Output:
+    - nada
+        -------
     '''
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
@@ -59,12 +60,16 @@ Output:
         );
         
         """)
+
+        db_connection.commit()
+
         print('Tabelas criadas com sucesso.')
     except Exception as exception:
         print(exception)
         raise(exception)
     finally:
         db_connection.close()
+
 
 def complete_teams():
     try:
@@ -74,7 +79,6 @@ def complete_teams():
         cursor.executescript("""
             INSERT INTO team (team_name, team_abv) 
                 values
-                    ('Anderson Duffey Packers', 'AND'),
                     ('Anderson Packers', 'AND'),
                     ('Atlanta Hawks', 'ATL'),
                     ('Baltimore Bullets', 'BAL'),
@@ -95,7 +99,6 @@ def complete_teams():
                     ('Denver Nuggets', 'DEN'),
                     ('Denver Rockets', 'DEN'),
                     ('Detroit Pistons', 'DET'),
-                    ('Fort Wayne Zollner Pistons', 'FTW'),
                     ('Fort Wayne Pistons', 'FTW'),
                     ('Golden State Warriors', 'GSW'),
                     ('Houston Rockets', 'HOU'),
@@ -117,7 +120,6 @@ def complete_teams():
                     ('New Orleans Jazz', 'NOR'),
                     ('New Orleans Pelicans', 'NOP'),
                     ('New York Knicks', 'NYK'),
-                    ('New York Knickerbockers', 'NYK'),
                     ('New York Nets', 'NYN'),
                     ('Oklahoma City Hornets', 'NOK'),
                     ('Oklahoma City Thunder', 'OKC'),
@@ -126,7 +128,6 @@ def complete_teams():
                     ('Philadelphia Warriors', 'PHW'),
                     ('Phoenix Suns', 'PHO'),
                     ('Portland Trail Blazers', 'POR'),
-                    ('Portland Trailblazers', 'POR'),
                     ('Rochester Royals', 'ROC'),
                     ('Sacramento Kings', 'SAC'),
                     ('San Antonio Spurs', 'SAS'),
@@ -134,16 +135,12 @@ def complete_teams():
                     ('San Diego Rockets', 'SDR'),
                     ('San Francisco Warriors', 'SFW'),
                     ('Seattle SuperSonics', 'SEA'),
-                    ('Seattle Supersonics', 'SEA'),
                     ('Sheboygan Redskins', 'SHE'),
-                    ('Saint Louis Bombers', 'SLB'),
                     ('St. Louis Bombers', 'SLB'),
-                    ('Saint Louis Hawks', 'STL'),
                     ('St. Louis Hawks', 'STL'),
                     ('Syracuse Nationals', 'SYR'),
                     ('Toronto Raptors', 'TOR'),
                     ('Tri-Cities Blackhawks', 'TRI'),
-                    ('Tri-City Blackhawks', 'TRI'),
                     ('Utah Jazz', 'UTA'),
                     ('Vancouver Grizzlies', 'VAN'),
                     ('Washington Bullets', 'WAS'),
@@ -152,12 +149,15 @@ def complete_teams():
                     ('Waterloo Hawks', 'WAT');
         """)
 
+        db_connection.commit()
+
         print("Teams preechido com sucesso.")
     except Exception as exception:
         print(exception)
         raise(exception)
     finally:
         db_connection.close()
+
 
 def drop_tables():
     try:
@@ -167,7 +167,10 @@ def drop_tables():
         cursor.executescript("""
             DROP TABLE IF EXISTS match_data;
             DROP TABLE IF EXISTS participation;
+            DROP TABLE IF EXISTS team;
         """)
+
+        db_connection.commit()
 
         print("Tabelas deletadas com sucesso.")
     except Exception as exception:

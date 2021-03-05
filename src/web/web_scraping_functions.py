@@ -52,18 +52,17 @@ def generate_date_list():
     formatted_date_list = []
 
     last_year = db.get_last_date()[0]
-    last_month = db.get_last_date()[1] 
+    last_month = db.get_last_date()[1]
     last_day = db.get_last_date()[2]
-
 
     for year_increment in range(20):
         last_year += year_increment
         is_leap_year = check_for_leap_year(last_year)
 
         for month_increment in range(12):
-            if month_increment +1 >= last_month :
+            if month_increment + 1 >= last_month:
                 last_month = 0
-                
+
                 day_range = diasNosMeses[month_increment]
                 day_range += is_leap_year if (day_range == 28) else 0
 
@@ -71,7 +70,8 @@ def generate_date_list():
                     if day_increment >= last_day:
                         last_day = 0
 
-                        formatted_date = [day_increment+1, month_increment +1, last_year]
+                        formatted_date = [day_increment+1,
+                                          month_increment + 1, last_year]
                         formatted_date_list.append(formatted_date)
 
     return formatted_date_list
@@ -217,7 +217,6 @@ if __name__ == "__main__":
 
 
 abbreviations = {
-    'Anderson Duffey Packers': 'AND',
     'Anderson Packers': 'AND',
     'Atlanta Hawks': 'ATL',
     'Baltimore Bullets': 'BAL',
@@ -238,7 +237,6 @@ abbreviations = {
     'Denver Nuggets': 'DEN',
     'Denver Rockets': 'DEN',
     'Detroit Pistons': 'DET',
-    'Fort Wayne Zollner Pistons': 'FTW',
     'Fort Wayne Pistons': 'FTW',
     'Golden State Warriors': 'GSW',
     'Houston Rockets': 'HOU',
@@ -260,7 +258,6 @@ abbreviations = {
     'New Orleans Jazz': 'NOR',
     'New Orleans Pelicans': 'NOP',
     'New York Knicks': 'NYK',
-    'New York Knickerbockers': 'NYK',
     'New York Nets': 'NYN',
     'Oklahoma City Hornets': 'NOK',
     'Oklahoma City Thunder': 'OKC',
@@ -269,7 +266,6 @@ abbreviations = {
     'Philadelphia Warriors': 'PHW',
     'Phoenix Suns': 'PHO',
     'Portland Trail Blazers': 'POR',
-    'Portland Trailblazers': 'POR',
     'Rochester Royals': 'ROC',
     'Sacramento Kings': 'SAC',
     'San Antonio Spurs': 'SAS',
@@ -277,16 +273,12 @@ abbreviations = {
     'San Diego Rockets': 'SDR',
     'San Francisco Warriors': 'SFW',
     'Seattle SuperSonics': 'SEA',
-    'Seattle Supersonics': 'SEA',
     'Sheboygan Redskins': 'SHE',
-    'Saint Louis Bombers': 'SLB',
     'St. Louis Bombers': 'SLB',
-    'Saint Louis Hawks': 'STL',
     'St. Louis Hawks': 'STL',
     'Syracuse Nationals': 'SYR',
     'Toronto Raptors': 'TOR',
     'Tri-Cities Blackhawks': 'TRI',
-    'Tri-City Blackhawks': 'TRI',
     'Utah Jazz': 'UTA',
     'Vancouver Grizzlies': 'VAN',
     'Washington Bullets': 'WAS',
@@ -296,7 +288,6 @@ abbreviations = {
 }
 
 '''
-    ('Anderson Duffey Packers', 'AND'),
     ('Anderson Packers', 'AND'),
     ('Atlanta Hawks', 'ATL'),
     ('Baltimore Bullets', 'BAL'),
@@ -317,7 +308,6 @@ abbreviations = {
     ('Denver Nuggets', 'DEN'),
     ('Denver Rockets', 'DEN'),
     ('Detroit Pistons', 'DET'),
-    ('Fort Wayne Zollner Pistons', 'FTW'),
     ('Fort Wayne Pistons', 'FTW'),
     ('Golden State Warriors', 'GSW'),
     ('Houston Rockets', 'HOU'),
@@ -339,7 +329,6 @@ abbreviations = {
     ('New Orleans Jazz', 'NOR'),
     ('New Orleans Pelicans', 'NOP'),
     ('New York Knicks', 'NYK'),
-    ('New York Knickerbockers', 'NYK'),
     ('New York Nets', 'NYN'),
     ('Oklahoma City Hornets', 'NOK'),
     ('Oklahoma City Thunder', 'OKC'),
@@ -348,7 +337,6 @@ abbreviations = {
     ('Philadelphia Warriors', 'PHW'),
     ('Phoenix Suns', 'PHO'),
     ('Portland Trail Blazers', 'POR'),
-    ('Portland Trailblazers', 'POR'),
     ('Rochester Royals', 'ROC'),
     ('Sacramento Kings', 'SAC'),
     ('San Antonio Spurs', 'SAS'),
@@ -356,20 +344,16 @@ abbreviations = {
     ('San Diego Rockets', 'SDR'),
     ('San Francisco Warriors', 'SFW'),
     ('Seattle SuperSonics', 'SEA'),
-    ('Seattle Supersonics', 'SEA'),
     ('Sheboygan Redskins', 'SHE'),
-    ('Saint Louis Bombers', 'SLB'),
     ('St. Louis Bombers', 'SLB'),
-    ('Saint Louis Hawks', 'STL'),
     ('St. Louis Hawks', 'STL'),
     ('Syracuse Nationals', 'SYR'),
     ('Toronto Raptors', 'TOR'),
     ('Tri-Cities Blackhawks', 'TRI'),
-    ('Tri-City Blackhawks', 'TRI'),
     ('Utah Jazz', 'UTA'),
     ('Vancouver Grizzlies', 'VAN'),
     ('Washington Bullets', 'WAS'),
     ('Washington Capitals', 'WSC'),
     ('Washington Wizards', 'WAS'),
-    ('Waterloo Hawks', 'WAT')
+    ('Waterloo Hawks', 'WAT');
 '''
