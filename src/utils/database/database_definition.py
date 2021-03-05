@@ -4,14 +4,14 @@ from datetime import datetime, date
 
 def create_database():
     '''
-Criar tabelas no banco de dados
+    Criar tabelas no banco de dados
 
-Input:
-- cursor: incluir o console do banco de dados
+    Input:
+    - cursor: incluir o console do banco de dados
 
-Output:
-- nada
-    -------
+    Output:
+    - nada
+        -------
     '''
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
@@ -60,6 +60,9 @@ Output:
         );
         
         """)
+
+        db_connection.commit()
+
         print('Tabelas criadas com sucesso.')
     except Exception as exception:
         print(exception)
@@ -146,6 +149,8 @@ def complete_teams():
                     ('Waterloo Hawks', 'WAT');
         """)
 
+        db_connection.commit()
+
         print("Teams preechido com sucesso.")
     except Exception as exception:
         print(exception)
@@ -162,7 +167,10 @@ def drop_tables():
         cursor.executescript("""
             DROP TABLE IF EXISTS match_data;
             DROP TABLE IF EXISTS participation;
+            DROP TABLE IF EXISTS team;
         """)
+
+        db_connection.commit()
 
         print("Tabelas deletadas com sucesso.")
     except Exception as exception:
