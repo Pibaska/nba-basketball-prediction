@@ -24,7 +24,7 @@ def activate_away_team_combobox(selected_team, view):
 
 def run_gen_alg():
     gen_alg = GeneticAlgorithm(
-        database_manipulation.retrieve_match_stats(), max_generations=30)
+        database_manipulation.retrieve_match_stats())
 
     gen_alg.population = gen_alg.random_population()
 
@@ -34,7 +34,7 @@ def run_gen_alg():
             f"Geração {generation} | População: '{gen_alg.population[0]}'")
 
         ranked_population = gen_alg.apply_fitness(
-            gen_alg.population)
+            gen_alg.population, gen_alg.fitness_input)
 
         if(gen_alg.check_for_break(ranked_population)):
             break

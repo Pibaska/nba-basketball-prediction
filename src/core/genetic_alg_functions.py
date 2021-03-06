@@ -47,12 +47,21 @@ class GeneticAlgorithm:
         print("Genetic Alg set up!")
 
     def random_population(self):
+        """Preenche uma população com indivíduos gerados aleatoriamente
+
+        Returns:
+            (list): População preenchida com os indivíduos lindinhos
+
+        Complexidade: O(p*c)
+            p = Tamanho desejado da população
+            c = Tamanho de cada cromossomo
+        """
         population = []
 
         for _ in range(self.population_size):
             chromosome = []
 
-            for _ in range(self.chromosome_size):
+            for i in range(self.chromosome_size):
                 # random.uniform é tipo um randrange mas que retorna floats
                 chromosome.append(random.uniform(
                     self.weight_magnitude[0], self.weight_magnitude[1]))
@@ -85,6 +94,9 @@ class GeneticAlgorithm:
 
         Returns:
             bool: True se a população for boa segundo os critérios;
+
+        Complexidade: O(p)
+            p = Quantidade de indivíduos na população
         """
 
         # TODO pensar num jeito melhor de avaliar a população
@@ -102,13 +114,27 @@ class GeneticAlgorithm:
 
         return is_population_good
 
-    def apply_fitness(self, population: list):
+    def apply_fitness(self, population: list, fitness_input: list):
+        """Aplica uma pontuação para cada indivíduo da população usando uma
+         função fitness definida.
+
+        Args:
+            population (list): A população a ser avaliada
+            fitness_input (list): A lista de dados para o qual os cromossomos
+            serão otimizados.
+
+        Returns:
+            (list): Uma lista contendo elementos no formato (indivíduo, pontuação)
+
+        Complexidade: O(p)
+            p: Quantidade de indivíduos dentro de uma população
+        """
 
         ranked_population = []
 
         for individual in population:
             fitness_value = self.calculate_fitness(
-                individual, self.fitness_input)
+                individual, fitness_input)
 
             if fitness_value == 0:
                 scored_individual = (individual, 1.0)
@@ -131,21 +157,26 @@ class GeneticAlgorithm:
 
         Returns:
             fitness (int): O fitness do cromossomo. Quanto menor o valor, melhor;
+
+        Complexidade: O(m):
+            m: Quantidade de partidas presentes em match_data
         """
 
         fitness = 0
         for current_match in match_data:
             home_team_stats = current_match["home_team_stats"]
             home_team_parsed_stats = []
+
             for gene_index, stats in enumerate(home_team_stats):
                 home_team_parsed_stats.append(
                     home_team_stats[stats] * chromosome[gene_index])
 
             away_team_stats = current_match["away_team_stats"]
             away_team_parsed_stats = []
+
             for gene_index, stats in enumerate(away_team_stats):
                 away_team_parsed_stats.append(
-                    home_team_stats[stats] * chromosome[gene_index])
+                    away_team_stats[stats] * chromosome[gene_index])
 
             home_team_score = sum(home_team_parsed_stats)
             away_team_score = sum(away_team_parsed_stats)
@@ -243,6 +274,8 @@ class GeneticAlgorithm:
         return mutated_chromosome
 
     def print_results(self, population: list):
+        print("Algoritmo terminado!")
+
         fit_string = population[0]
         minimum_fitness = self.calculate_fitness(
             population[0], self.fitness_input)
@@ -255,4 +288,5 @@ class GeneticAlgorithm:
                 fit_string = individual
                 minimum_fitness = fit_individual
 
-        print(f"População Final: {fit_string}")
+        print(
+            f"População Final: {fit_string}, {self.calculate_fitness(fit_string, self.fitness_input)}")
