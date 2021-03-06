@@ -63,3 +63,16 @@ SELECT
 # temporada começou em 08/01/2000
 # O ag ta no dia 20/02/2000
 # lembrando q estamos ignorando SPREAD e a DIFICULDADE ENFRENTADA por enquanto
+
+def get_averages(date):
+    """Recebe uma data e tras as medias do time a partir do inicio da season ate a data informada
+        O primeiro dia da season vem de uma lista
+
+    Args:
+        dia: O dia final 
+        mes: O mes final
+        ano: O ano final
+
+    Returns:
+        bool: True se o ano do input for bissexto
+    """
