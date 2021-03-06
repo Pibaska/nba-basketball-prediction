@@ -1,4 +1,4 @@
-match_database = {
+match_database = {   
     "match01": {
         'home_team_stats': {
             'field_goals': 10,
@@ -44,5 +44,161 @@ match_database = {
             'mat_count_by_team': 42,
             'won': 1
         },
+        
     }
 }
+
+
+"""
+dicionario = {}
+
+sql = do começo da temporada ate o *dia desejado*
+
+for i in temp
+    for x in ["media de pontos", "media de "] 
+        somatoria = temp[i]['points']
+        media = somatoria / len(temp)
+        dicionario[x] = media
+
+
+media = somatoria / len(temp)
+
+
+
+{
+'home_team_stats': {
+    'field_goals': 10,
+    'field_goals_attempts': 28,
+    'field_goals_percentage': 0.357,
+    'three_point_field_goals': 1,
+    'three_point_field_goals_attempts': 3,
+    'three_point_field_goals_percentage': 0.333,
+    'free_throws': 3,
+    'free_throws_attempts': 4,
+    'free_throws_percentage': 0.75,
+    'offensive_rebounds': 5,
+    'defensive_rebounds': 14,
+    'total_rebounds': 19,
+    'assists': 3,
+    'steals': 1,
+    'blocks': 2,
+    'turnover': 2,
+    'personal_faults': 5,
+    'points': 24,
+    'mat_count_by_team': 42,
+    'won': 0,
+},
+'home_team_stats': {
+    'field_goals': 10,
+    'field_goals_attempts': 28,
+    'field_goals_percentage': 0.357,
+    'three_point_field_goals': 1,
+    'three_point_field_goals_attempts': 3,
+    'three_point_field_goals_percentage': 0.333,
+    'free_throws': 3,
+    'free_throws_attempts': 4,
+    'free_throws_percentage': 0.75,
+    'offensive_rebounds': 5,
+    'defensive_rebounds': 14,
+    'total_rebounds': 19,
+    'assists': 3,
+    'steals': 1,
+    'blocks': 2,
+    'turnover': 2,
+    'personal_faults': 5,
+    'points': 24,
+    'mat_count_by_team': 42,
+    'won': 0,
+},
+'home_team_stats': {
+    'field_goals': 10,
+    'field_goals_attempts': 28,
+    'field_goals_percentage': 0.357,
+    'three_point_field_goals': 1,
+    'three_point_field_goals_attempts': 3,
+    'three_point_field_goals_percentage': 0.333,
+    'free_throws': 3,
+    'free_throws_attempts': 4,
+    'free_throws_percentage': 0.75,
+    'offensive_rebounds': 5,
+    'defensive_rebounds': 14,
+    'total_rebounds': 19,
+    'assists': 3,
+    'steals': 1,
+    'blocks': 2,
+    'turnover': 2,
+    'personal_faults': 5,
+    'points': 24,
+    'mat_count_by_team': 42,
+    'won': 0,
+},
+'home_team_stats': {
+    'field_goals': 10,
+    'field_goals_attempts': 28,
+    'field_goals_percentage': 0.357,
+    'three_point_field_goals': 1,
+    'three_point_field_goals_attempts': 3,
+    'three_point_field_goals_percentage': 0.333,
+    'free_throws': 3,
+    'free_throws_attempts': 4,
+    'free_throws_percentage': 0.75,
+    'offensive_rebounds': 5,
+    'defensive_rebounds': 14,
+    'total_rebounds': 19,
+    'assists': 3,
+    'steals': 1,
+    'blocks': 2,
+    'turnover': 2,
+    'personal_faults': 5,
+    'points': 24,
+    'mat_count_by_team': 42,
+    'won': 0,
+},
+'home_team_stats': {
+    'field_goals': 10,
+    'field_goals_attempts': 28,
+    'field_goals_percentage': 0.357,
+    'three_point_field_goals': 1,
+    'three_point_field_goals_attempts': 3,
+    'three_point_field_goals_percentage': 0.333,
+    'free_throws': 3,
+    'free_throws_attempts': 4,
+    'free_throws_percentage': 0.75,
+    'offensive_rebounds': 5,
+    'defensive_rebounds': 14,
+    'total_rebounds': 19,
+    'assists': 3,
+    'steals': 1,
+    'blocks': 2,
+    'turnover': 2,
+    'personal_faults': 5,
+    'points': 24,
+    'mat_count_by_team': 42,
+    'won': 0,
+},
+'home_team_stats': {
+    'field_goals': 10,
+    'field_goals_attempts': 28,
+    'field_goals_percentage': 0.357,
+    'three_point_field_goals': 1,
+    'three_point_field_goals_attempts': 3,
+    'three_point_field_goals_percentage': 0.333,
+    'free_throws': 3,
+    'free_throws_attempts': 4,
+    'free_throws_percentage': 0.75,
+    'offensive_rebounds': 5,
+    'defensive_rebounds': 14,
+    'total_rebounds': 19,
+    'assists': 3,
+    'steals': 1,
+    'blocks': 2,
+    'turnover': 2,
+    'personal_faults': 5,
+    'points': 24,
+    'mat_count_by_team': 42,
+    'won': 0,
+},
+
+}
+
+"""
