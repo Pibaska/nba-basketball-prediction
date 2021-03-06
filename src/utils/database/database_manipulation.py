@@ -258,8 +258,6 @@ def get_last_date():
             formatted_date[1] = int(formatted_date[1])  # mes
             formatted_date[2] = int(formatted_date[2])  # dia
 
-            formatted_date[2] += 1  # dia aumenta 1 pra começar no dia seguinte
-
             return formatted_date
 
         except Exception as e:
