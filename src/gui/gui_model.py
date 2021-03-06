@@ -23,9 +23,26 @@ def activate_away_team_combobox(selected_team, view):
 
 
 def run_gen_alg():
-    genetic_algorithm = GeneticAlgorithm(
+    gen_alg = GeneticAlgorithm(
         database_manipulation.retrieve_match_stats())
-    genetic_algorithm.genetic_alg_loop()
+
+    gen_alg.population = gen_alg.random_population()
+
+    for generation in range(gen_alg.max_generations):
+
+        print(
+            f"Geração {generation} | População: '{gen_alg.population[0]}'")
+
+        ranked_population = gen_alg.apply_fitness(
+            gen_alg.population)
+
+        if(gen_alg.check_for_break(ranked_population)):
+            break
+
+        gen_alg.population = gen_alg.reproduce_population(
+            ranked_population, gen_alg.population_size)
+
+    gen_alg.print_results(gen_alg.population)
 
 
 def run_web_scraping():

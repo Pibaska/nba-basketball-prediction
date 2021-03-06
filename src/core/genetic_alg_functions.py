@@ -18,26 +18,6 @@ class GeneticAlgorithm:
 
         print("Genetic Alg set up!")
 
-    def genetic_alg_loop(self):
-        """Função principal que chama todas as outras funções pra 
-        rodar o algoritmo genético propriamente dito.
-        """
-
-        self.population = self.random_population()
-
-        for generation in range(self.max_generations):
-            print(f"Geração {generation} | População: '{self.population[0]}'")
-
-            ranked_population = self.apply_fitness(self.population)
-
-            if(self.check_for_break(ranked_population)):
-                break
-
-            self.population = self.reproduce_population(
-                ranked_population, self.population_size)
-
-        self.print_results(self.population)
-
     def random_population(self):
         population = []
 
@@ -247,8 +227,3 @@ class GeneticAlgorithm:
                 minimum_fitness = fit_individual
 
         print(f"População Final: {fit_string}")
-
-
-if __name__ == "__main__":
-    gen_alg = GeneticAlgorithm(genetic_alg_fake_data.match_database)
-    gen_alg.genetic_alg_loop()
