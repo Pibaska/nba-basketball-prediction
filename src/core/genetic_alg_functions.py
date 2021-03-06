@@ -4,7 +4,7 @@ import random
 class GeneticAlgorithm:
     def __init__(self, fitness_input: dict, good_generations=3,
                  weight_magnitude=(-10, 10), mutation_chance=100,
-                 chromosome_size=20, population_size=50,
+                 chromosome_size=19, population_size=50,
                  max_generations=100):
         """Fornece as funções necessárias para rodar um algoritmo genético.
 
@@ -168,15 +168,25 @@ class GeneticAlgorithm:
             home_team_parsed_stats = []
 
             for gene_index, stats in enumerate(home_team_stats):
-                home_team_parsed_stats.append(
-                    home_team_stats[stats] * chromosome[gene_index])
+                try:
+                    home_team_parsed_stats.append(
+                        home_team_stats[stats] * chromosome[gene_index])
+                except IndexError:
+                    pass
+                    # print(
+                    #     "IndexError acontecendo por causa do valor de 'won'. Conserta isso Berb!")
 
             away_team_stats = current_match["away_team_stats"]
             away_team_parsed_stats = []
 
             for gene_index, stats in enumerate(away_team_stats):
-                away_team_parsed_stats.append(
-                    away_team_stats[stats] * chromosome[gene_index])
+                try:
+                    away_team_parsed_stats.append(
+                        away_team_stats[stats] * chromosome[gene_index])
+                except IndexError:
+                    pass
+                    # print(
+                    #     "IndexError acontecendo por causa do valor de 'won'. Conserta isso Berb!")
 
             home_team_score = sum(home_team_parsed_stats)
             away_team_score = sum(away_team_parsed_stats)
@@ -283,7 +293,6 @@ class GeneticAlgorithm:
         for individual in population:
             fit_individual = self.calculate_fitness(
                 individual, self.fitness_input)
-            print(f"{individual}, {fit_individual}")
             if fit_individual <= minimum_fitness:
                 fit_string = individual
                 minimum_fitness = fit_individual
