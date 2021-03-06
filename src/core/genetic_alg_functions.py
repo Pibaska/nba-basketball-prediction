@@ -1,5 +1,4 @@
 import random
-import core.genetic_alg_fake_data
 
 
 class GeneticAlgorithm:
@@ -10,12 +9,12 @@ class GeneticAlgorithm:
 
         # Define o quanto os pesos vão influenciar nos atributos
         self.weight_magnitude = (-10, 10)
-
+        self.mutation_chance = 100  # chance de 1%
         self.chromosome_size = 20
         self.population_size = 50  # 50 na primeira geração, nas outras 100
         self.max_generations = 10000
+
         self.consecutive_good_generations = 0
-        self.mutation_chance = 100
 
         print("Genetic Alg set up!")
 
@@ -127,13 +126,13 @@ class GeneticAlgorithm:
 
         fitness = 0
         for current_match in match_data:
-            home_team_stats = match_data[current_match]["home_team_stats"]
+            home_team_stats = current_match["home_team_stats"]
             home_team_parsed_stats = []
             for gene_index, stats in enumerate(home_team_stats):
                 home_team_parsed_stats.append(
                     home_team_stats[stats] * chromosome[gene_index])
 
-            away_team_stats = match_data[current_match]["away_team_stats"]
+            away_team_stats = current_match["away_team_stats"]
             away_team_parsed_stats = []
             for gene_index, stats in enumerate(away_team_stats):
                 away_team_parsed_stats.append(

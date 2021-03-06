@@ -3,7 +3,7 @@
 # edit: talvez a gente tenha que manter hein
 
 from core.genetic_alg_functions import GeneticAlgorithm
-from core.genetic_alg_fake_data import match_database
+from utils.database import database_manipulation
 from web.web_scraping_main import activate_web_scraping
 
 
@@ -23,7 +23,8 @@ def activate_away_team_combobox(selected_team, view):
 
 
 def run_gen_alg():
-    genetic_algorithm = GeneticAlgorithm(match_database)
+    genetic_algorithm = GeneticAlgorithm(
+        database_manipulation.retrieve_match_stats())
     genetic_algorithm.genetic_alg_loop()
 
 
