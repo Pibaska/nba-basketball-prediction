@@ -24,7 +24,7 @@ def activate_away_team_combobox(selected_team, view):
 
 def run_gen_alg():
     gen_alg = GeneticAlgorithm(
-        database_manipulation.retrieve_match_stats())
+        database_manipulation.retrieve_match_stats(), max_generations=30)
 
     gen_alg.population = gen_alg.random_population()
 

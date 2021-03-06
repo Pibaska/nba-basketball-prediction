@@ -2,17 +2,45 @@ import random
 
 
 class GeneticAlgorithm:
-    def __init__(self, model: dict, good_generations=3):
+    def __init__(self, fitness_input: dict, good_generations=3,
+                 weight_magnitude=(-10, 10), mutation_chance=100,
+                 chromosome_size=20, population_size=50,
+                 max_generations=100):
+        """Fornece as funções necessárias para rodar um algoritmo genético.
 
-        self.model = model
+        Args:
+            fitness_input (dict): Dicionário contendo valores que serão usados dentro da função fitness para avaliar cada indivíduo
+            good_generations (int, optional): Número de gerações "boas" consecutivas necessárias para o algoritmo ser interrompido. 
+            Defaults to 3.
+
+            weight_magnitude (tuple, optional): Valores mínimos e máximos para um gene nos cromossomos. Defaults to (-10, 10).
+
+            mutation_chance (int, optional): Define a chance de ocorrer uma mutação, que é calculada em cada gene. Defaults to 100.
+
+            chromosome_size (int, optional): Define quantos genes estarão presentes em cada indivíduo/cromossomo. Defaults to 20.
+
+            population_size (int, optional): Tamanho da população para cada geração. Na primeira geração é o valor definido, 
+            sendo que nas gerações subsequentes o números de indivíduos será sempre 2x o número especificado aqui. Defaults to 50.
+
+            max_generations (int, optional): Quantidade máxima de gerações para serem criadas antes que o algoritmo seja interrompido. 
+            Defaults to 100.
+        """
+
+        self.fitness_input = fitness_input
+
         self.target_good_generations = good_generations
 
         # Define o quanto os pesos vão influenciar nos atributos
-        self.weight_magnitude = (-10, 10)
-        self.mutation_chance = 100  # chance de 1%
-        self.chromosome_size = 20
-        self.population_size = 50  # 50 na primeira geração, nas outras 100
-        self.max_generations = 10000
+        self.weight_magnitude = weight_magnitude
+
+        self.mutation_chance = mutation_chance
+
+        self.chromosome_size = chromosome_size
+
+        # x na primeira geração, nas outras vira 2x
+        self.population_size = population_size
+
+        self.max_generations = max_generations
 
         self.consecutive_good_generations = 0
 
@@ -79,7 +107,8 @@ class GeneticAlgorithm:
         ranked_population = []
 
         for individual in population:
-            fitness_value = self.calculate_fitness(individual, self.model)
+            fitness_value = self.calculate_fitness(
+                individual, self.fitness_input)
 
             if fitness_value == 0:
                 scored_individual = (individual, 1.0)
@@ -216,11 +245,11 @@ class GeneticAlgorithm:
     def print_results(self, population: list):
         fit_string = population[0]
         minimum_fitness = self.calculate_fitness(
-            population[0], self.model)
+            population[0], self.fitness_input)
 
         for individual in population:
             fit_individual = self.calculate_fitness(
-                individual, self.model)
+                individual, self.fitness_input)
             print(f"{individual}, {fit_individual}")
             if fit_individual <= minimum_fitness:
                 fit_string = individual
