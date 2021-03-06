@@ -1,4 +1,4 @@
-match_database = {   
+match_database = {
     "match01": {
         'home_team_stats': {
             'field_goals': 10,
@@ -44,7 +44,6 @@ match_database = {
             'mat_count_by_team': 42,
             'won': 1
         },
-        
     }
 }
 

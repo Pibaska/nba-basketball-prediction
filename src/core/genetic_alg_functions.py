@@ -142,8 +142,8 @@ class GeneticAlgorithm:
             home_team_score = sum(home_team_parsed_stats)
             away_team_score = sum(away_team_parsed_stats)
 
-            real_1q_winner = match_data[current_match]["1q_winner"]
-            predicted_1q_winner = "home" if home_team_score > away_team_score else "away" if home_team_score < away_team_score else "tie"
+            real_1q_winner = "home" if home_team_stats["won"] else "away"
+            predicted_1q_winner = "home" if home_team_score > away_team_score else "away"
 
             # 1 se for True, 0 se for False
             fitness += int(real_1q_winner != predicted_1q_winner)
