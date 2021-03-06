@@ -1,51 +1,67 @@
 import random
-import core.genetic_alg_fake_data
 
 
 class GeneticAlgorithm:
-    def __init__(self, model: dict, good_generations=3):
+    def __init__(self, fitness_input: dict, good_generations=3,
+                 weight_magnitude=(-10, 10), mutation_chance=100,
+                 chromosome_size=19, population_size=50,
+                 max_generations=100):
+        """Fornece as funções necessárias para rodar um algoritmo genético.
 
-        self.model = model
+        Args:
+            fitness_input (dict): Dicionário contendo valores que serão usados dentro da função fitness para avaliar cada indivíduo
+            good_generations (int, optional): Número de gerações "boas" consecutivas necessárias para o algoritmo ser interrompido. 
+            Defaults to 3.
+
+            weight_magnitude (tuple, optional): Valores mínimos e máximos para um gene nos cromossomos. Defaults to (-10, 10).
+
+            mutation_chance (int, optional): Define a chance de ocorrer uma mutação, que é calculada em cada gene. Defaults to 100.
+
+            chromosome_size (int, optional): Define quantos genes estarão presentes em cada indivíduo/cromossomo. Defaults to 20.
+
+            population_size (int, optional): Tamanho da população para cada geração. Na primeira geração é o valor definido, 
+            sendo que nas gerações subsequentes o números de indivíduos será sempre 2x o número especificado aqui. Defaults to 50.
+
+            max_generations (int, optional): Quantidade máxima de gerações para serem criadas antes que o algoritmo seja interrompido. 
+            Defaults to 100.
+        """
+
+        self.fitness_input = fitness_input
+
         self.target_good_generations = good_generations
 
         # Define o quanto os pesos vão influenciar nos atributos
-        self.weight_magnitude = (-10, 10)
+        self.weight_magnitude = weight_magnitude
 
-        self.chromosome_size = 20
-        self.population_size = 50  # 50 na primeira geração, nas outras 100
-        self.max_generations = 10000
+        self.mutation_chance = mutation_chance
+
+        self.chromosome_size = chromosome_size
+
+        # x na primeira geração, nas outras vira 2x
+        self.population_size = population_size
+
+        self.max_generations = max_generations
+
         self.consecutive_good_generations = 0
-        self.mutation_chance = 100
 
         print("Genetic Alg set up!")
 
-    def genetic_alg_loop(self):
-        """Função principal que chama todas as outras funções pra 
-        rodar o algoritmo genético propriamente dito.
-        """
-
-        self.population = self.random_population()
-
-        for generation in range(self.max_generations):
-            print(f"Geração {generation} | População: '{self.population[0]}'")
-
-            ranked_population = self.apply_fitness(self.population)
-
-            if(self.check_for_break(ranked_population)):
-                break
-
-            self.population = self.reproduce_population(
-                ranked_population, self.population_size)
-
-        self.print_results(self.population)
-
     def random_population(self):
+        """Preenche uma população com indivíduos gerados aleatoriamente
+
+        Returns:
+            (list): População preenchida com os indivíduos lindinhos
+
+        Complexidade: O(p*c)
+            p = Tamanho desejado da população
+            c = Tamanho de cada cromossomo
+        """
         population = []
 
         for _ in range(self.population_size):
             chromosome = []
 
-            for _ in range(self.chromosome_size):
+            for i in range(self.chromosome_size):
                 # random.uniform é tipo um randrange mas que retorna floats
                 chromosome.append(random.uniform(
                     self.weight_magnitude[0], self.weight_magnitude[1]))
@@ -78,6 +94,9 @@ class GeneticAlgorithm:
 
         Returns:
             bool: True se a população for boa segundo os critérios;
+
+        Complexidade: O(p)
+            p = Quantidade de indivíduos na população
         """
 
         # TODO pensar num jeito melhor de avaliar a população
@@ -95,12 +114,27 @@ class GeneticAlgorithm:
 
         return is_population_good
 
-    def apply_fitness(self, population: list):
+    def apply_fitness(self, population: list, fitness_input: list):
+        """Aplica uma pontuação para cada indivíduo da população usando uma
+         função fitness definida.
+
+        Args:
+            population (list): A população a ser avaliada
+            fitness_input (list): A lista de dados para o qual os cromossomos
+            serão otimizados.
+
+        Returns:
+            (list): Uma lista contendo elementos no formato (indivíduo, pontuação)
+
+        Complexidade: O(p)
+            p: Quantidade de indivíduos dentro de uma população
+        """
 
         ranked_population = []
 
         for individual in population:
-            fitness_value = self.calculate_fitness(individual, self.model)
+            fitness_value = self.calculate_fitness(
+                individual, fitness_input)
 
             if fitness_value == 0:
                 scored_individual = (individual, 1.0)
@@ -123,27 +157,42 @@ class GeneticAlgorithm:
 
         Returns:
             fitness (int): O fitness do cromossomo. Quanto menor o valor, melhor;
+
+        Complexidade: O(m):
+            m: Quantidade de partidas presentes em match_data
         """
 
         fitness = 0
         for current_match in match_data:
-            home_team_stats = match_data[current_match]["home_team_stats"]
+            home_team_stats = current_match["home_team_stats"]
             home_team_parsed_stats = []
-            for gene_index, stats in enumerate(home_team_stats):
-                home_team_parsed_stats.append(
-                    home_team_stats[stats] * chromosome[gene_index])
 
-            away_team_stats = match_data[current_match]["away_team_stats"]
+            for gene_index, stats in enumerate(home_team_stats):
+                try:
+                    home_team_parsed_stats.append(
+                        home_team_stats[stats] * chromosome[gene_index])
+                except IndexError:
+                    pass
+                    # print(
+                    #     "IndexError acontecendo por causa do valor de 'won'. Conserta isso Berb!")
+
+            away_team_stats = current_match["away_team_stats"]
             away_team_parsed_stats = []
+
             for gene_index, stats in enumerate(away_team_stats):
-                away_team_parsed_stats.append(
-                    home_team_stats[stats] * chromosome[gene_index])
+                try:
+                    away_team_parsed_stats.append(
+                        away_team_stats[stats] * chromosome[gene_index])
+                except IndexError:
+                    pass
+                    # print(
+                    #     "IndexError acontecendo por causa do valor de 'won'. Conserta isso Berb!")
 
             home_team_score = sum(home_team_parsed_stats)
             away_team_score = sum(away_team_parsed_stats)
 
-            real_1q_winner = match_data[current_match]["1q_winner"]
-            predicted_1q_winner = "home" if home_team_score > away_team_score else "away" if home_team_score < away_team_score else "tie"
+            real_1q_winner = "home" if home_team_stats["won"] else "away"
+            predicted_1q_winner = "home" if home_team_score > away_team_score else "away"
 
             # 1 se for True, 0 se for False
             fitness += int(real_1q_winner != predicted_1q_winner)
@@ -235,21 +284,18 @@ class GeneticAlgorithm:
         return mutated_chromosome
 
     def print_results(self, population: list):
+        print("Algoritmo terminado!")
+
         fit_string = population[0]
         minimum_fitness = self.calculate_fitness(
-            population[0], self.model)
+            population[0], self.fitness_input)
 
         for individual in population:
             fit_individual = self.calculate_fitness(
-                individual, self.model)
-            print(f"{individual}, {fit_individual}")
+                individual, self.fitness_input)
             if fit_individual <= minimum_fitness:
                 fit_string = individual
                 minimum_fitness = fit_individual
 
-        print(f"População Final: {fit_string}")
-
-
-if __name__ == "__main__":
-    gen_alg = GeneticAlgorithm(genetic_alg_fake_data.match_database)
-    gen_alg.genetic_alg_loop()
+        print(
+            f"População Final: {fit_string}, {self.calculate_fitness(fit_string, self.fitness_input)}")
