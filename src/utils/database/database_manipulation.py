@@ -118,6 +118,28 @@ def retrieve_match_data(match_id):
         db_connection.close()
 
 
+def retrieve_team_id_from_abv(team_abv):
+    """
+    Recebe a abreviação de um time e procura na tabela team do banco qual é o id desse time
+
+    Se for usar essa função pra conseguir 1 time, usar no formato: retrieve_team_data(('___',))
+    """
+
+    # Filtrar por abreviação
+    try:
+        db_connection = sqlite3.connect('data/database.sqlite3')
+        cursor = db_connection.cursor()
+
+        cursor.execute(
+            """SELECT team_id FROM team WHERE team_name = ?""", team_abv)
+        return(cursor.fetchone())
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        db_connection.close()
+
+
 def match_data_factory(cursor, row):
     #! Essa função foi feita completamente na base da gambiarra. Otimizar depois.
     match_stats = {
@@ -256,6 +278,5 @@ if __name__ == "__main__":
     #                    0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 1, 0, 1)]
     # fake_match_data = [(2, 1, '31-12-2018', 1)]
 
-    for stats in retrieve_match_stats():
-        print(stats)
-        # SELECT * FROM match_data as md INNER JOIN participation as tp ON md.fk_participation_home = tp.team_id;
+    check_tables()
+    # SELECT * FROM match_data as md INNER JOIN participation as tp ON md.fk_participation_home = tp.team_id;

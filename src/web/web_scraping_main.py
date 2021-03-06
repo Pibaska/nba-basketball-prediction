@@ -1,10 +1,5 @@
-if __name__ == "__main__":
-    #import web_scraping_functions as ws_functions
-    #from utils.database import database_manipulation as db
-    pass
-else:
-    import web.web_scraping_functions as ws_functions
-    import utils.database.database_manipulation as db
+import web.web_scraping_functions as ws_functions
+import utils.database.database_manipulation as db
 
 
 id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg3_pct', 'ft',
@@ -47,9 +42,8 @@ def activate_web_scraping():
 
                 print(f'{team_is_home} - {team_name}')
 
-
-                lista.append(0) #posteriormente se tornará participation_id
-                lista.append(0) #posteriormente se tornará fk_tem_id
+                lista.append(0)  # posteriormente se tornará participation_id
+                lista.append(db.retrieve_team_id_from_abv((team_name,))[0])
                 lista.append(team_name)
                 lista.append(team_is_home)
                 for item in range(len(id_items_to_collect)):
@@ -104,36 +98,28 @@ def format_and_insert_team_data(game_data, date):
 
         game_data[team_part_index].append(int(is_current_team_winner))
 
-
-        match_list = []  
-
-            
+        match_list = []
 
         if not is_team_home:
+            game_data[team_part_index - 1][0] = (db.create_id_participation())
+            db.insert_participation_data([game_data[team_part_index - 1]])
+            game_data[team_part_index][0] = (db.create_id_participation())
+            db.insert_participation_data([game_data[team_part_index]])
 
+            print([game_data[team_part_index - 1]])
+            print([game_data[team_part_index]])
 
-
-            game_data[team_part_index -1][0] = (db.create_id_participation())
-            db.insert_participation_data([game_data[team_part_index -1]])
-            game_data[team_part_index   ][0] = (db.create_id_participation())
-            db.insert_participation_data([game_data[team_part_index   ]])
-
-            print([game_data[team_part_index -1]])
-            print([game_data[team_part_index   ]])
-            
-            match_list.append(game_data[team_part_index -1][0]) # fk_participation_home INTEGER NOT NULL, criar função para criar os ids
-            match_list.append(game_data[team_part_index   ][0]) # fk_participation_away INTEGER NOT NULL, criar função para criar os ids
-            match_list.append(db.get_datetime(date)) # date DATE NOT NULL,  date  
+            # fk_participation_home INTEGER NOT NULL, criar função para criar os ids
+            match_list.append(game_data[team_part_index - 1][0])
+            # fk_participation_away INTEGER NOT NULL, criar função para criar os ids
+            match_list.append(game_data[team_part_index][0])
+            # date DATE NOT NULL,  date
+            match_list.append(db.get_datetime(date))
 
             db.insert_match_data([match_list])
 
     game_data.clear()
-  
 
 
 if __name__ == "__main__":
-
-    greg = {'nome': "greg", "idade": 12 }
-    print(greg['nome'])
-
-    #activate_web_scraping()
+    pass
