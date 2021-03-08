@@ -1,6 +1,4 @@
 import os
-
-from random import random
 from core.genetic_alg_functions import GeneticAlgorithm
 from utils.database import database_manipulation
 
@@ -30,8 +28,14 @@ fitness_value = gen_alg.calculate_fitness(
     random_chromosome, gen_alg.fitness_input)
 scored_individual = (random_chromosome, 1.0/fitness_value)
 
-log_file = open(os.path.join("data", "gen_alg_logs.txt"), "a")
+log_file = open(os.path.join("data", "gen_alg_logs.log"), "a")
 
-log_file.write(f"\n\nAG: {gen_alg_chromosome}")
-log_file.write(f"\nRandom: {scored_individual}")
+log_file.write(f"\n\nTimestamp: WIP")
+log_file.write(f"\nGenetic Algorithm finished in WIP seconds.")
+log_file.write(f"\n\tGenetic Algorithm Parameters:")
+log_file.write(f"\n\tWIP")
+log_file.write(f"\nGenetic Algorithm Output: {gen_alg_chromosome[0]}")
+log_file.write(f"\n\tScore: {gen_alg_chromosome[1]}")
+log_file.write(f"\nRandom Output: {scored_individual}")
+log_file.write(f"\n\tScore: {scored_individual[1]}")
 log_file.close()
