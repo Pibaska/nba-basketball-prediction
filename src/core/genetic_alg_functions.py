@@ -5,7 +5,7 @@ class GeneticAlgorithm:
     def __init__(self, fitness_input: dict, good_generations=3,
                  weight_magnitude=(-10, 10), mutation_chance=100,
                  chromosome_size=19, population_size=50,
-                 max_generations=100):
+                 max_generations=100, consecutive_good_generations=0):
         """Fornece as funções necessárias para rodar um algoritmo genético.
 
         Args:
@@ -24,6 +24,8 @@ class GeneticAlgorithm:
 
             max_generations (int, optional): Quantidade máxima de gerações para serem criadas antes que o algoritmo seja interrompido. 
             Defaults to 100.
+
+            consecutive_good_generations (int, optional): Quantidade de gerações boas consecutivas pra que o algoritmo pare
         """
 
         self.fitness_input = fitness_input
@@ -42,7 +44,9 @@ class GeneticAlgorithm:
 
         self.max_generations = max_generations
 
-        self.consecutive_good_generations = 0
+        self.consecutive_good_generations = consecutive_good_generations
+
+        self.ranked_population = []
 
         print("Genetic Alg set up!")
 
@@ -161,6 +165,7 @@ class GeneticAlgorithm:
         Complexidade: O(m):
             m: Quantidade de partidas presentes em match_data
         """
+        # TODO: Fazer essa função rodar sem dar um IndexError toda vezs
 
         fitness = 0
         for current_match in match_data:
@@ -283,21 +288,15 @@ class GeneticAlgorithm:
 
         return mutated_chromosome
 
+    def sort_function(self, element):
+        return element[1]
+
     def get_results(self, population: list):
         print("Algoritmo terminado!")
 
-        fit_string = population[0]
-        minimum_fitness = self.calculate_fitness(
-            population[0], self.fitness_input)
-
-        for individual in population:
-            fit_individual = self.calculate_fitness(
-                individual, self.fitness_input)
-            if fit_individual <= minimum_fitness:
-                fit_string = individual
-                minimum_fitness = fit_individual
+        population.sort(key=self.sort_function)
 
         print(
-            f"População Final: {fit_string}, {self.calculate_fitness(fit_string, self.fitness_input)}")
+            f"População Final: {population[0][0]}, Fitness: {population[0][1]}")
 
-        return fit_string
+        return population[0][0]
