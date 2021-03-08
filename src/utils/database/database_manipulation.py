@@ -186,6 +186,8 @@ def retrieve_match_stats():
             INNER JOIN participation as away_tp
             ON md.fk_participation_away = away_tp.participation_id;""")
         results = cursor.fetchall()
+        print("Match stats retrieved!")
+
         return results
     except Exception as e:
         print(e)
