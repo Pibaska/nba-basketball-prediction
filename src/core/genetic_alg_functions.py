@@ -147,6 +147,8 @@ class GeneticAlgorithm:
 
             ranked_population.append(scored_individual)
 
+        ranked_population.sort(key=lambda element: element[1])
+
         return ranked_population
 
     def calculate_fitness(self, chromosome: list, match_data: dict):
@@ -288,14 +290,8 @@ class GeneticAlgorithm:
 
         return mutated_chromosome
 
-    def sort_function(self, element):
-        return element[1]
-
     def get_results(self, population: list):
         print("Algoritmo terminado!")
-
-        population.sort(key=self.sort_function)
-
         print(
             f"População Final: {population[0][0]}, Fitness: {population[0][1]}")
 
