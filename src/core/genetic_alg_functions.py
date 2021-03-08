@@ -283,7 +283,7 @@ class GeneticAlgorithm:
 
         return mutated_chromosome
 
-    def print_results(self, population: list):
+    def get_results(self, population: list):
         print("Algoritmo terminado!")
 
         fit_string = population[0]
@@ -299,3 +299,5 @@ class GeneticAlgorithm:
 
         print(
             f"População Final: {fit_string}, {self.calculate_fitness(fit_string, self.fitness_input)}")
+
+        return fit_string

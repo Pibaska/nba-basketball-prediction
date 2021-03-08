@@ -42,7 +42,7 @@ def run_gen_alg():
         gen_alg.population = gen_alg.reproduce_population(
             ranked_population, gen_alg.population_size)
 
-    gen_alg.print_results(gen_alg.population)
+    print(gen_alg.get_results(gen_alg.population))
 
 
 def run_web_scraping():

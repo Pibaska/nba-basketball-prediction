@@ -4,14 +4,17 @@ from PyQt5.QtWidgets import QApplication
 
 from gui.gui_controller import BasketballPredictionController
 from gui.gui_view import BasketballPredictionView
+from gui.gui_model import run_gen_alg
 
 
-basketballGUI = QApplication(sys.argv)
+# basketballGUI = QApplication(sys.argv)
 
-view = BasketballPredictionView()
-view.show()
-basketballGUI.setStyleSheet(view.stylesheet)
+# view = BasketballPredictionView()
+# view.show()
+# basketballGUI.setStyleSheet(view.stylesheet)
 
-BasketballPredictionController(view)
+# BasketballPredictionController(view)
 
-sys.exit(basketballGUI.exec())
+# sys.exit(basketballGUI.exec())
+
+run_gen_alg()
