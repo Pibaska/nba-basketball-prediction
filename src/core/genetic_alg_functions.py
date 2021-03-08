@@ -63,16 +63,21 @@ class GeneticAlgorithm:
         population = []
 
         for _ in range(self.population_size):
-            chromosome = []
-
-            for i in range(self.chromosome_size):
-                # random.uniform é tipo um randrange mas que retorna floats
-                chromosome.append(random.uniform(
-                    self.weight_magnitude[0], self.weight_magnitude[1]))
+            chromosome = self.generate_random_chromosome()
 
             population.append(chromosome)
 
         return population
+
+    def generate_random_chromosome(self):
+        chromosome = []
+
+        for _ in range(self.chromosome_size):
+            # random.uniform é tipo um randrange mas que retorna floats
+            chromosome.append(random.uniform(
+                self.weight_magnitude[0], self.weight_magnitude[1]))
+
+        return chromosome
 
     def check_for_break(self, population: list):
         """Parece meio inútil porque só chama outra função mas o propósito dela é
@@ -295,4 +300,4 @@ class GeneticAlgorithm:
         print(
             f"População Final: {population[0][0]}, Fitness: {population[0][1]}")
 
-        return population[0][0]
+        return population[0]

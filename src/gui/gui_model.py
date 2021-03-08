@@ -30,7 +30,6 @@ def run_gen_alg():
 
     for generation in range(gen_alg.max_generations):
 
-        # TODO: Tentar dar o sort aqui já
         gen_alg.ranked_population = gen_alg.apply_fitness(
             gen_alg.population, gen_alg.fitness_input)
 
@@ -43,7 +42,7 @@ def run_gen_alg():
         gen_alg.population = gen_alg.reproduce_population(
             gen_alg.ranked_population, gen_alg.population_size)
 
-    print(gen_alg.get_results(gen_alg.ranked_population))
+    return gen_alg.get_results(gen_alg.ranked_population)
 
 
 def run_web_scraping():

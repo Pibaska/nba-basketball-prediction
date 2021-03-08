@@ -16,5 +16,3 @@ from gui.gui_model import run_gen_alg
 # BasketballPredictionController(view)
 
 # sys.exit(basketballGUI.exec())
-
-run_gen_alg()
