@@ -2,6 +2,8 @@
 # esse arquivo existe pra garantir a flexibilidade da interface
 # edit: talvez a gente tenha que manter hein
 
+from datetime import datetime
+import time
 from core.genetic_alg_functions import GeneticAlgorithm
 from utils.database import database_manipulation
 from web.web_scraping_main import activate_web_scraping
@@ -24,25 +26,32 @@ def activate_away_team_combobox(selected_team, view):
 
 def run_gen_alg():
     gen_alg = GeneticAlgorithm(
-        database_manipulation.retrieve_match_stats(), weight_magnitude=(-100, 100), population_size=25, max_generations=50)
+        database_manipulation.retrieve_match_stats(), weight_range=(-100, 100), population_size=25, max_generations=10)
+
+    start_time = time.time()
 
     gen_alg.population = gen_alg.random_population()
 
     for generation in range(gen_alg.max_generations):
 
-        ranked_population = gen_alg.apply_fitness(
+        gen_alg.ranked_population = gen_alg.apply_fitness(
             gen_alg.population, gen_alg.fitness_input)
 
         print(
-            f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {ranked_population[0][1]}'")
+            f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}'")
 
-        if(gen_alg.check_for_break(ranked_population)):
+        if(gen_alg.check_for_break(gen_alg.ranked_population)):
             break
 
         gen_alg.population = gen_alg.reproduce_population(
-            ranked_population, gen_alg.population_size)
+            gen_alg.ranked_population, gen_alg.population_size)
 
-    gen_alg.print_results(gen_alg.population)
+    end_time = time.time()
+
+    gen_alg.log_data(timestamp=datetime.now(),
+                     elapsed_time=end_time - start_time)
+
+    return gen_alg
 
 
 def run_web_scraping():

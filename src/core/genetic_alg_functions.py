@@ -1,11 +1,12 @@
 import random
+import os
 
 
 class GeneticAlgorithm:
     def __init__(self, fitness_input: dict, good_generations=3,
-                 weight_magnitude=(-10, 10), mutation_chance=100,
+                 weight_range=(-10, 10), mutation_chance=100,
                  chromosome_size=19, population_size=50,
-                 max_generations=100):
+                 max_generations=100, consecutive_good_generations=0):
         """Fornece as funções necessárias para rodar um algoritmo genético.
 
         Args:
@@ -13,7 +14,7 @@ class GeneticAlgorithm:
             good_generations (int, optional): Número de gerações "boas" consecutivas necessárias para o algoritmo ser interrompido. 
             Defaults to 3.
 
-            weight_magnitude (tuple, optional): Valores mínimos e máximos para um gene nos cromossomos. Defaults to (-10, 10).
+            weight_range (tuple, optional): Valores mínimos e máximos para um gene nos cromossomos. Defaults to (-10, 10).
 
             mutation_chance (int, optional): Define a chance de ocorrer uma mutação, que é calculada em cada gene. Defaults to 100.
 
@@ -24,6 +25,8 @@ class GeneticAlgorithm:
 
             max_generations (int, optional): Quantidade máxima de gerações para serem criadas antes que o algoritmo seja interrompido. 
             Defaults to 100.
+
+            consecutive_good_generations (int, optional): Quantidade de gerações boas consecutivas pra que o algoritmo pare
         """
 
         self.fitness_input = fitness_input
@@ -31,7 +34,7 @@ class GeneticAlgorithm:
         self.target_good_generations = good_generations
 
         # Define o quanto os pesos vão influenciar nos atributos
-        self.weight_magnitude = weight_magnitude
+        self.weight_range = weight_range
 
         self.mutation_chance = mutation_chance
 
@@ -42,7 +45,9 @@ class GeneticAlgorithm:
 
         self.max_generations = max_generations
 
-        self.consecutive_good_generations = 0
+        self.consecutive_good_generations = consecutive_good_generations
+
+        self.ranked_population = []
 
         print("Genetic Alg set up!")
 
@@ -59,16 +64,21 @@ class GeneticAlgorithm:
         population = []
 
         for _ in range(self.population_size):
-            chromosome = []
-
-            for i in range(self.chromosome_size):
-                # random.uniform é tipo um randrange mas que retorna floats
-                chromosome.append(random.uniform(
-                    self.weight_magnitude[0], self.weight_magnitude[1]))
+            chromosome = self.generate_random_chromosome()
 
             population.append(chromosome)
 
         return population
+
+    def generate_random_chromosome(self):
+        chromosome = []
+
+        for _ in range(self.chromosome_size):
+            # random.uniform é tipo um randrange mas que retorna floats
+            chromosome.append(random.uniform(
+                self.weight_range[0], self.weight_range[1]))
+
+        return chromosome
 
     def check_for_break(self, population: list):
         """Parece meio inútil porque só chama outra função mas o propósito dela é
@@ -143,6 +153,8 @@ class GeneticAlgorithm:
 
             ranked_population.append(scored_individual)
 
+        ranked_population.sort(key=lambda element: element[1])
+
         return ranked_population
 
     def calculate_fitness(self, chromosome: list, match_data: dict):
@@ -161,6 +173,7 @@ class GeneticAlgorithm:
         Complexidade: O(m):
             m: Quantidade de partidas presentes em match_data
         """
+        # TODO: Fazer essa função rodar sem dar um IndexError toda vezs
 
         fitness = 0
         for current_match in match_data:
@@ -277,25 +290,35 @@ class GeneticAlgorithm:
 
             if int(random.random() * self.mutation_chance) == 1:
                 mutated_chromosome.append(random.uniform(
-                    self.weight_magnitude[0], self.weight_magnitude[1]))
+                    self.weight_range[0], self.weight_range[1]))
             else:
                 mutated_chromosome.append(chromosome[i])
 
         return mutated_chromosome
 
-    def print_results(self, population: list):
+    def log_data(self, timestamp=-1, elapsed_time=-1):
         print("Algoritmo terminado!")
 
-        fit_string = population[0]
-        minimum_fitness = self.calculate_fitness(
-            population[0], self.fitness_input)
-
-        for individual in population:
-            fit_individual = self.calculate_fitness(
-                individual, self.fitness_input)
-            if fit_individual <= minimum_fitness:
-                fit_string = individual
-                minimum_fitness = fit_individual
-
-        print(
-            f"População Final: {fit_string}, {self.calculate_fitness(fit_string, self.fitness_input)}")
+        log_file = open(os.path.join("data", "genetic_algorithm.log"), "a")
+        log_file.write(f"\n\nTimestamp: {timestamp}")
+        log_file.write(f"\nGenetic Algorithm finished in {elapsed_time} seconds.")
+        log_file.write(f"\n\tGenetic Algorithm Parameters:")
+        log_file.write(f"\n\t\tseed: WIP")
+        log_file.write(
+            f"\n\t\tgood_generations: {self.target_good_generations}")
+        log_file.write(f"\n\t\tweight_magnitude: {self.weight_range}")
+        log_file.write(f"\n\t\tmutation_chance: {self.mutation_chance}")
+        log_file.write(f"\n\t\tchromosome_size: {self.chromosome_size}")
+        log_file.write(f"\n\t\tpopulation_size: {self.population_size}")
+        log_file.write(f"\n\t\tmax_generations: {self.max_generations}")
+        log_file.write(
+            f"\n\t\tconsecutive_good_generations: {self.consecutive_good_generations}")
+        log_file.write(
+            f"\n\tGenetic Algorithm Output:\n\t\tScore: {self.ranked_population[0][1]}")
+        for index, stat in enumerate(self.fitness_input[0]["home_team_stats"]):
+            try:
+                log_file.write(
+                    f"\n\t\t{stat}: {self.ranked_population[0][0][index]}")
+            except IndexError:
+                pass
+        log_file.close()
