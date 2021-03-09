@@ -23,7 +23,7 @@ def activate_web_scraping():
 
         driver.get(date_url)
 
-        print('---------D-I-A---------')
+        print('---------D-A-Y---------')
         print(f'{date[0]}/{date[1]}/{date[2]}')
 
         match_amount = ws_functions.get_match_amount(driver)
