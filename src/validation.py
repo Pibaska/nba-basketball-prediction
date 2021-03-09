@@ -1,3 +1,4 @@
+from json.decoder import JSONDecodeError
 import os
 import time
 import statistics
@@ -15,7 +16,8 @@ class Validation():
     def __init__(self, test_cycles=5) -> None:
         self.gen_alg = GeneticAlgorithm(
             database_manipulation.retrieve_match_stats(),
-            weight_range=(-100, 100), population_size=50,
+            weight_range=(-100, 100),
+            population_size=1,
             max_generations=1)
 
         self.test_cycles = test_cycles
@@ -58,12 +60,12 @@ class Validation():
         print("Data logged!")
 
     def dump_json(self, **kwargs):
-        """Pega os dados do algoritmo genético e salva eles num arquivo
-        validation.json dentro da pasta data.
+        """Pega os dados do algoritmo genético e acrescenta eles no final
+        do arquivo validation.json
         """
 
-        validation_data = [
-            {
+        with open(os.path.join("data", "validation.json")) as json_file:
+            validation_data = {
                 "general_data": {
                     "timestamp": str(datetime.now()),
                     "validation_duration": self.end_time - self.start_time,
@@ -78,13 +80,19 @@ class Validation():
                     "max_generations": self.gen_alg.max_generations
                 }
             }
-        ]
 
-        for score in kwargs:
-            validation_data[-1][score] = kwargs[score]
+            for score in kwargs:
+                validation_data[score] = kwargs[score]
+
+            try:
+                data = json.load(json_file)
+            except JSONDecodeError:
+                data = []
+
+            data.append(validation_data)
 
         with open(os.path.join("data", "validation.json"), "w") as json_file:
-            json.dump(validation_data, json_file, indent=4)
+            json.dump(data, json_file, indent=4)
 
         print("Data dumped into json!")
 

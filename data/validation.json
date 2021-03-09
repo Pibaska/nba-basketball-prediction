@@ -1,8 +1,8 @@
 [
     {
         "general_data": {
-            "timestamp": "2021-03-09 16:24:50.060218",
-            "validation_duration": 5.371135950088501
+            "timestamp": "2021-03-09 17:25:39.042157",
+            "validation_duration": 0.9383652210235596
         },
         "genetic_algorithm_data": {
             "seed": "WIP",
@@ -13,20 +13,20 @@
             ],
             "mutation_chance": 100,
             "chromosome_size": 19,
-            "population_size": 50,
+            "population_size": 1,
             "max_generations": 1
         },
         "gen_alg_stats": {
-            "mean": 0.0015363217973545175,
-            "std_deviation": 1.847835149542552e-05,
-            "median": 0.0015432098765432098,
-            "variance": 3.4144947398849463e-10
+            "mean": 0.004689701163977368,
+            "std_deviation": 0.002209270398312144,
+            "median": 0.0036363636363636364,
+            "variance": 4.880875692858298e-06
         },
         "random_stats": {
-            "mean": 0.004992893656151117,
-            "std_deviation": 0.001965873119665147,
-            "median": 0.004405286343612335,
-            "variance": 3.864657122621977e-06
+            "mean": 0.003780959046387866,
+            "std_deviation": 0.0006351617573599122,
+            "median": 0.003816793893129771,
+            "variance": 4.03430458012532e-07
         },
         "constant_stats": {
             "mean": 0.010638297872340425,
