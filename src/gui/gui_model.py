@@ -24,7 +24,7 @@ def activate_away_team_combobox(selected_team, view):
 
 def run_gen_alg():
     gen_alg = GeneticAlgorithm(
-        database_manipulation.retrieve_match_stats(), weight_magnitude=(-100, 100), population_size=25, max_generations=10)
+        database_manipulation.retrieve_match_stats(), weight_range=(-100, 100), population_size=25, max_generations=10)
 
     gen_alg.population = gen_alg.random_population()
 
@@ -42,7 +42,7 @@ def run_gen_alg():
         gen_alg.population = gen_alg.reproduce_population(
             gen_alg.ranked_population, gen_alg.population_size)
 
-    return gen_alg.get_results(gen_alg.ranked_population)
+    return gen_alg
 
 
 def run_web_scraping():

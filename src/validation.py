@@ -1,58 +1,108 @@
 import os
+from datetime import datetime
+import time
 from core.genetic_alg_functions import GeneticAlgorithm
 from utils.database import database_manipulation
 
-gen_alg = GeneticAlgorithm(
-    database_manipulation.retrieve_match_stats(), weight_magnitude=(-100, 100), population_size=25, max_generations=1)
 
-gen_alg.population = gen_alg.random_population()
+class Validation():
+    def __init__(self, test_cycles=20) -> None:
+        self.gen_alg = GeneticAlgorithm(
+            database_manipulation.retrieve_match_stats(),
+            weight_range=(-100, 100), population_size=50,
+            max_generations=10)
 
-for generation in range(gen_alg.max_generations):
+        self.test_cycles = test_cycles
 
-    gen_alg.ranked_population = gen_alg.apply_fitness(
-        gen_alg.population, gen_alg.fitness_input)
+        self.start_time = 0
 
-    print(
-        f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}'")
+        self.end_time = 0
 
-    if(gen_alg.check_for_break(gen_alg.ranked_population)):
-        break
+    def log_data(self, **kwargs):
+        log_file = open(os.path.join("data", "validation.log"), "a")
+        log_file.write(f"\n\nTimestamp: {datetime.now()}")
+        log_file.write(
+            f"\nValidation finished in {self.end_time - self.start_time} seconds.")
+        log_file.write(f"\n\tGenetic Algorithm Parameters:")
+        log_file.write(f"\n\t\tseed: WIP")
+        log_file.write(
+            f"\n\t\tgood_generations: {self.gen_alg.target_good_generations}")
+        log_file.write(f"\n\t\tweight_magnitude: {self.gen_alg.weight_range}")
+        log_file.write(
+            f"\n\t\tmutation_chance: {self.gen_alg.mutation_chance}")
+        log_file.write(
+            f"\n\t\tchromosome_size: {self.gen_alg.chromosome_size}")
+        log_file.write(
+            f"\n\t\tpopulation_size: {self.gen_alg.population_size}")
+        log_file.write(
+            f"\n\t\tmax_generations: {self.gen_alg.max_generations}")
+        log_file.write(
+            f"\n\t\tconsecutive_good_generations: {self.gen_alg.consecutive_good_generations}")
+        for score in kwargs:
+            log_file.write(f"\n\t{score}: {kwargs[score]}")
+        log_file.close()
 
-    gen_alg.population = gen_alg.reproduce_population(
-        gen_alg.ranked_population, gen_alg.population_size)
+    def gen_alg_score_generator(self):
 
-gen_alg_chromosome = gen_alg.get_results(gen_alg.ranked_population)
+        self.gen_alg.population = self.gen_alg.random_population()
 
-random_chromosome = gen_alg.generate_random_chromosome()
-fitness_value = gen_alg.calculate_fitness(
-    random_chromosome, gen_alg.fitness_input)
-scored_individual = (random_chromosome, 1.0/fitness_value)
+        for generation in range(self.gen_alg.max_generations):
 
-log_file = open(os.path.join("data", "validation.log"), "a")
-log_file.write(f"\n\nTimestamp: WIP")
-log_file.write(f"\nGenetic Algorithm finished in WIP seconds.")
-log_file.write(f"\n\tGenetic Algorithm Parameters:")
-log_file.write(f"\n\t\tseed: WIP")
-log_file.write(f"\n\t\tgood_generations: {gen_alg.target_good_generations}")
-log_file.write(f"\n\t\tweight_magnitude: {gen_alg.weight_magnitude}")
-log_file.write(f"\n\t\tmutation_chance: {gen_alg.mutation_chance}")
-log_file.write(f"\n\t\tchromosome_size: {gen_alg.chromosome_size}")
-log_file.write(f"\n\t\tpopulation_size: {gen_alg.population_size}")
-log_file.write(f"\n\t\tmax_generations: {gen_alg.max_generations}")
-log_file.write(
-    f"\n\t\tconsecutive_good_generations: {gen_alg.consecutive_good_generations}")
-log_file.write(
-    f"\n\tGenetic Algorithm Output:\n\t\tScore: {gen_alg_chromosome[1]}")
-for index, stat in enumerate(gen_alg.fitness_input[0]["home_team_stats"]):
-    try:
-        log_file.write(f"\n\t\t{stat}: {gen_alg_chromosome[0][index]}")
-    except IndexError:
-        pass
-log_file.write(
-    f"\n\tRandom Output:\n\t\tScore: {scored_individual[1]}")
-for index, stat in enumerate(gen_alg.fitness_input[0]["home_team_stats"]):
-    try:
-        log_file.write(f"\n\t\t{stat}: {random_chromosome[index]}")
-    except IndexError:
-        pass
-log_file.close()
+            self.gen_alg.ranked_population = self.gen_alg.apply_fitness(
+                self.gen_alg.population, self.gen_alg.fitness_input)
+
+            print(f"Geração {generation}...")
+
+            if(self.gen_alg.check_for_break(self.gen_alg.ranked_population)):
+                break
+
+            self.gen_alg.population = self.gen_alg.reproduce_population(
+                self.gen_alg.ranked_population, self.gen_alg.population_size)
+
+        return self.gen_alg.register_results(self.gen_alg.ranked_population)[1]
+
+    def random_score_generator(self):
+
+        random_chromosome = self.gen_alg.generate_random_chromosome()
+        fitness_value = self.gen_alg.calculate_fitness(
+            random_chromosome, self.gen_alg.fitness_input)
+
+        return 1/fitness_value
+
+    def constant_score_generator(self):
+        constant_chromosome = [1 for _ in range(self.gen_alg.chromosome_size)]
+        fitness_value = self.gen_alg.calculate_fitness(
+            constant_chromosome, self.gen_alg.fitness_input)
+
+        return 1/fitness_value
+
+    def calculate_performance(self, generator_function):
+        result_list = []
+
+        for cycle in range(self.test_cycles):
+            result_list.append(generator_function())
+
+            print(f"Cycle {cycle} Finished!")
+
+        average_score = sum(result_list)/len(result_list)
+
+        return(average_score)
+
+
+if __name__ == "__main__":
+    validation = Validation()
+    validation.start_time = time.time()
+
+    print("Generating Genetic Algorithm Score")
+    gen_alg_performance = validation.calculate_performance(
+        validation.gen_alg_score_generator)
+    print("Generating Random Score")
+    random_performance = validation.calculate_performance(
+        validation.random_score_generator)
+    print("Generating Constant Score")
+    constant_performance = validation.calculate_performance(
+        validation.constant_score_generator)
+
+    validation.end_time = time.time()
+    validation.log_data(gen_alg_average_fitness=gen_alg_performance,
+                        random_average_fitness=random_performance, constant_average_fitness=constant_performance)
