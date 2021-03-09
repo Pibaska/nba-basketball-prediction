@@ -1,16 +1,17 @@
 import os
-from datetime import datetime
 import time
+import math
+from datetime import datetime
 from core.genetic_alg_functions import GeneticAlgorithm
 from utils.database import database_manipulation
 
 
 class Validation():
-    def __init__(self, test_cycles=20) -> None:
+    def __init__(self, test_cycles=5) -> None:
         self.gen_alg = GeneticAlgorithm(
             database_manipulation.retrieve_match_stats(),
             weight_range=(-100, 100), population_size=50,
-            max_generations=10)
+            max_generations=1)
 
         self.test_cycles = test_cycles
 
@@ -84,9 +85,16 @@ class Validation():
 
             print(f"Cycle {cycle} Finished!")
 
-        average_score = sum(result_list)/len(result_list)
+        mean_score = sum(result_list)/len(result_list)
 
-        return(average_score)
+        for result in result_list:
+            result -= mean_score
+            result *= result
+
+        std_deviation = sum(result_list)/len(result_list)
+        std_deviation = math.sqrt(std_deviation)
+
+        return mean_score, std_deviation
 
 
 if __name__ == "__main__":
@@ -94,15 +102,19 @@ if __name__ == "__main__":
     validation.start_time = time.time()
 
     print("Generating Genetic Algorithm Score")
-    gen_alg_performance = validation.calculate_performance(
+    gen_alg_average_fitness, gen_alg_std_deviation = validation.calculate_performance(
         validation.gen_alg_score_generator)
     print("Generating Random Score")
-    random_performance = validation.calculate_performance(
+    random_average_fitness, random_std_deviation = validation.calculate_performance(
         validation.random_score_generator)
     print("Generating Constant Score")
-    constant_performance = validation.calculate_performance(
+    constant_average_fitness, constant_std_deviation = validation.calculate_performance(
         validation.constant_score_generator)
 
     validation.end_time = time.time()
-    validation.log_data(gen_alg_average_fitness=gen_alg_performance,
-                        random_average_fitness=random_performance, constant_average_fitness=constant_performance)
+    validation.log_data(gen_alg_average_fitness=gen_alg_average_fitness,
+                        gen_alg_std_deviation=gen_alg_std_deviation,
+                        random_average_fitness=random_average_fitness,
+                        random_std_deviation=random_std_deviation,
+                        constant_average_fitness=constant_average_fitness,
+                        constant_std_deviation=constant_std_deviation)
