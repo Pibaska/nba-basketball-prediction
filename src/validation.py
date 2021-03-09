@@ -1,6 +1,6 @@
 import os
 import time
-import math
+import statistics
 from datetime import datetime
 from core.genetic_alg_functions import GeneticAlgorithm
 from utils.database import database_manipulation
@@ -85,16 +85,14 @@ class Validation():
 
             print(f"Cycle {cycle} Finished!")
 
-        mean_score = sum(result_list)/len(result_list)
+        result_statistics = {
+            "mean": statistics.mean(result_list),
+            "std_deviation": statistics.pstdev(result_list),
+            "median": statistics.median(result_list),
+            "variance": statistics.pvariance(result_list)
+        }
 
-        for result in result_list:
-            result -= mean_score
-            result *= result
-
-        std_deviation = sum(result_list)/len(result_list)
-        std_deviation = math.sqrt(std_deviation)
-
-        return mean_score, std_deviation
+        return result_statistics
 
 
 if __name__ == "__main__":
@@ -102,13 +100,13 @@ if __name__ == "__main__":
     validation.start_time = time.time()
 
     print("Generating Genetic Algorithm Score")
-    gen_alg_average_fitness, gen_alg_std_deviation = validation.calculate_performance(
+    gen_alg_stats = validation.calculate_performance(
         validation.gen_alg_score_generator)
     print("Generating Random Score")
-    random_average_fitness, random_std_deviation = validation.calculate_performance(
+    random_stats = validation.calculate_performance(
         validation.random_score_generator)
     print("Generating Constant Score")
-    constant_average_fitness, constant_std_deviation = validation.calculate_performance(
+    constant_stats = validation.calculate_performance(
         validation.constant_score_generator)
 
     validation.end_time = time.time()
