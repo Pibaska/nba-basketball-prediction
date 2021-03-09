@@ -1,0 +1,38 @@
+[
+    {
+        "general_data": {
+            "timestamp": "2021-03-09 16:06:48.857565",
+            "validation_duration": 5.726558685302734
+        },
+        "genetic_algorithm_data": {
+            "seed": "WIP",
+            "good_generations": 3,
+            "weight_range": [
+                -100,
+                100
+            ],
+            "mutation_chance": 100,
+            "chromosome_size": 19,
+            "population_size": 50,
+            "max_generations": 1
+        },
+        "gen_alg_stats": {
+            "mean": 0.0015018025114593157,
+            "std_deviation": 3.367148793777833e-05,
+            "median": 0.0014947683109118087,
+            "variance": 1.1337690999439515e-09
+        },
+        "random_stats": {
+            "mean": 0.0039001486300345883,
+            "std_deviation": 0.002574386638773728,
+            "median": 0.002531645569620253,
+            "variance": 6.627466565896694e-06
+        },
+        "constant_stats": {
+            "mean": 0.010638297872340425,
+            "std_deviation": 0.0,
+            "median": 0.010638297872340425,
+            "variance": 0.0
+        }
+    }
+]

@@ -1,6 +1,7 @@
 import os
 import time
 import statistics
+import json
 from datetime import datetime
 from core.genetic_alg_functions import GeneticAlgorithm
 from utils.database import database_manipulation
@@ -42,6 +43,31 @@ class Validation():
         for score in kwargs:
             log_file.write(f"\n\t{score}: {kwargs[score]}")
         log_file.close()
+
+    def dump_json(self, **kwargs):
+        validation_data = [
+            {
+                "general_data": {
+                    "timestamp": str(datetime.now()),
+                    "validation_duration": self.end_time - self.start_time,
+                },
+                "genetic_algorithm_data": {
+                    "seed": "WIP",
+                    "good_generations": self.gen_alg.target_good_generations,
+                    "weight_range": self.gen_alg.weight_range,
+                    "mutation_chance": self.gen_alg.mutation_chance,
+                    "chromosome_size": self.gen_alg.chromosome_size,
+                    "population_size": self.gen_alg.population_size,
+                    "max_generations": self.gen_alg.max_generations
+                }
+            }
+        ]
+
+        for score in kwargs:
+            validation_data[-1][score] = kwargs[score]
+
+        with open("data/validation_data.json", "w") as json_file:
+            json.dump(validation_data, json_file, indent=4)
 
     def gen_alg_score_generator(self):
 
@@ -110,9 +136,5 @@ if __name__ == "__main__":
         validation.constant_score_generator)
 
     validation.end_time = time.time()
-    validation.log_data(gen_alg_average_fitness=gen_alg_average_fitness,
-                        gen_alg_std_deviation=gen_alg_std_deviation,
-                        random_average_fitness=random_average_fitness,
-                        random_std_deviation=random_std_deviation,
-                        constant_average_fitness=constant_average_fitness,
-                        constant_std_deviation=constant_std_deviation)
+    validation.dump_json(gen_alg_stats=gen_alg_stats,
+                         random_stats=random_stats, constant_stats=constant_stats)
