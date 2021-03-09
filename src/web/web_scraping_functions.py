@@ -70,8 +70,8 @@ def generate_date_list():
                     if day_increment >= last_day:
                         last_day = 0
 
-                        formatted_date = [day_increment+1,
-                                          month_increment + 1, last_year]
+                        formatted_date = [last_year,
+                                          month_increment + 1, day_increment+1]
                         formatted_date_list.append(formatted_date)
 
     return formatted_date_list
@@ -102,9 +102,9 @@ def generate_day_url(formatted_date):
         str: A URL gerada a partir da data do input
     """
 
-    day = formatted_date[0]
+    day = formatted_date[2]
     month = formatted_date[1]
-    year = formatted_date[2]
+    year = formatted_date[0]
     url = f"https://www.basketball-reference.com/boxscores/?month={month}&day={day}&year={year}"
 
     return url

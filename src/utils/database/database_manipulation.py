@@ -238,7 +238,7 @@ def create_id_participation():
 
 
 def get_datetime(date):
-    return datetime.date(date[2], date[1], date[0])
+    return datetime.date(date[0], date[1], date[2])
 
 
 def get_last_date():
