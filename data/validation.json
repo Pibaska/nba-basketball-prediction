@@ -1,8 +1,8 @@
 [
     {
         "general_data": {
-            "timestamp": "2021-03-09 16:06:48.857565",
-            "validation_duration": 5.726558685302734
+            "timestamp": "2021-03-09 16:24:50.060218",
+            "validation_duration": 5.371135950088501
         },
         "genetic_algorithm_data": {
             "seed": "WIP",
@@ -17,16 +17,16 @@
             "max_generations": 1
         },
         "gen_alg_stats": {
-            "mean": 0.0015018025114593157,
-            "std_deviation": 3.367148793777833e-05,
-            "median": 0.0014947683109118087,
-            "variance": 1.1337690999439515e-09
+            "mean": 0.0015363217973545175,
+            "std_deviation": 1.847835149542552e-05,
+            "median": 0.0015432098765432098,
+            "variance": 3.4144947398849463e-10
         },
         "random_stats": {
-            "mean": 0.0039001486300345883,
-            "std_deviation": 0.002574386638773728,
-            "median": 0.002531645569620253,
-            "variance": 6.627466565896694e-06
+            "mean": 0.004992893656151117,
+            "std_deviation": 0.001965873119665147,
+            "median": 0.004405286343612335,
+            "variance": 3.864657122621977e-06
         },
         "constant_stats": {
             "mean": 0.010638297872340425,

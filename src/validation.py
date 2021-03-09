@@ -8,6 +8,10 @@ from utils.database import database_manipulation
 
 
 class Validation():
+    """Classe usada para fazer a validação dos cromossomos do algoritmo genético
+    e salvar esses dados para uso posterior.
+    """
+
     def __init__(self, test_cycles=5) -> None:
         self.gen_alg = GeneticAlgorithm(
             database_manipulation.retrieve_match_stats(),
@@ -21,6 +25,11 @@ class Validation():
         self.end_time = 0
 
     def log_data(self, **kwargs):
+        """Função que pega os dados do algoritmo genético e registra
+        eles num arquivo validation.log. Na dúvida usar a dump_json() ao
+        invés dessa.
+        """
+
         log_file = open(os.path.join("data", "validation.log"), "a")
         log_file.write(f"\n\nTimestamp: {datetime.now()}")
         log_file.write(
@@ -40,11 +49,19 @@ class Validation():
             f"\n\t\tmax_generations: {self.gen_alg.max_generations}")
         log_file.write(
             f"\n\t\tconsecutive_good_generations: {self.gen_alg.consecutive_good_generations}")
+
         for score in kwargs:
             log_file.write(f"\n\t{score}: {kwargs[score]}")
+
         log_file.close()
 
+        print("Data logged!")
+
     def dump_json(self, **kwargs):
+        """Pega os dados do algoritmo genético e salva eles num arquivo
+        validation.json dentro da pasta data.
+        """
+
         validation_data = [
             {
                 "general_data": {
@@ -66,10 +83,18 @@ class Validation():
         for score in kwargs:
             validation_data[-1][score] = kwargs[score]
 
-        with open("data/validation_data.json", "w") as json_file:
+        with open(os.path.join("data", "validation.json"), "w") as json_file:
             json.dump(validation_data, json_file, indent=4)
 
-    def gen_alg_score_generator(self):
+        print("Data dumped into json!")
+
+    def gen_alg_score_generator(self) -> float:
+        """Roda o algoritmo genético cujos parâmetros estão especificados
+        no __init__
+
+        Returns:
+            float: Pontuação de fitness do melhor indivíduo ao final do algoritmo.
+        """
 
         self.gen_alg.population = self.gen_alg.random_population()
 
@@ -88,7 +113,13 @@ class Validation():
 
         return self.gen_alg.ranked_population[0][1]
 
-    def random_score_generator(self):
+    def random_score_generator(self) -> float:
+        """Cria um cromossomo com valores aleatórios, dentro do range
+        guardado pelo algoritmo genético, especificado no __init__
+
+        Returns:
+            float: Pontuação de fitness do cromossomo aleatório
+        """
 
         random_chromosome = self.gen_alg.generate_random_chromosome()
         fitness_value = self.gen_alg.calculate_fitness(
@@ -96,14 +127,34 @@ class Validation():
 
         return 1/fitness_value
 
-    def constant_score_generator(self):
+    def constant_score_generator(self) -> float:
+        """Gera um cromossomo contendo apenas quantos 1 forem necessários para
+        preenchê-lo e retorna seu fitness
+
+        Returns:
+            float: O fitness calculado desse cromossomo de valor constante
+        """
+
         constant_chromosome = [1 for _ in range(self.gen_alg.chromosome_size)]
         fitness_value = self.gen_alg.calculate_fitness(
             constant_chromosome, self.gen_alg.fitness_input)
 
         return 1/fitness_value
 
-    def calculate_performance(self, generator_function):
+    def calculate_performance(self, generator_function) -> dict:
+        """Roda uma função geradora de pontuações de fitness várias vezes,
+        salva esses resultados em uma lista e retorna um dicionário contendo
+        informações sobre as pontuações registradas
+
+        Args:
+            generator_function (function): A função que vai retornar os fitness
+            que serão adicionados na lista
+
+        Returns:
+            dict: Dados sobre a lista de pontuações de fitness, respectivamente:
+            média, desvio padrão, mediana e variância.
+        """
+
         result_list = []
 
         for cycle in range(self.test_cycles):
