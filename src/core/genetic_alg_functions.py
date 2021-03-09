@@ -296,14 +296,12 @@ class GeneticAlgorithm:
 
         return mutated_chromosome
 
-    def register_results(self, ranked_population: list):
+    def log_data(self, timestamp=-1, elapsed_time=-1):
         print("Algoritmo terminado!")
-        print(
-            f"População Final: {ranked_population[0][0]}, Fitness: {ranked_population[0][1]}")
 
         log_file = open(os.path.join("data", "genetic_algorithm.log"), "a")
-        log_file.write(f"\n\nTimestamp: WIP")
-        log_file.write(f"\nGenetic Algorithm finished in WIP seconds.")
+        log_file.write(f"\n\nTimestamp: {timestamp}")
+        log_file.write(f"\nGenetic Algorithm finished in {elapsed_time} seconds.")
         log_file.write(f"\n\tGenetic Algorithm Parameters:")
         log_file.write(f"\n\t\tseed: WIP")
         log_file.write(
@@ -316,13 +314,11 @@ class GeneticAlgorithm:
         log_file.write(
             f"\n\t\tconsecutive_good_generations: {self.consecutive_good_generations}")
         log_file.write(
-            f"\n\tGenetic Algorithm Output:\n\t\tScore: {ranked_population[0][1]}")
+            f"\n\tGenetic Algorithm Output:\n\t\tScore: {self.ranked_population[0][1]}")
         for index, stat in enumerate(self.fitness_input[0]["home_team_stats"]):
             try:
                 log_file.write(
-                    f"\n\t\t{stat}: {ranked_population[0][0][index]}")
+                    f"\n\t\t{stat}: {self.ranked_population[0][0][index]}")
             except IndexError:
                 pass
         log_file.close()
-
-        return ranked_population[0]

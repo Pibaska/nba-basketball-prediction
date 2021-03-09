@@ -59,7 +59,7 @@ class Validation():
             self.gen_alg.population = self.gen_alg.reproduce_population(
                 self.gen_alg.ranked_population, self.gen_alg.population_size)
 
-        return self.gen_alg.register_results(self.gen_alg.ranked_population)[1]
+        return self.gen_alg.ranked_population[0][1]
 
     def random_score_generator(self):
 

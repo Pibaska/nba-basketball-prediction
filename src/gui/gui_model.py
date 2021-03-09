@@ -2,6 +2,8 @@
 # esse arquivo existe pra garantir a flexibilidade da interface
 # edit: talvez a gente tenha que manter hein
 
+from datetime import datetime
+import time
 from core.genetic_alg_functions import GeneticAlgorithm
 from utils.database import database_manipulation
 from web.web_scraping_main import activate_web_scraping
@@ -26,6 +28,8 @@ def run_gen_alg():
     gen_alg = GeneticAlgorithm(
         database_manipulation.retrieve_match_stats(), weight_range=(-100, 100), population_size=25, max_generations=10)
 
+    start_time = time.time()
+
     gen_alg.population = gen_alg.random_population()
 
     for generation in range(gen_alg.max_generations):
@@ -41,6 +45,11 @@ def run_gen_alg():
 
         gen_alg.population = gen_alg.reproduce_population(
             gen_alg.ranked_population, gen_alg.population_size)
+
+    end_time = time.time()
+
+    gen_alg.log_data(timestamp=datetime.now(),
+                     elapsed_time=end_time - start_time)
 
     return gen_alg
 
