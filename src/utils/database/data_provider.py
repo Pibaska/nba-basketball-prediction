@@ -87,7 +87,16 @@ SELECT
 # lembrando q estamos ignorando SPREAD e a DIFICULDADE ENFRENTADA por enquanto
 
 
-def get_match_totals():
+def get_match_amount():
+    """Busca quantas partidas estão presentes no banco de dados e retorna esse valor
+
+    Raises:
+        e: Exceção coringa do tipo Exception
+
+    Returns:
+        int: Quantidade de partidas presentes no banco de dados
+    """
+
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
@@ -113,12 +122,12 @@ def get_match_totals():
         db_connection.close()
 
 
-def get_match(match_total):
+def get_match(match_amount):
     """Escolhe uma partida aleatória entre todas as partidas salvas e retorna alguns dados
     referentes a ela.
 
     Args:
-        match_total (int): Quantidade de partidas salvas para escolher um índice aleatoriamente
+        match_amount (int): Quantidade de partidas salvas para escolher um índice aleatoriamente
 
     Raises:
         e: Exceção do tipo Exception
@@ -132,7 +141,7 @@ def get_match(match_total):
     """
 
     # pegar match aleatoria a partir de id
-    match_id = random.randrange(0, match_total)
+    match_id = random.randrange(0, match_amount)
 
     str_match_id = str(match_id)
 
@@ -230,11 +239,11 @@ def get_averages(team_id, local, date):
 
 if __name__ == "__main__":
 
-    match_total = get_match_totals()
+    match_amount = get_match_amount()
 
-    print(str(match_total) + " partidas totais")
+    print(f"{match_amount} partidas totais.")
 
-    match = get_match(match_total)
+    match = get_match(match_amount)
     print("Partida: ")
     print(match)
 
