@@ -141,7 +141,7 @@ def get_match(match_amount):
     """
 
     # pegar match aleatoria a partir de id
-    match_id = random.randrange(0, match_amount)
+    match_id = random.randrange(1, match_total)
 
     str_match_id = str(match_id)
 
@@ -159,7 +159,14 @@ def get_match(match_amount):
 
         lista = cursor.fetchall()
 
-        return lista[0]
+        pre_averages_dict = {
+            "team_home_won": lista[0][0],
+            "team_home_id": lista[0][1],
+            "team_away_id": lista[0][2],
+            "match_data": lista[0][3].split('-')
+        }
+
+        return pre_averages_dict
 
     except Exception as e:
         print(e)
@@ -205,27 +212,31 @@ def get_averages(team_id, local, date):
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
 
-        join_local = "md.fk_participation_home" if local else "md.fk_participation_away"
+        participation_local = "pt_home" if local else "pt_away"
 
         cursor.execute(
-            """ 
-        SELECT 
-            AVG(pt.points), 
-            AVG(pt.offensive_rebounds),
-            AVG(pt.defensive_rebounds),
-            AVG(NULLIF(pt.field_goals_percentage,0)),
-            AVG(NULLIF(pt.three_point_field_goals_percentage,0)),
-            AVG(NULLIF(pt.free_throws_percentage,0)),
-            AVG(pt.turnover), 
-            AVG(pt.assists)
-                from match_data as md INNER JOIN participation as pt 
-                ON """ + join_local + """ = pt.participation_id 
-                WHERE pt.fk_team_id = ? 
-                and pt.team_is_home = ?
-                and md.date > ?
-                and md.date < ?
-                order by md.date ASC;   
-                """, [team_id, local, str(dt.strptime(seasonStart, "%Y/%m/%d").date()), str(dt.strptime(strigDate, "%Y/%m/%d").date())])
+                        """ 
+            SELECT 
+                AVG("""+ participation_local +""".points), 
+                AVG("""+ participation_local +""".points - pt_away.points) as spread, 
+                AVG("""+ participation_local +""".offensive_rebounds),
+                AVG("""+ participation_local +""".defensive_rebounds),
+                AVG(NULLIF("""+ participation_local +""".field_goals_percentage,0)),
+                AVG(NULLIF("""+ participation_local +""".three_point_field_goals_percentage,0)),
+                AVG(NULLIF("""+ participation_local +""".free_throws_percentage,0)),
+                AVG("""+ participation_local +""".turnover), 
+                AVG("""+ participation_local +""".assists)
+                    from match_data as md 
+                    INNER JOIN participation as pt_home 
+                    ON md.fk_participation_home = pt_home.participation_id 
+                    INNER JOIN participation as pt_away
+                    on md.fk_participation_away = pt_away.participation_id
+                            WHERE """+ participation_local +""".fk_team_id = ?
+                            and """+ participation_local +""".team_is_home = ?
+                            and md.date > ?
+                            and md.date <  ?
+                            order by md.date ASC;   
+                """, [team_id, local, str(dt.strptime(seasonStart, "%Y/%m/%d").date()), str(dt.strptime(strigDate, "%Y/%m/%d").date()) ])
         lista = cursor.fetchall()
 
         return lista
@@ -236,29 +247,91 @@ def get_averages(team_id, local, date):
     finally:
         db_connection.close()
 
+def get_spread():
+
+
+    try:
+        db_connection = sqlite3.connect('data/database.sqlite3')
+        cursor = db_connection.cursor()
+
+        cursor.execute(
+            """
+            SELECT 
+                match_id 
+            FROM 
+                match_data 
+            ORDER BY 
+                match_id DESC;
+            """)
+
+        lista = (cursor.fetchall())
+
+        return lista[0][0]
+        
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        db_connection.close()
+
 
 if __name__ == "__main__":
+    
+    match_total = get_match_totals()
+    for i in range(200):
 
-    match_amount = get_match_amount()
+        print(str(match_total) + " partidas totais")
 
-    print(f"{match_amount} partidas totais.")
+        pre_averages_dict = get_match(match_total)
 
-    match = get_match(match_amount)
-    print("Partida: ")
-    print(match)
+        print(pre_averages_dict)
+        team_home_averages = get_averages(pre_averages_dict["team_home_id"], 1, pre_averages_dict["match_data"])
+        team_away_averages = get_averages(pre_averages_dict["team_away_id"], 0, pre_averages_dict["match_data"])
 
-    pre_averages = {
-        "team_home_won": match[0],
-        "team_home_id": match[1],
-        "team_away_id": match[2],
-        "match_data": match[3].split('-')
-    }
 
-    team_home_averages = get_averages(
-        pre_averages["team_home_id"], 1, pre_averages["match_data"])
-    team_away_averages = get_averages(
-        pre_averages["team_away_id"], 0, pre_averages["match_data"])
+        # Usar para ver os nulos
+        # problem = 0 if team_home_averages[0][0] and team_home_averages[0][0] else 1
+        # if problem:
+        #     raise Exception("Sorry, no numbers below zero")
 
-    print(team_home_averages)
-    print(team_away_averages)
-    # pegar id dos dois times da partida, e qual dos dois ganhou
+        print(team_home_averages)
+        print(team_away_averages)
+        # pegar id dos dois times da partida, e qual dos dois ganhou
+
+
+
+
+# SELECT 
+#     AVG(pt_home.points), 
+#     AVG(pt_home.points - pt_away.points) as spread, 
+#     AVG(pt_home.offensive_rebounds),
+#     AVG(pt_home.defensive_rebounds),
+#     AVG(NULLIF(pt_home.field_goals_percentage,0)),
+#     AVG(NULLIF(pt_home.three_point_field_goals_percentage,0)),
+#     AVG(NULLIF(pt_home.free_throws_percentage,0)),
+#     AVG(pt_home.turnover), 
+#     AVG(pt_home.assists)
+#         from match_data as md 
+#         INNER JOIN participation as pt_home 
+#         ON md.fk_participation_home = pt_home.participation_id 
+#         INNER JOIN participation as pt_away
+#         on md.fk_participation_away = pt_away.participation_id
+#             WHERE pt_home.fk_team_id = 5
+
+# SELECT 
+#     AVG(pt_away.points), 
+#     AVG(pt_away.points - pt_home.points) as spread, 
+#     AVG(pt_away.offensive_rebounds),
+#     AVG(pt_away.defensive_rebounds),
+#     AVG(NULLIF(pt_away.field_goals_percentage,0)),
+#     AVG(NULLIF(pt_away.three_point_field_goals_percentage,0)),
+#     AVG(NULLIF(pt_away.free_throws_percentage,0)),
+#     AVG(pt_away.turnover), 
+#     AVG(pt_away.assists)
+#         from match_data as md 
+#         INNER JOIN participation as pt_away 
+#         ON md.fk_participation_away = pt_away.participation_id 
+#         INNER JOIN participation as pt_home
+#         on md.fk_participation_home = pt_home.participation_id
+#             WHERE pt_away.fk_team_id = 5
+                    

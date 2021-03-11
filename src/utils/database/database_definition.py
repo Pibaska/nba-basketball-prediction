@@ -181,6 +181,15 @@ def drop_tables():
 
 
 if __name__ == "__main__":
+
+    x = input("tem certeza mermão? vai acabar o banco, vai da mrd")
+    x = input("tem certeza mermão? ")
+    x = input("tem certeza mermão? ")
+    x = input("tem certeza mermão? ")
+    x = input("tem certeza mermão? ")
+    x = input("tem certeza mermão? ")
+    x = input("tem certeza mermão? ")
+
     drop_tables()
     create_database()
     complete_teams()
