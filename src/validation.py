@@ -5,7 +5,7 @@ import statistics
 import json
 from datetime import datetime
 from core.genetic_alg_functions import GeneticAlgorithm
-from utils.database import database_manipulation
+from utils.database import data_provider
 
 
 class Validation():
@@ -15,7 +15,7 @@ class Validation():
 
     def __init__(self, test_cycles=5) -> None:
         self.gen_alg = GeneticAlgorithm(
-            database_manipulation.retrieve_match_stats(),
+            data_provider.glue,
             weight_range=(-100, 100),
             population_size=1,
             max_generations=1)
@@ -109,7 +109,7 @@ class Validation():
         for generation in range(self.gen_alg.max_generations):
 
             self.gen_alg.ranked_population = self.gen_alg.apply_fitness(
-                self.gen_alg.population, self.gen_alg.fitness_input)
+                self.gen_alg.population, self.gen_alg.fitness_input_gatherer)
 
             print(f"Geração {generation}...")
 
@@ -128,10 +128,14 @@ class Validation():
         Returns:
             float: Pontuação de fitness do cromossomo aleatório
         """
+        fitness_input = []
+
+        for _ in range(self.gen_alg.fitness_input_size):
+            fitness_input.append(self.gen_alg.fitness_input_gatherer())
 
         random_chromosome = self.gen_alg.generate_random_chromosome()
         fitness_value = self.gen_alg.calculate_fitness(
-            random_chromosome, self.gen_alg.fitness_input)
+            random_chromosome, fitness_input)
 
         return 1/fitness_value
 
@@ -142,10 +146,14 @@ class Validation():
         Returns:
             float: O fitness calculado desse cromossomo de valor constante
         """
+        fitness_input = []
+
+        for _ in range(self.gen_alg.fitness_input_size):
+            fitness_input.append(self.gen_alg.fitness_input_gatherer())
 
         constant_chromosome = [1 for _ in range(self.gen_alg.chromosome_size)]
         fitness_value = self.gen_alg.calculate_fitness(
-            constant_chromosome, self.gen_alg.fitness_input)
+            constant_chromosome, fitness_input)
 
         return 1/fitness_value
 
