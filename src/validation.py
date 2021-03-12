@@ -104,6 +104,7 @@ class Validation():
             float: Pontuação de fitness do melhor indivíduo ao final do algoritmo.
         """
 
+        # Pensar se isso aqui deve ser mantido aleatório ou pegar das outras coisas também
         self.gen_alg.population = self.gen_alg.random_population()
 
         for generation in range(self.gen_alg.max_generations):
@@ -137,7 +138,7 @@ class Validation():
         fitness_value = self.gen_alg.calculate_fitness(
             random_chromosome, fitness_input)
 
-        return 1/fitness_value
+        return fitness_value
 
     def constant_score_generator(self) -> float:
         """Gera um cromossomo contendo apenas quantos 1 forem necessários para
@@ -155,7 +156,7 @@ class Validation():
         fitness_value = self.gen_alg.calculate_fitness(
             constant_chromosome, fitness_input)
 
-        return 1/fitness_value
+        return fitness_value
 
     def calculate_performance(self, generator_function) -> dict:
         """Roda uma função geradora de pontuações de fitness várias vezes,

@@ -26,11 +26,11 @@ def activate_away_team_combobox(selected_team, view):
 
 def run_gen_alg():
     gen_alg = GeneticAlgorithm(
-        data_provider.glue, weight_range=(-100, 100), population_size=50, max_generations=1000)
+        data_provider.glue, weight_range=(-100, 100), population_size=50, max_generations=10, fitness_input_size=300, mutation_weight=(-10, 10))
 
     start_time = time.time()
 
-    gen_alg.population = gen_alg.random_population()
+    gen_alg.population = gen_alg.get_first_generation()
 
     for generation in range(gen_alg.max_generations):
 
@@ -38,9 +38,10 @@ def run_gen_alg():
             gen_alg.population, gen_alg.fitness_input_gatherer)
 
         print(
-            f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}'")
+            f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}%'")
 
         if(gen_alg.check_for_break(gen_alg.ranked_population)):
+            print("População tá top, hora do break")
             break
 
         gen_alg.population = gen_alg.reproduce_population(
@@ -48,8 +49,8 @@ def run_gen_alg():
 
     end_time = time.time()
 
-    gen_alg.log_data(timestamp=datetime.now(),
-                     elapsed_time=end_time - start_time)
+    gen_alg.log_and_dump_data(timestamp=datetime.now(),
+                              elapsed_time=end_time - start_time)
 
     return gen_alg
 
