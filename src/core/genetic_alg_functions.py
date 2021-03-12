@@ -59,9 +59,25 @@ class GeneticAlgorithm:
 
         self.population = []
 
-        self.generation_file = os.path.join("src", "core", "last_generation.txt")
+        self.generation_file = os.path.join(
+            "src", "core", "last_generation.txt")
 
         print("Genetic Alg set up!")
+
+    def get_first_generation(self):
+        first_generation = []
+
+        with open(self.generation_file, "rb") as generation_file:
+            first_generation = pickle.load(generation_file)
+
+            if(len(first_generation) < self.population_size):
+                print("População menor do que o esperado, preenchendo o que falta..")
+
+                for _ in range(self.population_size - len(first_generation)):
+                    chromosome = self.generate_random_chromosome()
+
+                    first_generation.append(chromosome)
+        return first_generation
 
     def random_population(self):
         """Preenche uma população com indivíduos gerados aleatoriamente
@@ -314,7 +330,7 @@ class GeneticAlgorithm:
 
         return mutated_chromosome
 
-    def log_data(self, timestamp=-1, elapsed_time=-1):
+    def log_and_dump_data(self, timestamp=-1, elapsed_time=-1):
         print("Algoritmo terminado!")
 
         log_file = open(os.path.join("data", "genetic_algorithm.log"), "a")
@@ -343,10 +359,5 @@ class GeneticAlgorithm:
                 pass
         log_file.close()
 
-    def dump_last_generation(self):
         with open(self.generation_file, "wb") as generation_file:
             pickle.dump(self.population, generation_file)
-
-    def retrieve_last_generation(self):
-        with open(self.generation_file, "rb") as generation_file:
-            print(pickle.load(generation_file))

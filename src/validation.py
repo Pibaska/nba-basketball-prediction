@@ -104,6 +104,7 @@ class Validation():
             float: Pontuação de fitness do melhor indivíduo ao final do algoritmo.
         """
 
+        # Pensar se isso aqui deve ser mantido aleatório ou pegar das outras coisas também
         self.gen_alg.population = self.gen_alg.random_population()
 
         for generation in range(self.gen_alg.max_generations):
