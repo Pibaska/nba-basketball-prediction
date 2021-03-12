@@ -31,7 +31,7 @@ class GeneticAlgorithm:
             consecutive_good_generations (int, optional): Quantidade de gerações boas consecutivas pra que o algoritmo pare
         """
 
-        self.fitness_input = fitness_input_gatherer
+        self.fitness_input_gatherer = fitness_input_gatherer
 
         self.target_good_generations = good_generations
 
@@ -182,39 +182,36 @@ class GeneticAlgorithm:
         Complexidade: O(m):
             m: Quantidade de partidas presentes em match_data
         """
-        # TODO: Fazer essa função rodar sem dar um IndexError toda vezs
 
         fitness = 0
         for current_match in match_data:
-            home_team_stats = current_match["home_team_stats"]
+            home_team_stats = current_match["team_home"]
             home_team_parsed_stats = []
 
             for gene_index, stats in enumerate(home_team_stats):
                 try:
                     home_team_parsed_stats.append(
                         home_team_stats[stats] * chromosome[gene_index])
-                except IndexError:
-                    pass
-                    # print(
-                    #     "IndexError acontecendo por causa do valor de 'won'. Conserta isso Berb!")
+                except TypeError:
+                    # print("Deu merda")
+                    home_team_parsed_stats.append(chromosome[gene_index])
 
-            away_team_stats = current_match["away_team_stats"]
+            away_team_stats = current_match["team_away"]
             away_team_parsed_stats = []
 
             for gene_index, stats in enumerate(away_team_stats):
                 try:
                     away_team_parsed_stats.append(
                         away_team_stats[stats] * chromosome[gene_index])
-                except IndexError:
-                    pass
-                    # print(
-                    #     "IndexError acontecendo por causa do valor de 'won'. Conserta isso Berb!")
+                except TypeError:
+                    # print("Deu merda")
+                    away_team_parsed_stats.append(chromosome[gene_index])
 
             home_team_score = sum(home_team_parsed_stats)
             away_team_score = sum(away_team_parsed_stats)
 
-            real_1q_winner = "home" if home_team_stats["won"] else "away"
             predicted_1q_winner = "home" if home_team_score > away_team_score else "away"
+            real_1q_winner = "home" if current_match["home_won"] else "away"
 
             # 1 se for True, 0 se for False
             fitness += int(real_1q_winner != predicted_1q_winner)
@@ -325,7 +322,8 @@ class GeneticAlgorithm:
             f"\n\t\tconsecutive_good_generations: {self.consecutive_good_generations}")
         log_file.write(
             f"\n\tGenetic Algorithm Output:\n\t\tScore: {self.ranked_population[0][1]}")
-        for index, stat in enumerate(self.fitness_input[0]["home_team_stats"]):
+        match_data = self.fitness_input_gatherer()
+        for index, stat in enumerate(match_data["team_home"]):
             try:
                 log_file.write(
                     f"\n\t\t{stat}: {self.ranked_population[0][0][index]}")

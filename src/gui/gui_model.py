@@ -35,7 +35,7 @@ def run_gen_alg():
     for generation in range(gen_alg.max_generations):
 
         gen_alg.ranked_population = gen_alg.apply_fitness(
-            gen_alg.population, gen_alg.fitness_input)
+            gen_alg.population, gen_alg.fitness_input_gatherer)
 
         print(
             f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}'")

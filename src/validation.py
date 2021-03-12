@@ -109,7 +109,7 @@ class Validation():
         for generation in range(self.gen_alg.max_generations):
 
             self.gen_alg.ranked_population = self.gen_alg.apply_fitness(
-                self.gen_alg.population, self.gen_alg.fitness_input)
+                self.gen_alg.population, self.gen_alg.fitness_input_gatherer)
 
             print(f"Geração {generation}...")
 
@@ -131,7 +131,7 @@ class Validation():
 
         random_chromosome = self.gen_alg.generate_random_chromosome()
         fitness_value = self.gen_alg.calculate_fitness(
-            random_chromosome, self.gen_alg.fitness_input)
+            random_chromosome, self.gen_alg.fitness_input_gatherer)
 
         return 1/fitness_value
 
@@ -145,7 +145,7 @@ class Validation():
 
         constant_chromosome = [1 for _ in range(self.gen_alg.chromosome_size)]
         fitness_value = self.gen_alg.calculate_fitness(
-            constant_chromosome, self.gen_alg.fitness_input)
+            constant_chromosome, self.gen_alg.fitness_input_gatherer)
 
         return 1/fitness_value
 
