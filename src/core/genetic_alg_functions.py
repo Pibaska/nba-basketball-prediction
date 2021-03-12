@@ -4,7 +4,7 @@ import os
 
 class GeneticAlgorithm:
     def __init__(self, fitness_input_gatherer, good_generations=3,
-                 weight_range=(-10, 10), mutation_chance=100,
+                 weight_range=(-10, 10), mutation_chance=1,
                  chromosome_size=9, population_size=50,
                  max_generations=100, consecutive_good_generations=0,
                  fitness_input_size=100):
@@ -294,7 +294,9 @@ class GeneticAlgorithm:
         mutated_chromosome = []
         for i in range(self.chromosome_size):
 
-            if int(random.random() * self.mutation_chance) == 1:
+            mutation_happening = random.random() * 100
+
+            if int(mutation_happening < self.mutation_chance):
                 mutated_chromosome.append(random.uniform(
                     self.weight_range[0], self.weight_range[1]))
             else:
