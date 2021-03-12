@@ -7,7 +7,7 @@ class GeneticAlgorithm:
                  weight_range=(-10, 10), mutation_chance=100,
                  chromosome_size=9, population_size=50,
                  max_generations=100, consecutive_good_generations=0,
-                 fitness_input_size=50):
+                 fitness_input_size=100):
         """Fornece as funções necessárias para rodar um algoritmo genético.
 
         TODO: mudar isso aqui
@@ -155,10 +155,7 @@ class GeneticAlgorithm:
             fitness_value = self.calculate_fitness(
                 individual, fitness_input)
 
-            if fitness_value == 0:
-                scored_individual = (individual, 1.0)
-            else:
-                scored_individual = (individual, 1.0/fitness_value)
+            scored_individual = (individual, fitness_value)
 
             ranked_population.append(scored_individual)
 
@@ -183,7 +180,7 @@ class GeneticAlgorithm:
             m: Quantidade de partidas presentes em match_data
         """
 
-        fitness = 0
+        wrong_predictions = 0
         for current_match in match_data:
             home_team_stats = current_match["team_home"]
             home_team_parsed_stats = []
@@ -214,9 +211,12 @@ class GeneticAlgorithm:
             real_1q_winner = "home" if current_match["home_won"] else "away"
 
             # 1 se for True, 0 se for False
-            fitness += int(real_1q_winner != predicted_1q_winner)
+            wrong_predictions += int(real_1q_winner != predicted_1q_winner)
 
-        return fitness
+        fitness_value = ((self.fitness_input_size -
+                          wrong_predictions) * 100)/self.fitness_input_size
+
+        return fitness_value
 
     def reproduce_population(self, ranked_population: list, population_size: int):
         """Função responsável por delegar a reprodução de uma geração a outras
@@ -321,7 +321,7 @@ class GeneticAlgorithm:
         log_file.write(
             f"\n\t\tconsecutive_good_generations: {self.consecutive_good_generations}")
         log_file.write(
-            f"\n\tGenetic Algorithm Output:\n\t\tScore: {self.ranked_population[0][1]}")
+            f"\n\tGenetic Algorithm Output:\n\tFinal Score: {self.ranked_population[0][1]}%")
         match_data = self.fitness_input_gatherer()
         for index, stat in enumerate(match_data["team_home"]):
             try:
