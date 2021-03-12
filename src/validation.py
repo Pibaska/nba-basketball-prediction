@@ -128,10 +128,14 @@ class Validation():
         Returns:
             float: Pontuação de fitness do cromossomo aleatório
         """
+        fitness_input = []
+
+        for _ in range(self.gen_alg.fitness_input_size):
+            fitness_input.append(self.gen_alg.fitness_input_gatherer())
 
         random_chromosome = self.gen_alg.generate_random_chromosome()
         fitness_value = self.gen_alg.calculate_fitness(
-            random_chromosome, self.gen_alg.fitness_input_gatherer)
+            random_chromosome, fitness_input)
 
         return 1/fitness_value
 
@@ -142,10 +146,14 @@ class Validation():
         Returns:
             float: O fitness calculado desse cromossomo de valor constante
         """
+        fitness_input = []
+
+        for _ in range(self.gen_alg.fitness_input_size):
+            fitness_input.append(self.gen_alg.fitness_input_gatherer())
 
         constant_chromosome = [1 for _ in range(self.gen_alg.chromosome_size)]
         fitness_value = self.gen_alg.calculate_fitness(
-            constant_chromosome, self.gen_alg.fitness_input_gatherer)
+            constant_chromosome, fitness_input)
 
         return 1/fitness_value
 
