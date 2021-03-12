@@ -51,6 +51,9 @@ def run_gen_alg():
     gen_alg.log_data(timestamp=datetime.now(),
                      elapsed_time=end_time - start_time)
 
+    gen_alg.dump_last_generation()
+    gen_alg.retrieve_last_generation()
+
     return gen_alg
 
 

@@ -1,5 +1,6 @@
 import random
 import os
+import pickle
 
 
 class GeneticAlgorithm:
@@ -52,9 +53,13 @@ class GeneticAlgorithm:
 
         self.consecutive_good_generations = consecutive_good_generations
 
+        self.fitness_input_size = fitness_input_size
+
         self.ranked_population = []
 
-        self.fitness_input_size = fitness_input_size
+        self.population = []
+
+        self.generation_file = os.path.join("src", "core", "last_generation.txt")
 
         print("Genetic Alg set up!")
 
@@ -337,3 +342,11 @@ class GeneticAlgorithm:
             except IndexError:
                 pass
         log_file.close()
+
+    def dump_last_generation(self):
+        with open(self.generation_file, "wb") as generation_file:
+            pickle.dump(self.population, generation_file)
+
+    def retrieve_last_generation(self):
+        with open(self.generation_file, "rb") as generation_file:
+            print(pickle.load(generation_file))
