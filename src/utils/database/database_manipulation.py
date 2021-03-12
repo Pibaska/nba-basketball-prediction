@@ -278,5 +278,5 @@ if __name__ == "__main__":
     #                    0, 0.350, 8, 8, 1.000, 4, 5, 9, 1, 1, 0, 5, 4, 22, 3, 1, 0, 1)]
     # fake_match_data = [(2, 1, '31-12-2018', 1)]
 
-    check_tables()
+    print(retrieve_match_stats())
     # SELECT * FROM match_data as md INNER JOIN participation as tp ON md.fk_participation_home = tp.team_id;

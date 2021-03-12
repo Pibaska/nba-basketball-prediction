@@ -17,7 +17,7 @@ from gui.gui_model import run_gen_alg
 
 # sys.exit(basketballGUI.exec())
 
-#run_gen_alg()
+run_gen_alg()
 
-from web.web_scraping_main import activate_web_scraping
-activate_web_scraping()
+# from web.web_scraping_main import activate_web_scraping
+# activate_web_scraping()

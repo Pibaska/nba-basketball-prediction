@@ -5,7 +5,7 @@
 from datetime import datetime
 import time
 from core.genetic_alg_functions import GeneticAlgorithm
-from utils.database import database_manipulation
+from utils.database import data_provider, database_manipulation
 from web.web_scraping_main import activate_web_scraping
 
 
@@ -26,7 +26,7 @@ def activate_away_team_combobox(selected_team, view):
 
 def run_gen_alg():
     gen_alg = GeneticAlgorithm(
-        database_manipulation.retrieve_match_stats(), weight_range=(-100, 100), population_size=25, max_generations=10)
+        data_provider.glue, weight_range=(-100, 100), population_size=25, max_generations=10)
 
     start_time = time.time()
 
