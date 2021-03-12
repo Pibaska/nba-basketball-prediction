@@ -232,7 +232,7 @@ class GeneticAlgorithm:
 
         reproduced_population = []
 
-        for _ in range(int(population_size)):
+        for _ in range(int(population_size/2)):
             parent1 = self.weighted_choice(ranked_population)
             parent2 = self.weighted_choice(ranked_population)
 
