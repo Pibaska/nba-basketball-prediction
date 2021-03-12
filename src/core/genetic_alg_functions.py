@@ -346,10 +346,12 @@ class GeneticAlgorithm:
             f"\nGenetic Algorithm finished in {elapsed_time} seconds.")
         log_file.write(f"\n\tGenetic Algorithm Parameters:")
         log_file.write(f"\n\t\tseed: WIP")
+        log_file.write(f"\n\t\tfitness_input_size: {self.fitness_input_size}")
         log_file.write(
             f"\n\t\tgood_generations: {self.target_good_generations}")
-        log_file.write(f"\n\t\tweight_magnitude: {self.weight_range}")
+        log_file.write(f"\n\t\tnew_weight_range: {self.weight_range}")
         log_file.write(f"\n\t\tmutation_chance: {self.mutation_chance}")
+        log_file.write(f"\n\t\tmutation_weight: {self.mutation_weight}")
         log_file.write(f"\n\t\tchromosome_size: {self.chromosome_size}")
         log_file.write(f"\n\t\tpopulation_size: {self.population_size}")
         log_file.write(f"\n\t\tmax_generations: {self.max_generations}")
