@@ -5,7 +5,7 @@ import os
 class GeneticAlgorithm:
     def __init__(self, fitness_input_gatherer, good_generations=3,
                  weight_range=(-10, 10), mutation_chance=100,
-                 chromosome_size=19, population_size=50,
+                 chromosome_size=9, population_size=50,
                  max_generations=100, consecutive_good_generations=0,
                  fitness_input_size=50):
         """Fornece as funções necessárias para rodar um algoritmo genético.

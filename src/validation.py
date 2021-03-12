@@ -5,7 +5,7 @@ import statistics
 import json
 from datetime import datetime
 from core.genetic_alg_functions import GeneticAlgorithm
-from utils.database import database_manipulation
+from utils.database import data_provider
 
 
 class Validation():
@@ -15,7 +15,7 @@ class Validation():
 
     def __init__(self, test_cycles=5) -> None:
         self.gen_alg = GeneticAlgorithm(
-            database_manipulation.retrieve_match_stats(),
+            data_provider.glue,
             weight_range=(-100, 100),
             population_size=1,
             max_generations=1)
