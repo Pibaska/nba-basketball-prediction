@@ -5,13 +5,23 @@
 from datetime import datetime
 import time
 from core.genetic_alg_functions import GeneticAlgorithm
-from utils.database import data_provider, database_manipulation
+from utils.database import data_provider
 from web.web_scraping_main import activate_web_scraping
+from core.genetic_alg_fake_data import match_database
 
 
-def predict_score(view):
-    view.lineedit_results.setText(
-        f"Resultados: {view.selected_home_team} ou {view.selected_away_team}")
+def predict_score(gen_alg, view=None):
+    predicted_match = data_provider.glue()
+
+    print(predicted_match)
+
+    match_winner = gen_alg.predict_match(
+        gen_alg.ranked_population[0][0], predicted_match)
+
+    # view.lineedit_results.setText(
+    #     f"Resultados: {view.selected_home_team} ou {view.selected_away_team}")
+
+    print(f"Previsão: {match_winner}")
 
 
 def activate_home_team_combobox(selected_team, view):
@@ -26,7 +36,7 @@ def activate_away_team_combobox(selected_team, view):
 
 def run_gen_alg():
     gen_alg = GeneticAlgorithm(
-        data_provider.glue, weight_range=(-100, 100), population_size=50, max_generations=10, fitness_input_size=300, mutation_weight=(-10, 10))
+        data_provider.glue, weight_range=(-100, 100), population_size=50, max_generations=2, fitness_input_size=300, mutation_weight=(-10, 10))
 
     start_time = time.time()
 
