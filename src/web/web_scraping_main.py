@@ -29,33 +29,34 @@ def activate_web_scraping():
         match_amount = ws_functions.get_match_amount(driver)
         print(f'Partidas: {match_amount}')
 
-        for item in range(match_amount):
-            ws_functions.access_1q_in_box_score(driver, date_url, item)
-            team_names, team_tables = ws_functions.get_team_table_names(driver)
+        if match_amount:
+            for item in range(match_amount):
+                ws_functions.access_1q_in_box_score(driver, date_url, item)
+                team_names, team_tables = ws_functions.get_team_table_names(driver)
 
-            print('--partida--')
+                print('--partida--')
 
-            # Aqui em algum lugar vai ter que ter a função de inserir o match
-            for i in range(2):
-                team_is_home = not i
-                team_name = team_names[i].get_text()
+                # Aqui em algum lugar vai ter que ter a função de inserir o match
+                for i in range(2):
+                    team_is_home = not i
+                    team_name = team_names[i].get_text()
 
-                print(f'{team_is_home} - {team_name}')
+                    print(f'{team_is_home} - {team_name}')
 
-                lista.append(0)  # posteriormente se tornará participation_id
-                lista.append(db.retrieve_team_id_from_abv((team_name,))[0])
-                lista.append(team_name)
-                lista.append(team_is_home)
-                for item in range(len(id_items_to_collect)):
-                    collected_value = ws_functions.get_table_values(
-                        team_tables[i],  id_items_to_collect[item])  # casa
+                    lista.append(0)  # posteriormente se tornará participation_id
+                    lista.append(db.retrieve_team_id_from_abv((team_name,))[0])
+                    lista.append(team_name)
+                    lista.append(team_is_home)
+                    for item in range(len(id_items_to_collect)):
+                        collected_value = ws_functions.get_table_values(
+                            team_tables[i],  id_items_to_collect[item])  # casa
 
-                    lista.append(collected_value)
+                        lista.append(collected_value)
 
-                game_data.append(lista.copy())
-                lista.clear()
+                    game_data.append(lista.copy())
+                    lista.clear()
 
-        format_and_insert_team_data(game_data, date)
+            format_and_insert_team_data(game_data, date)
 
     driver.quit()
 
