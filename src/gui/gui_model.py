@@ -50,6 +50,9 @@ def run_gen_alg():
         print(
             f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}%'")
 
+        if(gen_alg.ranked_population[0][1] > gen_alg.highest_fitness):
+            gen_alg.highest_fitness = gen_alg.ranked_population[0][1]
+
         if(gen_alg.check_for_break(gen_alg.ranked_population)):
             print("População tá top, hora do break")
             break

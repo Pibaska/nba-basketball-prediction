@@ -52,6 +52,8 @@ class GeneticAlgorithm:
         self.generation_file = os.path.join(
             "src", "core", "last_generation.txt")
 
+        self.highest_fitness = -1
+
         print("Genetic Alg set up!")
 
     def get_first_generation(self):
@@ -359,6 +361,7 @@ class GeneticAlgorithm:
             f"\n\t\tconsecutive_good_generations: {self.consecutive_good_generations}")
         log_file.write(
             f"\n\tGenetic Algorithm Output:\n\tFinal Score: {self.ranked_population[0][1]}%")
+        log_file.write(f"\n\tHighest Fitness: {self.highest_fitness}")
         match_data = self.fitness_input_gatherer()
         for index, stat in enumerate(match_data["team_home"]):
             try:
