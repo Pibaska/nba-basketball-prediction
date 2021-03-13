@@ -231,6 +231,7 @@ class GeneticAlgorithm:
             try:
                 home_team_parsed_stats.append(
                     home_team_stats[stats] * chromosome[gene_index])
+
             except TypeError:
                 home_team_parsed_stats.append(chromosome[gene_index])
 

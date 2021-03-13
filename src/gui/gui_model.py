@@ -10,13 +10,19 @@ from web.web_scraping_main import activate_web_scraping
 from core.genetic_alg_fake_data import match_database
 
 
-def predict_score(gen_alg, view=None):
-    predicted_match = data_provider.glue()
+def predict_score(gen_alg, team_home_name, team_away_name, date, view=None):
+
+    predicted_match = data_provider.get_specific_match_averages(
+        team_home_name, team_away_name, date)
 
     print(predicted_match)
 
-    match_winner = gen_alg.predict_match(
-        gen_alg.ranked_population[0][0], predicted_match)
+    try:
+        match_winner = gen_alg.predict_match(
+            gen_alg.ranked_population[0][0], predicted_match)
+    except Exception as e:
+        print(e)
+        raise e
 
     # view.lineedit_results.setText(
     #     f"Resultados: {view.selected_home_team} ou {view.selected_away_team}")
@@ -36,7 +42,7 @@ def activate_away_team_combobox(selected_team, view):
 
 def run_gen_alg():
     gen_alg = GeneticAlgorithm(
-        data_provider.glue, weight_range=(-100, 100), population_size=50, max_generations=10, fitness_input_size=300, mutation_weight=(-10, 10))
+        data_provider.get_random_match_averages, weight_range=(-100, 100), population_size=50, max_generations=2, fitness_input_size=300, mutation_weight=(-10, 10))
 
     start_time = time.time()
 
