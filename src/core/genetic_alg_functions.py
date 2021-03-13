@@ -9,7 +9,8 @@ class GeneticAlgorithm:
                  mutation_weight=(-1, 1),
                  chromosome_size=9, population_size=50,
                  max_generations=100,
-                 fitness_input_size=100):
+                 fitness_input_size=100,
+                 generation_persistent_individuals=5):
         """Fornece as funções necessárias para rodar um algoritmo genético
 
         Args:
@@ -42,6 +43,11 @@ class GeneticAlgorithm:
         self.max_generations = max_generations
 
         self.fitness_input_size = fitness_input_size
+
+        if(generation_persistent_individuals % 2 != 0):
+            generation_persistent_individuals += 1
+
+        self.generation_persistent_individuals = generation_persistent_individuals
 
         self.consecutive_good_generations = 0
 
@@ -256,7 +262,7 @@ class GeneticAlgorithm:
 
         reproduced_population = []
 
-        for _ in range(int(population_size/2)):
+        for _ in range(int((population_size - self.generation_persistent_individuals)/2)):
             parent1 = self.weighted_choice(ranked_population)
             parent2 = self.weighted_choice(ranked_population)
 
@@ -264,6 +270,10 @@ class GeneticAlgorithm:
 
             reproduced_population.append(self.mutation(child1))
             reproduced_population.append(self.mutation(child2))
+
+        for i in range(self.generation_persistent_individuals):
+            reproduced_population.append(ranked_population[i])
+
         return reproduced_population
 
     @staticmethod
