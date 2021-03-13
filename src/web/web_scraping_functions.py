@@ -166,6 +166,7 @@ def get_team_table_names(driver):
     Returns:
         list, list: Os nomes dos times e os nomes das tabelas correspondentes
     """
+    abbreviation_dict = db.get_teams_abbreviations()
 
     page_content = '//*[@id="content"]'
     content_element = driver.find_element_by_xpath(page_content)
@@ -178,7 +179,7 @@ def get_team_table_names(driver):
     team_tables = ['1', '2']
     for i in range(2):
         table_content_xpath = '//*[@id="box-' + \
-            abbreviations[team_names[i].get_text()] + '-q1-basic"]'
+            abbreviation_dict[team_names[i].get_text()] + '-q1-basic"]'
         table_content_element = driver.find_element_by_xpath(
             table_content_xpath)
         table_content_html = table_content_element.get_attribute('outerHTML')
