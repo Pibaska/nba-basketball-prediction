@@ -63,7 +63,7 @@ def create_database():
 
         db_connection.commit()
 
-        print('Tabelas criadas com sucesso.')
+        print('Tabela(s) criadas com sucesso.')
     except Exception as exception:
         print(exception)
         raise(exception)
@@ -71,7 +71,7 @@ def create_database():
         db_connection.close()
 
 
-def complete_teams():
+def fill_teams():
     try:
         db_connection = sqlite3.connect('data/database.sqlite3')
         cursor = db_connection.cursor()
@@ -82,11 +82,11 @@ def complete_teams():
                     ('Anderson Packers', 'AND'),
                     ('Atlanta Hawks', 'ATL'),
                     ('Baltimore Bullets', 'BAL'),
-                    ('Brooklyn Nets', 'BKN'),
+                    ('Brooklyn Nets', 'BRK'),
                     ('Boston Celtics', 'BOS'),
                     ('Buffalo Braves', 'BUF'),
                     ('Capital Bullets', 'CAP'),
-                    ('Charlotte Hornets', 'CHH'),
+                    ('Charlotte Hornets', 'CHO'),
                     ('Charlotte Bobcats', 'CHN'),
                     ('Chicago Bulls', 'CHI'),
                     ('Chicago Packers', 'CHP'),
@@ -151,7 +151,7 @@ def complete_teams():
 
         db_connection.commit()
 
-        print("Teams preechido com sucesso.")
+        print("Team preechido com sucesso.")
     except Exception as exception:
         print(exception)
         raise(exception)
@@ -172,7 +172,25 @@ def drop_tables():
 
         db_connection.commit()
 
-        print("Tabelas deletadas com sucesso.")
+        print("Tabela(s) deletadas com sucesso.")
+    except Exception as exception:
+        print(exception)
+        raise(exception)
+    finally:
+        db_connection.close()
+
+def drop_team():
+    try:
+        db_connection = sqlite3.connect('data/database.sqlite3')
+        cursor = db_connection.cursor()
+
+        cursor.executescript("""
+            DROP TABLE IF EXISTS team;
+        """)
+
+        db_connection.commit()
+
+        print("team deletado com sucesso.")
     except Exception as exception:
         print(exception)
         raise(exception)
@@ -182,14 +200,23 @@ def drop_tables():
 
 if __name__ == "__main__":
 
-    x = input("tem certeza mermão? vai acabar o banco, vai da mrd")
-    x = input("tem certeza mermão? ")
-    x = input("tem certeza mermão? ")
-    x = input("tem certeza mermão? ")
-    x = input("tem certeza mermão? ")
-    x = input("tem certeza mermão? ")
-    x = input("tem certeza mermão? ")
+    print("""
+        Tu quer fazer oq?
+        [1] atualizar abreviações
+        [2] Deletar bd e recriar vazio
+    """)
+    escolha = int(input())
 
-    drop_tables()
-    create_database()
-    complete_teams()
+    if escolha == 1:
+        drop_team()
+        create_database()
+        fill_teams()
+    elif escolha == 2:
+        x = input("tem certeza mermão? vai acabar o banco, vai da mrd")
+        for i in range(5):
+            x = input("tem certeza mermão? "+ str(5 - i))
+
+        drop_tables()
+        create_database()
+        fill_teams()
+
