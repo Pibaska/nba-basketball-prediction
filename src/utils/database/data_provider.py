@@ -192,7 +192,7 @@ def get_averages(team_id, local, date):
 
     Args:
         team_id (int), 
-        local = 0(casa) ou 1(fora),
+        local = 1(casa) ou 0(fora),
         date [dia,mes,ano]
 
     Returns:
@@ -288,7 +288,34 @@ def get_spread():
         db_connection.close()
 
 
-def glue():
+def get_team_id_from_name(team_name):
+    try:
+        db_connection = sqlite3.connect('data/database.sqlite3')
+        cursor = db_connection.cursor()
+
+        cursor.execute(
+            """
+            SELECT
+                team_id
+            FROM
+                team
+            WHERE
+                team_name = ?
+            """,
+            [team_name]
+        )
+
+        team_id = cursor.fetchone()
+
+        return team_id[0]
+    except Exception as e:
+        print(e)
+        raise e
+    finally:
+        db_connection.close()
+
+
+def get_random_match_averages(**kwargs):
     match_total = get_match_amount()
 
     pre_averages_dict = get_match(match_total)
@@ -298,18 +325,30 @@ def glue():
     team_away_averages = get_averages(
         pre_averages_dict["team_away_id"], 0, pre_averages_dict["match_data"])
 
-    os_dois = {"team_home": team_home_averages, "team_away": team_away_averages,
-               "home_won": pre_averages_dict["team_home_won"]}
+    match_averages = {"team_home": team_home_averages, "team_away": team_away_averages,
+                      "home_won": pre_averages_dict["team_home_won"]}
     # Usar para ver os nulos
     # problem = 0 if team_home_averages[0][0] and team_home_averages[0][0] else 1
     # if problem:
     #     raise Exception("Sorry, no numbers below zero")
 
-    return os_dois
+    return match_averages
+
+
+def get_specific_match_averages(team_home_name, team_away_name, date):
+    team_home_averages = get_averages(
+        get_team_id_from_name(team_home_name), 1, date)
+    team_away_averages = get_averages(
+        get_team_id_from_name(team_away_name), 0, date)
+
+    match_averages = {"team_home": team_home_averages,
+                      "team_away": team_away_averages}
+
+    return match_averages
 
 
 if __name__ == "__main__":
-    print(glue())
+    print(get_random_match_averages())
 
 
 # SELECT

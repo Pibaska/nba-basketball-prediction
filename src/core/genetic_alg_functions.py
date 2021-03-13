@@ -9,7 +9,8 @@ class GeneticAlgorithm:
                  mutation_weight=(-1, 1),
                  chromosome_size=9, population_size=50,
                  max_generations=100,
-                 fitness_input_size=100):
+                 fitness_input_size=100,
+                 generation_persistent_individuals=5):
         """Fornece as funções necessárias para rodar um algoritmo genético
 
         Args:
@@ -43,6 +44,11 @@ class GeneticAlgorithm:
 
         self.fitness_input_size = fitness_input_size
 
+        if(generation_persistent_individuals % 2 != 0):
+            generation_persistent_individuals += 1
+
+        self.generation_persistent_individuals = generation_persistent_individuals
+
         self.consecutive_good_generations = 0
 
         self.ranked_population = []
@@ -51,6 +57,8 @@ class GeneticAlgorithm:
 
         self.generation_file = os.path.join(
             "src", "core", "last_generation.txt")
+
+        self.highest_fitness = -1
 
         print("Genetic Alg set up!")
 
@@ -62,19 +70,20 @@ class GeneticAlgorithm:
         Returns:
             list: Primeira geração para o algoritmo genético
         """
-        first_generation = []
+        previous_generation = []
 
         with open(self.generation_file, "rb") as generation_file:
-            first_generation = pickle.load(generation_file)
+            previous_generation = pickle.load(generation_file)
 
-            if(len(first_generation) < self.population_size):
+            if(len(previous_generation) < self.population_size):
                 print("População menor do que o esperado, preenchendo o que falta..")
 
-                for _ in range(self.population_size - len(first_generation)):
+                for _ in range(self.population_size - len(previous_generation)):
                     chromosome = self.generate_random_chromosome()
 
-                    first_generation.append(chromosome)
-        return first_generation
+                    previous_generation.append(chromosome)
+
+        return previous_generation
 
     def random_population(self):
         """Preenche uma população com indivíduos gerados aleatoriamente
@@ -204,33 +213,8 @@ class GeneticAlgorithm:
 
         wrong_predictions = 0
         for current_match in match_data:
-            home_team_stats = current_match["team_home"]
-            home_team_parsed_stats = []
-
-            for gene_index, stats in enumerate(home_team_stats):
-                try:
-                    home_team_parsed_stats.append(
-                        home_team_stats[stats] * chromosome[gene_index])
-                except TypeError:
-                    # print("Deu merda")
-                    home_team_parsed_stats.append(chromosome[gene_index])
-
-            away_team_stats = current_match["team_away"]
-            away_team_parsed_stats = []
-
-            for gene_index, stats in enumerate(away_team_stats):
-                try:
-                    away_team_parsed_stats.append(
-                        away_team_stats[stats] * chromosome[gene_index])
-                except TypeError:
-                    # print("Deu merda")
-                    away_team_parsed_stats.append(chromosome[gene_index])
-
-            home_team_score = sum(home_team_parsed_stats)
-            away_team_score = sum(away_team_parsed_stats)
-
-            predicted_1q_winner = "home" if home_team_score > away_team_score else "away"
-            real_1q_winner = "home" if current_match["home_won"] else "away"
+            predicted_1q_winner = self.predict_match(chromosome, current_match)
+            real_1q_winner = "team_home" if current_match["home_won"] else "team_away"
 
             # 1 se for True, 0 se for False
             wrong_predictions += int(real_1q_winner != predicted_1q_winner)
@@ -239,6 +223,32 @@ class GeneticAlgorithm:
                           wrong_predictions) * 100)/self.fitness_input_size
 
         return fitness_value
+
+    def predict_match(self, chromosome, current_match):
+        home_team_stats = current_match["team_home"]
+        home_team_parsed_stats = []
+        for gene_index, stats in enumerate(home_team_stats):
+            try:
+                home_team_parsed_stats.append(
+                    home_team_stats[stats] * chromosome[gene_index])
+
+            except TypeError:
+                home_team_parsed_stats.append(chromosome[gene_index])
+
+        away_team_stats = current_match["team_away"]
+        away_team_parsed_stats = []
+        for gene_index, stats in enumerate(away_team_stats):
+            try:
+                away_team_parsed_stats.append(
+                    away_team_stats[stats] * chromosome[gene_index])
+            except TypeError:
+                away_team_parsed_stats.append(chromosome[gene_index])
+
+        home_team_score = sum(home_team_parsed_stats)
+        away_team_score = sum(away_team_parsed_stats)
+
+        predicted_1q_winner = "team_home" if home_team_score > away_team_score else "team_away"
+        return predicted_1q_winner
 
     def reproduce_population(self, ranked_population: list, population_size: int):
         """Função responsável por delegar a reprodução de uma geração a outras
@@ -254,7 +264,7 @@ class GeneticAlgorithm:
 
         reproduced_population = []
 
-        for _ in range(int(population_size/2)):
+        for _ in range(int((population_size - self.generation_persistent_individuals)/2)):
             parent1 = self.weighted_choice(ranked_population)
             parent2 = self.weighted_choice(ranked_population)
 
@@ -262,6 +272,10 @@ class GeneticAlgorithm:
 
             reproduced_population.append(self.mutation(child1))
             reproduced_population.append(self.mutation(child2))
+
+        for i in range(self.generation_persistent_individuals):
+            reproduced_population.append(ranked_population[i][0])
+
         return reproduced_population
 
     @staticmethod
@@ -345,7 +359,6 @@ class GeneticAlgorithm:
         log_file.write(
             f"\nGenetic Algorithm finished in {elapsed_time} seconds.")
         log_file.write(f"\n\tGenetic Algorithm Parameters:")
-        log_file.write(f"\n\t\tseed: WIP")
         log_file.write(f"\n\t\tfitness_input_size: {self.fitness_input_size}")
         log_file.write(
             f"\n\t\tgood_generations: {self.target_good_generations}")
@@ -359,6 +372,7 @@ class GeneticAlgorithm:
             f"\n\t\tconsecutive_good_generations: {self.consecutive_good_generations}")
         log_file.write(
             f"\n\tGenetic Algorithm Output:\n\tFinal Score: {self.ranked_population[0][1]}%")
+        log_file.write(f"\n\tHighest Fitness: {self.highest_fitness}")
         match_data = self.fitness_input_gatherer()
         for index, stat in enumerate(match_data["team_home"]):
             try:

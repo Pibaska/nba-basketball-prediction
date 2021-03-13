@@ -5,13 +5,29 @@
 from datetime import datetime
 import time
 from core.genetic_alg_functions import GeneticAlgorithm
-from utils.database import data_provider, database_manipulation
+from utils.database import data_provider
 from web.web_scraping_main import activate_web_scraping
+from core.genetic_alg_fake_data import match_database
 
 
-def predict_score(view):
-    view.lineedit_results.setText(
-        f"Resultados: {view.selected_home_team} ou {view.selected_away_team}")
+def predict_score(gen_alg, team_home_name, team_away_name, date, view=None):
+
+    predicted_match = data_provider.get_specific_match_averages(
+        team_home_name, team_away_name, date)
+
+    print(predicted_match)
+
+    try:
+        match_winner = gen_alg.predict_match(
+            gen_alg.ranked_population[0][0], predicted_match)
+    except Exception as e:
+        print(e)
+        raise e
+
+    # view.lineedit_results.setText(
+    #     f"Resultados: {view.selected_home_team} ou {view.selected_away_team}")
+
+    print(f"Previsão: {match_winner}")
 
 
 def activate_home_team_combobox(selected_team, view):
@@ -26,7 +42,7 @@ def activate_away_team_combobox(selected_team, view):
 
 def run_gen_alg():
     gen_alg = GeneticAlgorithm(
-        data_provider.glue, weight_range=(-100, 100), population_size=50, max_generations=10, fitness_input_size=300, mutation_weight=(-10, 10))
+        data_provider.get_random_match_averages, weight_range=(-100, 100), population_size=50, max_generations=2, fitness_input_size=300, mutation_weight=(-10, 10))
 
     start_time = time.time()
 
@@ -39,6 +55,9 @@ def run_gen_alg():
 
         print(
             f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}%'")
+
+        if(gen_alg.ranked_population[0][1] > gen_alg.highest_fitness):
+            gen_alg.highest_fitness = gen_alg.ranked_population[0][1]
 
         if(gen_alg.check_for_break(gen_alg.ranked_population)):
             print("População tá top, hora do break")

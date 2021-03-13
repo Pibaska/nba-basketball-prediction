@@ -1,10 +1,11 @@
 import sys
 
 from PyQt5.QtWidgets import QApplication
+from core import genetic_alg_fake_data
 
 from gui.gui_controller import BasketballPredictionController
 from gui.gui_view import BasketballPredictionView
-from gui.gui_model import run_gen_alg
+from gui.gui_model import predict_score, run_gen_alg
 
 
 # basketballGUI = QApplication(sys.argv)
@@ -17,7 +18,8 @@ from gui.gui_model import run_gen_alg
 
 # sys.exit(basketballGUI.exec())
 
-#run_gen_alg()
+gen_alg = run_gen_alg()
+predict_score(gen_alg, "Orlando Magic", "Miami Heat", [2000, 1, 2])
 
-from web.web_scraping_main import activate_web_scraping
-activate_web_scraping()
+# from web.web_scraping_main import activate_web_scraping
+# activate_web_scraping()

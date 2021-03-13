@@ -13,12 +13,14 @@ class Validation():
     e salvar esses dados para uso posterior.
     """
 
-    def __init__(self, test_cycles=5) -> None:
+    def __init__(self, test_cycles=50) -> None:
         self.gen_alg = GeneticAlgorithm(
-            data_provider.glue,
+            data_provider.get_random_match_averages,
             weight_range=(-100, 100),
-            population_size=1,
-            max_generations=1)
+            population_size=100,
+            max_generations=100,
+            mutation_weight=(-10, 10),
+            fitness_input_size=200)
 
         self.test_cycles = test_cycles
 
@@ -37,7 +39,6 @@ class Validation():
         log_file.write(
             f"\nValidation finished in {self.end_time - self.start_time} seconds.")
         log_file.write(f"\n\tGenetic Algorithm Parameters:")
-        log_file.write(f"\n\t\tseed: WIP")
         log_file.write(
             f"\n\t\tgood_generations: {self.gen_alg.target_good_generations}")
         log_file.write(f"\n\t\tweight_magnitude: {self.gen_alg.weight_range}")
