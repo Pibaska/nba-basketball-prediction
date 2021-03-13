@@ -347,7 +347,6 @@ class GeneticAlgorithm:
         log_file.write(
             f"\nGenetic Algorithm finished in {elapsed_time} seconds.")
         log_file.write(f"\n\tGenetic Algorithm Parameters:")
-        log_file.write(f"\n\t\tseed: WIP")
         log_file.write(f"\n\t\tfitness_input_size: {self.fitness_input_size}")
         log_file.write(
             f"\n\t\tgood_generations: {self.target_good_generations}")

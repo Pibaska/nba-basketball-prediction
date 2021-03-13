@@ -39,7 +39,6 @@ class Validation():
         log_file.write(
             f"\nValidation finished in {self.end_time - self.start_time} seconds.")
         log_file.write(f"\n\tGenetic Algorithm Parameters:")
-        log_file.write(f"\n\t\tseed: WIP")
         log_file.write(
             f"\n\t\tgood_generations: {self.gen_alg.target_good_generations}")
         log_file.write(f"\n\t\tweight_magnitude: {self.gen_alg.weight_range}")
