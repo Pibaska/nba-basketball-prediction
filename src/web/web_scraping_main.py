@@ -71,6 +71,12 @@ def format_and_insert_team_data(game_data, date):
         integer_indexes = [0, 1, 3, 5, 8, 9, 11,
                            12, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 
+        if float(game_data[team_part_index][0]) == 0:
+            print("""
+                0 minutos jogados: --------------------------------------
+                    dia """+ str(db.get_datetime(date)) +""" 
+                    home_team: """ + str(game_data[team_part_index][0]))
+
         for i in decimal_indexes:
             try:
                 game_data[team_part_index][i] = float(
@@ -91,32 +97,43 @@ def format_and_insert_team_data(game_data, date):
 
         game_data[team_part_index].append(42)  # mat_count_by_team INTEGER
 
-        other_team_index = team_part_index+1 if is_team_home else team_part_index - 1
+        
 
-        is_current_team_winner = int(game_data[team_part_index][22]) > int(
-            game_data[other_team_index][22])
+    try:
+        is_current_team_winner = int(game_data[1][22]) > int(
+            game_data[0][22])
+    except ValueError:
+        is_current_team_winner = 0
+    finally:
+        game_data[1].append(int(is_current_team_winner))
 
-        game_data[team_part_index].append(int(is_current_team_winner))
+    try:
+        is_current_team_winner = int(game_data[0][22]) > int(
+            game_data[1][22])
+    except ValueError:
+        is_current_team_winner = 0
+    finally:
+        game_data[0].append(int(is_current_team_winner))
 
-        match_list = []
 
-        if not is_team_home:
-            game_data[team_part_index - 1][0] = (db.create_id_participation())
-            db.insert_participation_data([game_data[team_part_index - 1]])
-            game_data[team_part_index][0] = (db.create_id_participation())
-            db.insert_participation_data([game_data[team_part_index]])
+    match_list = []
 
-            print([game_data[team_part_index - 1]])
-            print([game_data[team_part_index]])
+    game_data[0][0] = (db.create_id_participation())
+    db.insert_participation_data([game_data[0]])
+    game_data[1][0] = (db.create_id_participation())
+    db.insert_participation_data([game_data[1]])
 
-            # fk_participation_home INTEGER NOT NULL, criar função para criar os ids
-            match_list.append(game_data[team_part_index - 1][0])
-            # fk_participation_away INTEGER NOT NULL, criar função para criar os ids
-            match_list.append(game_data[team_part_index][0])
-            # date DATE NOT NULL,  date
-            match_list.append(db.get_datetime(date))
+    print([game_data[0]])
+    print([game_data[1]])
 
-            db.insert_match_data([match_list])
+    # fk_participation_home INTEGER NOT NULL, criar função para criar os ids
+    match_list.append(game_data[0][0])
+    # fk_participation_away INTEGER NOT NULL, criar função para criar os ids
+    match_list.append(game_data[1][0])
+    # date DATE NOT NULL,  date
+    match_list.append(db.get_datetime(date))
+
+    db.insert_match_data([match_list])
 
     game_data.clear()
 
