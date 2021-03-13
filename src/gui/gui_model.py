@@ -36,7 +36,7 @@ def activate_away_team_combobox(selected_team, view):
 
 def run_gen_alg():
     gen_alg = GeneticAlgorithm(
-        data_provider.glue, weight_range=(-100, 100), population_size=50, max_generations=2, fitness_input_size=300, mutation_weight=(-10, 10))
+        data_provider.glue, weight_range=(-100, 100), population_size=50, max_generations=10, fitness_input_size=300, mutation_weight=(-10, 10))
 
     start_time = time.time()
 

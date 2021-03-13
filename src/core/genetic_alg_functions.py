@@ -70,19 +70,20 @@ class GeneticAlgorithm:
         Returns:
             list: Primeira geração para o algoritmo genético
         """
-        first_generation = []
+        previous_generation = []
 
         with open(self.generation_file, "rb") as generation_file:
-            first_generation = pickle.load(generation_file)
+            previous_generation = pickle.load(generation_file)
 
-            if(len(first_generation) < self.population_size):
+            if(len(previous_generation) < self.population_size):
                 print("População menor do que o esperado, preenchendo o que falta..")
 
-                for _ in range(self.population_size - len(first_generation)):
+                for _ in range(self.population_size - len(previous_generation)):
                     chromosome = self.generate_random_chromosome()
 
-                    first_generation.append(chromosome)
-        return first_generation
+                    previous_generation.append(chromosome)
+
+        return previous_generation
 
     def random_population(self):
         """Preenche uma população com indivíduos gerados aleatoriamente
@@ -272,7 +273,7 @@ class GeneticAlgorithm:
             reproduced_population.append(self.mutation(child2))
 
         for i in range(self.generation_persistent_individuals):
-            reproduced_population.append(ranked_population[i])
+            reproduced_population.append(ranked_population[i][0])
 
         return reproduced_population
 
