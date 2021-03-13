@@ -204,32 +204,7 @@ class GeneticAlgorithm:
 
         wrong_predictions = 0
         for current_match in match_data:
-            home_team_stats = current_match["team_home"]
-            home_team_parsed_stats = []
-
-            for gene_index, stats in enumerate(home_team_stats):
-                try:
-                    home_team_parsed_stats.append(
-                        home_team_stats[stats] * chromosome[gene_index])
-                except TypeError:
-                    # print("Deu merda")
-                    home_team_parsed_stats.append(chromosome[gene_index])
-
-            away_team_stats = current_match["team_away"]
-            away_team_parsed_stats = []
-
-            for gene_index, stats in enumerate(away_team_stats):
-                try:
-                    away_team_parsed_stats.append(
-                        away_team_stats[stats] * chromosome[gene_index])
-                except TypeError:
-                    # print("Deu merda")
-                    away_team_parsed_stats.append(chromosome[gene_index])
-
-            home_team_score = sum(home_team_parsed_stats)
-            away_team_score = sum(away_team_parsed_stats)
-
-            predicted_1q_winner = "home" if home_team_score > away_team_score else "away"
+            predicted_1q_winner = self.predict_match(chromosome, current_match)
             real_1q_winner = "home" if current_match["home_won"] else "away"
 
             # 1 se for True, 0 se for False
@@ -239,6 +214,31 @@ class GeneticAlgorithm:
                           wrong_predictions) * 100)/self.fitness_input_size
 
         return fitness_value
+
+    def predict_match(self, chromosome, current_match):
+        home_team_stats = current_match["team_home"]
+        home_team_parsed_stats = []
+        for gene_index, stats in enumerate(home_team_stats):
+            try:
+                home_team_parsed_stats.append(
+                    home_team_stats[stats] * chromosome[gene_index])
+            except TypeError:
+                home_team_parsed_stats.append(chromosome[gene_index])
+
+        away_team_stats = current_match["team_away"]
+        away_team_parsed_stats = []
+        for gene_index, stats in enumerate(away_team_stats):
+            try:
+                away_team_parsed_stats.append(
+                    away_team_stats[stats] * chromosome[gene_index])
+            except TypeError:
+                away_team_parsed_stats.append(chromosome[gene_index])
+
+        home_team_score = sum(home_team_parsed_stats)
+        away_team_score = sum(away_team_parsed_stats)
+
+        predicted_1q_winner = "home" if home_team_score > away_team_score else "away"
+        return predicted_1q_winner
 
     def reproduce_population(self, ranked_population: list, population_size: int):
         """Função responsável por delegar a reprodução de uma geração a outras
