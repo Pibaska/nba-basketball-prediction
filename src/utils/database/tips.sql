@@ -93,3 +93,25 @@ VALUES
 
 Selects                  
     SELECT * FROM participation as part INNER JOIN match_data as md ON part.participation_id = md.fk_participation_home order by md.date DESC;
+
+
+teste de medias por LOCAL
+
+SELECT 
+     AVG(pta.points),
+     AVG(pta.points - pth.points) as spread,
+     AVG(pta.offensive_rebounds),
+     AVG(pta.defensive_rebounds),
+     AVG(NULLIF(pta.field_goals_percentage,0)),
+     AVG(NULLIF(pta.three_point_field_goals_percentage,0)),
+     AVG(NULLIF(pta.free_throws_percentage,0)),
+     AVG(pta.turnover),
+     AVG(pta.assists)
+FROM match_data as md 
+  INNER JOIN participation as pth 
+      on md.fk_participation_home = pth.participation_id 
+  INNER JOIN participation as pta
+      on md.fk_participation_away = pta.participation_id 
+      
+	
+    

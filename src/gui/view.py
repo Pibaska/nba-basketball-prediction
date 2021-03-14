@@ -3,8 +3,8 @@ import sys
 from pathlib import Path
 from os.path import join
 
-import gui.gui_fake_data as fake_data
-import gui.gui_controller as controller
+import gui.fake_data as fake_data
+import gui.controller as controller
 
 from PyQt5.QtWidgets import QApplication, QComboBox, QGridLayout, QLineEdit, QMainWindow, QFrame
 from PyQt5.QtWidgets import QPushButton, QSizePolicy

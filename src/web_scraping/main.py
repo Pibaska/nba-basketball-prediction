@@ -1,5 +1,5 @@
-import web.web_scraping_functions as ws_functions
-import utils.database.database_manipulation as db
+import web_scraping.functions as ws_functions
+import utils.database.manipulation as db
 
 
 id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg3_pct', 'ft',
@@ -72,7 +72,7 @@ def format_and_insert_team_data(game_data, date):
         integer_indexes = [0, 1, 3, 5, 8, 9, 11,
                            12, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 
-        if float(game_data[team_part_index][0]) == 0:
+        if float(game_data[team_part_index][4]) == 0:
             print("""
                 0 minutos jogados: --------------------------------------
                     dia """+ str(db.get_datetime(date)) +""" 

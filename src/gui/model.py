@@ -4,10 +4,10 @@
 
 from datetime import datetime
 import time
-from core.genetic_alg_functions import GeneticAlgorithm
+from genetic_algorithm.functions import GeneticAlgorithm
 from utils.database import data_provider
-from web.web_scraping_main import activate_web_scraping
-from core.genetic_alg_fake_data import match_database
+from web_scraping.main import activate_web_scraping
+from genetic_algorithm.fake_data import match_database
 
 
 def predict_score(gen_alg, team_home_name, team_away_name, date, view=None):

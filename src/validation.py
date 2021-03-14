@@ -4,7 +4,7 @@ import time
 import statistics
 import json
 from datetime import datetime
-from core.genetic_alg_functions import GeneticAlgorithm
+from genetic_algorithm.functions import GeneticAlgorithm
 from utils.database import data_provider
 
 

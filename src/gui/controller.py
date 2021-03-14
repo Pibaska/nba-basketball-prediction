@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QComboBox
-import gui.gui_model as model
+import gui.model as model
 
 
 class BasketballPredictionController:
