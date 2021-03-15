@@ -104,26 +104,6 @@ def generate_day_url(formatted_date):
 
     return url
 
-
-def access_1q_in_box_score(driver, url, i):
-    """Entra no box score e filtra pelo primeiro quarto
-
-    Args:
-        driver (webdriver): Driver que vai acessar as URLs
-        url (str): Endereço da página a ser acessada
-        i (int): ???
-    """
-
-    driver.get(url) if i > 0 else 0
-    # entra no box-score do jogo
-    driver.find_element_by_xpath(
-        f'//*[@id="content"]/div[3]/div[{i+1}]/p/a[1]').click()
-
-    # Para apresentar apenas 1°quarto
-    driver.find_element_by_xpath(
-        f'//*[@id="content"]/div[6]/div[2]/a').click()
-
-
 def get_match_amount(driver):
     """Retorna quantas partidas o site tem do dia escolhido
 
@@ -149,7 +129,25 @@ def get_match_amount(driver):
 
     return match_amount
 
-#
+
+def access_1q_in_box_score(driver, url, i):
+    """Entra no box score e filtra pelo primeiro quarto
+
+    Args:
+        driver (webdriver): Driver que vai acessar as URLs
+        url (str): Endereço da página a ser acessada
+        i (int): ???
+    """
+
+    driver.get(url) if i > 0 else 0
+    # entra no box-score do jogo
+    driver.find_element_by_xpath(
+        f'//*[@id="content"]/div[3]/div[{i+1}]/p/a[1]').click()
+
+    # Para apresentar apenas 1°quarto
+    driver.find_element_by_xpath(
+        f'//*[@id="content"]/div[6]/div[2]/a').click()
+
 
 
 def get_team_table_names(driver):
@@ -184,7 +182,7 @@ def get_team_table_names(driver):
 
         team_tables[i] = content_table
 
-    return team_names, team_tables
+    return team_names[::-1], team_tables[::-1] # inverte as listas pois no site primerio vem o team_away, e queremos o home no começo da lista
 
 
 def get_table_values(table,  collectable_value):
