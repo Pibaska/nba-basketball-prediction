@@ -56,7 +56,7 @@ def activate_web_scraping():
                     game_data.append(lista.copy())
                     lista.clear()
 
-            format_and_insert_team_data(game_data, date)
+                format_and_insert_team_data(game_data, date)
 
     driver.quit()
 
