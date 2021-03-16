@@ -1,17 +1,11 @@
+from src.core.utils.last_generation_manager import Last_Generation
 import random
 import os
-import pickle
+
 
 
 class GeneticAlgorithm:
-    def __init__(self, fitness_input_gatherer, good_generations=3,
-                 weight_range=(-10, 10), mutation_chance=1,
-                 mutation_weight=(-1, 1),
-                 chromosome_size=9, population_size=50,
-                 max_generations=100,
-                 fitness_input_size=100,
-                 generation_persistent_individuals=5):
-        """Fornece as funções necessárias para rodar um algoritmo genético
+    """Classe Base para a execução do algoritmo genetico
 
         Args:
             fitness_input_gatherer (function): Uma função que retorna o conjunto de dados usados para avaliar o fitness
@@ -23,45 +17,44 @@ class GeneticAlgorithm:
             population_size (int, optional): Quantidade de indivíduos por geração. Defaults to 50.
             max_generations (int, optional): Quantidade de gerações pela qual o algoritmo vai passar antes de ser interrompido. Defaults to 100.
             fitness_input_size (int, optional): Quantidade de valores que serão usados para avaliar cada cromossomo cada vez. Defaults to 100.
-        """
-        self.fitness_input_gatherer = fitness_input_gatherer
+    """
 
-        self.target_good_generations = good_generations
+    def __init__(self,
+                 fitness_input_gatherer,
+                 good_generations=3,
+                 weight_range=(-10, 10),
+                 mutation_chance=1,
+                 mutation_weight=(-1, 1),
+                 chromosome_size=9,
+                 population_size=50,
+                 max_generations=100,
+                 fitness_input_size=100,
+                 generation_persistent_individuals=5
+                 ):
+        try:
+            self.fitness_input_gatherer = fitness_input_gatherer
+            self.generation_persistent_individuals = generation_persistent_individuals + 1 if generation_persistent_individuals % 2 is not 0 else generation_persistent_individuals
+            self.last_generation = Last_Generation()
+        except Exception as e:
+            raise(e)
+        else:
+            self.target_good_generations = good_generations
 
-        # Define o quanto os pesos vão influenciar nos atributos
-        self.weight_range = weight_range
-
-        self.mutation_chance = mutation_chance
-
-        self.mutation_weight = mutation_weight
-
-        self.chromosome_size = chromosome_size
-
-        # x na primeira geração, nas outras vira 2x
-        self.population_size = population_size
-
-        self.max_generations = max_generations
-
-        self.fitness_input_size = fitness_input_size
-
-        if(generation_persistent_individuals % 2 != 0):
-            generation_persistent_individuals += 1
-
-        self.generation_persistent_individuals = generation_persistent_individuals
-
-        self.consecutive_good_generations = 0
-
-        self.ranked_population = []
-
-        self.population = []
-
-        self.generation_file = os.path.join(
-            "src", "genetic_algorithm", "last_generation.txt")
-
-        self.highest_fitness = -1
-
-        print("Genetic Alg set up!")
-
+            # Define o quanto os pesos vão influenciar nos atributos
+            self.weight_range = weight_range
+            self.mutation_chance = mutation_chance
+            self.mutation_weight = mutation_weight
+            self.chromosome_size = chromosome_size
+            
+            # x na primeira geração, nas outras vira 2x
+            self.population_size = population_size
+            self.max_generations = max_generations
+            self.fitness_input_size = fitness_input_size
+            self.consecutive_good_generations = 0
+            self.ranked_population = []
+            self.population = []
+            self.highest_fitness = -1
+        
     def get_first_generation(self):
         """Inicializa a população do algoritmo genético. Vê se existem dados de uma população já guardados,
         se não existir ou se a população for menor do que o necessário, gera indivíduos aleatórios para preencher
@@ -71,22 +64,16 @@ class GeneticAlgorithm:
             list: Primeira geração para o algoritmo genético
         """
         previous_generation = []
-
         try:
-            with open(self.generation_file, "rb") as generation_file:
-                previous_generation = pickle.load(generation_file)
-      
-        except TypeError:
-            print("Criando nova geração aleatória")
-
+            previous_generation = self.last_generation.previous_generation
+        except Exception:
+            pass
         finally:
             if(len(previous_generation) < self.population_size):
-                print("População menor do que o esperado, preenchendo o que falta..")
+                # Population less than the expected, solving...
                 for _ in range(self.population_size - len(previous_generation)):
                     chromosome = self.generate_random_chromosome()
                     previous_generation.append(chromosome)
-        
-
         return previous_generation
 
     def random_population(self):
@@ -99,14 +86,7 @@ class GeneticAlgorithm:
             p = Tamanho desejado da população
             c = Tamanho de cada cromossomo
         """
-        population = []
-
-        for _ in range(self.population_size):
-            chromosome = self.generate_random_chromosome()
-
-            population.append(chromosome)
-
-        return population
+        return [self.generate_random_chromosome() for _ in range(self.population_size)]
 
     def generate_random_chromosome(self):
         """Preenche um cromossomo com valores, cujos mínimos e máximos são definidos por weight_range
@@ -114,15 +94,7 @@ class GeneticAlgorithm:
         Returns:
             list: Cromossomo preenchido
         """
-
-        chromosome = []
-
-        for _ in range(self.chromosome_size):
-            # random.uniform é tipo um randrange mas que retorna floats
-            chromosome.append(random.uniform(
-                self.weight_range[0], self.weight_range[1]))
-
-        return chromosome
+        return [random.uniform(self.weight_range[0], self.weight_range[1]) for _ in range(self.chromosome_size)]
 
     def check_for_break(self, population: list):
         """Parece meio inútil porque só chama outra função mas o propósito dela é
@@ -158,7 +130,7 @@ class GeneticAlgorithm:
         good_individuals = 0
         for individual in population:
             good_individuals += individual[1] == 0
-
+            
         is_population_good = good_individuals >= int(len(population)/10)
 
         if(is_population_good):
@@ -179,24 +151,7 @@ class GeneticAlgorithm:
         Returns:
             list: Uma população ordenada, contendo (indivíduo, fitness)
         """
-        fitness_input = []
-
-        for _ in range(self.fitness_input_size):
-            fitness_input.append(fitness_input_gatherer())
-
-        ranked_population = []
-
-        for individual in population:
-            fitness_value = self.calculate_fitness(
-                individual, fitness_input)
-
-            scored_individual = (individual, fitness_value)
-
-            ranked_population.append(scored_individual)
-
-        ranked_population.sort(key=lambda element: element[1])
-
-        return ranked_population
+        return [(individual, self.calculate_fitness(individual, [fitness_input_gatherer() for _ in range(self.fitness_input_size)])) for individual in population].sort(key=lambda element: element[1])
 
     def calculate_fitness(self, chromosome: list, match_data: dict):
         """Calcula o valor de fitness de um cromossomo.
@@ -385,6 +340,4 @@ class GeneticAlgorithm:
             except IndexError:
                 pass
         log_file.close()
-
-        with open(self.generation_file, "wb") as generation_file:
-            pickle.dump(self.population, generation_file)
+        self.last_generation.dump(self.population)
