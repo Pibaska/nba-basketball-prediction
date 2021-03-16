@@ -1,0 +1,5 @@
+
+    [1] Algoritmo Genético (vai treinar populações com os dados disponiveis no BD)
+    [2] Web Scraping (vai coletar dados a partir do dia em que parou, se houver partidas. E salvar no BD)
+
+Queres rodar o que?
