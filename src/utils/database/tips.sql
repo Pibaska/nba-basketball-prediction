@@ -97,6 +97,25 @@ Selects
 
 teste de medias por LOCAL
 
+
+
+SELECT 
+     (pta.points),
+     (pta.points - pth.points) as spread,
+     (pta.offensive_rebounds),
+     (pta.defensive_rebounds),
+     (pta.field_goals_percentage),
+     (pta.three_point_field_goals_percentage),
+     (pta.free_throws_percentage),
+     (pta.turnover),
+     (pta.assists)
+FROM match_data as md 
+  INNER JOIN participation as pth 
+      on md.fk_participation_home = pth.participation_id 
+  INNER JOIN participation as pta
+      on md.fk_participation_away = pta.participation_id 
+
+
 SELECT 
      AVG(pta.points),
      AVG(pta.points - pth.points) as spread,
@@ -113,5 +132,5 @@ FROM match_data as md
   INNER JOIN participation as pta
       on md.fk_participation_away = pta.participation_id 
       
-	
+
     
