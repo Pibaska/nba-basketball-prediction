@@ -56,7 +56,7 @@ class GeneticAlgorithm:
         self.population = []
 
         self.generation_file = os.path.join(
-            "src", "core", "last_generation.txt")
+            "src", "genetic_algorithm", "last_generation.txt")
 
         self.highest_fitness = -1
 
@@ -72,16 +72,20 @@ class GeneticAlgorithm:
         """
         previous_generation = []
 
-        with open(self.generation_file, "rb") as generation_file:
-            previous_generation = pickle.load(generation_file)
+        try:
+            with open(self.generation_file, "rb") as generation_file:
+                previous_generation = pickle.load(generation_file)
+      
+        except TypeError:
+            print("Criando nova geração aleatória")
 
+        finally:
             if(len(previous_generation) < self.population_size):
                 print("População menor do que o esperado, preenchendo o que falta..")
-
                 for _ in range(self.population_size - len(previous_generation)):
                     chromosome = self.generate_random_chromosome()
-
                     previous_generation.append(chromosome)
+        
 
         return previous_generation
 
