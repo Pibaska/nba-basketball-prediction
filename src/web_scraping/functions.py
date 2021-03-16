@@ -15,6 +15,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import web_scraping.functions as ws_functions
 import utils.database.manipulation as db
+from datetime import datetime as dt
 
 diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -46,12 +47,15 @@ def generate_date_list():
     formatted_date = []
     formatted_date_list = []
 
+    today = dt.today()
+    current_date_list = today.strftime("%Y/%m/%d").split('/')
+
     last_year = db.get_last_date()[0]
     last_month = db.get_last_date()[1]
     last_day = db.get_last_date()[2]
 
     for year_increment in range(20):
-        last_year += year_increment
+        increasing_year = last_year + year_increment
         is_leap_year = check_for_leap_year(last_year)
 
         for month_increment in range(12):
@@ -65,9 +69,18 @@ def generate_date_list():
                     if day_increment >= last_day:
                         last_day = 0
 
-                        formatted_date = [last_year,
+                        formatted_date = [increasing_year,
                                           month_increment + 1, day_increment+1]
+
+                        #checa se ja chegou ou passou do dia atual
+                        if (formatted_date[0] >= int(current_date_list[0])): 
+                            if (formatted_date[1] >= int(current_date_list[1])):
+                                if (formatted_date[2] >= int(current_date_list[2])):
+                                    return formatted_date_list # lembrando que o dia atual n vai ir pq n passou pelo append abaixo
+
                         formatted_date_list.append(formatted_date)
+
+
 
     return formatted_date_list
 
