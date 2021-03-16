@@ -7,6 +7,7 @@ from gui.controller import BasketballPredictionController
 from gui.view import BasketballPredictionView
 from gui.model import run_gen_alg
 from web_scraping.main import activate_web_scraping
+from datetime import datetime as dt
 
 
 # basketballGUI = QApplication(sys.argv)
@@ -23,9 +24,12 @@ print("""
     [1] Algoritmo Genético (vai treinar populações com os dados disponiveis no BD)
     [2] Web Scraping (vai coletar dados a partir do dia em que parou, se houver partidas. E salvar no BD)
 """)
+
+
+
 x = input("Queres rodar o que?")
 
-if x == 1:
+if x == "1":
     print("Rodando AG")
     run_gen_alg()
 else:
