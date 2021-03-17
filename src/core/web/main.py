@@ -1,5 +1,5 @@
-import web_scraping.functions as ws_functions
-import utils.database.manipulation as db
+import core.web.functions as ws_functions
+import data.utils.manipulation as db
 
 
 id_items_to_collect = ['mp', 'fg', 'fga', 'fg_pct', 'fg3', 'fg3a', 'fg3_pct', 'ft',

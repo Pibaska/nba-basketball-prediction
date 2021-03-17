@@ -4,9 +4,8 @@ import time
 import statistics
 import json
 from datetime import datetime
-from genetic_algorithm.functions import GeneticAlgorithm
-from utils.database import data_provider
-
+from core.gen.genetic_algorithm import GeneticAlgorithm
+from data.utils import data_provider
 
 class Validation():
     """Classe usada para fazer a validação dos cromossomos do algoritmo genético

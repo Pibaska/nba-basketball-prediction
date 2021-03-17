@@ -98,7 +98,7 @@ def get_match_amount():
     """
 
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect('../database.sqlite3')
         cursor = db_connection.cursor()
 
         cursor.execute(

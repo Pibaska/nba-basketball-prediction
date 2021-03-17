@@ -13,8 +13,7 @@ from selenium.webdriver.firefox.options import Options
 import json
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-import web_scraping.functions as ws_functions
-import utils.database.manipulation as db
+import data.utils.manipulation as db
 from datetime import datetime as dt
 
 diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]

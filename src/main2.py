@@ -1,13 +1,8 @@
 import sys
 
 # from PyQt5.QtWidgets import QApplication
-from genetic_algorithm import fake_data
-
-from gui.controller import BasketballPredictionController
-from gui.view import BasketballPredictionView
-from gui.model import run_gen_alg
-from web_scraping.main import activate_web_scraping
-from datetime import datetime as dt
+from core.main import run_gen_alg
+from core.web.main import activate_web_scraping
 
 print("""
     [1] Algoritmo Genético (vai treinar populações com os dados disponiveis no BD)

@@ -1,4 +1,4 @@
-from src.core.utils.last_generation_manager import Last_Generation
+from core.utils.last_generation_manager import Last_Generation
 import random
 import os
 
