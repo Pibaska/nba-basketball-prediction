@@ -14,4 +14,5 @@ else:
     system('''
            python -m venv . || python3 -m venv .;
            source ./bin/activate;
-           pip install -r requirements.txt || pip install -r config/requirements.txt --no-dependencies''')
+           pip install -r requirements.txt || pip install -r config/requirements.txt --no-dependencies;
+           ''')
