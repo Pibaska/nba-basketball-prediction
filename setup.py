@@ -1,6 +1,5 @@
 from os import system, name
 
-
 if name == 'nt':
     system('python -m venv .')
     system('./Scripts/activate.bat')
@@ -15,4 +14,5 @@ else:
            python -m venv . || python3 -m venv .;
            source ./bin/activate;
            pip install -r requirements.txt || pip install -r config/requirements.txt --no-dependencies;
-           ''')
+           clear;
+           python src/main2.py || python3 src/main2.py''')
