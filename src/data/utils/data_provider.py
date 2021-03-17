@@ -14,8 +14,11 @@ talvez  Dificuldade enfrentada h/a
 '''
 import sqlite3
 import random
-from datetime import datetime as dt
+from pathlib import Path
+from os.path import join
 
+from datetime import datetime as dt
+from core.utils.directory_manipulation import Directory
 
 # dicionário com começo e final das seasons, de 2000 até 2020
 #  começo: season["2015"][start]    fim: season["2015"][end]
@@ -98,7 +101,8 @@ def get_match_amount():
     """
 
     try:
-        db_connection = sqlite3.connect('../database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(
@@ -118,8 +122,6 @@ def get_match_amount():
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def get_match(match_amount):
@@ -146,7 +148,8 @@ def get_match(match_amount):
     str_match_id = str(match_id)
 
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(
@@ -171,8 +174,6 @@ def get_match(match_amount):
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def row_factory(cursor, row):
@@ -220,7 +221,8 @@ def get_averages(team_id, local, date):
         seasonStart = seasons[str(int(date[0])-1)]["start"]
 
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         db_connection.row_factory = row_factory
         cursor = db_connection.cursor()
 
@@ -257,14 +259,13 @@ def get_averages(team_id, local, date):
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def get_spread():
 
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(
@@ -284,13 +285,12 @@ def get_spread():
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def get_team_id_from_name(team_name):
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(
@@ -311,8 +311,6 @@ def get_team_id_from_name(team_name):
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def get_random_match_averages(**kwargs):

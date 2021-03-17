@@ -151,8 +151,24 @@ class GeneticAlgorithm:
         Returns:
             list: Uma população ordenada, contendo (indivíduo, fitness)
         """
-        return [(individual, self.calculate_fitness(individual, [fitness_input_gatherer() for _ in range(self.fitness_input_size)])) for individual in population].sort(key=lambda element: element[1])
+        fitness_input = []
+        
+        for _ in range(self.fitness_input_size):
+            fitness_input.append(fitness_input_gatherer())
 
+        ranked_population = []
+
+        for individual in population:
+            fitness_value = self.calculate_fitness(
+                individual, fitness_input)
+
+            scored_individual = (individual, fitness_value)
+
+            ranked_population.append(scored_individual)
+
+        ranked_population.sort(key=lambda element: element[1])
+
+        return ranked_population
     def calculate_fitness(self, chromosome: list, match_data: dict):
         """Calcula o valor de fitness de um cromossomo.
         Obs.: Por enquanto tá extremamente mal otimizado

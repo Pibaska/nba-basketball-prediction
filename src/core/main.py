@@ -6,7 +6,7 @@ from datetime import datetime
 import time
 from core.gen.classes.genetic_algorithm import GeneticAlgorithm
 from data.utils import data_provider
-from core.web.main import activate_web_scraping
+from core.web.control import activate_web_scraping
 from data.bin.fake_data import match_database
 
 
