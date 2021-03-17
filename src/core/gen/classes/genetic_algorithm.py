@@ -329,7 +329,8 @@ class GeneticAlgorithm:
 
         print("Algoritmo terminado!")
 
-        log_file = open(os.path.join("data", "genetic_algorithm.log"), "a")
+        log_file = open(join(Path(__file__).resolve().parent.parent.parent,
+                           'data', 'logs', 'genetic_algorithm.log'), "a")
         log_file.write(f"\n\nTimestamp: {timestamp}")
         log_file.write(
             f"\nGenetic Algorithm finished in {elapsed_time} seconds.")
