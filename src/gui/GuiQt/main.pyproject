@@ -1,3 +1,0 @@
-{
-    "files": ["qml/paginas/preverPage.qml","qml/controles/BotaoExtensor.qml","qml/controles/BotaoCustom.qml","main.py","qml/controles/BtnMenuEsquerdo.qml","qml/paginas/configPage.qml","qml/paginas/sobrePage.qml","qml/controles/Combobox.qml","qml/controles/BackgroundChange.qml","qml/controles/BotaoTopBar.qml","qml/paginas/ppPage.qml"]
-}
