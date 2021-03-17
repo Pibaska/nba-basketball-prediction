@@ -37,7 +37,7 @@ def setup_firefox_driver(show_scraping_window: bool):
     option.headless = show_scraping_window
     driver = webdriver.Firefox(
         firefox_binary=binary, executable_path=join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
-        'library', 'geckodriver.exe' if name == 'nt' else 'geckodriver'), options=option)  # https://github.com/mozilla/geckodriver/releases <- baixe de acordo
+        'library', 'geckodriver.exe' if name == 'nt' else 'geckodriver'), options=option)
     return driver
 
 

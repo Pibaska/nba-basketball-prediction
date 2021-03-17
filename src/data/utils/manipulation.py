@@ -1,10 +1,14 @@
 import sqlite3
 import datetime
 
+from pathlib import Path
+from os.path import join
+from core.utils.directory_manipulation import Directory
 
 def insert_teams_data(team_data):
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.executemany("""
@@ -19,13 +23,12 @@ def insert_teams_data(team_data):
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def insert_participation_data(participation_data):
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.executemany("""
@@ -62,14 +65,13 @@ def insert_participation_data(participation_data):
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def insert_match_data(match_data):
 
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.executemany("""
@@ -85,13 +87,12 @@ def insert_match_data(match_data):
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def retrieve_participation_data(match_id, team_is_home):
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(
@@ -100,13 +101,12 @@ def retrieve_participation_data(match_id, team_is_home):
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def retrieve_match_data(match_id):
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute("""SELECT * FROM match_data WHERE id = ?""", match_id)
@@ -114,8 +114,6 @@ def retrieve_match_data(match_id):
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def retrieve_team_id_from_abv(team_abv):
@@ -127,7 +125,8 @@ def retrieve_team_id_from_abv(team_abv):
 
     # Filtrar por abreviação
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(
@@ -136,8 +135,6 @@ def retrieve_team_id_from_abv(team_abv):
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def match_data_factory(cursor, row):
@@ -173,7 +170,8 @@ def match_data_factory(cursor, row):
 
 def retrieve_match_stats():
     try:
-        db_connection = sqlite3.connect("data/database.sqlite3")
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         db_connection.row_factory = match_data_factory
         cursor = db_connection.cursor()
 
@@ -192,13 +190,12 @@ def retrieve_match_stats():
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def check_tables():
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(""" SELECT * FROM participation;""")
@@ -210,13 +207,12 @@ def check_tables():
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def create_id_participation():
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(
@@ -233,8 +229,6 @@ def create_id_participation():
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 def get_datetime(date):
@@ -248,7 +242,8 @@ def get_last_date():
         list: A lista de datas formatadas como listas [ano,mes,dia]
     """
     try:
-        db_connection = sqlite3.connect('data/database.sqlite3')
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute("""SELECT date FROM match_data ORDER BY date DESC""")
@@ -268,12 +263,11 @@ def get_last_date():
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 def get_teams_abbreviations():
     try:
-        db_connection = sqlite3.connect("data/database.sqlite3")
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                                 'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute("SELECT t.team_name, t.team_abv FROM team as t")
@@ -288,8 +282,6 @@ def get_teams_abbreviations():
     except Exception as e:
         print(e)
         raise e
-    finally:
-        db_connection.close()
 
 
 
