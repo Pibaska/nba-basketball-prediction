@@ -15,7 +15,10 @@ from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import data.utils.manipulation as db
 from datetime import datetime as dt
-
+from core.utils.directory_manipulation import Directory
+from pathlib import Path
+from os.path import join
+from os import name
 diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 
@@ -29,11 +32,12 @@ def setup_firefox_driver(show_scraping_window: bool):
         webdriver: O driver do firefox configurado e pronto para procurar elementos em sites
     """
 
-    binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe')
+    binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe' if name == 'nt' else '/usr/bin/firefox')
     option = Options()
     option.headless = show_scraping_window
     driver = webdriver.Firefox(
-        firefox_binary=binary, executable_path=r'C:\\Geckodriver\\geckodriver.exe', options=option)  # https://github.com/mozilla/geckodriver/releases <- baixe de acordo
+        firefox_binary=binary, executable_path=join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+        'library', 'geckodriver.exe' if name == 'nt' else 'geckodriver'), options=option)  # https://github.com/mozilla/geckodriver/releases <- baixe de acordo
     return driver
 
 
