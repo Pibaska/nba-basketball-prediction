@@ -231,6 +231,7 @@ def get_averages(team_id, local, date):
         cursor.execute(
             """ 
             SELECT 
+                AVG(""" + participation_local + """.won) as won,
                 AVG(""" + participation_local + """.points) as points, 
                 AVG(""" + participation_local + """.points - """ + participation_opponent + """.points) as spread, 
                 AVG(""" + participation_local + """.offensive_rebounds) as offensive_rebounds,
