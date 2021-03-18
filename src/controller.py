@@ -1,8 +1,6 @@
-import sys
-
-# from PyQt5.QtWidgets import QApplication
 from core.main import run_gen_alg
 from core.web.control import activate_web_scraping
+
 
 print("""
     [1] Algoritmo Genético (vai treinar populações com os dados disponiveis no BD)

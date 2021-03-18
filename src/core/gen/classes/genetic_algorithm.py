@@ -3,8 +3,6 @@ import random
 from pathlib import Path
 from os.path import join
 
-
-
 class GeneticAlgorithm:
     """Classe Base para a execução do algoritmo genetico
 

@@ -16,7 +16,6 @@ import sqlite3
 import random
 from pathlib import Path
 from os.path import join
-
 from datetime import datetime as dt
 from core.utils.directory_manipulation import Directory
 
