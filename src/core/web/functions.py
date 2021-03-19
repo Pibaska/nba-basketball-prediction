@@ -129,9 +129,11 @@ def get_match_amount(driver):
     Returns:
         int: Quantidade de jogos disponíveis no dia escolhido
     """
-
-    element = driver.find_element_by_xpath(
-        '//*[@id="content"]/div[3]')  # puxa a div que tem os jogos
+    try:
+        element = driver.find_element_by_xpath( 
+            '//*[@id="content"]/div[3]')  # puxa a div que tem os jogos
+    except:
+        return 0
 
     html_content = element.get_attribute('outerHTML')  # pega seu HTML
 
