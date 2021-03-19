@@ -123,7 +123,7 @@ def get_match_amount():
         raise e
 
 
-def get_match(match_amount):
+def get_matches_by_season(season, amount):
     """Escolhe uma partida aleatória entre todas as partidas salvas e retorna alguns dados
     referentes a ela.
 
@@ -142,31 +142,42 @@ def get_match(match_amount):
     """
 
     # pegar match aleatoria a partir de id
-    match_id = random.randrange(1, match_amount)
+    season_start = seasons[season]["start"].replace('/', '-') 
+    season_end   = seasons[season]["end"].replace('/', '-')
 
-    str_match_id = str(match_id)
 
     try:
         db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
                                                  'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
+        # cursor.execute(
+        #     """        
+        #     Select pt_home.won, pt_home.fk_team_id, pt_away.fk_team_id, md.date from match_data as md 
+        #         INNER JOIN participation as pt_home On md.fk_participation_home = pt_home.participation_id
+        #         INNER JOIN participation as pt_away On md.fk_participation_away = pt_away.participation_id
+        #             WHERE md.match_id = ?
+        #     """, [str_match_id])
+
         cursor.execute(
             """        
             Select pt_home.won, pt_home.fk_team_id, pt_away.fk_team_id, md.date from match_data as md 
                 INNER JOIN participation as pt_home On md.fk_participation_home = pt_home.participation_id
                 INNER JOIN participation as pt_away On md.fk_participation_away = pt_away.participation_id
-                    WHERE md.match_id = ?
-            """, [str_match_id])
+                    WHERE md.date >= ?
+                    and   md.date <= ?
+                    order by md.date desc
+            """, [season_start, season_end])
 
         lista = cursor.fetchall()
 
-        pre_averages_dict = {
-            "team_home_won": lista[0][0],
-            "team_home_id": lista[0][1],
-            "team_away_id": lista[0][2],
-            "match_data": lista[0][3].split('-')
-        }
+        for i in range(amount):
+            pre_averages_dict = {
+                "team_home_won": lista[i][0],
+                "team_home_id": lista[i][1],
+                "team_away_id": lista[i][2],
+                "match_data": lista[i][3].split('-')
+            }
 
         return pre_averages_dict
 
@@ -313,10 +324,10 @@ def get_team_id_from_name(team_name):
         raise e
 
 
-def get_random_match_averages(**kwargs):
-    match_total = get_match_amount()
+def get_matches_averages_by_season(season, amount, **kwargs):
+    # match_total = get_match_amount()
 
-    pre_averages_dict = get_match(match_total)
+    pre_averages_dict = get_matches_by_season(season, amount)
 
     team_home_averages = get_averages(
         pre_averages_dict["team_home_id"], 1, pre_averages_dict["match_data"])
@@ -346,9 +357,12 @@ def get_specific_match_averages(team_home_name, team_away_name, date):
 
 
 if __name__ == "__main__":
-    print(get_random_match_averages())
+#     print(get_matches_averages_by_season("2017"))
 
+    season_start = seasons["2017"]["start"].replace('/', '-') 
+    season_end   = seasons["2017"]["end"].replace('/', '-')
 
+    print()
 # SELECT
 #     AVG(pt_home.points),
 #     AVG(pt_home.points - pt_away.points) as spread,
