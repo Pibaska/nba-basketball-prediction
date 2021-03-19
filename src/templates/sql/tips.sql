@@ -117,6 +117,7 @@ FROM match_data as md
 
 
 SELECT 
+     AVG(pta.won) as won,
      AVG(pta.points),
      AVG(pta.points - pth.points) as spread,
      AVG(pta.offensive_rebounds),
