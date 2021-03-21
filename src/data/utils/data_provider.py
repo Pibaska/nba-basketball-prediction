@@ -123,7 +123,7 @@ def get_match_amount():
         raise e
 
 
-def get_matches_by_season(season, amount):
+def get_matches_by_season(date):
     """Escolhe uma partida aleatória entre todas as partidas salvas e retorna alguns dados
     referentes a ela.
 
@@ -142,22 +142,14 @@ def get_matches_by_season(season, amount):
     """
 
     # pegar match aleatoria a partir de id
-    season_start = seasons[season]["start"].replace('/', '-') 
-    season_end   = seasons[season]["end"].replace('/', '-')
+    season_start = get_start_season_by_date(date)
+    #season_end   = seasons[year_date]["end"]
 
 
     try:
         db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
                                                  'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
-
-        # cursor.execute(
-        #     """        
-        #     Select pt_home.won, pt_home.fk_team_id, pt_away.fk_team_id, md.date from match_data as md 
-        #         INNER JOIN participation as pt_home On md.fk_participation_home = pt_home.participation_id
-        #         INNER JOIN participation as pt_away On md.fk_participation_away = pt_away.participation_id
-        #             WHERE md.match_id = ?
-        #     """, [str_match_id])
 
         cursor.execute(
             """        
@@ -167,19 +159,21 @@ def get_matches_by_season(season, amount):
                     WHERE md.date >= ?
                     and   md.date <= ?
                     order by md.date desc
-            """, [season_start, season_end])
+            """, [season_start, str(date[0])+"-"+str(date[1])+"-"+str(date[2])])
 
         lista = cursor.fetchall()
 
-        for i in range(amount):
-            pre_averages_dict = {
-                "team_home_won": lista[i][0],
-                "team_home_id": lista[i][1],
-                "team_away_id": lista[i][2],
-                "match_data": lista[i][3].split('-')
-            }
+        pre_averages_dict_list = []   
 
-        return pre_averages_dict
+        for item in lista:
+            pre_averages_dict_list.append({
+                "team_home_won": item[0],
+                "team_home_id": item[1],
+                "team_away_id": item[2],
+                "match_data": item[3].split('-')
+            })
+
+        return pre_averages_dict_list
 
     except Exception as e:
         print(e)
@@ -221,14 +215,9 @@ def get_averages(team_id, local, date):
             //Dificuldade enfrentada:
         ]
     """
-    strigDate = str(date[0])+"/"+str(date[1])+"/" + \
-        str(date[2])  # transforma o date em string
 
     # descobre de que season é a data, e retorna a data de inicio da mesma
-    if dt.strptime(strigDate, "%Y/%m/%d").date() > dt.strptime(seasons[str(date[0])]["start"], "%Y/%m/%d").date():
-        seasonStart = seasons[str(date[0])]["start"]
-    else:
-        seasonStart = seasons[str(int(date[0])-1)]["start"]
+    start_season = get_start_season_by_date(date)
 
     try:
         db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
@@ -262,7 +251,7 @@ def get_averages(team_id, local, date):
                             and md.date > ?
                             and md.date <  ?
                             order by md.date ASC;   
-                """, [team_id, local, str(dt.strptime(seasonStart, "%Y/%m/%d").date()), str(dt.strptime(strigDate, "%Y/%m/%d").date())])
+                """, [team_id, local, start_season, str(date[0])+"-"+str(date[1])+"-"+str(date[2])])
         dicionario = cursor.fetchall()
 
         return dicionario[0]
@@ -271,32 +260,14 @@ def get_averages(team_id, local, date):
         print(e)
         raise e
 
-
-def get_spread():
-
-    try:
-        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
-                                                 'data', 'database.sqlite3'))
-        cursor = db_connection.cursor()
-
-        cursor.execute(
-            """
-            SELECT 
-                match_id 
-            FROM 
-                match_data 
-            ORDER BY 
-                match_id DESC;
-            """)
-
-        lista = (cursor.fetchall())
-
-        return lista[0][0]
-
-    except Exception as e:
-        print(e)
-        raise e
-
+def get_start_season_by_date(date):
+    strigDate = str(date[0])+"-"+str(date[1])+"-"+str(date[2])  # transforma o date em string
+    if dt.strptime(strigDate, "%Y-%m-%d").date() > dt.strptime(seasons[str(date[0])]["start"], "%Y-%m-%d").date():
+        seasonStart = seasons[str(date[0])]["start"]
+    else:
+        seasonStart = seasons[str(int(date[0])-1)]["start"]
+    
+    return seasonStart
 
 def get_team_id_from_name(team_name):
     try:
@@ -324,18 +295,24 @@ def get_team_id_from_name(team_name):
         raise e
 
 
-def get_matches_averages_by_season(season, amount, **kwargs):
+def get_matches_averages_by_season(date, **kwargs):
     # match_total = get_match_amount()
 
-    pre_averages_dict = get_matches_by_season(season, amount)
+    matches_dict = get_matches_by_season(date)
 
-    team_home_averages = get_averages(
-        pre_averages_dict["team_home_id"], 1, pre_averages_dict["match_data"])
-    team_away_averages = get_averages(
-        pre_averages_dict["team_away_id"], 0, pre_averages_dict["match_data"])
+    team_home_averages  = []
+    team_away_averages  = []
+    match_averages      = []
 
-    match_averages = {"team_home": team_home_averages, "team_away": team_away_averages,
-                      "home_won": pre_averages_dict["team_home_won"]}
+    for match in matches_dict:
+        team_home_averages = get_averages(
+            match["team_home_id"], 1, match["match_data"])
+        team_away_averages = get_averages(
+            match["team_away_id"], 0, match["match_data"])
+
+        match_averages.append({"team_home": team_home_averages.copy(), "team_away": team_away_averages.copy(),
+                        "home_won": match["team_home_won"]})
+
     # Usar para ver os nulos
     # problem = 0 if team_home_averages[0][0] and team_home_averages[0][0] else 1
     # if problem:
