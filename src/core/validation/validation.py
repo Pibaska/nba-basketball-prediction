@@ -14,7 +14,7 @@ class Validation():
 
     def __init__(self, test_cycles=50) -> None:
         self.gen_alg = GeneticAlgorithm(
-            data_provider.get_random_match_averages,
+            data_provider.get_matches_averages_by_season,
             weight_range=(-100, 100),
             population_size=100,
             max_generations=100,
