@@ -15,4 +15,3 @@ if x == "1":
 else:
     print("Rodando WS")
     activate_web_scraping()
-
