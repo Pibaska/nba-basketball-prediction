@@ -55,6 +55,7 @@ class GeneticAlgorithm:
             self.ranked_population = []
             self.population = []
             self.highest_fitness = -1
+            self.current_generation = 0
 
     def get_first_generation(self):
         """Inicializa a população do algoritmo genético. Vê se existem dados de uma população já guardados,
@@ -328,13 +329,15 @@ class GeneticAlgorithm:
             elapsed_time (int, optional): Tempo que o algoritmo genético demorou para ser concluído. Defaults to -1.
         """
 
-        print("Algoritmo terminado!")
+        print("Algoritmo interrompido!")
 
-        log_file = open(join(Path(__file__).resolve().parent.parent.parent,
+        log_file = open(join(Path(__file__).resolve().parent.parent.parent.parent,
                              'data', 'logs', 'genetic_algorithm.log'), "a")
+
         log_file.write(f"\n\nTimestamp: {timestamp}")
         log_file.write(
-            f"\nGenetic Algorithm finished in {elapsed_time} seconds.")
+            f"\nGenetic Algorithm exited in {elapsed_time} seconds.")
+        log_file.write(f"\n{self.current_generation} generations passed.")
         log_file.write(f"\n\tGenetic Algorithm Parameters:")
         log_file.write(f"\n\t\tfitness_input_size: {self.fitness_input_size}")
         log_file.write(
@@ -350,7 +353,7 @@ class GeneticAlgorithm:
         log_file.write(
             f"\n\tGenetic Algorithm Output:\n\tFinal Score: {self.ranked_population[0][1]}%")
         log_file.write(f"\n\tHighest Fitness: {self.highest_fitness}")
-        match_data = self.fitness_input_gatherer()
+        match_data = self.fitness_input[0]
         for index, stat in enumerate(match_data["team_home"]):
             try:
                 log_file.write(
