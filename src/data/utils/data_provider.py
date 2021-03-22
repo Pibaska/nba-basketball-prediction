@@ -101,7 +101,7 @@ def get_match_amount():
 
     try:
         db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
-                                                 'data', 'database.sqlite3'))
+                                             'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(
@@ -145,10 +145,9 @@ def get_matches_by_season(date):
     season_start = get_start_season_by_date(date)
     #season_end   = seasons[year_date]["end"]
 
-
     try:
         db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
-                                                 'data', 'database.sqlite3'))
+                                             'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(
@@ -163,7 +162,7 @@ def get_matches_by_season(date):
 
         lista = cursor.fetchall()
 
-        pre_averages_dict_list = []   
+        pre_averages_dict_list = []
 
         for item in lista:
             pre_averages_dict_list.append({
@@ -221,7 +220,7 @@ def get_averages(team_id, local, date):
 
     try:
         db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
-                                                 'data', 'database.sqlite3'))
+                                             'data', 'database.sqlite3'))
         db_connection.row_factory = row_factory
         cursor = db_connection.cursor()
 
@@ -260,19 +259,30 @@ def get_averages(team_id, local, date):
         print(e)
         raise e
 
+
 def get_start_season_by_date(date):
-    strigDate = str(date[0])+"-"+str(date[1])+"-"+str(date[2])  # transforma o date em string
+    """Recebe uma data e retorna a data do começo da season da qual ela pertence
+
+    Args:
+        date(list): A data de input, no formato de uma lista [ano, mês, dia]
+
+    Returns:
+        list: Outra lista com a data do início da season daquela data
+    """
+    strigDate = str(date[0])+"-"+str(date[1])+"-" + \
+        str(date[2])  # transforma o date em string
     if dt.strptime(strigDate, "%Y-%m-%d").date() > dt.strptime(seasons[str(date[0])]["start"], "%Y-%m-%d").date():
         seasonStart = seasons[str(date[0])]["start"]
     else:
         seasonStart = seasons[str(int(date[0])-1)]["start"]
-    
+
     return seasonStart
+
 
 def get_team_id_from_name(team_name):
     try:
         db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
-                                                 'data', 'database.sqlite3'))
+                                             'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
         cursor.execute(
@@ -300,9 +310,9 @@ def get_matches_averages_by_season(date, **kwargs):
 
     matches_dict = get_matches_by_season(date)
 
-    team_home_averages  = []
-    team_away_averages  = []
-    match_averages      = []
+    team_home_averages = []
+    team_away_averages = []
+    match_averages = []
 
     for match in matches_dict:
         team_home_averages = get_averages(
@@ -311,7 +321,7 @@ def get_matches_averages_by_season(date, **kwargs):
             match["team_away_id"], 0, match["match_data"])
 
         match_averages.append({"team_home": team_home_averages.copy(), "team_away": team_away_averages.copy(),
-                        "home_won": match["team_home_won"]})
+                               "home_won": match["team_home_won"]})
 
     # Usar para ver os nulos
     # problem = 0 if team_home_averages[0][0] and team_home_averages[0][0] else 1
@@ -334,10 +344,10 @@ def get_specific_match_averages(team_home_name, team_away_name, date):
 
 
 if __name__ == "__main__":
-#     print(get_matches_averages_by_season("2017"))
+    #     print(get_matches_averages_by_season("2017"))
 
-    season_start = seasons["2017"]["start"].replace('/', '-') 
-    season_end   = seasons["2017"]["end"].replace('/', '-')
+    season_start = seasons["2017"]["start"].replace('/', '-')
+    season_end = seasons["2017"]["end"].replace('/', '-')
 
     print()
 # SELECT
