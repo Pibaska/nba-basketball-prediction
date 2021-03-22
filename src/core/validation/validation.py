@@ -1,23 +1,24 @@
 from json.decoder import JSONDecodeError
-import os
-import time
+from os.path import join
+from pathlib import Path
 import statistics
 import json
 from datetime import datetime
-from core.gen.genetic_algorithm import GeneticAlgorithm
+from core.gen.classes.genetic_algorithm import GeneticAlgorithm
 from data.utils import data_provider
+
 
 class Validation():
     """Classe usada para fazer a validação dos cromossomos do algoritmo genético
     e salvar esses dados para uso posterior.
     """
 
-    def __init__(self, test_cycles=50) -> None:
+    def __init__(self, test_cycles=5) -> None:
         self.gen_alg = GeneticAlgorithm(
-            data_provider.get_matches_averages_by_season,
+            data_provider.get_matches_averages_by_season([2018, 6, 20]),
             weight_range=(-100, 100),
             population_size=100,
-            max_generations=100,
+            max_generations=25,
             mutation_weight=(-10, 10),
             fitness_input_size=200)
 
@@ -51,6 +52,8 @@ class Validation():
             f"\n\t\tmax_generations: {self.gen_alg.max_generations}")
         log_file.write(
             f"\n\t\tconsecutive_good_generations: {self.gen_alg.consecutive_good_generations}")
+        log_file.write(f"\n\t\tfitness_input_size: {self.gen_alg.fitness_input_size}")
+        log_file.write(f"\n\t\tgeneration_persistent_individuals: {self.gen_alg.generation_persistent_individuals}")
 
         for score in kwargs:
             log_file.write(f"\n\t{score}: {kwargs[score]}")
@@ -64,7 +67,8 @@ class Validation():
         do arquivo validation.json
         """
 
-        with open(os.path.join("data", "validation.json")) as json_file:
+        with open(join(Path(__file__).resolve().parent.parent.parent,
+                       'data', 'logs', 'genetic_algorithm.log'), "a"):
             validation_data = {
                 "general_data": {
                     "timestamp": str(datetime.now()),
@@ -84,6 +88,7 @@ class Validation():
             for score in kwargs:
                 validation_data[score] = kwargs[score]
 
+        with open(join(Path(__file__).resolve().parent.parent.parent, "data", "validation.json"), "r") as json_file:
             try:
                 data = json.load(json_file)
             except JSONDecodeError:
@@ -91,9 +96,8 @@ class Validation():
 
             data.append(validation_data)
 
-        with open(os.path.join("data", "validation.json"), "w") as json_file:
+        with open(join(Path(__file__).resolve().parent.parent.parent, "data", "validation.json"), "w") as json_file:
             json.dump(data, json_file, indent=4)
-
         print("Data dumped into json!")
 
     def gen_alg_score_generator(self) -> float:
@@ -110,7 +114,7 @@ class Validation():
         for generation in range(self.gen_alg.max_generations):
 
             self.gen_alg.ranked_population = self.gen_alg.apply_fitness(
-                self.gen_alg.population, self.gen_alg.fitness_input_gatherer)
+                self.gen_alg.population, self.gen_alg.fitness_input)
 
             print(f"Geração {generation}...")
 
@@ -129,10 +133,7 @@ class Validation():
         Returns:
             float: Pontuação de fitness do cromossomo aleatório
         """
-        fitness_input = []
-
-        for _ in range(self.gen_alg.fitness_input_size):
-            fitness_input.append(self.gen_alg.fitness_input_gatherer())
+        fitness_input = self.gen_alg.fitness_input
 
         random_chromosome = self.gen_alg.generate_random_chromosome()
         fitness_value = self.gen_alg.calculate_fitness(
@@ -147,10 +148,7 @@ class Validation():
         Returns:
             float: O fitness calculado desse cromossomo de valor constante
         """
-        fitness_input = []
-
-        for _ in range(self.gen_alg.fitness_input_size):
-            fitness_input.append(self.gen_alg.fitness_input_gatherer())
+        fitness_input = self.gen_alg.fitness_input
 
         constant_chromosome = [1 for _ in range(self.gen_alg.chromosome_size)]
         fitness_value = self.gen_alg.calculate_fitness(
@@ -187,22 +185,3 @@ class Validation():
         }
 
         return result_statistics
-
-
-if __name__ == "__main__":
-    validation = Validation()
-    validation.start_time = time.time()
-
-    print("Generating Genetic Algorithm Score")
-    gen_alg_stats = validation.calculate_performance(
-        validation.gen_alg_score_generator)
-    print("Generating Random Score")
-    random_stats = validation.calculate_performance(
-        validation.random_score_generator)
-    print("Generating Constant Score")
-    constant_stats = validation.calculate_performance(
-        validation.constant_score_generator)
-
-    validation.end_time = time.time()
-    validation.dump_json(gen_alg_stats=gen_alg_stats,
-                         random_stats=random_stats, constant_stats=constant_stats)
