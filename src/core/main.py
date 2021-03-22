@@ -40,31 +40,38 @@ def activate_away_team_combobox(selected_team, view):
     view.selected_away_team = selected_team
 
 
-def run_gen_alg():
+def run_gen_alg(date=[2018, 6, 20]):
+    input_matches = data_provider.get_matches_averages_by_season(date)
+
     gen_alg = GeneticAlgorithm(
-        data_provider.get_matches_averages_by_season, weight_range=(-100, 100), population_size=50, max_generations=30000, fitness_input_size=300, mutation_weight=(-10, 10))
+        input_matches, weight_range=(-100, 100), population_size=50, max_generations=30000, mutation_weight=(-10, 10), generation_persistent_individuals=2)
 
     start_time = time.time()
 
     gen_alg.population = gen_alg.get_first_generation()
 
     for generation in range(gen_alg.max_generations):
+        try:
+            gen_alg.current_generation = generation
 
-        gen_alg.ranked_population = gen_alg.apply_fitness(
-            gen_alg.population, gen_alg.fitness_input_gatherer)
+            gen_alg.ranked_population = gen_alg.apply_fitness(
+                gen_alg.population, gen_alg.fitness_input)
 
-        print(
-            f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}%'")
+            print(
+                f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}%'")
 
-        if(gen_alg.ranked_population[0][1] > gen_alg.highest_fitness):
-            gen_alg.highest_fitness = gen_alg.ranked_population[0][1]
+            if(gen_alg.ranked_population[0][1] > gen_alg.highest_fitness):
+                gen_alg.highest_fitness = gen_alg.ranked_population[0][1]
+                print(gen_alg.highest_fitness)
 
-        if(gen_alg.check_for_break(gen_alg.ranked_population)):
-            print("População tá top, hora do break")
+            if(gen_alg.check_for_break(gen_alg.ranked_population)):
+                print("População tá top, hora do break")
+                break
+
+            gen_alg.population = gen_alg.reproduce_population(
+                gen_alg.ranked_population, gen_alg.population_size)
+        except KeyboardInterrupt:
             break
-
-        gen_alg.population = gen_alg.reproduce_population(
-            gen_alg.ranked_population, gen_alg.population_size)
 
     end_time = time.time()
 

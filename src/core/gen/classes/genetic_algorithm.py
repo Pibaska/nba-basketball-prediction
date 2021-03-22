@@ -3,6 +3,7 @@ import random
 from pathlib import Path
 from os.path import join
 
+
 class GeneticAlgorithm:
     """Classe Base para a execução do algoritmo genetico
 
@@ -19,20 +20,21 @@ class GeneticAlgorithm:
     """
 
     def __init__(self,
-                 fitness_input_gatherer,
+                 fitness_input,
                  good_generations=3,
                  weight_range=(-10, 10),
                  mutation_chance=1,
                  mutation_weight=(-1, 1),
-                 chromosome_size=9,
+                 chromosome_size=10,
                  population_size=50,
                  max_generations=100,
                  fitness_input_size=100,
                  generation_persistent_individuals=5
                  ):
         try:
-            self.fitness_input_gatherer = fitness_input_gatherer
-            self.generation_persistent_individuals = generation_persistent_individuals + 1 if generation_persistent_individuals % 2 is not 0 else generation_persistent_individuals
+            self.fitness_input = fitness_input
+            self.generation_persistent_individuals = generation_persistent_individuals + \
+                1 if generation_persistent_individuals % 2 != 0 else generation_persistent_individuals
             self.last_generation = Last_Generation()
         except Exception as e:
             raise(e)
@@ -44,16 +46,17 @@ class GeneticAlgorithm:
             self.mutation_chance = mutation_chance
             self.mutation_weight = mutation_weight
             self.chromosome_size = chromosome_size
-            
+
             # x na primeira geração, nas outras vira 2x
             self.population_size = population_size
             self.max_generations = max_generations
-            self.fitness_input_size = fitness_input_size
+            self.fitness_input_size = len(self.fitness_input)
             self.consecutive_good_generations = 0
             self.ranked_population = []
             self.population = []
             self.highest_fitness = -1
-        
+            self.current_generation = 0
+
     def get_first_generation(self):
         """Inicializa a população do algoritmo genético. Vê se existem dados de uma população já guardados,
         se não existir ou se a população for menor do que o necessário, gera indivíduos aleatórios para preencher
@@ -64,7 +67,10 @@ class GeneticAlgorithm:
         """
         previous_generation = []
         try:
-            previous_generation = self.last_generation.previous_generation
+            # Solução rápida pro problema dos cromossomos de uma geração anterior serem de tamanhos diferentes
+            # do que o tamanho que a gente quer.
+            if(len(self.last_generation.previous_generation[0]) == self.chromosome_size):
+                previous_generation = self.last_generation.previous_generation
         except Exception:
             pass
         finally:
@@ -129,7 +135,7 @@ class GeneticAlgorithm:
         good_individuals = 0
         for individual in population:
             good_individuals += individual[1] == 0
-            
+
         is_population_good = good_individuals >= int(len(population)/10)
 
         if(is_population_good):
@@ -139,7 +145,7 @@ class GeneticAlgorithm:
 
         return is_population_good
 
-    def apply_fitness(self, population: list, fitness_input_gatherer):
+    def apply_fitness(self, population: list, fitness_input):
         """Recebe uma população de cromossomos e calcula o fitness para cada um deles
 
         Args:
@@ -150,10 +156,6 @@ class GeneticAlgorithm:
         Returns:
             list: Uma população ordenada, contendo (indivíduo, fitness)
         """
-        fitness_input = []
-        
-        for _ in range(self.fitness_input_size):
-            fitness_input.append(fitness_input_gatherer())
 
         ranked_population = []
 
@@ -165,9 +167,10 @@ class GeneticAlgorithm:
 
             ranked_population.append(scored_individual)
 
-        ranked_population.sort(key=lambda element: element[1])
+        ranked_population.sort(key=lambda element: element[1], reverse=True)
 
         return ranked_population
+
     def calculate_fitness(self, chromosome: list, match_data: dict):
         """Calcula o valor de fitness de um cromossomo.
         Obs.: Por enquanto tá extremamente mal otimizado
@@ -326,13 +329,15 @@ class GeneticAlgorithm:
             elapsed_time (int, optional): Tempo que o algoritmo genético demorou para ser concluído. Defaults to -1.
         """
 
-        print("Algoritmo terminado!")
+        print("Algoritmo interrompido!")
 
-        log_file = open(join(Path(__file__).resolve().parent.parent.parent,
-                           'data', 'logs', 'genetic_algorithm.log'), "a")
+        log_file = open(join(Path(__file__).resolve().parent.parent.parent.parent,
+                             'data', 'logs', 'genetic_algorithm.log'), "a")
+
         log_file.write(f"\n\nTimestamp: {timestamp}")
         log_file.write(
-            f"\nGenetic Algorithm finished in {elapsed_time} seconds.")
+            f"\nGenetic Algorithm exited in {elapsed_time} seconds.")
+        log_file.write(f"\n{self.current_generation} generations passed.")
         log_file.write(f"\n\tGenetic Algorithm Parameters:")
         log_file.write(f"\n\t\tfitness_input_size: {self.fitness_input_size}")
         log_file.write(
@@ -348,7 +353,7 @@ class GeneticAlgorithm:
         log_file.write(
             f"\n\tGenetic Algorithm Output:\n\tFinal Score: {self.ranked_population[0][1]}%")
         log_file.write(f"\n\tHighest Fitness: {self.highest_fitness}")
-        match_data = self.fitness_input_gatherer()
+        match_data = self.fitness_input[0]
         for index, stat in enumerate(match_data["team_home"]):
             try:
                 log_file.write(
