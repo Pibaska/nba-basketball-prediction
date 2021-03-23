@@ -11,7 +11,7 @@ while True:
     [3] Validar projeto
 
     > """))
-    x = run_gen_alg() if x == 1 else activate_web_scraping() if x == 2 else validacao() if x == 3 else 4
+    x = run_gen_alg() if x == 1 else activate_web_scraping() if x == 2 else validacao() if x == 3 else 4 
     if x != 4:
         break
     # if x == 1:
