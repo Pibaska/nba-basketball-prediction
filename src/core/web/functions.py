@@ -19,6 +19,9 @@ from core.utils.directory_manipulation import Directory
 from pathlib import Path
 from os.path import join
 from os import name
+from core.web import control
+
+
 diasNosMeses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 
@@ -131,19 +134,23 @@ def get_match_amount(driver):
     """
     try:
         element = driver.find_element_by_xpath( 
-            '//*[@id="content"]/div[3]')  # puxa a div que tem os jogos
+            '//*[@id="content"]/div[3]')  # puxa a div que tem os jogos 
     except:
         return 0
 
-    html_content = element.get_attribute('outerHTML')  # pega seu HTML
+    try:        
+        html_content = element.get_attribute('outerHTML')  # pega seu HTML
 
-    # Transforma em algo facil de mexer
-    parsed_div = BeautifulSoup(html_content, 'html.parser')
+        # Transforma em algo facil de mexer
+        parsed_div = BeautifulSoup(html_content, 'html.parser')
 
-    # pega só divs que tenham tal classe
-    match_list = parsed_div.find_all(
-        "div", {"class": "game_summary expanded nohover"})
-    match_amount = len(match_list)  # Vê quantas achou
+        # pega só divs que tenham tal classe
+        match_list = parsed_div.find_all(
+            "div", {"class": "game_summary expanded nohover"})
+        match_amount = len(match_list)  # Vê quantas achou
+    except:
+        return 0
+
 
     return match_amount
 
@@ -163,9 +170,16 @@ def access_1q_in_box_score(driver, url, i):
         f'//*[@id="content"]/div[3]/div[{i+1}]/p/a[1]').click()
 
     # Para apresentar apenas 1°quarto
-    driver.find_element_by_xpath(
-        f'//*[@id="content"]/div[6]/div[2]/a').click()
-
+    try:
+        driver.find_element_by_xpath(
+            f'//*[@id="content"]/div[6]/div[2]/a').click()
+    except:
+        try:
+            driver.find_element_by_xpath(
+                f'/html/body/div[2]/div[4]/div[6]/div[2]/a').click()
+        except:
+            driver.quit()
+            control.activate_web_scraping()
 
 
 def get_team_table_names(driver):

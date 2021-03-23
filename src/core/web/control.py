@@ -72,6 +72,9 @@ def format_and_insert_team_data(game_data, date):
         integer_indexes = [0, 1, 3, 5, 8, 9, 11,
                            12, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 
+        if (game_data[team_part_index][4] == ''):
+            game_data[team_part_index][4] = 0
+            
         if float(game_data[team_part_index][4]) == 0:
             print("""
                 0 minutos jogados: --------------------------------------
