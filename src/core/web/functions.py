@@ -16,6 +16,7 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 import data.utils.manipulation as db
 from datetime import datetime as dt
 from core.utils.directory_manipulation import Directory
+from core.utils.install_firefox import install_firefox
 from pathlib import Path
 from os.path import join
 from os import name
@@ -38,10 +39,15 @@ def setup_firefox_driver(show_scraping_window: bool):
     binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe' if name == 'nt' else '/usr/bin/firefox')
     option = Options()
     option.headless = show_scraping_window
-    driver = webdriver.Firefox(
-        firefox_binary=binary, executable_path=join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
-        'library', 'geckodriver.exe' if name == 'nt' else 'geckodriver'), options=option)
-    return driver
+    while True:
+        try:
+            driver = webdriver.Firefox(
+                firefox_binary=binary, executable_path=join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                'library', 'geckodriver.exe' if name == 'nt' else 'geckodriver'), options=option)
+        except Exception:
+            install_firefox(choice=True if int(input('Você não possui firefox instalado, deseja instalar?\n1 - Sim\nOutro numero - Nao\n> ')) == 1 else False)
+        else:
+            return driver
 
 
 def generate_date_list():

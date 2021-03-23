@@ -14,14 +14,3 @@ while True:
     x = run_gen_alg() if x == 1 else activate_web_scraping() if x == 2 else validacao() if x == 3 else 4 
     if x != 4:
         break
-    # if x == 1:
-    #     run_gen_alg()
-    # elif x == 2:
-    #     activate_web_scraping():
-    # elif x == 3:
-    #     validacao():
-    # else:
-    #     print("\nFavor digite uma opção válida\n")
-        
-
-
