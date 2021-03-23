@@ -1,40 +1,27 @@
-from core.validation.validation import Validation
+from core.validation.run import validacao
 from core.main import run_gen_alg
-from core.validation.validation import Validation
 from core.web.control import activate_web_scraping
 import time
 
 
-print("""
+while True:
+    x = int(input("""
     [1] Algoritmo Genético (vai treinar populações com os dados disponiveis no BD)
-    [2] Web Scraping (vai coletar dados a partir do dia em que parou, se houver partidas. E salvar no BD)
+    [2] Web Scraping (vai coletar dados a partir do dia em que parou, se houver partidas e salvar no Banco de Dados)
     [3] Validar projeto
-""")
 
-x = input("Queres rodar o que?")
+    > """))
+    x = run_gen_alg() if x == 1 else activate_web_scraping() if x == 2 else validacao() if x == 3 else 4
+    if x != 4:
+        break
+    # if x == 1:
+    #     run_gen_alg()
+    # elif x == 2:
+    #     activate_web_scraping():
+    # elif x == 3:
+    #     validacao():
+    # else:
+    #     print("\nFavor digite uma opção válida\n")
+        
 
-if x == "1":
-    print("Rodando AG")
-    run_gen_alg()
-elif x == "3":
-    print("Rodando Validação")
-    validation = Validation(test_cycles=1)
-    validation.start_time = time.time()
 
-    print("Generating Genetic Algorithm Score")
-    gen_alg_stats = validation.calculate_performance(
-        validation.gen_alg_score_generator)
-    print("Generating Random Score")
-    random_stats = validation.calculate_performance(
-        validation.random_score_generator)
-    print("Generating Constant Score")
-    constant_stats = validation.calculate_performance(
-        validation.constant_score_generator)
-
-    validation.end_time = time.time()
-    validation.dump_json(gen_alg_stats=gen_alg_stats,
-                         random_stats=random_stats, constant_stats=constant_stats)
-
-else:
-    print("Rodando WS")
-    activate_web_scraping()
