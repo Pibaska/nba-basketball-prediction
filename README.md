@@ -1,3 +1,4 @@
+![alt text](docs/static/background.jpeg)
 <h1 align="center">
     <span style="color:#FFA500"><strong>NBA Basketball Prediction</strong></span>
 </h1>
