@@ -122,9 +122,7 @@ def generate_day_url(formatted_date):
         str: A URL gerada a partir da data do input
     """
 
-    day = formatted_date[2]
-    month = formatted_date[1]
-    year = formatted_date[0]
+    day, month, year = formatted_date[2], formatted_date[1], formatted_date[0]
     url = f"https://www.basketball-reference.com/boxscores/?month={month}&day={day}&year={year}"
 
     return url
