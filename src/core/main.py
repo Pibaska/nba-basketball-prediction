@@ -1,16 +1,14 @@
-# na nossa aplicação de verdade o model seria todos os outros scripts (AG, WS)
-# esse arquivo existe pra garantir a flexibilidade da interface
-# edit: talvez a gente tenha que manter hein
 
 from datetime import datetime
 import time
 from core.gen.classes.genetic_algorithm import GeneticAlgorithm
 from data.utils import data_provider
 from core.web.control import activate_web_scraping
-from data.bin.fake_data import match_database
 
 
-def predict_score(gen_alg, team_home_name, team_away_name, date, view=None):
+def predict_score(team_home_name, team_away_name, date, view=None):
+    gen_alg = GeneticAlgorithm([])
+    weight_list = gen_alg.get_first_generation()[0]
 
     predicted_match = data_provider.get_specific_match_averages(
         team_home_name, team_away_name, date)
@@ -19,32 +17,32 @@ def predict_score(gen_alg, team_home_name, team_away_name, date, view=None):
 
     try:
         match_winner = gen_alg.predict_match(
-            gen_alg.ranked_population[0][0], predicted_match)
+            weight_list, predicted_match)
+        match_winner_name = team_home_name if match_winner == "team_home" else team_away_name
+        print(f"Winner: {match_winner_name}")
     except Exception as e:
-        print(e)
         raise e
 
     # view.lineedit_results.setText(
     #     f"Resultados: {view.selected_home_team} ou {view.selected_away_team}")
 
-    print(f"Previsão: {match_winner}")
 
+def run_gen_alg(date=[2018, 6, 20],
+                good_generations=3,
+                weight_range=(-10, 10),
+                mutation_chance=1,
+                mutation_magnitude=(-1, 1),
+                chromosome_size=100,
+                population_size=50,
+                max_generations=100,
+                persistent_individuals=5):
 
-def activate_home_team_combobox(selected_team, view):
-    print(f"combobox home ativada: {selected_team}")
-    view.selected_home_team = selected_team
-
-
-def activate_away_team_combobox(selected_team, view):
-    print(f"combobox away ativada: {selected_team}")
-    view.selected_away_team = selected_team
-
-
-def run_gen_alg(date=[2018, 6, 20]):
     input_matches = data_provider.get_matches_averages_by_season(date)
 
     gen_alg = GeneticAlgorithm(
-        input_matches, weight_range=(-100, 100), population_size=50, max_generations=30000, mutation_magnitude=(-10, 10), generation_persistent_individuals=2)
+        input_matches, good_generations=good_generations, weight_range=weight_range, mutation_chance=mutation_chance,
+        mutation_magnitude=mutation_magnitude, chromosome_size=chromosome_size, population_size=population_size,
+        max_generations=max_generations, generation_persistent_individuals=persistent_individuals)
 
     start_time = time.time()
 
@@ -83,3 +81,12 @@ def run_gen_alg(date=[2018, 6, 20]):
 
 def run_web_scraping():
     activate_web_scraping()
+
+# def activate_home_team_combobox(selected_team, view):
+#   print(f"combobox home ativada: {selected_team}")
+#   view.selected_home_team = selected_team
+#
+# def activate_away_team_combobox(selected_team, view):
+#   print(f"combobox away ativada: {selected_team}")
+#   view.selected_away_team = selected_team
+#

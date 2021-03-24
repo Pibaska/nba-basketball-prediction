@@ -19,9 +19,7 @@ class Validation():
             weight_range=(-100, 100),
             population_size=100,
             max_generations=25,
-            mutation_magnitude=(-10, 10),
-            fitness_input_size=200)
-
+            mutation_magnitude=(-10, 10))
         self.test_cycles = test_cycles
 
         self.start_time = 0
@@ -52,8 +50,10 @@ class Validation():
             f"\n\t\tmax_generations: {self.gen_alg.max_generations}")
         log_file.write(
             f"\n\t\tconsecutive_good_generations: {self.gen_alg.consecutive_good_generations}")
-        log_file.write(f"\n\t\tfitness_input_size: {self.gen_alg.fitness_input_size}")
-        log_file.write(f"\n\t\tgeneration_persistent_individuals: {self.gen_alg.generation_persistent_individuals}")
+        log_file.write(
+            f"\n\t\tfitness_input_size: {self.gen_alg.fitness_input_size}")
+        log_file.write(
+            f"\n\t\tgeneration_persistent_individuals: {self.gen_alg.generation_persistent_individuals}")
 
         for score in kwargs:
             log_file.write(f"\n\t{score}: {kwargs[score]}")
