@@ -1,7 +1,7 @@
 from core.validation.validation import Validation
 
 
-def validacao():
+def run_validation():
     print("Rodando Validação")
     validation = Validation(test_cycles=1)
     validation.start_time = time.time()
@@ -18,4 +18,4 @@ def validacao():
 
     validation.end_time = time.time()
     validation.dump_json(gen_alg_stats=gen_alg_stats,
-                        random_stats=random_stats, constant_stats=constant_stats)
+                         random_stats=random_stats, constant_stats=constant_stats)

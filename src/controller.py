@@ -1,16 +1,31 @@
-from core.validation.run import validacao
+from core.validation.run import run_validation
 from core.main import run_gen_alg
 from core.web.control import activate_web_scraping
-import time
+import argparse
 
+arg_parser = argparse.ArgumentParser()
 
-while True:
-    x = int(input("""
-    [1] Algoritmo Genético (vai treinar populações com os dados disponiveis no BD)
-    [2] Web Scraping (vai coletar dados a partir do dia em que parou, se houver partidas e salvar no Banco de Dados)
-    [3] Validar projeto
+arg_parser.add_argument(
+    "-d", "--date", help="Specifies a date for the program to run with in the format YYYY-MM-DD", type=str)
 
-    > """))
-    x = run_gen_alg() if x == 1 else activate_web_scraping() if x == 2 else validacao() if x == 3 else 4 
-    if x != 4:
-        break
+arg_parser.add_argument("-g", "--genetic", "--genetic-algorithm",
+                        help="Runs an genetic algorithm", action="store_true")
+
+arg_parser.add_argument("-v", "--validation",
+                        help="Runs the validation script", action="store_true")
+
+arg_parser.add_argument("-w", "--web-scraping",
+                        help="Collects data via web scraping", action="store_true")
+
+args = arg_parser.parse_args()
+
+print(args)
+
+if(args.web_scraping):
+    activate_web_scraping()
+
+if(args.genetic):
+    run_gen_alg()
+
+if(args.validation):
+    run_validation()
