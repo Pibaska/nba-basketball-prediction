@@ -1,31 +1,51 @@
 from core.validation.run import run_validation
-from core.main import run_gen_alg
-from core.web.control import activate_web_scraping
+from core.main import run_gen_alg, run_web_scraping, predict_score
 import argparse
 
 arg_parser = argparse.ArgumentParser()
 
-arg_parser.add_argument(
-    "-d", "--date", help="Specifies a date for the program to run with in the format YYYY-MM-DD", type=str)
+command_subparser = arg_parser.add_subparsers(dest="subparser",
+                                              help="Operation to be executed with the program.")
 
-arg_parser.add_argument("-g", "--genetic", "--genetic-algorithm",
-                        help="Runs an genetic algorithm", action="store_true")
+gen_parser = command_subparser.add_parser("genetic")
+gen_parser.add_argument("-d", "--day", type=int, default=20,
+                        help="Day to run the genetic algorithm at.")
+gen_parser.add_argument("-m", "--month", type=int, default=6,
+                        help="Month to run the genetic algorithm at.")
+gen_parser.add_argument("-y", "--year", type=int, default=2018,
+                        help="Year to run the genetic algorithm at.")
 
-arg_parser.add_argument("-v", "--validation",
-                        help="Runs the validation script", action="store_true")
+ws_parser = command_subparser.add_parser("scrape")
 
-arg_parser.add_argument("-w", "--web-scraping",
-                        help="Collects data via web scraping", action="store_true")
+
+prediction_parser = command_subparser.add_parser("predict")
+prediction_parser.add_argument(
+    "-at", "--away", type=str, default="Orlando Magic", help="The name of the away team.")
+prediction_parser.add_argument(
+    "-ht", "--home", type=str, default="Miami Heat", help="The name of the home team.")
+prediction_parser.add_argument("-d", "--day", type=int, default=20,
+                               help="Day to predict the results at.")
+prediction_parser.add_argument("-m", "--month", type=int, default=6,
+                               help="Month to predict the results at.")
+prediction_parser.add_argument("-y", "--year", type=int, default=2018,
+                               help="Year to predict the results at.")
+
+validation_parser = command_subparser.add_parser("validate")
+validation_parser.add_argument("-c", "--cycles", type=int, default=10, help="Number of cycles ran in the validation. \
+    Equates to how many fitness values will be compared for each generator function.")
 
 args = arg_parser.parse_args()
 
-print(args)
-
-if(args.web_scraping):
-    activate_web_scraping()
-
-if(args.genetic):
-    run_gen_alg()
-
-if(args.validation):
-    run_validation()
+if(args.subparser == "genetic"):
+    run_gen_alg(date=[args.year, args.month, args.day])
+elif(args.subparser == "scrape"):
+    run_web_scraping()
+elif(args.subparser == "predict"):
+    predict_score(args.home, args.home, [args.year, args.month, args.day])
+elif(args.subparser == "validate"):
+    run_validation(test_cycles=args.cycles)
+else:
+    print("""
+    NBA PREDICTION
+    Thanks for using NBA prediction. Please run this command with a `-h` to see available options.
+    """)

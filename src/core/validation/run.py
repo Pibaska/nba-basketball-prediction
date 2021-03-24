@@ -1,9 +1,10 @@
 from core.validation.validation import Validation
+import time
 
 
-def run_validation():
+def run_validation(test_cycles=5):
     print("Rodando Validação")
-    validation = Validation(test_cycles=1)
+    validation = Validation(test_cycles=test_cycles)
     validation.start_time = time.time()
 
     print("Generating Genetic Algorithm Score")

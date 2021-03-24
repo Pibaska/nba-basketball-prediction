@@ -1,16 +1,14 @@
-# na nossa aplicação de verdade o model seria todos os outros scripts (AG, WS)
-# esse arquivo existe pra garantir a flexibilidade da interface
-# edit: talvez a gente tenha que manter hein
 
 from datetime import datetime
 import time
 from core.gen.classes.genetic_algorithm import GeneticAlgorithm
 from data.utils import data_provider
 from core.web.control import activate_web_scraping
-from data.bin.fake_data import match_database
 
 
-def predict_score(gen_alg, team_home_name, team_away_name, date, view=None):
+def predict_score(team_home_name, team_away_name, date, view=None):
+    gen_alg = GeneticAlgorithm([])
+    weight_list = gen_alg.get_first_generation()[0]
 
     predicted_match = data_provider.get_specific_match_averages(
         team_home_name, team_away_name, date)
@@ -19,7 +17,7 @@ def predict_score(gen_alg, team_home_name, team_away_name, date, view=None):
 
     try:
         match_winner = gen_alg.predict_match(
-            gen_alg.ranked_population[0][0], predicted_match)
+            weight_list, predicted_match)
     except Exception as e:
         print(e)
         raise e
@@ -28,16 +26,6 @@ def predict_score(gen_alg, team_home_name, team_away_name, date, view=None):
     #     f"Resultados: {view.selected_home_team} ou {view.selected_away_team}")
 
     print(f"Previsão: {match_winner}")
-
-
-def activate_home_team_combobox(selected_team, view):
-    print(f"combobox home ativada: {selected_team}")
-    view.selected_home_team = selected_team
-
-
-def activate_away_team_combobox(selected_team, view):
-    print(f"combobox away ativada: {selected_team}")
-    view.selected_away_team = selected_team
 
 
 def run_gen_alg(date=[2018, 6, 20]):
@@ -83,3 +71,12 @@ def run_gen_alg(date=[2018, 6, 20]):
 
 def run_web_scraping():
     activate_web_scraping()
+
+# def activate_home_team_combobox(selected_team, view):
+#   print(f"combobox home ativada: {selected_team}")
+#   view.selected_home_team = selected_team
+#
+# def activate_away_team_combobox(selected_team, view):
+#   print(f"combobox away ativada: {selected_team}")
+#   view.selected_away_team = selected_team
+#

@@ -28,7 +28,6 @@ class GeneticAlgorithm:
                  chromosome_size=10,
                  population_size=50,
                  max_generations=100,
-                 fitness_input_size=100,
                  generation_persistent_individuals=5
                  ):
         try:
