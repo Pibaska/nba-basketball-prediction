@@ -6,9 +6,14 @@ from data.utils import data_provider
 from core.web.control import activate_web_scraping
 
 
-def predict_score(team_home_name, team_away_name, date, view=None):
+def predict_score(team_home_name, team_away_name, date, view=None, manual_chromosome=None):
     gen_alg = GeneticAlgorithm([])
-    weight_list = gen_alg.get_first_generation()[0]
+    if(manual_chromosome is not None):
+        weight_list = manual_chromosome
+        for i in range(len(weight_list)):
+            weight_list[i] = float(weight_list[i])
+    else:
+        weight_list = gen_alg.get_first_generation()[0]
 
     predicted_match = data_provider.get_specific_match_averages(
         team_home_name, team_away_name, date)

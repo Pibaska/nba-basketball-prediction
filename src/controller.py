@@ -49,9 +49,11 @@ prediction_parser.add_argument("-m", "--month", type=int, default=6,
                                help="Month to predict the results at.")
 prediction_parser.add_argument("-y", "--year", type=int, default=2018,
                                help="Year to predict the results at.")
+prediction_parser.add_argument("-c", "--manual-chromosome", type=str, default=None, nargs=10, action="append",
+                               help="Allows the user to manually input a chromosome to predict a match")
 
 validation_parser = command_subparser.add_parser("validate")
-validation_parser.add_argument("-c", "--cycles", type=int, default=10, help="Number of cycles ran in the validation. \
+validation_parser.add_argument("-c", "--cycles", type=float, default=10, help="Number of cycles ran in the validation. \
     Equates to how many fitness values will be compared for each generator function.")
 
 args = arg_parser.parse_args()
@@ -66,7 +68,8 @@ if(args.subparser == "genetic"):
 elif(args.subparser == "scrape"):
     run_web_scraping()
 elif(args.subparser == "predict"):
-    predict_score(args.home, args.home, [args.year, args.month, args.day])
+    predict_score(args.home, args.home, [
+                  args.year, args.month, args.day], manual_chromosome=args.manual_chromosome[0])
 elif(args.subparser == "validate"):
     run_validation(test_cycles=args.cycles)
 else:
