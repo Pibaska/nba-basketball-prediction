@@ -31,7 +31,8 @@ class GeneticAlgorithm:
                  population_size=50,
                  max_generations=100,
                  generation_persistent_individuals=5,
-                 timestamp=-1
+                 timestamp=-1,
+                 generate_new_population=False
                  ):
         try:
             self.fitness_input = fitness_input
@@ -60,7 +61,8 @@ class GeneticAlgorithm:
             self.current_generation = 0
 
             # Coisas para o json
-            self.timestamp = str(timestamp)
+            self.timestamp = str(timestamp).split(
+                " ")[0] + "-" + str(timestamp).split(" ")[1]
 
     def get_first_generation(self):
         """Inicializa a população do algoritmo genético. Vê se existem dados de uma população já guardados,
@@ -74,7 +76,7 @@ class GeneticAlgorithm:
         try:
             # Solução rápida pro problema dos cromossomos de uma geração anterior serem de tamanhos diferentes
             # do que o tamanho que a gente quer.
-            if(len(self.last_generation.previous_generation[0]) == self.chromosome_size):
+            if(len(self.last_generation.previous_generation[0]) == self.chromosome_size and not self.generate_new_population):
                 previous_generation = self.last_generation.previous_generation
         except Exception:
             pass

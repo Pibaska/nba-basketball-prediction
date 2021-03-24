@@ -1,7 +1,7 @@
 import json
 import matplotlib.pyplot as plt
 
-with open("src/data/json/gen/2021-03-24 18:51:31.039277.json", "r") as json_file:
+with open("src/data/json/gen/teste2.json", "r") as json_file:
     data = json.load(json_file)
     means = []
     gens = []

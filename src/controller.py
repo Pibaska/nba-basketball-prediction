@@ -28,6 +28,8 @@ gen_parser.add_argument("-gmg", "--gen-max-generations", type=int, default=99999
                         help="Sets the maximum number of generations for the algorithm to run for it to break automatically.")
 gen_parser.add_argument("-gpi", "--gen-persistent-individuals", type=int, default=10,
                         help="Sets how many of the parents (ordered by the highest fitness) will continue existing in the children generation.")
+gen_parser.add_argument("-gnp", "--gen-new-population", type=bool, default=False,
+                        help="Sets if the genetic algorithm shoud create an entirely new first generation or get the last generation stored in memory.")
 gen_parser.add_argument("-m", "--month", type=int, default=3,
                         help="Month to run the genetic algorithm at.")
 gen_parser.add_argument("-y", "--year", type=int, default=2021,
