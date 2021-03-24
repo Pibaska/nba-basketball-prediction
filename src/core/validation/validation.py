@@ -88,7 +88,7 @@ class Validation():
             for score in kwargs:
                 validation_data[score] = kwargs[score]
 
-        with open(join(Path(__file__).resolve().parent.parent.parent, "data", "validation.json"), "r") as json_file:
+        with open(join(Path(__file__).resolve().parent.parent.parent, "data", "json", "validation.json"), "r") as json_file:
             try:
                 data = json.load(json_file)
             except JSONDecodeError:
@@ -96,7 +96,7 @@ class Validation():
 
             data.append(validation_data)
 
-        with open(join(Path(__file__).resolve().parent.parent.parent, "data", "validation.json"), "w") as json_file:
+        with open(join(Path(__file__).resolve().parent.parent.parent, "data", "json", "validation.json"), "w") as json_file:
             json.dump(data, json_file, indent=4)
         print("Data dumped into json!")
 

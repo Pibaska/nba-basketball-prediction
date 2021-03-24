@@ -35,14 +35,15 @@ def run_gen_alg(date=[2018, 6, 20],
                 chromosome_size=100,
                 population_size=50,
                 max_generations=100,
-                persistent_individuals=5):
+                persistent_individuals=5,
+                timestamp=-1):
 
     input_matches = data_provider.get_matches_averages_by_season(date)
 
     gen_alg = GeneticAlgorithm(
         input_matches, good_generations=good_generations, weight_range=weight_range, mutation_chance=mutation_chance,
         mutation_magnitude=mutation_magnitude, chromosome_size=chromosome_size, population_size=population_size,
-        max_generations=max_generations, generation_persistent_individuals=persistent_individuals)
+        max_generations=max_generations, generation_persistent_individuals=persistent_individuals, timestamp=timestamp)
 
     start_time = time.time()
 
@@ -68,6 +69,9 @@ def run_gen_alg(date=[2018, 6, 20],
 
             gen_alg.population = gen_alg.reproduce_population(
                 gen_alg.ranked_population, gen_alg.population_size)
+
+            if(gen_alg.current_generation % 5 == 0):
+                gen_alg.add_gen_info_to_json()
         except KeyboardInterrupt:
             break
 

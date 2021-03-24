@@ -1,5 +1,7 @@
+from json.decoder import JSONDecodeError
 from core.utils.last_generation_manager import Last_Generation
 import random
+import json
 from pathlib import Path
 from os.path import join
 
@@ -28,7 +30,8 @@ class GeneticAlgorithm:
                  chromosome_size=10,
                  population_size=50,
                  max_generations=100,
-                 generation_persistent_individuals=5
+                 generation_persistent_individuals=5,
+                 timestamp=-1
                  ):
         try:
             self.fitness_input = fitness_input
@@ -55,6 +58,9 @@ class GeneticAlgorithm:
             self.population = []
             self.highest_fitness = -1
             self.current_generation = 0
+
+            # Coisas para o json
+            self.timestamp = str(timestamp)
 
     def get_first_generation(self):
         """Inicializa a população do algoritmo genético. Vê se existem dados de uma população já guardados,
@@ -361,3 +367,23 @@ class GeneticAlgorithm:
                 pass
         log_file.close()
         self.last_generation.dump(self.population)
+
+    def add_gen_info_to_json(self):
+        try:
+            json_file = open(
+                join(Path(__file__).resolve().parent.parent.parent.parent, "data", "json", "gen", f"{self.timestamp}.json"), "r")
+            data = json.load(json_file)
+
+            current_generation_data = {
+                "best_fitness": self.ranked_population[0][1],
+                "current_generation": self.current_generation
+            }
+
+            data.append(current_generation_data)
+        except FileNotFoundError:
+            data = []
+        json_file = open(
+            join(Path(__file__).resolve().parent.parent.parent.parent, "data", "json", "gen", f"{self.timestamp}.json"), "w+")
+
+        json.dump(data, json_file, indent=4)
+        json_file.close()

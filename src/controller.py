@@ -1,6 +1,7 @@
 from core.validation.run import run_validation
 from core.main import run_gen_alg, run_web_scraping, predict_score
 import argparse
+from datetime import datetime
 
 arg_parser = argparse.ArgumentParser()
 
@@ -59,7 +60,7 @@ if(args.subparser == "genetic"):
                 weight_range=args.gen_weight_range, mutation_chance=args.gen_mutation_chance,
                 mutation_magnitude=args.gen_mutation_magnitude, chromosome_size=args.gen_chromosome_size,
                 population_size=args.gen_population_size, max_generations=args.gen_max_generations,
-                persistent_individuals=args.gen_persistent_individuals)
+                persistent_individuals=args.gen_persistent_individuals, timestamp=datetime.now())
 elif(args.subparser == "scrape"):
     run_web_scraping()
 elif(args.subparser == "predict"):
