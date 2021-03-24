@@ -18,21 +18,31 @@ def predict_score(team_home_name, team_away_name, date, view=None):
     try:
         match_winner = gen_alg.predict_match(
             weight_list, predicted_match)
+        match_winner_name = team_home_name if match_winner == "team_home" else team_away_name
+        print(f"Winner: {match_winner_name}")
     except Exception as e:
-        print(e)
         raise e
 
     # view.lineedit_results.setText(
     #     f"Resultados: {view.selected_home_team} ou {view.selected_away_team}")
 
-    print(f"Previsão: {match_winner}")
 
+def run_gen_alg(date=[2018, 6, 20],
+                good_generations=3,
+                weight_range=(-10, 10),
+                mutation_chance=1,
+                mutation_magnitude=(-1, 1),
+                chromosome_size=100,
+                population_size=50,
+                max_generations=100,
+                persistent_individuals=5):
 
-def run_gen_alg(date=[2018, 6, 20]):
     input_matches = data_provider.get_matches_averages_by_season(date)
 
     gen_alg = GeneticAlgorithm(
-        input_matches, weight_range=(-100, 100), population_size=50, max_generations=30000, mutation_magnitude=(-10, 10), generation_persistent_individuals=2)
+        input_matches, good_generations=good_generations, weight_range=weight_range, mutation_chance=mutation_chance,
+        mutation_magnitude=mutation_magnitude, chromosome_size=chromosome_size, population_size=population_size,
+        max_generations=max_generations, generation_persistent_individuals=persistent_individuals)
 
     start_time = time.time()
 
