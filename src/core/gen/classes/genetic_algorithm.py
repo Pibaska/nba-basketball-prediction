@@ -61,8 +61,8 @@ class GeneticAlgorithm:
             self.current_generation = 0
 
             # Coisas para o json
-            self.timestamp = str(timestamp).split(
-                " ")[0] + "-" + str(timestamp).split(" ")[1]
+            self.timestamp = str(timestamp).replace(
+                " ", "--").replace(":", "-").split(".")[0]
 
     def get_first_generation(self):
         """Inicializa a população do algoritmo genético. Vê se existem dados de uma população já guardados,
