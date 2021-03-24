@@ -12,7 +12,7 @@ class GeneticAlgorithm:
             good_generations (int, optional): Quantidade necessária de gerações boas para o algoritmo parar por conta própria. Defaults to 3.
             weight_range (tuple, optional): Valores mínimos e máximos que um gene poderá ter quando for gerado aleatoriamente. Defaults to (-10, 10).
             mutation_chance (int, optional): Chance, em porcentagem, de uma mutação acontecer em um gene na hora da reprodução. Defaults to 1.
-            mutation_weight (tuple, optional): Define o valor mínimo e máximo para ser somado em um gene na hora da mutação. Defaults to (-1, 1).
+            mutation_magnitude (tuple, optional): Define o valor mínimo e máximo para ser somado em um gene na hora da mutação. Defaults to (-1, 1).
             chromosome_size (int, optional): Quantidade de genes presentes em um cromossomo. Defaults to 9.
             population_size (int, optional): Quantidade de indivíduos por geração. Defaults to 50.
             max_generations (int, optional): Quantidade de gerações pela qual o algoritmo vai passar antes de ser interrompido. Defaults to 100.
@@ -24,7 +24,7 @@ class GeneticAlgorithm:
                  good_generations=3,
                  weight_range=(-10, 10),
                  mutation_chance=1,
-                 mutation_weight=(-1, 1),
+                 mutation_magnitude=(-1, 1),
                  chromosome_size=10,
                  population_size=50,
                  max_generations=100,
@@ -44,7 +44,7 @@ class GeneticAlgorithm:
             # Define o quanto os pesos vão influenciar nos atributos
             self.weight_range = weight_range
             self.mutation_chance = mutation_chance
-            self.mutation_weight = mutation_weight
+            self.mutation_magnitude = mutation_magnitude
             self.chromosome_size = chromosome_size
 
             # x na primeira geração, nas outras vira 2x
@@ -295,7 +295,7 @@ class GeneticAlgorithm:
     def mutation(self, chromosome: list):
         """Percorre por todos os genes de um cromossomo recebido, e,
         dada uma chance definida por GeneticAlgorithm.mutation_chance,
-        vai adicionar um valor aleatório entre os valores de self.mutation_weight
+        vai adicionar um valor aleatório entre os valores de self.mutation_magnitude
         ao gene do cromossomo original
 
         Args:
@@ -312,7 +312,7 @@ class GeneticAlgorithm:
 
             if int(mutation_happening < self.mutation_chance):
                 mutation = random.uniform(
-                    self.mutation_weight[0], self.mutation_weight[1])
+                    self.mutation_magnitude[0], self.mutation_magnitude[1])
 
                 mutated_chromosome.append(chromosome[i] + mutation)
             else:
@@ -344,7 +344,7 @@ class GeneticAlgorithm:
             f"\n\t\tgood_generations: {self.target_good_generations}")
         log_file.write(f"\n\t\tnew_weight_range: {self.weight_range}")
         log_file.write(f"\n\t\tmutation_chance: {self.mutation_chance}")
-        log_file.write(f"\n\t\tmutation_weight: {self.mutation_weight}")
+        log_file.write(f"\n\t\tmutation_magnitude: {self.mutation_magnitude}")
         log_file.write(f"\n\t\tchromosome_size: {self.chromosome_size}")
         log_file.write(f"\n\t\tpopulation_size: {self.population_size}")
         log_file.write(f"\n\t\tmax_generations: {self.max_generations}")

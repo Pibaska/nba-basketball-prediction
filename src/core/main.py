@@ -44,7 +44,7 @@ def run_gen_alg(date=[2018, 6, 20]):
     input_matches = data_provider.get_matches_averages_by_season(date)
 
     gen_alg = GeneticAlgorithm(
-        input_matches, weight_range=(-100, 100), population_size=50, max_generations=30000, mutation_weight=(-10, 10), generation_persistent_individuals=2)
+        input_matches, weight_range=(-100, 100), population_size=50, max_generations=30000, mutation_magnitude=(-10, 10), generation_persistent_individuals=2)
 
     start_time = time.time()
 

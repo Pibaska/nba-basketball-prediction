@@ -19,7 +19,7 @@ class Validation():
             weight_range=(-100, 100),
             population_size=100,
             max_generations=25,
-            mutation_weight=(-10, 10),
+            mutation_magnitude=(-10, 10),
             fitness_input_size=200)
 
         self.test_cycles = test_cycles
