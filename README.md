@@ -76,4 +76,7 @@ Instale as dependências
 
     pip install -r requirements.txt --no-dependencies
 
-<h2 align="center"><span style="color:#FFA500"><strong>Releases</strong></span> </h2>
+[<h2 align="center"><span style="color:#FFA500"><strong>Releases</strong></span> </h2>](https://github.com/Pibaska/NBA-Basketball-Prediction/releases)
+
+
+
