@@ -14,5 +14,4 @@ else:
            python -m venv . || python3 -m venv .;
            source ./bin/activate;
            pip install -r requirements.txt || pip install -r config/requirements.txt --no-dependencies;
-           clear;
-           python src/controller.py genetic || python3 src/controller.py''')
+           clear;''')
