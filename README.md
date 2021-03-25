@@ -30,12 +30,24 @@ Sendo assim, este trabalho tem como objetivo o desenvolvimento de uma estratégi
 
 <h3 align="center"><span style="color:lightgrey"><strong>Ativar Ambiente Virtual</strong></span> </h3>
 
-### **Linux**
-- Execute `source bin/activate`
+### Ativar ambiente virtual no **Linux**
+    `source bin/activate`
 
-### **Windows**
-- Execute `.\Scripts\activate.bat`
+### Ativar ambiente virtual no **Windows**
+    `.\Scripts\activate.bat`
 
 <h3 align="center"><span style="color:lightgrey"><strong>Manual</strong></span> </h3>
 
-1. 
+### **Linux**
+
+Crie o ambiente virtual
+
+    python -m venv . || python3 -m venv .
+
+Ative o ambiente virtual
+
+    source ./bin/activate
+
+
+
+### **Windows**
