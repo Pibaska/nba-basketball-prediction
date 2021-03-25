@@ -28,11 +28,16 @@ Sendo assim, este trabalho tem como objetivo o desenvolvimento de uma estratégi
 
 <h3 align="center"><span style="color:lightgrey"><strong>Automática</strong></span> </h3>
 
-#### Crie um ambiente virtual e instale as dependências com o executável [`env_creator.py`](env_creator.py)
+---
 
+### Crie um ambiente virtual e instale as dependências com o executável [`env_creator.py`](env_creator.py)
+
+----
 
 ### Ativar ambiente virtual no **Linux**
     `source bin/activate`
+
+
 
 ### Ativar ambiente virtual no **Windows**
     `.\Scripts\activate.bat`
@@ -70,3 +75,5 @@ OBS: Tenha certa se o pip instalado com o comando `pip --version`
 Instale as dependências
 
     pip install -r requirements.txt --no-dependencies
+
+<h2 align="center"><span style="color:#FFA500"><strong>Releases</strong></span> </h2>
