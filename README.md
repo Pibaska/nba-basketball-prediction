@@ -48,6 +48,10 @@ Ative o ambiente virtual
 
     source ./bin/activate
 
+Instale as dependências
+
+    pip install -r requirements.txt || pip install -r config/requirements.txt --no-dependencies
 
 
 ### **Windows**
+
