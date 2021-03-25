@@ -51,7 +51,7 @@ prediction_parser.add_argument("-m", "--month", type=int, default=6,
                                help="Month to predict the results at.")
 prediction_parser.add_argument("-y", "--year", type=int, default=2018,
                                help="Year to predict the results at.")
-prediction_parser.add_argument("-c", "--manual-chromosome", type=str, default=None, nargs=10, action="append",
+prediction_parser.add_argument("-c", "--manual-chromosome", type=str, default=[None], nargs=10, action="append",
                                help="Allows the user to manually input a chromosome to predict a match")
 
 validation_parser = command_subparser.add_parser("validate")
@@ -71,7 +71,7 @@ if(args.subparser == "genetic"):
 elif(args.subparser == "scrape"):
     run_web_scraping()
 elif(args.subparser == "predict"):
-    predict_score(args.home, args.home, [
+    predict_score(args.home, args.away, [
                   args.year, args.month, args.day], manual_chromosome=args.manual_chromosome[0])
 elif(args.subparser == "validate"):
     run_validation(test_cycles=args.cycles)

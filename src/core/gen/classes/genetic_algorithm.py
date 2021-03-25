@@ -145,7 +145,7 @@ class GeneticAlgorithm:
 
         good_individuals = 0
         for individual in population:
-            good_individuals += individual[1] == 0
+            good_individuals += individual[1] > 70
 
         is_population_good = good_individuals >= int(len(population)/10)
 
@@ -201,7 +201,8 @@ class GeneticAlgorithm:
 
         wrong_predictions = 0
         for current_match in match_data:
-            predicted_1q_winner = self.predict_match(chromosome, current_match)
+            predicted_1q_winner = self.predict_match(chromosome, current_match)[
+                "predicted_1q_winner"]
             real_1q_winner = "team_home" if current_match["home_won"] else "team_away"
 
             # 1 se for True, 0 se for False
@@ -234,9 +235,22 @@ class GeneticAlgorithm:
 
         home_team_score = sum(home_team_parsed_stats)
         away_team_score = sum(away_team_parsed_stats)
+        score_difference = abs(home_team_score - away_team_score)
 
         predicted_1q_winner = "team_home" if home_team_score > away_team_score else "team_away"
-        return predicted_1q_winner
+
+        higher_score = home_team_score if predicted_1q_winner == "team_home" else away_team_score
+        score_difference_percentage = (100 * score_difference)/higher_score
+
+        prediction_results = {
+            "predicted_1q_winner": predicted_1q_winner,
+            "home_team_score": home_team_score,
+            "away_team_score": away_team_score,
+            "score_difference": score_difference,
+            "score_difference_percentage": score_difference_percentage,
+        }
+
+        return prediction_results
 
     def reproduce_population(self, ranked_population: list, population_size: int):
         """Função responsável por delegar a reprodução de uma geração a outras

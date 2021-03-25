@@ -18,13 +18,17 @@ def predict_score(team_home_name, team_away_name, date, view=None, manual_chromo
     predicted_match = data_provider.get_specific_match_averages(
         team_home_name, team_away_name, date)
 
-    print(predicted_match)
-
     try:
-        match_winner = gen_alg.predict_match(
+        print(
+            f"Trying to predict match between {team_home_name} (Home) and {team_away_name} (Away) set in {date[1]}/{date[2]}/{date[0]}")
+        prediction_results = gen_alg.predict_match(
             weight_list, predicted_match)
-        match_winner_name = team_home_name if match_winner == "team_home" else team_away_name
-        print(f"Winner: {match_winner_name}")
+        prediction_results["predicted_1q_winner"] = team_home_name if prediction_results[
+            "predicted_1q_winner"] == "team_home" else team_away_name
+        print(f"Home Team Score: {prediction_results['home_team_score']}")
+        print(f"Away Team Score: {prediction_results['away_team_score']}")
+        print(
+            f"Winner: {prediction_results['predicted_1q_winner']}\nScore Difference Percentage: {prediction_results['score_difference_percentage']}")
     except Exception as e:
         raise e
 
