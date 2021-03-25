@@ -22,6 +22,9 @@
 <h2 align="center"><span style="color:white"><strong>Resumo</strong></span> </h2>
 O basquetebol é mundialmente conhecido, e um dos esporte mais populares da atualidade. Toda essa fama é acompanhada de um mercado bastante lucrativo, que movimenta bilhões de dólares todos os anos. Os jogos de basquete não afetam somente seus times e outras organizações diretamente envolvidas com as partidas; afetam todo um contexto social, como torcedores, empresas, dentre vários outros. Pertencentes a este nicho também estão indivíduos participando ativamente do crescente mercado de apostas esportivas.
 Sendo assim, este trabalho tem como objetivo o desenvolvimento de uma estratégia própria para a previsão de resultados de partidas.
+
+---
+
 <h2 align="center"><span style="color:#FFA500"><strong>Como executar o software</strong></span> </h2>
 
 <h3 align="center"><span style="color:lightgrey"><strong>Automática</strong></span> </h3>
@@ -55,6 +58,7 @@ Instale as dependências
 
 ### **Windows**
 
+
 Crie o ambiente virtual
 
     python -m venv .
@@ -62,6 +66,8 @@ Crie o ambiente virtual
 Ative o ambiente virtual
 
     ./Scripts/activate.bat
+
+OBS: Tenha certa se o pip instalado com o comando `pip --version`
 
 Instale as dependências
 
