@@ -41,6 +41,7 @@ def run_gen_alg(date=[2018, 6, 20],
                 population_size=50,
                 max_generations=100,
                 persistent_individuals=5,
+                random_individuals=5,
                 timestamp=-1,
                 generate_new_population=False):
 
@@ -49,7 +50,7 @@ def run_gen_alg(date=[2018, 6, 20],
     gen_alg = GeneticAlgorithm(
         input_matches, good_generations=good_generations, weight_range=weight_range, mutation_chance=mutation_chance,
         mutation_magnitude=mutation_magnitude, chromosome_size=chromosome_size, population_size=population_size,
-        max_generations=max_generations, generation_persistent_individuals=persistent_individuals, timestamp=timestamp,
+        max_generations=max_generations, persistent_individuals=persistent_individuals, timestamp=timestamp,
         generate_new_population=generate_new_population)
 
     start_time = time.time()

@@ -14,9 +14,9 @@ gen_parser.add_argument("-d", "--day", type=int, default=24,
                         help="Day to run the genetic algorithm at.")
 gen_parser.add_argument("-ggg", "--gen-good-generations", type=int, default=3,
                         help="Sets how many consecutive good generations will interrupt and finish the algorithm execution.")
-gen_parser.add_argument("-gwr", "--gen-weight-range", type=tuple, default=(-100, 1000),
+gen_parser.add_argument("-gwr", "--gen-weight-range", type=tuple, default=(-100, 100),
                         help="Sets the minimum and maximum value for newly created individuals' genes.")
-gen_parser.add_argument("-gmc", "--gen-mutation-chance", type=float, default=1,
+gen_parser.add_argument("-gmc", "--gen-mutation-chance", type=float, default=10,
                         help="Percentage that indicates the chance of a gene being mutated during reproduction.")
 gen_parser.add_argument("-gmm", "--gen-mutation-magnitude", type=tuple, default=(-10, 10),
                         help="Sets the magnitude of the value added to a gente during mutation.")
@@ -28,6 +28,8 @@ gen_parser.add_argument("-gmg", "--gen-max-generations", type=int, default=99999
                         help="Sets the maximum number of generations for the algorithm to run for it to break automatically.")
 gen_parser.add_argument("-gpi", "--gen-persistent-individuals", type=int, default=10,
                         help="Sets how many of the parents (ordered by the highest fitness) will continue existing in the children generation.")
+gen_parser.add_argument("-gri", "--gen_random_individuals", type=int, default=10,
+                        help="Sets how many individuals in a new generation will be completely randomly generated.")
 gen_parser.add_argument("-gnp", "--gen-new-population", type=bool, default=False,
                         help="Sets if the genetic algorithm shoud create an entirely new first generation or get the last generation stored in memory.")
 gen_parser.add_argument("-m", "--month", type=int, default=3,
@@ -64,7 +66,8 @@ if(args.subparser == "genetic"):
                 weight_range=args.gen_weight_range, mutation_chance=args.gen_mutation_chance,
                 mutation_magnitude=args.gen_mutation_magnitude, chromosome_size=args.gen_chromosome_size,
                 population_size=args.gen_population_size, max_generations=args.gen_max_generations,
-                persistent_individuals=args.gen_persistent_individuals, timestamp=datetime.now())
+                persistent_individuals=args.gen_persistent_individuals, random_individuals=args.gen_random_individuals,
+                timestamp=datetime.now(), generate_new_population=args.gen_new_population)
 elif(args.subparser == "scrape"):
     run_web_scraping()
 elif(args.subparser == "predict"):

@@ -30,14 +30,17 @@ class GeneticAlgorithm:
                  chromosome_size=10,
                  population_size=50,
                  max_generations=100,
-                 generation_persistent_individuals=5,
+                 persistent_individuals=5,
+                 random_individuals=5,
                  timestamp=-1,
                  generate_new_population=False
                  ):
         try:
             self.fitness_input = fitness_input
-            self.generation_persistent_individuals = generation_persistent_individuals + \
-                1 if generation_persistent_individuals % 2 != 0 else generation_persistent_individuals
+            self.persistent_individuals = persistent_individuals + \
+                1 if persistent_individuals % 2 != 0 else persistent_individuals
+            self.random_individuals = random_individuals + \
+                1 if random_individuals % 2 != 0 else random_individuals
             self.last_generation = Last_Generation()
         except Exception as e:
             raise(e)
@@ -53,6 +56,7 @@ class GeneticAlgorithm:
             # x na primeira geração, nas outras vira 2x
             self.population_size = population_size
             self.max_generations = max_generations
+            self.generate_new_population = generate_new_population
             self.fitness_input_size = len(self.fitness_input)
             self.consecutive_good_generations = 0
             self.ranked_population = []
@@ -100,7 +104,7 @@ class GeneticAlgorithm:
         """
         return [self.generate_random_chromosome() for _ in range(self.population_size)]
 
-    def generate_random_chromosome(self):
+    def generate_random_chromosome(self) -> list:
         """Preenche um cromossomo com valores, cujos mínimos e máximos são definidos por weight_range
 
         Returns:
@@ -121,7 +125,7 @@ class GeneticAlgorithm:
 
         return self.evaluate_population(population)
 
-    def evaluate_population(self, population: list):
+    def evaluate_population(self, population: list) -> bool:
         """Julga se uma lista de indivíduos é boa ou não segundo os critérios
         definidos dentro dela. Por enquanto o critério é 1/10 da população ter
         uma pontuação de 0, ou seja, 10 conjuntos de pesos acertarem todas as
@@ -248,7 +252,7 @@ class GeneticAlgorithm:
 
         reproduced_population = []
 
-        for _ in range(int((population_size - self.generation_persistent_individuals)/2)):
+        for _ in range(int((population_size - self.persistent_individuals - self.random_individuals)/2)):
             parent1 = self.weighted_choice(ranked_population)
             parent2 = self.weighted_choice(ranked_population)
 
@@ -257,8 +261,10 @@ class GeneticAlgorithm:
             reproduced_population.append(self.mutation(child1))
             reproduced_population.append(self.mutation(child2))
 
-        for i in range(self.generation_persistent_individuals):
+        for i in range(self.persistent_individuals):
             reproduced_population.append(ranked_population[i][0])
+        for i in range(self.random_individuals):
+            reproduced_population.append(self.generate_random_chromosome())
 
         return reproduced_population
 
