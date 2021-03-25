@@ -24,5 +24,18 @@ O basquetebol é mundialmente conhecido, e um dos esporte mais populares da atua
 Sendo assim, este trabalho tem como objetivo o desenvolvimento de uma estratégia própria para a previsão de resultados de partidas.
 <h2 align="center"><span style="color:#FFA500"><strong>Como executar o software</strong></span> </h2>
 
-1. Crie um ambiente virtual com o executavel `setup.py`
-2. 
+<h3 align="center"><span style="color:lightgrey"><strong>Automática</strong></span> </h3>
+
+1. Crie um ambiente virtual e instale as dependências com o executável [`env_creator.py`](env_creator.py)
+
+<h3 align="center"><span style="color:lightgrey"><strong>Ativar Ambiente Virtual</strong></span> </h3>
+
+### **Linux**
+- Execute `source bin/activate`
+
+### **Windows**
+- Execute `.\Scripts\activate.bat`
+
+<h3 align="center"><span style="color:lightgrey"><strong>Manual</strong></span> </h3>
+
+1. 
