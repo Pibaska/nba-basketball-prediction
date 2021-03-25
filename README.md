@@ -55,3 +55,14 @@ Instale as dependências
 
 ### **Windows**
 
+Crie o ambiente virtual
+
+    python -m venv .
+
+Ative o ambiente virtual
+
+    ./Scripts/activate.bat
+
+Instale as dependências
+
+    pip install -r requirements.txt --no-dependencies
