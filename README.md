@@ -15,8 +15,11 @@
 
 ## <span style="color:white">Bem vindo ao software </span><span style="color:#FFA500">NBA PREDICTION</span>.
 
-#### *Caso deseja mais detalhes sobre este projeto, favor leia nosso [whitepaper](https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Projeto_Integrador__BGJR.pdf).*
+#### *Caso deseje mais detalhes sobre este projeto, favor leia nosso [whitepaper](https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Projeto_Integrador__BGJR.pdf).*
 
-- #### Resumo
-- #### Documentacao
-- #### Como rodar o software
+---
+
+<h2 align="center"><span style="color:white"><strong>Resumo</strong></span> </h2>
+O basquetebol é mundialmente conhecido, e um dos esporte mais populares da atualidade. Toda essa fama é acompanhada de um mercado bastante lucrativo, que movimenta bilhões de dólares todos os anos. Os jogos de basquete não afetam somente seus times e outras organizações diretamente envolvidas com as partidas; afetam todo um contexto social, como torcedores, empresas, dentre vários outros. Pertencentes a este nicho também estão indivíduos participando ativamente do crescente mercado de apostas esportivas.
+Sendo assim, este trabalho tem como objetivo o desenvolvimento de uma estratégia própria para a previsão de resultados de partidas.
+
