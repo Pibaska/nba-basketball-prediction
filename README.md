@@ -13,10 +13,9 @@
   </a>
 </p>
 
-## <span style="color:white">Bem vindo ao software </span><span style="color:#FFA500">NBA PREDICTION</span>.
 
-#### *Caso deseje mais detalhes sobre este projeto, favor leia nosso [whitepaper](https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Projeto_Integrador__BGJR.pdf).*
-
+ 
+<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, favor leia nosso [whitepaper](https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Projeto_Integrador__BGJR.pdf).</strong></span> </h4>
 ---
 
 <h2 align="center"><span style="color:white"><strong>Resumo</strong></span> </h2>
