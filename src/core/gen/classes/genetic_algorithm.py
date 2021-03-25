@@ -320,7 +320,6 @@ class GeneticAlgorithm:
             if int(mutation_happening < self.mutation_chance):
                 mutation = random.uniform(
                     self.mutation_magnitude[0], self.mutation_magnitude[1])
-
                 mutated_chromosome.append(chromosome[i] + mutation)
             else:
                 mutated_chromosome.append(chromosome[i])

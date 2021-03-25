@@ -71,7 +71,7 @@ def run_gen_alg(date=[2018, 6, 20],
                 print(gen_alg.highest_fitness)
 
             if(gen_alg.check_for_break(gen_alg.ranked_population)):
-                print("População tá top, hora do break")
+                print("População aceitavel, hora de terminar")
                 break
 
             gen_alg.population = gen_alg.reproduce_population(

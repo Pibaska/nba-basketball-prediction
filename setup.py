@@ -15,4 +15,4 @@ else:
            source ./bin/activate;
            pip install -r requirements.txt || pip install -r config/requirements.txt --no-dependencies;
            clear;
-           python src/controller.py || python3 src/controller.py''')
+           python src/controller.py genetic || python3 src/controller.py''')
