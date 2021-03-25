@@ -31,7 +31,7 @@ Sendo assim, este trabalho tem como objetivo o desenvolvimento de uma estratégi
 
 ---
 
-### Crie um ambiente virtual e instale as dependências com o executável [`env_creator.py`](env_creator.py)
+#### Crie um ambiente virtual e instale as dependências com o executável [`env_creator.py`](env_creator.py)
 
 ----
 
