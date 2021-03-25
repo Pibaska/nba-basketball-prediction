@@ -28,9 +28,8 @@ Sendo assim, este trabalho tem como objetivo o desenvolvimento de uma estratégi
 
 <h3 align="center"><span style="color:lightgrey"><strong>Automática</strong></span> </h3>
 
-1. Crie um ambiente virtual e instale as dependências com o executável [`env_creator.py`](env_creator.py)
+#### Crie um ambiente virtual e instale as dependências com o executável [`env_creator.py`](env_creator.py)
 
-<h3 align="center"><span style="color:lightgrey"><strong>Ativar Ambiente Virtual</strong></span> </h3>
 
 ### Ativar ambiente virtual no **Linux**
     `source bin/activate`
