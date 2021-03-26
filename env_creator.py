@@ -1,12 +1,13 @@
 from os import system, name
+import subprocess, sys
 
 if name == 'nt':
     system('python -m venv .')
-    system('./Scripts/activate.bat')
+    system('cmd /c ".\\Scripts\\activate"')
     try:
-        system('pip install -r requirements.txt')
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'])
     except Exception:
-        system('pip install -r requirements.txt --no-dependencies')
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt', '--no-dependencies'])
     finally:
         pass
 else:
