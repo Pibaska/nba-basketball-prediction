@@ -250,5 +250,95 @@
             "median": 52.35487404162103,
             "variance": 0.0
         }
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-26 15:33:22.715271",
+            "validation_duration": 4.31391453742981
+        },
+        "validation_results": [
+            {
+                "function": "genetic",
+                "params": {
+                    "good_generations": 3,
+                    "weight_range": [
+                        -10,
+                        10
+                    ],
+                    "mutation_chance": 1,
+                    "mutation_magnitude": [
+                        -1,
+                        1
+                    ],
+                    "chromosome_size": 10,
+                    "population_size": 50,
+                    "max_generations": 4,
+                    "persistent_individuals": 5,
+                    "random_individuals": 5
+                },
+                "result": {
+                    "mean": 54.7645125958379,
+                    "std_deviation": 0.0,
+                    "median": 54.7645125958379,
+                    "variance": 0.0
+                }
+            },
+            {
+                "function": "genetic",
+                "params": {
+                    "good_generations": 3,
+                    "weight_range": [
+                        -10,
+                        10
+                    ],
+                    "mutation_chance": 1,
+                    "mutation_magnitude": [
+                        -1,
+                        1
+                    ],
+                    "chromosome_size": 10,
+                    "population_size": 50,
+                    "max_generations": 5,
+                    "persistent_individuals": 5,
+                    "random_individuals": 5
+                },
+                "result": {
+                    "mean": 54.70974808324206,
+                    "std_deviation": 0.0,
+                    "median": 54.70974808324206,
+                    "variance": 0.0
+                }
+            },
+            {
+                "function": "random",
+                "result": {
+                    "mean": 53.88828039430449,
+                    "std_deviation": 0.0,
+                    "median": 53.88828039430449,
+                    "variance": 0.0
+                }
+            },
+            {
+                "function": "constant",
+                "chromosome": [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "result": {
+                    "mean": 52.35487404162103,
+                    "std_deviation": 0.0,
+                    "median": 52.35487404162103,
+                    "variance": 0.0
+                }
+            }
+        ]
     }
 ]

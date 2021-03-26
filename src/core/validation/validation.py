@@ -4,6 +4,7 @@ from pathlib import Path
 import statistics
 import json
 from datetime import datetime
+import time
 from core.gen.classes.genetic_algorithm import GeneticAlgorithm
 from data.utils import data_provider
 
@@ -13,13 +14,11 @@ class Validation():
     e salvar esses dados para uso posterior.
     """
 
-    def __init__(self, test_cycles=5) -> None:
-        self.gen_alg = GeneticAlgorithm(
-            data_provider.get_matches_averages_by_season([2018, 6, 20]),
-            weight_range=(-100, 100),
-            population_size=100,
-            max_generations=25,
-            mutation_magnitude=(-10, 10))
+    def __init__(self, test_cycles=5, date=[2018, 6, 20]) -> None:
+        self.date = date
+
+        self.fitness_input = data_provider.get_matches_averages_by_season(date)
+
         self.test_cycles = test_cycles
 
         self.start_time = 0
@@ -37,24 +36,6 @@ class Validation():
         log_file.write(f"\n\nTimestamp: {datetime.now()}")
         log_file.write(
             f"\nValidation finished in {self.end_time - self.start_time} seconds.")
-        log_file.write(f"\n\tGenetic Algorithm Parameters:")
-        log_file.write(
-            f"\n\t\tgood_generations: {self.gen_alg.target_good_generations}")
-        log_file.write(f"\n\t\tweight_magnitude: {self.gen_alg.weight_range}")
-        log_file.write(
-            f"\n\t\tmutation_chance: {self.gen_alg.mutation_chance}")
-        log_file.write(
-            f"\n\t\tchromosome_size: {self.gen_alg.chromosome_size}")
-        log_file.write(
-            f"\n\t\tpopulation_size: {self.gen_alg.population_size}")
-        log_file.write(
-            f"\n\t\tmax_generations: {self.gen_alg.max_generations}")
-        log_file.write(
-            f"\n\t\tconsecutive_good_generations: {self.gen_alg.consecutive_good_generations}")
-        log_file.write(
-            f"\n\t\tfitness_input_size: {self.gen_alg.fitness_input_size}")
-        log_file.write(
-            f"\n\t\tgeneration_persistent_individuals: {self.gen_alg.generation_persistent_individuals}")
 
         for score in kwargs:
             log_file.write(f"\n\t{score}: {kwargs[score]}")
@@ -74,14 +55,6 @@ class Validation():
                 "general_data": {
                     "timestamp": str(datetime.now()),
                     "validation_duration": self.end_time - self.start_time,
-                },
-                "genetic_algorithm_data": {
-                    "good_generations": self.gen_alg.target_good_generations,
-                    "weight_range": self.gen_alg.weight_range,
-                    "mutation_chance": self.gen_alg.mutation_chance,
-                    "chromosome_size": self.gen_alg.chromosome_size,
-                    "population_size": self.gen_alg.population_size,
-                    "max_generations": self.gen_alg.max_generations
                 }
             }
 
@@ -100,7 +73,10 @@ class Validation():
             json.dump(data, json_file, indent=4)
         print("Data dumped into json!")
 
-    def gen_alg_score_generator(self) -> float:
+    def gen_alg_score_generator(self, good_generations=3, weight_range=(-10, 10),
+                                mutation_chance=1, mutation_magnitude=(-1, 1), chromosome_size=100,
+                                population_size=50, max_generations=100, persistent_individuals=5,
+                                random_individuals=5) -> float:
         """Roda o algoritmo genético cujos parâmetros estão especificados
         no __init__
 
@@ -108,23 +84,48 @@ class Validation():
             float: Pontuação de fitness do melhor indivíduo ao final do algoritmo.
         """
 
-        # Pensar se isso aqui deve ser mantido aleatório ou pegar das outras coisas também
-        self.gen_alg.population = self.gen_alg.random_population()
+        gen_alg = GeneticAlgorithm(
+            self.fitness_input, good_generations=good_generations, weight_range=weight_range, mutation_chance=mutation_chance,
+            mutation_magnitude=mutation_magnitude, chromosome_size=chromosome_size, population_size=population_size,
+            max_generations=max_generations, persistent_individuals=persistent_individuals, timestamp=datetime.now(),
+            generate_new_population=True)
 
-        for generation in range(self.gen_alg.max_generations):
+        start_time = time.time()
 
-            self.gen_alg.ranked_population = self.gen_alg.apply_fitness(
-                self.gen_alg.population, self.gen_alg.fitness_input)
+        gen_alg.population = gen_alg.get_first_generation()
 
-            print(f"Geração {generation}...")
+        for generation in range(gen_alg.max_generations):
+            try:
+                gen_alg.current_generation = generation
 
-            if(self.gen_alg.check_for_break(self.gen_alg.ranked_population)):
+                gen_alg.ranked_population = gen_alg.apply_fitness(
+                    gen_alg.population, gen_alg.fitness_input)
+
+                print(
+                    f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}%'")
+
+                if(gen_alg.ranked_population[0][1] > gen_alg.highest_fitness):
+                    gen_alg.highest_fitness = gen_alg.ranked_population[0][1]
+                    print(f"New highest fitness: {gen_alg.highest_fitness}")
+
+                if(gen_alg.check_for_break(gen_alg.ranked_population)):
+                    print("População aceitavel, hora de terminar")
+                    break
+
+                gen_alg.population = gen_alg.reproduce_population(
+                    gen_alg.ranked_population, gen_alg.population_size)
+
+                if(gen_alg.current_generation % 5 == 0):
+                    gen_alg.add_gen_info_to_json()
+            except KeyboardInterrupt:
                 break
 
-            self.gen_alg.population = self.gen_alg.reproduce_population(
-                self.gen_alg.ranked_population, self.gen_alg.population_size)
+        end_time = time.time()
 
-        return self.gen_alg.ranked_population[0][1]
+        gen_alg.log_and_dump_data(timestamp=datetime.now(),
+                                  elapsed_time=end_time - start_time)
+
+        return gen_alg.ranked_population[0][1]
 
     def random_score_generator(self) -> float:
         """Cria um cromossomo com valores aleatórios, dentro do range
@@ -133,26 +134,25 @@ class Validation():
         Returns:
             float: Pontuação de fitness do cromossomo aleatório
         """
-        fitness_input = self.gen_alg.fitness_input
+        gen_alg = GeneticAlgorithm(self.fitness_input)
 
-        random_chromosome = self.gen_alg.generate_random_chromosome()
-        fitness_value = self.gen_alg.calculate_fitness(
-            random_chromosome, fitness_input)
+        random_chromosome = gen_alg.generate_random_chromosome()
+        fitness_value = gen_alg.calculate_fitness(
+            random_chromosome, gen_alg.fitness_input)
 
         return fitness_value
 
-    def constant_score_generator(self) -> float:
+    def constant_score_generator(self, chromosome) -> float:
         """Gera um cromossomo contendo apenas quantos 1 forem necessários para
         preenchê-lo e retorna seu fitness
 
         Returns:
             float: O fitness calculado desse cromossomo de valor constante
         """
-        fitness_input = self.gen_alg.fitness_input
+        gen_alg = GeneticAlgorithm(self.fitness_input)
 
-        constant_chromosome = [1 for _ in range(self.gen_alg.chromosome_size)]
-        fitness_value = self.gen_alg.calculate_fitness(
-            constant_chromosome, fitness_input)
+        fitness_value = gen_alg.calculate_fitness(
+            chromosome, gen_alg.fitness_input)
 
         return fitness_value
 

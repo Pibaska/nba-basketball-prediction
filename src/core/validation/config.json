@@ -2,18 +2,29 @@
     {
         "function" : "genetic",
         "params": {
-                "date":[2018, 6, 20],
                 "good_generations":3,
                 "weight_range":[-10, 10],
                 "mutation_chance":1,
                 "mutation_magnitude":[-1, 1],
-                "chromosome_size":100,
+                "chromosome_size":10,
                 "population_size":50,
-                "max_generations":100,
+                "max_generations":4,
                 "persistent_individuals":5,
-                "random_individuals":5,
-                "timestamp":-1,
-                "generate_new_population":false
+                "random_individuals":5
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "good_generations":3,
+                "weight_range":[-10, 10],
+                "mutation_chance":1,
+                "mutation_magnitude":[-1, 1],
+                "chromosome_size":10,
+                "population_size":50,
+                "max_generations":5,
+                "persistent_individuals":5,
+                "random_individuals":5
         }
     },
     {

@@ -105,25 +105,40 @@ def run_web_scraping():
 
 def run_validation(test_cycles=5):
     with open(join(Path(__file__).resolve().parent, 'validation', 'config.json'), "r") as config_file:
-        config = json.load(config_file)
-        print(config)
-        print("Rodando Validação")
+        generator_data = json.load(config_file)
+
+        print("Running Validation")
         validation = Validation(test_cycles=test_cycles)
         validation.start_time = time.time()
 
-        print("Generating Genetic Algorithm Score")
-        gen_alg_stats = validation.calculate_performance(
-            validation.gen_alg_score_generator)
-        print("Generating Random Score")
-        random_stats = validation.calculate_performance(
-            validation.random_score_generator)
-        print("Generating Constant Score")
-        constant_stats = validation.calculate_performance(
-            validation.constant_score_generator)
+        for generator in generator_data:
+            if(generator["function"] == "genetic"):
+                generator["result"] = validation.calculate_performance(
+                    lambda: validation.gen_alg_score_generator(
+                        good_generations=generator["params"]["good_generations"],
+                        weight_range=generator["params"]["weight_range"],
+                        mutation_chance=generator["params"]["mutation_chance"],
+                        mutation_magnitude=generator["params"]["mutation_magnitude"],
+                        chromosome_size=generator["params"]["chromosome_size"],
+                        population_size=generator["params"]["population_size"],
+                        max_generations=generator["params"]["max_generations"],
+                        persistent_individuals=generator["params"]["persistent_individuals"],
+                        random_individuals=generator["params"]["random_individuals"]
+                    ))
+            elif(generator["function"] == "random"):
+                generator["result"] = validation.calculate_performance(
+                    validation.random_score_generator)
+            elif(generator["function"] == "constant"):
+                generator["result"] = validation.calculate_performance(
+                    lambda: validation.constant_score_generator(generator["chromosome"]))
+            else:
+                raise Exception
+            pass
 
-        validation.end_time = time.time()
-        validation.dump_json(gen_alg_stats=gen_alg_stats,
-                             random_stats=random_stats, constant_stats=constant_stats)
+        print(generator_data)
+
+    validation.end_time = time.time()
+    validation.dump_json(validation_results=generator_data)
 
 # def activate_home_team_combobox(selected_team, view):
 #   print(f"combobox home ativada: {selected_team}")
