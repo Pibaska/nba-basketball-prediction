@@ -340,5 +340,39 @@
                 }
             }
         ]
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-26 17:17:19.703172",
+            "validation_duration": 235.23199272155762
+        },
+        "validation_results": [
+            {
+                "function": "genetic",
+                "params": {
+                    "chromosome_size": 10,
+                    "max_generations": 100,
+                    "good_generations": 3,
+                    "weight_range": [
+                        -10,
+                        10
+                    ],
+                    "mutation_chance": 1,
+                    "mutation_magnitude": [
+                        -1,
+                        1
+                    ],
+                    "population_size": 50,
+                    "persistent_individuals": 5,
+                    "random_individuals": 5
+                },
+                "result": {
+                    "mean": 55.92552026286966,
+                    "std_deviation": 0.17796360141590056,
+                    "median": 55.85980284775466,
+                    "variance": 0.03167104342891753
+                }
+            }
+        ]
     }
 ]
