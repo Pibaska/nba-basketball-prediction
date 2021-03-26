@@ -1,0 +1,26 @@
+[
+    {
+        "function" : "genetic",
+        "params": {
+                "date":[2018, 6, 20],
+                "good_generations":3,
+                "weight_range":[-10, 10],
+                "mutation_chance":1,
+                "mutation_magnitude":[-1, 1],
+                "chromosome_size":100,
+                "population_size":50,
+                "max_generations":100,
+                "persistent_individuals":5,
+                "random_individuals":5,
+                "timestamp":-1,
+                "generate_new_population":false
+        }
+    },
+    {
+        "function" : "random"
+    },
+    {
+        "function" : "constant",
+        "chromosome" : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    }
+]

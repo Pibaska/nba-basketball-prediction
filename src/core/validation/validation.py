@@ -32,7 +32,8 @@ class Validation():
         invés dessa.
         """
 
-        log_file = open(os.path.join("data", "validation.log"), "a")
+        log_file = open(join(Path(__file__).resolve().parent.parent.parent,
+                             'data', 'json', 'validation.json'), "a")
         log_file.write(f"\n\nTimestamp: {datetime.now()}")
         log_file.write(
             f"\nValidation finished in {self.end_time - self.start_time} seconds.")
@@ -75,7 +76,6 @@ class Validation():
                     "validation_duration": self.end_time - self.start_time,
                 },
                 "genetic_algorithm_data": {
-                    "seed": "WIP",
                     "good_generations": self.gen_alg.target_good_generations,
                     "weight_range": self.gen_alg.weight_range,
                     "mutation_chance": self.gen_alg.mutation_chance,

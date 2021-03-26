@@ -214,5 +214,41 @@
             "median": 57.0,
             "variance": 11.27
         }
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-26 07:40:02.019109",
+            "validation_duration": 79.06686329841614
+        },
+        "genetic_algorithm_data": {
+            "seed": "WIP",
+            "good_generations": 3,
+            "weight_range": [
+                -100,
+                100
+            ],
+            "mutation_chance": 1,
+            "chromosome_size": 10,
+            "population_size": 100,
+            "max_generations": 25
+        },
+        "gen_alg_stats": {
+            "mean": 55.2026286966046,
+            "std_deviation": 0.0,
+            "median": 55.2026286966046,
+            "variance": 0.0
+        },
+        "random_stats": {
+            "mean": 53.1763417305586,
+            "std_deviation": 0.0,
+            "median": 53.1763417305586,
+            "variance": 0.0
+        },
+        "constant_stats": {
+            "mean": 52.35487404162103,
+            "std_deviation": 0.0,
+            "median": 52.35487404162103,
+            "variance": 0.0
+        }
     }
 ]

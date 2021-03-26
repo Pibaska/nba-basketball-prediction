@@ -55,7 +55,7 @@ prediction_parser.add_argument("-c", "--manual-chromosome", type=str, default=[N
                                help="Allows the user to manually input a chromosome to predict a match")
 
 validation_parser = command_subparser.add_parser("validate")
-validation_parser.add_argument("-c", "--cycles", type=float, default=10, help="Number of cycles ran in the validation. \
+validation_parser.add_argument("-c", "--cycles", type=int, default=10, help="Number of cycles ran in the validation. \
     Equates to how many fitness values will be compared for each generator function.")
 
 args = arg_parser.parse_args()
