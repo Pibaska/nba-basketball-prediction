@@ -28,9 +28,9 @@ gen_parser.add_argument("-gpi", "--gen-persistent-individuals", type=int, defaul
                         help="Sets how many of the parents (ordered by the highest fitness) will continue existing in the children generation.")
 gen_parser.add_argument("-gri", "--gen_random_individuals", type=int, default=10,
                         help="Sets how many individuals in a new generation will be completely randomly generated.")
-gen_parser.add_argument("-gnp", "--gen-new-population", type=bool, default=False,
+gen_parser.add_argument("-gnp", "--gen-new-population", action="store_true",
                         help="Sets if the genetic algorithm shoud create an entirely new first generation or get the last generation stored in memory.")
-gen_parser.add_argument("-d", "--day", type=int, default=24,
+gen_parser.add_argument("-d", "--day", type=int, default=25,
                         help="Day to run the genetic algorithm at.")
 gen_parser.add_argument("-m", "--month", type=int, default=3,
                         help="Month to run the genetic algorithm at.")

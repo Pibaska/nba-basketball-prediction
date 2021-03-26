@@ -75,7 +75,7 @@ def run_gen_alg(date=[2018, 6, 20],
 
             if(gen_alg.ranked_population[0][1] > gen_alg.highest_fitness):
                 gen_alg.highest_fitness = gen_alg.ranked_population[0][1]
-                print(gen_alg.highest_fitness)
+                print(f"New highest fitness: {gen_alg.highest_fitness}")
 
             if(gen_alg.check_for_break(gen_alg.ranked_population)):
                 print("População aceitavel, hora de terminar")
@@ -99,6 +99,7 @@ def run_gen_alg(date=[2018, 6, 20],
 
 def run_web_scraping():
     activate_web_scraping()
+
 
 def run_validation(test_cycles=5):
     print("Rodando Validação")
