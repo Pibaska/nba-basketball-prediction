@@ -8,9 +8,9 @@
                 "weight_range":[-100, 100],
                 "mutation_chance":1,
                 "mutation_magnitude":[-10,10],
-                "population_size":15,
+                "population_size":50,
                 "persistent_individuals":5,
-                "random_individuals":5
+                "random_individuals":0
         }
     },
     {
@@ -36,9 +36,9 @@
                 "weight_range":[-100, 100],
                 "mutation_chance":1,
                 "mutation_magnitude":[-10,10],
-                "population_size":100,
+                "population_size":50,
                 "persistent_individuals":5,
-                "random_individuals":5
+                "random_individuals":10
         }
     },
     {
@@ -50,9 +50,9 @@
                 "weight_range":[-100, 100],
                 "mutation_chance":1,
                 "mutation_magnitude":[-10,10],
-                "population_size":200,
+                "population_size":50,
                 "persistent_individuals":5,
-                "random_individuals":5
+                "random_individuals":25
         }
     },
     {
@@ -64,9 +64,9 @@
                 "weight_range":[-100, 100],
                 "mutation_chance":1,
                 "mutation_magnitude":[-10,10],
-                "population_size":500,
+                "population_size":50,
                 "persistent_individuals":5,
-                "random_individuals":5
+                "random_individuals":40
         }
     }
 ]
