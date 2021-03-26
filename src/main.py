@@ -1,5 +1,4 @@
-from core.validation.run import run_validation
-from core.main import run_gen_alg, run_web_scraping, predict_score
+from core.cli_model import run_gen_alg, run_web_scraping, predict_score, run_validation
 import argparse
 from datetime import datetime
 
@@ -10,8 +9,7 @@ command_subparser = arg_parser.add_subparsers(dest="subparser",
 
 
 gen_parser = command_subparser.add_parser("genetic")
-gen_parser.add_argument("-d", "--day", type=int, default=24,
-                        help="Day to run the genetic algorithm at.")
+
 gen_parser.add_argument("-ggg", "--gen-good-generations", type=int, default=3,
                         help="Sets how many consecutive good generations will interrupt and finish the algorithm execution.")
 gen_parser.add_argument("-gwr", "--gen-weight-range", type=tuple, default=(-100, 100),
@@ -32,6 +30,8 @@ gen_parser.add_argument("-gri", "--gen_random_individuals", type=int, default=10
                         help="Sets how many individuals in a new generation will be completely randomly generated.")
 gen_parser.add_argument("-gnp", "--gen-new-population", type=bool, default=False,
                         help="Sets if the genetic algorithm shoud create an entirely new first generation or get the last generation stored in memory.")
+gen_parser.add_argument("-d", "--day", type=int, default=24,
+                        help="Day to run the genetic algorithm at.")
 gen_parser.add_argument("-m", "--month", type=int, default=3,
                         help="Month to run the genetic algorithm at.")
 gen_parser.add_argument("-y", "--year", type=int, default=2021,

@@ -4,6 +4,8 @@ import time
 from core.gen.classes.genetic_algorithm import GeneticAlgorithm
 from data.utils import data_provider
 from core.web.control import activate_web_scraping
+from core.validation.validation import Validation
+import time
 
 
 def predict_score(team_home_name, team_away_name, date, view=None, manual_chromosome=None):
@@ -97,6 +99,25 @@ def run_gen_alg(date=[2018, 6, 20],
 
 def run_web_scraping():
     activate_web_scraping()
+
+def run_validation(test_cycles=5):
+    print("Rodando Validação")
+    validation = Validation(test_cycles=test_cycles)
+    validation.start_time = time.time()
+
+    print("Generating Genetic Algorithm Score")
+    gen_alg_stats = validation.calculate_performance(
+        validation.gen_alg_score_generator)
+    print("Generating Random Score")
+    random_stats = validation.calculate_performance(
+        validation.random_score_generator)
+    print("Generating Constant Score")
+    constant_stats = validation.calculate_performance(
+        validation.constant_score_generator)
+
+    validation.end_time = time.time()
+    validation.dump_json(gen_alg_stats=gen_alg_stats,
+                         random_stats=random_stats, constant_stats=constant_stats)
 
 # def activate_home_team_combobox(selected_team, view):
 #   print(f"combobox home ativada: {selected_team}")
