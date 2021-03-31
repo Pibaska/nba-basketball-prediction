@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Pibaska/NBA-Basketball-Prediction?color=%2304D361&style=for-the-badge&logo=python">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/Pibaska/NBA-Basketball-Prediction?style=for-the-badge">
   
