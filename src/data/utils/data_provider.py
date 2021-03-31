@@ -262,14 +262,12 @@ def get_team_id_from_name(team_name):
 
             team_id = cursor.fetchone()
 
-            if len(team_id) = 1:
-                break
+            if len(team_id) == 1:
+                return team_id[0]
             else:
                 team_name = input("Seja mais específico no nome do time, e escreva-o corretamente")
 
-            
 
-        return team_id[0]
     except Exception as e:
         print(e)
         raise e
@@ -320,36 +318,3 @@ if __name__ == "__main__":
     season_end = seasons["2017"]["end"].replace('/', '-')
 
     print()
-# SELECT
-#     AVG(pt_home.points),
-#     AVG(pt_home.points - pt_away.points) as spread,
-#     AVG(pt_home.offensive_rebounds),
-#     AVG(pt_home.defensive_rebounds),
-#     AVG(NULLIF(pt_home.field_goals_percentage,0)),
-#     AVG(NULLIF(pt_home.three_point_field_goals_percentage,0)),
-#     AVG(NULLIF(pt_home.free_throws_percentage,0)),
-#     AVG(pt_home.turnover),
-#     AVG(pt_home.assists)
-#         from match_data as md
-#         INNER JOIN participation as pt_home
-#         ON md.fk_participation_home = pt_home.participation_id
-#         INNER JOIN participation as pt_away
-#         on md.fk_participation_away = pt_away.participation_id
-#             WHERE pt_home.fk_team_id = 5
-
-# SELECT
-#     AVG(pt_away.points),
-#     AVG(pt_away.points - pt_home.points) as spread,
-#     AVG(pt_away.offensive_rebounds),
-#     AVG(pt_away.defensive_rebounds),
-#     AVG(NULLIF(pt_away.field_goals_percentage,0)),
-#     AVG(NULLIF(pt_away.three_point_field_goals_percentage,0)),
-#     AVG(NULLIF(pt_away.free_throws_percentage,0)),
-#     AVG(pt_away.turnover),
-#     AVG(pt_away.assists)
-#         from match_data as md
-#         INNER JOIN participation as pt_away
-#         ON md.fk_participation_away = pt_away.participation_id
-#         INNER JOIN participation as pt_home
-#         on md.fk_participation_home = pt_home.participation_id
-#             WHERE pt_away.fk_team_id = 5
