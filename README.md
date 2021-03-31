@@ -15,7 +15,7 @@
 
 
  
-<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, leia nosso</strong></span> <a href="https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf">artigo</a>.</h4>
+<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, leia nossa</strong></span> <a href="https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf">documentação</a>.</h4>
 
 ---
 
@@ -92,5 +92,3 @@ Use os comandos especificados entre chaves, e caso possua alguma dúvida, execut
 
 <h2 align="center"><span style="color:#FFA500"><strong><a href="https://github.com/Pibaska/NBA-Basketball-Prediction/releases">Releases</a>
 </strong></span> </h2>
-
-
