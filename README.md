@@ -4,12 +4,15 @@
 </h1>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Pibaska/NBA-Basketball-Prediction?color=%2304D361">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Pibaska/NBA-Basketball-Prediction?color=%2304D361&style=for-the-badge&logo=python">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Pibaska/NBA-Basketball-Prediction">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Pibaska/NBA-Basketball-Prediction?style=for-the-badge">
   
-  <a href="https://github.com/tgmarinho/nlw1/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Pibaska/NBA-Basketball-Prediction">
+  <a href="https://github.com/Pibaska/NBA-Basketball-Prediction/commits/dev">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Pibaska/NBA-Basketball-Prediction?style=for-the-badge&logo=github">
+  </a>
+  <a href="https://twitter.com/quarter_nba">
+    <img alt="Twitter" src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white">
   </a>
 </p>
 
