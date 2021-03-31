@@ -247,19 +247,27 @@ def get_team_id_from_name(team_name):
                                              'data', 'database.sqlite3'))
         cursor = db_connection.cursor()
 
-        cursor.execute(
-            """
-            SELECT
-                team_id
-            FROM
-                team
-            WHERE
-                team_name = ?
-            """,
-            [team_name]
-        )
+        while True:
+            cursor.execute(
+                """
+                SELECT
+                    team_id
+                FROM
+                    team
+                WHERE
+                    team_name LIKE %?%
+                """,
+                [team_name]
+            )
 
-        team_id = cursor.fetchone()
+            team_id = cursor.fetchone()
+
+            if len(team_id) = 1:
+                break
+            else:
+                team_name = input("Seja mais específico no nome do time, e escreva-o corretamente")
+
+            
 
         return team_id[0]
     except Exception as e:
