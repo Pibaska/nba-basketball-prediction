@@ -15,13 +15,13 @@
 
 
  
-<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, favor leia nosso</strong></span> <a href=https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Projeto_Integrador__BGJR.pdf >whitepaper</a>.</h4>
+<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, leia nosso</strong></span> <a href=https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf>artigo</a>.</h4>
 
 ---
 
 <h2 align="center"><span style="color:white"><strong>Resumo</strong></span> </h2>
-O basquetebol é mundialmente conhecido, e um dos esporte mais populares da atualidade. Toda essa fama é acompanhada de um mercado bastante lucrativo, que movimenta bilhões de dólares todos os anos. Os jogos de basquete não afetam somente seus times e outras organizações diretamente envolvidas com as partidas; afetam todo um contexto social, como torcedores, empresas, dentre vários outros. Pertencentes a este nicho também estão indivíduos participando ativamente do crescente mercado de apostas esportivas.
-Sendo assim, este trabalho tem como objetivo o desenvolvimento de uma estratégia própria para a previsão de resultados de partidas.
+Este projeto foi desenvolvido para as matérias de Projeto Integrador I e II do Curso Técnico Integrado em Informática do Instituto Federal de Santa Catarina, câmpus Gaspar.
+O programa neste repositório foi construído com o intuito de ser uma solução que usa um algoritmo genético para prever o resultado do primeiro quarto de partidas da NBA a partir de métricas do primeiro quarto de partidas passadas jogadas pelos times da partida prevista. Em média, o programa consegue gerar previsões com em torno de 58,5% de precisão, sendo que a maior taxa de acerto registrada em um conjunto de parâmetros foi de 61,4%.
 
 ---
 
@@ -36,12 +36,12 @@ Sendo assim, este trabalho tem como objetivo o desenvolvimento de uma estratégi
 ----
 
 ### Ativar ambiente virtual no **Linux**
-    `source bin/activate`
+    source bin/activate
 
 
 
 ### Ativar ambiente virtual no **Windows**
-    `.\Scripts\activate.bat`
+    .\Scripts\activate.bat
 
 <h3 align="center"><span style="color:lightgrey"><strong>Manual</strong></span> </h3>
 
@@ -69,9 +69,9 @@ Crie o ambiente virtual
 
 Ative o ambiente virtual
 
-    ./Scripts/activate.bat
+    .\Scripts\activate.bat
 
-OBS: Tenha certa se o pip instalado com o comando `pip --version`
+Obs.: Tenha certeza de que o pip está instalado com o comando `pip --version`
 
 Instale as dependências
 
