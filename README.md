@@ -4,18 +4,25 @@
 </h1>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Pibaska/NBA-Basketball-Prediction?color=%2304D361">
-
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Pibaska/NBA-Basketball-Prediction">
-  
-  <a href="https://github.com/tgmarinho/nlw1/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Pibaska/NBA-Basketball-Prediction">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Pibaska/NBA-Basketball-Prediction?style=for-the-badge">
+  <a href="https://github.com/Pibaska/NBA-Basketball-Prediction/commits/dev">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Pibaska/NBA-Basketball-Prediction?style=for-the-badge&logo=github">
+  </a>
+  <a href="https://github.com/Pibaska/NBA-Basketball-Prediction/releases">
+    <img alt="Releases" src="https://img.shields.io/badge/Releases-black?style=for-the-badge&logo=github&logoColor=white">
+  </a>
+  <a href="https://twitter.com/quarter_nba">
+    <img alt="Twitter" src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white">
+  </a>
+  <a href="https://github.com/Pibaska/Basketball-Prediction-Paper/raw/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf">
+    <img alt="Documentação" src="https://img.shields.io/badge/Documentação-525DDC?style=for-the-badge&logo=Read-the-docs&logoColor=white">
   </a>
 </p>
 
 
  
-<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, leia nosso</strong></span> <a href="https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf">artigo</a>.</h4>
+
 
 ---
 
@@ -84,13 +91,14 @@ Ao executar o arquivo [`main.py`](src/main.py) dentro da pasta `src`, se tudo fo
     NBA PREDICTION
     Thanks for using NBA prediction. Please run this command with a `-h` to see available options.
     
-Ao executar o mesmo arquivo passando o parãmetro `-h`, você receberá uma lista de comandos possíveis:
+Ao executar o mesmo arquivo passando o parâmetro `-h`, você receberá uma lista de comandos possíveis:
 
     usage: main.py [-h] {genetic,scrape,predict,validate} ...
 
 Use os comandos especificados entre chaves, e caso possua alguma dúvida, execute-os com um `-h` para ver a lista de parãmetros disponíveis.
 
-<h2 align="center"><span style="color:#FFA500"><strong><a href="https://github.com/Pibaska/NBA-Basketball-Prediction/releases">Releases</a>
-</strong></span> </h2>
+---
 
+<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, leia nossa</strong></span> <a href="https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf">documentação</a>.</h4>
 
+---
