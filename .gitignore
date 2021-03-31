@@ -145,3 +145,4 @@ dmypy.json
 .vscode
 
 Scripts/
+lib64
