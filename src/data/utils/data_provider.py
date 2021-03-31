@@ -101,11 +101,7 @@ def get_matches_by_season(date):
             data da partida
     """
 
-    # pegar match aleatoria a partir de id
     season_start = get_start_season_by_date(date)
-    #season_end   = seasons[year_date]["end"]
-    season_start_list = season_start.split('-')
-
 
 
     str_for_sql_date_start = str(dt.strptime(season_start, "%Y-%m-%d").date() + timedelta(days=10)) 
@@ -124,7 +120,7 @@ def get_matches_by_season(date):
                     WHERE md.date >= ?
                     and   md.date <= ?
                     order by md.date desc
-            """, [season_start, str_for_sql_date_end])
+            """, [str_for_sql_date_start, str_for_sql_date_end])
 
         lista = cursor.fetchall()
 
