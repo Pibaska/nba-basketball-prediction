@@ -84,7 +84,7 @@ Ao executar o arquivo [`main.py`](src/main.py) dentro da pasta `src`, se tudo fo
     NBA PREDICTION
     Thanks for using NBA prediction. Please run this command with a `-h` to see available options.
     
-Ao executar o mesmo arquivo passando o parãmetro `-h`, você receberá uma lista de comandos possíveis:
+Ao executar o mesmo arquivo passando o parâmetro `-h`, você receberá uma lista de comandos possíveis:
 
     usage: main.py [-h] {genetic,scrape,predict,validate} ...
 
