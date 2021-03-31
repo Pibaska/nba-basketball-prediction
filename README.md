@@ -15,11 +15,14 @@
   <a href="https://twitter.com/quarter_nba">
     <img alt="Twitter" src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white">
   </a>
+  <a href="https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf">
+    <img alt="Documentação" src="https://img.shields.io/badge/Documentação-525DDC?style=for-the-badge&logo=Read the docs&logoColor=white">
+  </a>
 </p>
 
 
  
-<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, leia nossa</strong></span> <a href="https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf">documentação</a>.</h4>
+
 
 ---
 
@@ -93,3 +96,9 @@ Ao executar o mesmo arquivo passando o parâmetro `-h`, você receberá uma list
     usage: main.py [-h] {genetic,scrape,predict,validate} ...
 
 Use os comandos especificados entre chaves, e caso possua alguma dúvida, execute-os com um `-h` para ver a lista de parãmetros disponíveis.
+
+---
+
+<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, leia nossa</strong></span> <a href="https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf">documentação</a>.</h4>
+
+---
