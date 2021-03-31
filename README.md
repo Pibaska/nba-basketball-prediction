@@ -5,17 +5,15 @@
 
 <p align="center">
   <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
-
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/Pibaska/NBA-Basketball-Prediction?style=for-the-badge">
-  
   <a href="https://github.com/Pibaska/NBA-Basketball-Prediction/commits/dev">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Pibaska/NBA-Basketball-Prediction?style=for-the-badge&logo=github">
   </a>
+  <a href="https://github.com/Pibaska/NBA-Basketball-Prediction/releases">
+    <img alt="Releases" src="https://img.shields.io/badge/Releases-black?style=for-the-badge&logo=github&logoColor=white">
+  </a>
   <a href="https://twitter.com/quarter_nba">
     <img alt="Twitter" src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white">
-  </a>
-  <a href="https://github.com/Pibaska/NBA-Basketball-Prediction/releases">
-    <img alt="Releases" src="https://img.shields.io/badge/GitHub Releases-100000?style=for-the-badge&logo=github&logoColor=white">
   </a>
 </p>
 
@@ -95,6 +93,3 @@ Ao executar o mesmo arquivo passando o parâmetro `-h`, você receberá uma list
     usage: main.py [-h] {genetic,scrape,predict,validate} ...
 
 Use os comandos especificados entre chaves, e caso possua alguma dúvida, execute-os com um `-h` para ver a lista de parãmetros disponíveis.
-
-<h2 align="center"><span style="color:#FFA500"><strong><a href="https://github.com/Pibaska/NBA-Basketball-Prediction/releases">Releases</a>
-</strong></span> </h2>
