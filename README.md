@@ -15,7 +15,7 @@
 
 
  
-<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, leia nosso</strong></span> <a href=https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf>artigo</a>.</h4>
+<h4 align="center"><span style="color:lightgrey"><strong>Caso deseje mais detalhes sobre este projeto, leia nosso</strong></span> <a href="https://github.com/Pibaska/Basketball-Prediction-Paper/blob/main/Artigos/Artigo%20Semestre%202%20-%20Vers%C3%A3o%20Inicial.pdf">artigo</a>.</h4>
 
 ---
 
@@ -25,9 +25,9 @@ O programa neste repositório foi construído com o intuito de ser uma solução
 
 ---
 
-<h2 align="center"><span style="color:#FFA500"><strong>Como executar o software</strong></span> </h2>
+<h2 align="center"><span style="color:#FFA500"><strong>Instalação</strong></span> </h2>
 
-<h3 align="center"><span style="color:lightgrey"><strong>Automática</strong></span> </h3>
+<h3 align="center"><span style="color:lightgrey"><strong>Setup Automático</strong></span> </h3>
 
 ---
 
@@ -43,7 +43,7 @@ O programa neste repositório foi construído com o intuito de ser uma solução
 ### Ativar ambiente virtual no **Windows**
     .\Scripts\activate.bat
 
-<h3 align="center"><span style="color:lightgrey"><strong>Manual</strong></span> </h3>
+<h3 align="center"><span style="color:lightgrey"><strong>Setup Manual</strong></span> </h3>
 
 ### **Linux**
 
@@ -76,8 +76,21 @@ Obs.: Tenha certeza de que o pip está instalado com o comando `pip --version`
 Instale as dependências
 
     pip install -r requirements.txt --no-dependencies
+    
+<h2 align="center"><span style="color:#FFA500"><strong>Instruções de Execução</strong></span> </h2>
 
-[<h2 align="center"><span style="color:#FFA500"><strong>Releases</strong></span> </h2>](https://github.com/Pibaska/NBA-Basketball-Prediction/releases)
+Ao executar o arquivo [`main.py`](src/main.py) dentro da pasta `src`, se tudo foi instalado corretamnente, aparecerá a mensagem:
 
+    NBA PREDICTION
+    Thanks for using NBA prediction. Please run this command with a `-h` to see available options.
+    
+Ao executar o mesmo arquivo passando o parãmetro `-h`, você receberá uma lista de comandos possíveis:
+
+    usage: main.py [-h] {genetic,scrape,predict,validate} ...
+
+Use os comandos especificados entre chaves, e caso possua alguma dúvida, execute-os com um `-h` para ver a lista de parãmetros disponíveis.
+
+<h2 align="center"><span style="color:#FFA500"><strong><a href="https://github.com/Pibaska/NBA-Basketball-Prediction/releases">Releases</a>
+</strong></span> </h2>
 
 
