@@ -14,6 +14,9 @@
   <a href="https://twitter.com/quarter_nba">
     <img alt="Twitter" src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white">
   </a>
+  <a href="https://github.com/Pibaska/NBA-Basketball-Prediction/releases">
+    <img alt="Releases" src="https://img.shields.io/badge/GitHub Releases-100000?style=for-the-badge&logo=github&logoColor=white">
+  </a>
 </p>
 
 
