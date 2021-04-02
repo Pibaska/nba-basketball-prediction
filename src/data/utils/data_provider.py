@@ -209,7 +209,7 @@ def get_averages(team_id, local, date):
                     on md.fk_participation_away = pt_away.participation_id
                             WHERE """ + participation_local + """.fk_team_id = ?
                             and """ + participation_local + """.team_is_home = ?
-                            and md.date > ?
+                            and md.date >= ?
                             and md.date < ?
                             order by md.date ASC;   
                 """, [team_id, local, start_season, str(date[0])+"-"+str(date[1])+"-"+str(date[2])])
@@ -242,7 +242,7 @@ def get_won_spread(team_id, local, date):
                     on t.team_id = p.fk_team_id
                 WHERE t.team_id = ?
                 and md.date >= ?
-                and md.date <= ?
+                and md.date < ?
                 order by md.date DESC;
                 """, [team_id, start_season, str(date[0])+"-"+str(date[1])+"-"+str(date[2])])
         won_spread = cursor.fetchone()
