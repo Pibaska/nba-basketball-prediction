@@ -36,16 +36,18 @@ def setup_firefox_driver(show_scraping_window: bool):
         webdriver: O driver do firefox configurado e pronto para procurar elementos em sites
     """
 
-    binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe' if name == 'nt' else '/usr/bin/firefox')
+    binary = FirefoxBinary(
+        'C:\\Program Files\\Mozilla Firefox\\firefox.exe' if name == 'nt' else '/usr/bin/firefox')
     option = Options()
     option.headless = show_scraping_window
     while True:
         try:
             driver = webdriver.Firefox(
                 firefox_binary=binary, executable_path=join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
-                'library', 'geckodriver.exe' if name == 'nt' else 'geckodriver'), options=option)
+                                                            'library', 'geckodriver.exe' if name == 'nt' else 'geckodriver'), options=option)
         except Exception:
-            install_firefox(choice=True if int(input('Você não possui firefox instalado, deseja instalar?\n1 - Sim\nOutro numero - Nao\n> ')) == 1 else False)
+            install_firefox(choice=True if int(input(
+                'Você não possui firefox instalado, deseja instalar?\n1 - Sim\nOutro numero - Nao\n> ')) == 1 else False)
         else:
             return driver
 
@@ -84,15 +86,14 @@ def generate_date_list():
                         formatted_date = [increasing_year,
                                           month_increment + 1, day_increment+1]
 
-                        #checa se ja chegou ou passou do dia atual
-                        if (formatted_date[0] >= int(current_date_list[0])): 
+                        # checa se ja chegou ou passou do dia atual
+                        if (formatted_date[0] >= int(current_date_list[0])):
                             if (formatted_date[1] >= int(current_date_list[1])):
                                 if (formatted_date[2] >= int(current_date_list[2])):
-                                    return formatted_date_list # lembrando que o dia atual n vai ir pq n passou pelo append abaixo
+                                    # lembrando que o dia atual n vai ir pq n passou pelo append abaixo
+                                    return formatted_date_list
 
                         formatted_date_list.append(formatted_date)
-
-
 
     return formatted_date_list
 
@@ -127,6 +128,7 @@ def generate_day_url(formatted_date):
 
     return url
 
+
 def get_match_amount(driver):
     """Retorna quantas partidas o site tem do dia escolhido
 
@@ -137,12 +139,12 @@ def get_match_amount(driver):
         int: Quantidade de jogos disponíveis no dia escolhido
     """
     try:
-        element = driver.find_element_by_xpath( 
-            '//*[@id="content"]/div[3]')  # puxa a div que tem os jogos 
+        element = driver.find_element_by_xpath(
+            '//*[@id="content"]/div[3]')  # puxa a div que tem os jogos
     except:
         return 0
 
-    try:        
+    try:
         html_content = element.get_attribute('outerHTML')  # pega seu HTML
 
         # Transforma em algo facil de mexer
@@ -154,7 +156,6 @@ def get_match_amount(driver):
         match_amount = len(match_list)  # Vê quantas achou
     except:
         return 0
-
 
     return match_amount
 
@@ -218,7 +219,8 @@ def get_team_table_names(driver):
 
         team_tables[i] = content_table
 
-    return team_names[::-1], team_tables[::-1] # inverte as listas pois no site primerio vem o team_away, e queremos o home no começo da lista
+    # inverte as listas pois no site primerio vem o team_away, e queremos o home no começo da lista
+    return team_names[::-1], team_tables[::-1]
 
 
 def get_table_values(table,  collectable_value):
@@ -239,7 +241,7 @@ def get_table_values(table,  collectable_value):
 if __name__ == "__main__":
     print(20*'~~')
     print(20*'~~')
-    print("Talvez modulo errado, de play no 'web_scraping_main.py'")
+    print("To activate the web scraping code, run the main.py script with the 'scrape' argument.")
     print(20*'~~')
     print(20*'~~')
 

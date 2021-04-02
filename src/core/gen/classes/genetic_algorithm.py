@@ -340,6 +340,11 @@ class GeneticAlgorithm:
             if int(mutation_happening < self.mutation_chance):
                 mutation = random.uniform(
                     self.mutation_magnitude[0], self.mutation_magnitude[1])
+
+                # Mutação vira 0 se o cromossomo tiver atingido o limite de peso
+                mutation *= self.weight_range[0] <= chromosome[i] + \
+                    mutation <= self.weight_range[1]
+
                 mutated_chromosome.append(chromosome[i] + mutation)
             else:
                 mutated_chromosome.append(chromosome[i])
@@ -355,7 +360,7 @@ class GeneticAlgorithm:
             elapsed_time (int, optional): Tempo que o algoritmo genético demorou para ser concluído. Defaults to -1.
         """
 
-        print("Algoritmo interrompido!")
+        print("Algorithm Stopped!")
 
         log_file = open(join(Path(__file__).resolve().parent.parent.parent.parent,
                              'data', 'logs', 'genetic_algorithm.log'), "a")
@@ -392,7 +397,7 @@ class GeneticAlgorithm:
     def add_gen_info_to_json(self):
         try:
             json_file = open(
-                join(Path(__file__).resolve().parent.parent.parent.parent, "data", "json", "gen", f"{self.timestamp}.json"), "r")
+                join(Path(__file__).resolve().parent.parent.parent.parent, "data", "json", "gen", "genetic_algorithm.json"), "r")
             data = json.load(json_file)
 
             current_generation_data = {
@@ -404,7 +409,7 @@ class GeneticAlgorithm:
         except FileNotFoundError:
             data = []
         json_file = open(
-            join(Path(__file__).resolve().parent.parent.parent.parent, "data", "json", "gen", f"{self.timestamp}.json"), "w+")
+            join(Path(__file__).resolve().parent.parent.parent.parent, "data", "json", "gen", "genetic_algorithm.json"), "w+")
 
         json.dump(data, json_file, indent=4)
         json_file.close()
