@@ -248,6 +248,8 @@ def get_team_id_from_name(team_name):
         cursor = db_connection.cursor()
 
         while True:
+            team_name = "%" + team_name + "%"
+
             cursor.execute(
                 """
                 SELECT
@@ -255,7 +257,7 @@ def get_team_id_from_name(team_name):
                 FROM
                     team
                 WHERE
-                    team_name LIKE %?%
+                    team_name LIKE ?
                 """,
                 [team_name]
             )
