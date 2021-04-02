@@ -18,7 +18,7 @@ gen_parser.add_argument("-gmc", "--gen-mutation-chance", type=float, default=10,
                         help="Percentage that indicates the chance of a gene being mutated during reproduction.")
 gen_parser.add_argument("-gmm", "--gen-mutation-magnitude", type=tuple, default=(-10, 10),
                         help="Sets the magnitude of the value added to a gente during mutation.")
-gen_parser.add_argument("-gcs", "--gen-chromosome-size", type=int, default=10,
+gen_parser.add_argument("-gcs", "--gen-chromosome-size", type=int, default=11,
                         help="Sets how many genes are in a chromosome. WARNING: Editing this value might yield some strange results from the algorithm without prior setup.")
 gen_parser.add_argument("-gps", "--gen-population-size", type=int, default=100,
                         help="Sets how many individuals are going to be in any given generation")
@@ -45,11 +45,11 @@ prediction_parser.add_argument(
     "-at", "--away", type=str, default="Orlando Magic", help="The name of the away team.")
 prediction_parser.add_argument(
     "-ht", "--home", type=str, default="Miami Heat", help="The name of the home team.")
-prediction_parser.add_argument("-d", "--day", type=int, default=20,
+prediction_parser.add_argument("-d", "--day", type=int, default=2,
                                help="Day to predict the results at.")
-prediction_parser.add_argument("-m", "--month", type=int, default=6,
+prediction_parser.add_argument("-m", "--month", type=int, default=4,
                                help="Month to predict the results at.")
-prediction_parser.add_argument("-y", "--year", type=int, default=2018,
+prediction_parser.add_argument("-y", "--year", type=int, default=2021,
                                help="Year to predict the results at.")
 prediction_parser.add_argument("-c", "--manual-chromosome", type=str, default=[None], nargs=10, action="append",
                                help="Allows the user to manually input a chromosome to predict a match")

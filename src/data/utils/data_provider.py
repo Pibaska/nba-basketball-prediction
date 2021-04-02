@@ -210,16 +210,49 @@ def get_averages(team_id, local, date):
                             WHERE """ + participation_local + """.fk_team_id = ?
                             and """ + participation_local + """.team_is_home = ?
                             and md.date > ?
-                            and md.date <  ?
+                            and md.date < ?
                             order by md.date ASC;   
                 """, [team_id, local, start_season, str(date[0])+"-"+str(date[1])+"-"+str(date[2])])
         dicionario = cursor.fetchall()
+
+        dicionario[0]["won_spread_form"] = get_won_spread(team_id, local, date)
 
         return dicionario[0]
 
     except Exception as e:
         print(e)
         raise e
+
+def get_won_spread(team_id, local, date):
+    start_season = get_start_season_by_date(date)
+
+    try:
+        db_connection = sqlite3.connect(join(Directory(Path(__file__).resolve().parent.parent.parent).cwd,
+                                             'data', 'database.sqlite3'))
+        # db_connection.row_factory = row_factory
+        cursor = db_connection.cursor()
+
+        participation_local = "md.fk_participation_home" if local else "md.fk_participation_away"
+
+        cursor.execute(
+            """ 
+                SELECT SUM(won) FROM match_data as md INNER JOIN participation as p 
+                    on p.participation_id = """+participation_local+"""
+                INNER join team as t 
+                    on t.team_id = p.fk_team_id
+                WHERE t.team_id = ?
+                and md.date >= ?
+                and md.date <= ?
+                order by md.date DESC;
+                """, [team_id, start_season, str(date[0])+"-"+str(date[1])+"-"+str(date[2])])
+        won_spread = cursor.fetchone()
+
+        return won_spread[0]
+
+    except Exception as e:
+        print(e)
+        raise e
+
 
 
 def get_start_season_by_date(date):

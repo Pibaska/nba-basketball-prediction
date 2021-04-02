@@ -27,7 +27,7 @@ class GeneticAlgorithm:
                  weight_range=(-10, 10),
                  mutation_chance=1,
                  mutation_magnitude=(-1, 1),
-                 chromosome_size=10,
+                 chromosome_size=11,
                  population_size=50,
                  max_generations=100,
                  persistent_individuals=5,
