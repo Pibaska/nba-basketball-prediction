@@ -397,7 +397,7 @@ class GeneticAlgorithm:
     def add_gen_info_to_json(self):
         try:
             json_file = open(
-                join(Path(__file__).resolve().parent.parent.parent.parent, "data", "json", "gen", f"{self.timestamp}.json"), "r")
+                join(Path(__file__).resolve().parent.parent.parent.parent, "data", "json", "gen", "genetic_algorithm.json"), "r")
             data = json.load(json_file)
 
             current_generation_data = {
@@ -409,7 +409,7 @@ class GeneticAlgorithm:
         except FileNotFoundError:
             data = []
         json_file = open(
-            join(Path(__file__).resolve().parent.parent.parent.parent, "data", "json", "gen", f"{self.timestamp}.json"), "w+")
+            join(Path(__file__).resolve().parent.parent.parent.parent, "data", "json", "gen", "genetic_algorithm.json"), "w+")
 
         json.dump(data, json_file, indent=4)
         json_file.close()
