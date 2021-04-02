@@ -102,14 +102,14 @@ class Validation():
                     gen_alg.population, gen_alg.fitness_input)
 
                 print(
-                    f"Geração {generation} | População: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}%'")
+                    f"Generation {generation} | Best Chromosome: '{gen_alg.population[0]} | Fitness: {gen_alg.ranked_population[0][1]}%'")
 
                 if(gen_alg.ranked_population[0][1] > gen_alg.highest_fitness):
                     gen_alg.highest_fitness = gen_alg.ranked_population[0][1]
                     print(f"New highest fitness: {gen_alg.highest_fitness}")
 
                 if(gen_alg.check_for_break(gen_alg.ranked_population)):
-                    print("População aceitavel, hora de terminar")
+                    print("Population is good; Finish algorithm")
                     break
 
                 gen_alg.population = gen_alg.reproduce_population(

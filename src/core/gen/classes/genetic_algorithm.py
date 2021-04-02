@@ -360,7 +360,7 @@ class GeneticAlgorithm:
             elapsed_time (int, optional): Tempo que o algoritmo genético demorou para ser concluído. Defaults to -1.
         """
 
-        print("Algoritmo interrompido!")
+        print("Algorithm Stopped!")
 
         log_file = open(join(Path(__file__).resolve().parent.parent.parent.parent,
                              'data', 'logs', 'genetic_algorithm.log'), "a")

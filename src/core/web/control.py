@@ -27,14 +27,15 @@ def activate_web_scraping():
         print(f'{date[0]}/{date[1]}/{date[2]}')
 
         match_amount = ws_functions.get_match_amount(driver)
-        print(f'Partidas: {match_amount}')
+        print(f'Matches: {match_amount}')
 
         if match_amount:
             for item in range(match_amount):
                 ws_functions.access_1q_in_box_score(driver, date_url, item)
-                team_names, team_tables = ws_functions.get_team_table_names(driver)
+                team_names, team_tables = ws_functions.get_team_table_names(
+                    driver)
 
-                print('--partida--')
+                print('-- match ---')
 
                 # Aqui em algum lugar vai ter que ter a função de inserir o match
                 for i in range(2):
@@ -43,7 +44,8 @@ def activate_web_scraping():
 
                     print(f'{team_is_home} - {team_name}')
 
-                    lista.append(0)  # posteriormente se tornará participation_id
+                    # posteriormente se tornará participation_id
+                    lista.append(0)
                     lista.append(db.retrieve_team_id_from_abv((team_name,))[0])
                     lista.append(team_name)
                     lista.append(team_is_home)
@@ -74,11 +76,11 @@ def format_and_insert_team_data(game_data, date):
 
         if (game_data[team_part_index][4] == ''):
             game_data[team_part_index][4] = 0
-            
+
         if float(game_data[team_part_index][4]) == 0:
             print("""
-                0 minutos jogados: --------------------------------------
-                    dia """+ str(db.get_datetime(date)) +""" 
+                0 minutes played: --------------------------------------
+                    day """ + str(db.get_datetime(date)) + """ 
                     home_team: """ + str(game_data[team_part_index][0]))
 
         for i in decimal_indexes:
@@ -88,7 +90,7 @@ def format_and_insert_team_data(game_data, date):
             except ValueError:
                 game_data[team_part_index][i] = 0
                 print(
-                    f"Convertendo valor de {game_data[team_part_index][i]} para 0.")
+                    f"Changing value from {game_data[team_part_index][i]} to 0.")
 
         for i in integer_indexes:
             try:
@@ -97,11 +99,9 @@ def format_and_insert_team_data(game_data, date):
             except ValueError:
                 game_data[team_part_index][i] = 0
                 print(
-                    f"Convertendo valor de {game_data[team_part_index][i]} para 0.")
+                    f"Changing value from {game_data[team_part_index][i]} to 0.")
 
         game_data[team_part_index].append(42)  # mat_count_by_team INTEGER
-
-        
 
     try:
         is_current_team_winner = int(game_data[1][22]) > int(
@@ -118,7 +118,6 @@ def format_and_insert_team_data(game_data, date):
         is_current_team_winner = 0
     finally:
         game_data[0].append(int(is_current_team_winner))
-
 
     match_list = []
 
