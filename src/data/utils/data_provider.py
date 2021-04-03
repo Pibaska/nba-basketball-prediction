@@ -281,7 +281,7 @@ def get_team_id_from_name(team_name):
         cursor = db_connection.cursor()
 
         while True:
-            team_name = "%" + team_name + "%"
+            team_name_near = "%" + team_name + "%"
 
             cursor.execute(
                 """
@@ -290,17 +290,18 @@ def get_team_id_from_name(team_name):
                 FROM
                     team
                 WHERE
-                    team_name LIKE ?
+                    upper(team_name) LIKE upper(?)
                 """,
-                [team_name]
+                [team_name_near]
             )
 
-            team_id = cursor.fetchone()
+            team_id = cursor.fetchall()
 
             if len(team_id) == 1:
-                return team_id[0]
+                return team_id[0][0]
             else:
-                team_name = input("Seja mais específico no nome do time, e escreva-o corretamente")
+                print("Não foi possível encontrar: "+team_name)
+                team_name = input("Seja mais específico no nome do time, ou escreva-o corretamente: ")
 
 
     except Exception as e:
