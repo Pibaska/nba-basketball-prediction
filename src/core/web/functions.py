@@ -80,11 +80,11 @@ def generate_date_list():
                 day_range += is_leap_year if (day_range == 28) else 0
 
                 for day_increment in range(day_range):
-                    if day_increment >= last_day:
+                    if day_increment+1 >= last_day:
                         last_day = 0
 
                         formatted_date = [increasing_year,
-                                          month_increment + 1, day_increment+1]
+                                          month_increment + 1, day_increment+2]
 
                         # checa se ja chegou ou passou do dia atual
                         if (formatted_date[0] >= int(current_date_list[0])):
