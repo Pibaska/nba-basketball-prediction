@@ -1,0 +1,378 @@
+[
+    {
+        "general_data": {
+            "timestamp": "2021-03-09 17:25:39.042157",
+            "validation_duration": 0.9383652210235596
+        },
+        "genetic_algorithm_data": {
+            "seed": "WIP",
+            "good_generations": 3,
+            "weight_range": [
+                -100,
+                100
+            ],
+            "mutation_chance": 100,
+            "chromosome_size": 19,
+            "population_size": 1,
+            "max_generations": 1
+        },
+        "gen_alg_stats": {
+            "mean": 0.004689701163977368,
+            "std_deviation": 0.002209270398312144,
+            "median": 0.0036363636363636364,
+            "variance": 4.880875692858298e-06
+        },
+        "random_stats": {
+            "mean": 0.003780959046387866,
+            "std_deviation": 0.0006351617573599122,
+            "median": 0.003816793893129771,
+            "variance": 4.03430458012532e-07
+        },
+        "constant_stats": {
+            "mean": 0.010638297872340425,
+            "std_deviation": 0.0,
+            "median": 0.010638297872340425,
+            "variance": 0.0
+        }
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-12 15:34:44.409988",
+            "validation_duration": 8.183433294296265
+        },
+        "genetic_algorithm_data": {
+            "seed": "WIP",
+            "good_generations": 3,
+            "weight_range": [
+                -100,
+                100
+            ],
+            "mutation_chance": 100,
+            "chromosome_size": 9,
+            "population_size": 1,
+            "max_generations": 1
+        },
+        "gen_alg_stats": {
+            "mean": 0.04032079414838036,
+            "std_deviation": 0.0035342680119900133,
+            "median": 0.04,
+            "variance": 1.249105038057584e-05
+        },
+        "random_stats": {
+            "mean": 0.046487460815047024,
+            "std_deviation": 0.009549934862808479,
+            "median": 0.045454545454545456,
+            "variance": 9.12012558838848e-05
+        },
+        "constant_stats": {
+            "mean": 0.04706166932482722,
+            "std_deviation": 0.006078257496569687,
+            "median": 0.045454545454545456,
+            "variance": 3.69452141946056e-05
+        }
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-12 15:49:31.960776",
+            "validation_duration": 11.181889057159424
+        },
+        "genetic_algorithm_data": {
+            "seed": "WIP",
+            "good_generations": 3,
+            "weight_range": [
+                -100,
+                100
+            ],
+            "mutation_chance": 100,
+            "chromosome_size": 9,
+            "population_size": 1,
+            "max_generations": 1
+        },
+        "gen_alg_stats": {
+            "mean": 52.2,
+            "std_deviation": 5.075431016179808,
+            "median": 50.0,
+            "variance": 25.759999999999998
+        },
+        "random_stats": {
+            "mean": 0.01949280177187154,
+            "std_deviation": 0.0035687132449099025,
+            "median": 0.02,
+            "variance": 1.2735714224395366e-05
+        },
+        "constant_stats": {
+            "mean": 0.025660747825017895,
+            "std_deviation": 0.0031043468812976083,
+            "median": 0.02631578947368421,
+            "variance": 9.636969559422188e-06
+        }
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-12 15:52:23.325108",
+            "validation_duration": 9.113084316253662
+        },
+        "genetic_algorithm_data": {
+            "seed": "WIP",
+            "good_generations": 3,
+            "weight_range": [
+                -100,
+                100
+            ],
+            "mutation_chance": 100,
+            "chromosome_size": 9,
+            "population_size": 1,
+            "max_generations": 1
+        },
+        "gen_alg_stats": {
+            "mean": 51.4,
+            "std_deviation": 10.326664514740468,
+            "median": 48.0,
+            "variance": 106.64
+        },
+        "random_stats": {
+            "mean": 0.021188436794067556,
+            "std_deviation": 0.0026570166668299176,
+            "median": 0.021739130434782608,
+            "variance": 7.059737567811965e-06
+        },
+        "constant_stats": {
+            "mean": 0.016863203241180354,
+            "std_deviation": 0.0015553616499547507,
+            "median": 0.01639344262295082,
+            "variance": 2.4191498621499647e-06
+        }
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-12 15:53:27.826736",
+            "validation_duration": 10.840529680252075
+        },
+        "genetic_algorithm_data": {
+            "seed": "WIP",
+            "good_generations": 3,
+            "weight_range": [
+                -100,
+                100
+            ],
+            "mutation_chance": 100,
+            "chromosome_size": 9,
+            "population_size": 1,
+            "max_generations": 1
+        },
+        "gen_alg_stats": {
+            "mean": 47.0,
+            "std_deviation": 7.155417527999327,
+            "median": 44.0,
+            "variance": 51.2
+        },
+        "random_stats": {
+            "mean": 43.6,
+            "std_deviation": 8.01498596380555,
+            "median": 41.0,
+            "variance": 64.24
+        },
+        "constant_stats": {
+            "mean": 57.6,
+            "std_deviation": 6.6513156593263565,
+            "median": 58.0,
+            "variance": 44.24
+        }
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-13 02:49:20.519171",
+            "validation_duration": 4190.55842089653
+        },
+        "genetic_algorithm_data": {
+            "seed": "WIP",
+            "good_generations": 3,
+            "weight_range": [
+                -100,
+                100
+            ],
+            "mutation_chance": 1,
+            "chromosome_size": 9,
+            "population_size": 100,
+            "max_generations": 100
+        },
+        "gen_alg_stats": {
+            "mean": 53.37,
+            "std_deviation": 3.5941758443348317,
+            "median": 52.5,
+            "variance": 12.918099999999999
+        },
+        "random_stats": {
+            "mean": 50.09,
+            "std_deviation": 6.681085241186494,
+            "median": 49.5,
+            "variance": 44.6369
+        },
+        "constant_stats": {
+            "mean": 57.4,
+            "std_deviation": 3.357082066318904,
+            "median": 57.0,
+            "variance": 11.27
+        }
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-26 07:40:02.019109",
+            "validation_duration": 79.06686329841614
+        },
+        "genetic_algorithm_data": {
+            "seed": "WIP",
+            "good_generations": 3,
+            "weight_range": [
+                -100,
+                100
+            ],
+            "mutation_chance": 1,
+            "chromosome_size": 10,
+            "population_size": 100,
+            "max_generations": 25
+        },
+        "gen_alg_stats": {
+            "mean": 55.2026286966046,
+            "std_deviation": 0.0,
+            "median": 55.2026286966046,
+            "variance": 0.0
+        },
+        "random_stats": {
+            "mean": 53.1763417305586,
+            "std_deviation": 0.0,
+            "median": 53.1763417305586,
+            "variance": 0.0
+        },
+        "constant_stats": {
+            "mean": 52.35487404162103,
+            "std_deviation": 0.0,
+            "median": 52.35487404162103,
+            "variance": 0.0
+        }
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-26 15:33:22.715271",
+            "validation_duration": 4.31391453742981
+        },
+        "validation_results": [
+            {
+                "function": "genetic",
+                "params": {
+                    "good_generations": 3,
+                    "weight_range": [
+                        -10,
+                        10
+                    ],
+                    "mutation_chance": 1,
+                    "mutation_magnitude": [
+                        -1,
+                        1
+                    ],
+                    "chromosome_size": 10,
+                    "population_size": 50,
+                    "max_generations": 4,
+                    "persistent_individuals": 5,
+                    "random_individuals": 5
+                },
+                "result": {
+                    "mean": 54.7645125958379,
+                    "std_deviation": 0.0,
+                    "median": 54.7645125958379,
+                    "variance": 0.0
+                }
+            },
+            {
+                "function": "genetic",
+                "params": {
+                    "good_generations": 3,
+                    "weight_range": [
+                        -10,
+                        10
+                    ],
+                    "mutation_chance": 1,
+                    "mutation_magnitude": [
+                        -1,
+                        1
+                    ],
+                    "chromosome_size": 10,
+                    "population_size": 50,
+                    "max_generations": 5,
+                    "persistent_individuals": 5,
+                    "random_individuals": 5
+                },
+                "result": {
+                    "mean": 54.70974808324206,
+                    "std_deviation": 0.0,
+                    "median": 54.70974808324206,
+                    "variance": 0.0
+                }
+            },
+            {
+                "function": "random",
+                "result": {
+                    "mean": 53.88828039430449,
+                    "std_deviation": 0.0,
+                    "median": 53.88828039430449,
+                    "variance": 0.0
+                }
+            },
+            {
+                "function": "constant",
+                "chromosome": [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "result": {
+                    "mean": 52.35487404162103,
+                    "std_deviation": 0.0,
+                    "median": 52.35487404162103,
+                    "variance": 0.0
+                }
+            }
+        ]
+    },
+    {
+        "general_data": {
+            "timestamp": "2021-03-26 17:17:19.703172",
+            "validation_duration": 235.23199272155762
+        },
+        "validation_results": [
+            {
+                "function": "genetic",
+                "params": {
+                    "chromosome_size": 10,
+                    "max_generations": 100,
+                    "good_generations": 3,
+                    "weight_range": [
+                        -10,
+                        10
+                    ],
+                    "mutation_chance": 1,
+                    "mutation_magnitude": [
+                        -1,
+                        1
+                    ],
+                    "population_size": 50,
+                    "persistent_individuals": 5,
+                    "random_individuals": 5
+                },
+                "result": {
+                    "mean": 55.92552026286966,
+                    "std_deviation": 0.17796360141590056,
+                    "median": 55.85980284775466,
+                    "variance": 0.03167104342891753
+                }
+            }
+        ]
+    }
+]

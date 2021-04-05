@@ -1,0 +1,72 @@
+[
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":10,
+                "max_generations":100,
+                "good_generations":3,
+                "weight_range":[-100, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10,10],
+                "population_size":50,
+                "persistent_individuals":5,
+                "random_individuals":0
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":10,
+                "max_generations":100,
+                "good_generations":3,
+                "weight_range":[-100, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10,10],
+                "population_size":50,
+                "persistent_individuals":5,
+                "random_individuals":5
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":10,
+                "max_generations":100,
+                "good_generations":3,
+                "weight_range":[-100, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10,10],
+                "population_size":50,
+                "persistent_individuals":5,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":10,
+                "max_generations":100,
+                "good_generations":3,
+                "weight_range":[-100, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10,10],
+                "population_size":50,
+                "persistent_individuals":5,
+                "random_individuals":25
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":10,
+                "max_generations":100,
+                "good_generations":3,
+                "weight_range":[-100, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10,10],
+                "population_size":50,
+                "persistent_individuals":5,
+                "random_individuals":40
+        }
+    }
+]

@@ -9,6 +9,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Custom
+.idea
+
 # Distribution / packaging
 .Python
 build/
@@ -17,6 +20,8 @@ dist/
 downloads/
 eggs/
 .eggs/
+.
+bin/
 lib/
 lib64/
 parts/
@@ -29,6 +34,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+pyvenv.cfg
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -112,6 +118,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+venvGreg/
 
 # Spyder project settings
 .spyderproject
@@ -134,8 +141,8 @@ dmypy.json
 # Pycharm
 .idea
 
-<<<<<<< HEAD
 # Vscode
-=======
->>>>>>> GUI
-.vscode/
+.vscode
+
+Scripts/
+lib64
