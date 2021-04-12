@@ -14,7 +14,7 @@ class Validation():
     e salvar esses dados para uso posterior.
     """
 
-    def __init__(self, test_cycles=5, date=[2018, 6, 20]) -> None:
+    def __init__(self, test_cycles=5, date=[2021, 4, 4]) -> None:
         self.date = date
 
         self.fitness_input = data_provider.get_matches_averages_by_season(date)

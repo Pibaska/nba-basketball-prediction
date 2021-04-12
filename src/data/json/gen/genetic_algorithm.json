@@ -1,54 +1,2402 @@
 [
     {
-        "best_fitness": 59.09090909090909,
-        "current_generation": 5
-    },
-    {
-        "best_fitness": 59.09090909090909,
-        "current_generation": 10
-    },
-    {
-        "best_fitness": 59.09090909090909,
-        "current_generation": 15
-    },
-    {
-        "best_fitness": 59.09090909090909,
-        "current_generation": 20
-    },
-    {
-        "best_fitness": 59.09090909090909,
-        "current_generation": 25
-    },
-    {
-        "best_fitness": 59.09090909090909,
-        "current_generation": 30
-    },
-    {
-        "best_fitness": 59.09090909090909,
+        "best_fitness": 56.72082717872969,
         "current_generation": 0
     },
     {
-        "best_fitness": 59.09090909090909,
+        "best_fitness": 58.197932053175776,
         "current_generation": 5
     },
     {
-        "best_fitness": 59.09090909090909,
+        "best_fitness": 58.6410635155096,
         "current_generation": 10
     },
     {
-        "best_fitness": 59.09090909090909,
+        "best_fitness": 58.6410635155096,
         "current_generation": 15
     },
     {
-        "best_fitness": 59.09090909090909,
+        "best_fitness": 58.93648449039882,
         "current_generation": 20
     },
     {
-        "best_fitness": 59.09090909090909,
+        "best_fitness": 59.084194977843424,
         "current_generation": 25
     },
     {
-        "best_fitness": 59.09090909090909,
+        "best_fitness": 59.37961595273264,
         "current_generation": 30
+    },
+    {
+        "best_fitness": 59.37961595273264,
+        "current_generation": 35
+    },
+    {
+        "best_fitness": 59.37961595273264,
+        "current_generation": 40
+    },
+    {
+        "best_fitness": 59.527326440177255,
+        "current_generation": 45
+    },
+    {
+        "best_fitness": 59.527326440177255,
+        "current_generation": 50
+    },
+    {
+        "best_fitness": 59.527326440177255,
+        "current_generation": 55
+    },
+    {
+        "best_fitness": 59.527326440177255,
+        "current_generation": 60
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 65
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 70
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 75
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 80
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 85
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 90
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 95
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 100
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 105
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 110
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 115
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 120
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 125
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 130
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 135
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 140
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 145
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 150
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 155
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 160
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 165
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 170
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 175
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 180
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 185
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 190
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 195
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 200
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 205
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 210
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 215
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 220
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 225
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 230
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 235
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 240
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 245
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 250
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 255
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 260
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 265
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 270
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 275
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 280
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 285
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 290
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 295
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 300
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 305
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 310
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 315
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 320
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 325
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 330
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 335
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 340
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 345
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 350
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 355
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 360
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 365
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 370
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 375
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 380
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 385
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 390
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 395
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 400
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 405
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 410
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 415
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 420
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 425
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 430
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 435
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 440
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 445
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 450
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 455
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 460
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 465
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 470
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 475
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 480
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 485
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 490
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 495
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 500
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 505
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 510
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 515
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 520
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 525
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 530
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 535
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 540
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 545
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 550
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 555
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 560
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 565
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 570
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 575
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 580
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 585
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 590
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 595
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 600
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 605
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 610
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 615
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 620
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 625
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 630
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 635
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 640
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 645
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 650
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 655
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 660
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 665
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 670
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 675
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 680
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 685
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 690
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 695
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 700
+    },
+    {
+        "best_fitness": 59.67503692762186,
+        "current_generation": 705
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 710
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 715
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 720
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 725
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 730
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 735
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 740
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 745
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 750
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 755
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 760
+    },
+    {
+        "best_fitness": 59.822747415066466,
+        "current_generation": 765
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 770
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 775
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 780
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 785
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 790
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 795
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 800
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 805
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 810
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 815
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 820
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 825
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 830
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 835
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 840
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 845
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 850
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 855
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 860
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 865
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 870
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 875
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 880
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 885
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 890
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 895
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 900
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 905
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 910
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 915
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 920
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 925
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 930
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 935
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 940
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 945
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 950
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 955
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 960
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 965
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 970
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 975
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 980
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 985
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 990
+    },
+    {
+        "best_fitness": 59.97045790251108,
+        "current_generation": 995
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 0
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 5
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 10
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 15
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 20
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 25
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 30
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 35
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 40
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 45
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 50
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 55
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 60
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 65
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 70
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 75
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 80
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 85
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 90
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 95
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 100
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 105
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 110
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 115
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 120
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 125
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 130
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 135
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 140
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 145
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 150
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 155
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 160
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 165
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 170
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 175
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 180
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 185
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 190
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 195
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 200
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 205
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 210
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 215
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 220
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 225
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 230
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 235
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 240
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 245
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 250
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 255
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 260
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 265
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 270
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 275
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 280
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 285
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 290
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 295
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 300
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 305
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 310
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 315
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 320
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 325
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 330
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 335
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 340
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 345
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 350
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 355
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 360
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 365
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 370
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 375
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 380
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 385
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 390
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 395
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 400
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 405
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 410
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 415
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 420
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 425
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 430
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 435
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 440
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 445
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 450
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 455
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 460
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 465
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 470
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 475
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 480
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 485
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 490
+    },
+    {
+        "best_fitness": 59.79827089337176,
+        "current_generation": 495
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 0
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 5
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 10
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 15
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 20
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 25
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 30
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 35
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 40
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 45
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 50
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 55
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 60
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 65
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 70
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 75
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 80
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 85
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 90
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 95
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 100
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 105
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 110
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 115
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 120
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 125
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 130
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 135
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 140
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 145
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 150
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 155
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 160
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 165
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 170
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 175
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 180
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 185
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 190
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 195
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 200
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 205
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 210
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 215
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 220
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 225
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 230
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 235
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 240
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 245
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 250
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 255
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 260
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 265
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 270
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 275
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 280
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 285
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 290
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 295
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 300
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 305
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 310
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 315
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 320
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 325
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 330
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 335
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 340
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 345
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 350
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 355
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 360
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 365
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 370
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 375
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 380
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 385
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 390
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 395
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 400
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 405
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 410
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 415
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 420
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 425
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 430
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 435
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 440
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 445
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 450
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 455
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 460
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 465
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 470
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 475
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 480
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 485
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 490
+    },
+    {
+        "best_fitness": 59.77175463623395,
+        "current_generation": 495
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 0
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 5
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 10
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 15
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 20
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 25
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 30
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 35
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 40
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 45
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 50
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 55
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 60
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 65
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 70
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 75
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 80
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 85
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 90
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 95
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 100
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 105
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 110
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 115
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 120
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 125
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 130
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 135
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 140
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 145
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 150
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 155
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 160
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 165
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 170
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 175
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 180
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 185
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 190
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 195
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 200
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 205
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 210
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 215
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 220
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 225
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 230
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 235
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 240
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 245
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 250
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 255
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 260
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 265
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 270
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 275
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 280
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 285
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 290
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 295
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 300
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 305
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 310
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 315
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 320
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 325
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 330
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 335
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 340
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 345
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 350
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 355
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 360
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 365
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 370
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 375
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 380
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 385
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 390
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 395
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 400
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 405
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 410
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 415
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 420
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 425
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 430
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 435
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 440
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 445
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 450
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 455
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 460
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 465
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 470
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 475
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 480
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 485
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 490
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 495
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 500
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 505
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 510
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 515
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 520
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 525
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 530
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 535
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 540
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 545
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 550
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 555
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 560
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 565
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 570
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 575
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 580
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 585
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 590
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 595
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 600
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 605
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 610
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 615
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 620
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 625
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 630
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 635
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 640
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 645
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 650
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 655
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 660
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 665
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 670
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 675
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 680
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 685
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 690
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 695
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 700
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 705
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 710
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 715
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 720
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 725
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 730
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 735
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 740
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 745
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 750
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 755
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 760
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 765
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 770
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 775
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 780
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 785
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 790
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 795
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 800
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 805
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 810
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 815
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 820
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 825
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 830
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 835
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 840
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 845
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 850
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 855
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 860
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 865
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 870
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 875
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 880
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 885
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 890
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 895
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 900
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 905
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 910
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 915
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 920
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 925
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 930
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 935
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 940
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 945
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 950
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 955
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 960
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 965
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 970
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 975
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 980
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 985
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 990
+    },
+    {
+        "best_fitness": 59.83493810178817,
+        "current_generation": 995
     }
 ]

@@ -2,41 +2,195 @@
     {
         "function" : "genetic",
         "params": {
-                "chromosome_size":10,
-                "max_generations":100,
-                "good_generations":3,
-                "weight_range":[-100, 100],
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
                 "mutation_chance":1,
-                "mutation_magnitude":[-10,10],
-                "population_size":50,
-                "persistent_individuals":5,
-                "random_individuals":0
+                "mutation_magnitude":[-0.1, 0.1],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
         }
     },
     {
         "function" : "genetic",
         "params": {
-                "chromosome_size":10,
-                "max_generations":100,
-                "good_generations":3,
-                "weight_range":[-100, 100],
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
                 "mutation_chance":1,
-                "mutation_magnitude":[-10,10],
-                "population_size":50,
-                "persistent_individuals":5,
-                "random_individuals":5
+                "mutation_magnitude":[-1, 1],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
         }
     },
     {
         "function" : "genetic",
         "params": {
-                "chromosome_size":10,
-                "max_generations":100,
-                "good_generations":3,
-                "weight_range":[-100, 100],
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
                 "mutation_chance":1,
-                "mutation_magnitude":[-10,10],
-                "population_size":50,
+                "mutation_magnitude":[-5, 5],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-15, 15],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-20, 20],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":0,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":5,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":15,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":30,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":60,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":95,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":0,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
                 "persistent_individuals":5,
                 "random_individuals":10
         }
@@ -44,29 +198,85 @@
     {
         "function" : "genetic",
         "params": {
-                "chromosome_size":10,
-                "max_generations":100,
-                "good_generations":3,
-                "weight_range":[-100, 100],
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
                 "mutation_chance":1,
-                "mutation_magnitude":[-10,10],
-                "population_size":50,
-                "persistent_individuals":5,
-                "random_individuals":25
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":50,
+                "random_individuals":10
         }
     },
     {
         "function" : "genetic",
         "params": {
-                "chromosome_size":10,
-                "max_generations":100,
-                "good_generations":3,
-                "weight_range":[-100, 100],
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
                 "mutation_chance":1,
-                "mutation_magnitude":[-10,10],
-                "population_size":50,
-                "persistent_individuals":5,
-                "random_individuals":40
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":80,
+                "random_individuals":10
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":0
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":5
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":50
+        }
+    },
+    {
+        "function" : "genetic",
+        "params": {
+                "chromosome_size":11,
+                "max_generations":1000,
+                "good_generations":999,
+                "weight_range":[0, 100],
+                "mutation_chance":1,
+                "mutation_magnitude":[-10, 10],
+                "population_size":100,
+                "persistent_individuals":10,
+                "random_individuals":80
         }
     }
 ]

@@ -14,19 +14,19 @@ gen_parser.add_argument("-ggg", "--gen-good-generations", type=int, default=3,
                         help="Sets how many consecutive good generations will interrupt and finish the algorithm execution.")
 gen_parser.add_argument("-gwr", "--gen-weight-range", type=tuple, default=(-100, 100),
                         help="Sets the minimum and maximum value for newly created individuals' genes.")
-gen_parser.add_argument("-gmc", "--gen-mutation-chance", type=float, default=10,
+gen_parser.add_argument("-gmc", "--gen-mutation-chance", type=float, default=15,
                         help="Percentage that indicates the chance of a gene being mutated during reproduction.")
-gen_parser.add_argument("-gmm", "--gen-mutation-magnitude", type=tuple, default=(-10, 10),
+gen_parser.add_argument("-gmm", "--gen-mutation-magnitude", type=tuple, default=(-20, 20),
                         help="Sets the magnitude of the value added to a gente during mutation.")
 gen_parser.add_argument("-gcs", "--gen-chromosome-size", type=int, default=11,
                         help="Sets how many genes are in a chromosome. WARNING: Editing this value might yield some strange results from the algorithm without prior setup.")
 gen_parser.add_argument("-gps", "--gen-population-size", type=int, default=100,
                         help="Sets how many individuals are going to be in any given generation")
-gen_parser.add_argument("-gmg", "--gen-max-generations", type=int, default=99999,
+gen_parser.add_argument("-gmg", "--gen-max-generations", type=int, default=1000,
                         help="Sets the maximum number of generations for the algorithm to run for it to break automatically.")
-gen_parser.add_argument("-gpi", "--gen-persistent-individuals", type=int, default=10,
+gen_parser.add_argument("-gpi", "--gen-persistent-individuals", type=int, default=5,
                         help="Sets how many of the parents (ordered by the highest fitness) will continue existing in the children generation.")
-gen_parser.add_argument("-gri", "--gen_random_individuals", type=int, default=10,
+gen_parser.add_argument("-gri", "--gen_random_individuals", type=int, default=0,
                         help="Sets how many individuals in a new generation will be completely randomly generated.")
 gen_parser.add_argument("-gnp", "--gen-new-population", action="store_true",
                         help="Sets if the genetic algorithm shoud create an entirely new first generation or get the last generation stored in memory.")

@@ -4,7 +4,7 @@ import numpy as np
 
 
 def plot_gen_alg():
-    with open("src/data/json/gen/2021-03-25--23-33-10.json", "r") as json_file:
+    with open("src/data/json/gen/genetic_algorithm.json", "r") as json_file:
         data = json.load(json_file)
         means = []
         gens = []
@@ -34,4 +34,4 @@ def plot_validation():
 
 
 if __name__ == "__main__":
-    plot_validation()
+    plot_gen_alg()
