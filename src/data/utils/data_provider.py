@@ -236,7 +236,7 @@ def get_won_spread(team_id, local, date):
 
         cursor.execute(
             """ 
-                SELECT SUM(won) FROM match_data as md INNER JOIN participation as p 
+                SELECT won FROM match_data as md INNER JOIN participation as p 
                     on p.participation_id = """+participation_local+"""
                 INNER join team as t 
                     on t.team_id = p.fk_team_id
@@ -245,9 +245,13 @@ def get_won_spread(team_id, local, date):
                 and md.date < ?
                 order by md.date DESC;
                 """, [team_id, start_season, str(date[0])+"-"+str(date[1])+"-"+str(date[2])])
-        won_spread = cursor.fetchone()
+        won_spread = cursor.fetchall()
 
-        return won_spread[0]
+        won_sum = 0
+        for item in won_spread[:10]:
+            won_sum += item[0]
+
+        return won_sum
 
     except Exception as e:
         print(e)
